@@ -1,0 +1,76 @@
+name: Experiment 012 Core Convergence
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [v0.4-core-necessity]
+    paths:
+      - 'experiments/experiment_012_core_convergence.py'
+      - 'experiments/experiment_010_minimal_transferable_core.py'
+      - 'persona_net/**'
+      - 'data/v0_4/**'
+      - 'config/default.json'
+      - 'requirements.txt'
+      - '.github/workflows/experiment-012.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  experiment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      - name: Install declared runtime dependencies
+        run: python -m pip install -r requirements.txt
+
+      - name: Preflight Experiment 012 runtime and data
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/experiments
+        run: |
+          python - <<'PY'
+          import numpy
+          import scipy
+
+          from persona_net import ExperienceEncoder, PlasticRecurrentPersonaNet
+          from persona_net.v04_data import load_v04_split
+          from experiment_010_minimal_transferable_core import (
+              compile_items,
+              evaluate_both,
+              graft,
+              train_recurrent_only,
+          )
+          import experiment_012_core_convergence
+
+          root = "data/v0_4"
+          counts = {
+              "train": len(load_v04_split(root, "train")),
+              "validation": len(load_v04_split(root, "validation")),
+              "adversarial": len(load_v04_split(root, "adversarial")),
+          }
+          assert counts == {"train": 100, "validation": 40, "adversarial": 20}, counts
+          print("numpy", numpy.__version__)
+          print("scipy", scipy.__version__)
+          print("v0.4 data", counts)
+          print("Experiment 012 preflight passed")
+          PY
+
+      - name: Run Experiment 012
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/experiments
+        run: python experiments/experiment_012_core_convergence.py
+
+      - name: Upload immutable report
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-012-core-convergence-${{ github.sha }}
+          path: results/experiment_012_core_convergence/report_n1024_steps24000.json
+          if-no-files-found: error
+          retention-days: 90
