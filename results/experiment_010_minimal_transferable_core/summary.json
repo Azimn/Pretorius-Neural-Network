@@ -1,0 +1,81 @@
+{
+  "experiment": "010_minimal_transferable_core",
+  "status": "three_seed_standard_evaluation",
+  "terminal_battery_touched": false,
+  "neurons": 1024,
+  "training_neural_steps": 24000,
+  "plasticity_multiplier": 16.0,
+  "evaluation": {
+    "settle_steps": 40,
+    "probe_steps": 60
+  },
+  "seeds": [1842, 101, 202],
+  "means": {
+    "baseline": {
+      "founder": {
+        "validation_js": 0.7784075724948393,
+        "validation_top1": 0.11666666666666668,
+        "adversarial_js": 0.7806101986978767,
+        "adversarial_top1": 0.08333333333333333
+      },
+      "mature": {
+        "validation_js": 0.7836642149897125,
+        "validation_top1": 0.4749999999999999,
+        "adversarial_js": 0.7853096165619524,
+        "adversarial_top1": 0.3499999999999999
+      },
+      "donor": {
+        "validation_js": 0.7837076895476912,
+        "validation_top1": 0.4749999999999999,
+        "adversarial_js": 0.7853174775149204,
+        "adversarial_top1": 0.3499999999999999
+      }
+    },
+    "fractions": {
+      "0.0025": {
+        "count": 41,
+        "self_top_validation_js": 0.779356568137383,
+        "self_top_validation_top1": 0.4333333333333333,
+        "donor_top_validation_js": 0.7793586495668849,
+        "donor_top_validation_top1": 0.4333333333333333,
+        "random_validation_js": 0.7784182710088067,
+        "random_validation_top1": 0.11666666666666668,
+        "self_top_adversarial_top1": 0.23333333333333336,
+        "donor_top_adversarial_top1": 0.23333333333333336
+      },
+      "0.01": {
+        "count": 163,
+        "self_top_validation_js": 0.7807775914582757,
+        "self_top_validation_top1": 0.4749999999999999,
+        "donor_top_validation_js": 0.7807816016613102,
+        "donor_top_validation_top1": 0.4749999999999999,
+        "random_validation_js": 0.7784629517030748,
+        "random_validation_top1": 0.09999999999999999,
+        "self_top_adversarial_top1": 0.3499999999999999,
+        "donor_top_adversarial_top1": 0.3499999999999999
+      },
+      "0.05": {
+        "count": 813,
+        "self_top_validation_js": 0.7832147356848429,
+        "self_top_validation_top1": 0.4749999999999999,
+        "donor_top_validation_js": 0.7832381205841824,
+        "donor_top_validation_top1": 0.4749999999999999,
+        "random_validation_js": 0.7786684551602074,
+        "random_validation_top1": 0.14166666666666666,
+        "self_top_adversarial_top1": 0.3499999999999999,
+        "donor_top_adversarial_top1": 0.3499999999999999
+      },
+      "0.10": {
+        "count": 1627,
+        "self_top_validation_js": 0.7836173883482087,
+        "self_top_validation_top1": 0.4749999999999999,
+        "donor_top_validation_js": 0.7836405006183016,
+        "donor_top_validation_top1": 0.4749999999999999,
+        "random_validation_js": 0.7788968499262454,
+        "random_validation_top1": 0.17499999999999996,
+        "self_top_adversarial_top1": 0.3499999999999999,
+        "donor_top_adversarial_top1": 0.3499999999999999
+      }
+    }
+  }
+}
