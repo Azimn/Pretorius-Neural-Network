@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+.DS_Store
+results/*.npz
+data/phenotype_battery/pretorius_terminal_inputs_v1.json
+data/phenotype_battery/pretorius_terminal_key_v1.json
