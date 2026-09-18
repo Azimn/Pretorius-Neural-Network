@@ -50,13 +50,17 @@ def sign_class(net, indices):
 
 def symmetric_match_similarity(sig_a, sign_a, sig_b, sign_b):
     # Mean best compatible edge similarity in both directions. No raw edge indices are compared.
+    # A causal subset may naturally contain a Dale class that is absent from the other
+    # independently developed topology, especially at the 0.25% scale.  Such an edge has
+    # no compatible functional counterpart.  Score that direction at cosine's lower bound
+    # (-1) rather than aborting the experiment or silently dropping the unmatched class.
     sim = sig_a @ sig_b.T
     compatible = sign_a[:, None] == sign_b[None, :]
     masked = np.where(compatible, sim, -np.inf)
     a_best = np.max(masked, axis=1)
     b_best = np.max(masked, axis=0)
-    if not np.all(np.isfinite(a_best)) or not np.all(np.isfinite(b_best)):
-        raise RuntimeError("compatible Dale-sign edge absent from comparison set")
+    a_best = np.where(np.isfinite(a_best), a_best, -1.0)
+    b_best = np.where(np.isfinite(b_best), b_best, -1.0)
     return float(0.5 * (a_best.mean() + b_best.mean()))
 
 
@@ -159,7 +163,7 @@ def run(neurons: int, training_steps: int, seeds=SEEDS, fractions=FRACTIONS):
         "training_neural_steps_per_topology": training_steps,
         "total_training_neural_steps": training_steps * len(seeds),
         "alignment_inputs": "unlabeled public training situations only",
-        "edge_similarity": "cosine of concatenated mature post/pre neuron response fingerprints; hard Dale-sign compatibility; symmetric mean-best match",
+        "edge_similarity": "cosine of concatenated mature post/pre neuron response fingerprints; hard Dale-sign compatibility; symmetric mean-best match; unmatched Dale classes score cosine lower bound -1",
         "random_control": "same-size, Dale-sign-matched recurrent edges selected with deterministic SHA-256-derived pair/fraction seeds",
         "mature_phenotype": {str(seed): nets[seed]["scores"] for seed in seeds},
         "pair_results": pair_results,
