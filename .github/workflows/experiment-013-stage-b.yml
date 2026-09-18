@@ -2,6 +2,13 @@ name: Experiment 013 Stage B alignment gate
 
 on:
   workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'experiments/experiment_013_cross_topology.py'
+      - 'tests/test_experiment_013_alignment.py'
+      - '.github/workflows/experiment-013-stage-b.yml'
+      - 'requirements.txt'
 
 jobs:
   stage-b-gate:
