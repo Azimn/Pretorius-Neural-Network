@@ -1,0 +1,35 @@
+{
+  "network": {
+    "neurons": 4096,
+    "sensory_dim": 512,
+    "avg_recurrent_degree": 32,
+    "input_degree": 10,
+    "excitatory_fraction": 0.8,
+    "target_rate": 0.08,
+    "tau": 12.0,
+    "dt": 1.0,
+    "recurrent_scale": 0.34,
+    "input_scale": 0.55,
+    "action_teaching_scale": 1.8,
+    "global_inhibition": 1.7,
+    "plasticity_interval": 8,
+    "hebb_lr": 0.00035,
+    "reward_lr": 0.0012,
+    "weight_decay": 2e-05,
+    "homeostatic_lr": 8e-05,
+    "eligibility_decay": 0.92,
+    "max_abs_weight": 0.75,
+    "action_population_size": 72,
+    "seed": 1842,
+    "motor_lr": 0.025,
+    "motor_weight_decay": 2e-05,
+    "motor_temperature": 0.3
+  },
+  "development": {
+    "ticks": 100000,
+    "input_noise": 0.035,
+    "consolidation_fraction": 0.08,
+    "probe_settle_ticks": 40,
+    "probe_ticks": 60
+  }
+}
