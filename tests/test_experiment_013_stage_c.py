@@ -1,0 +1,22 @@
+import numpy as np
+
+from persona_net import ExperienceEncoder, PlasticRecurrentPersonaNet
+from experiment_012_core_convergence import configured
+from experiment_013_cross_topology import fingerprints
+from experiment_013_stage_c import edge_signatures, sign_class, sign_matched_random, symmetric_match_similarity
+
+
+def test_stage_c_functional_edge_similarity_and_control_are_index_independent():
+    cfg = configured(101, 64)
+    enc = ExperienceEncoder(cfg["sensory_dim"])
+    net = PlasticRecurrentPersonaNet(cfg, enc)
+    compiled = [(np.zeros(cfg["sensory_dim"], dtype=np.float32), None) for _ in range(4)]
+    fp = fingerprints(net, compiled, probe_steps=2)
+    idx = np.arange(min(12, len(net.W.data)), dtype=np.int64)
+    sig = edge_signatures(net, fp, idx)
+    signs = sign_class(net, idx)
+    assert np.isclose(symmetric_match_similarity(sig, signs, sig, signs), 1.0, atol=1e-6)
+    rng = np.random.default_rng(13)
+    control = sign_matched_random(net, len(idx), signs, rng)
+    assert len(control) == len(idx)
+    assert int(sign_class(net, control).sum()) == int(signs.sum())
