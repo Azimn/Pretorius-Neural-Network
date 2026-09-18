@@ -10,7 +10,10 @@ def test_stage_c_functional_edge_similarity_and_control_are_index_independent():
     cfg = configured(101, 64)
     enc = ExperienceEncoder(cfg["sensory_dim"])
     net = PlasticRecurrentPersonaNet(cfg, enc)
-    compiled = [(np.zeros(cfg["sensory_dim"], dtype=np.float32), None) for _ in range(4)]
+    # fingerprints() consumes the network's complete encoded input vector,
+    # including the encoder's non-sensory channels.  Using sensory_dim here
+    # would construct a truncated synthetic probe that cannot match Win.
+    compiled = [(np.zeros(enc.input_dim, dtype=np.float32), None) for _ in range(4)]
     fp = fingerprints(net, compiled, probe_steps=2)
     idx = np.arange(min(12, len(net.W.data)), dtype=np.int64)
     sig = edge_signatures(net, fp, idx)
