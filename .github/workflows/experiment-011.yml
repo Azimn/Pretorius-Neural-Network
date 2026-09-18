@@ -23,6 +23,8 @@ jobs:
           python-version: '3.11'
       - run: pip install -r requirements.txt
       - name: Run three-seed core necessity experiment
+        env:
+          PYTHONPATH: .
         run: python experiments/experiment_011_core_necessity.py
       - name: Upload immutable report
         uses: actions/upload-artifact@v4
