@@ -1,0 +1,31 @@
+name: Experiment 012 Core Convergence
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [v0.4-core-necessity]
+    paths:
+      - 'experiments/experiment_012_core_convergence.py'
+      - '.github/workflows/experiment-012.yml'
+
+jobs:
+  experiment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -e .
+      - name: Run Experiment 012
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/experiments
+        run: python experiments/experiment_012_core_convergence.py
+      - name: Upload immutable report
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-012-core-convergence-${{ github.sha }}
+          path: results/experiment_012_core_convergence/report_n1024_steps24000.json
+          if-no-files-found: error
+          retention-days: 90
