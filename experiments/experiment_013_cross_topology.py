@@ -6,7 +6,6 @@ import json
 from pathlib import Path
 
 import numpy as np
-from scipy import sparse
 from scipy.optimize import linear_sum_assignment
 
 from persona_net import ExperienceEncoder, PlasticRecurrentPersonaNet
@@ -46,7 +45,6 @@ def fingerprints(net, compiled, probe_steps=8):
         for _ in range(probe_steps):
             net.step(context, reward=0.0, learn=False)
         responses[:, j] = net.rate
-    # Standardize each stimulus across neurons, then L2 normalize neuron signatures.
     responses -= responses.mean(axis=0, keepdims=True)
     scale = responses.std(axis=0, keepdims=True)
     responses /= np.where(scale > 1e-8, scale, 1.0)
@@ -54,10 +52,10 @@ def fingerprints(net, compiled, probe_steps=8):
     return responses / np.where(norms > 1e-8, norms, 1.0)
 
 
-def align_neurons(reference, candidate, compiled):
+def align_neurons(reference, candidate, compiled, probe_steps=8):
     """Hungarian maximum-cosine alignment with hard Dale E/I compatibility."""
-    a = fingerprints(copy.deepcopy(reference), compiled)
-    b = fingerprints(copy.deepcopy(candidate), compiled)
+    a = fingerprints(copy.deepcopy(reference), compiled, probe_steps=probe_steps)
+    b = fingerprints(copy.deepcopy(candidate), compiled, probe_steps=probe_steps)
     similarity = a @ b.T
     incompatible = reference.excitatory[:, None] != candidate.excitatory[None, :]
     cost = -similarity.astype(np.float64)
