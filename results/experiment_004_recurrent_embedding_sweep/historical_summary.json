@@ -1,0 +1,38 @@
+{
+  "experiment": "004_recurrent_embedding_sweep",
+  "status": "historical_reference",
+  "terminal_battery_touched": false,
+  "source": "GitHub issue #1 and archived v0.3.1 experiment bundle",
+  "notes": [
+    "These results predate PR #7's explicit neural-step report fields, but Experiment 004 already budgeted the recurrent-only loop directly in calls to net.step.",
+    "They are retained as historical comparison targets for clean-checkout reproduction, not silently regenerated."
+  ],
+  "summary": {
+    "n1024_x16_replication": {
+      "seeds": [101, 202, 303, 404, 505],
+      "neural_steps_per_seed": 24000,
+      "mean_before_validation_js_similarity": 0.7782,
+      "mean_after_validation_js_similarity": 0.7831,
+      "mean_before_adversarial_js_similarity": 0.7806,
+      "mean_after_adversarial_js_similarity": 0.7849,
+      "mean_after_validation_top1": 0.465,
+      "mean_after_adversarial_top1": 0.350
+    },
+    "n4096_x16_seed_1842": {
+      "neural_steps": 24000,
+      "before_validation_js_similarity": 0.7784,
+      "after_validation_js_similarity": 0.8009,
+      "before_adversarial_js_similarity": 0.7808,
+      "after_adversarial_js_similarity": 0.8012,
+      "after_validation_top1": 0.475,
+      "after_adversarial_top1": 0.350
+    },
+    "n4096_x16_seed_101": {
+      "neural_steps": 24000,
+      "after_validation_js_similarity": 0.7960,
+      "after_adversarial_js_similarity": 0.7970,
+      "after_validation_top1": 0.475,
+      "after_adversarial_top1": 0.350
+    }
+  }
+}
