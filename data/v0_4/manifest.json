@@ -1,0 +1,16 @@
+{
+  "version": "v0.4-repro-1",
+  "source_bundle": "pretorius_neural_persona_v0_3_1_experiment_bundle",
+  "policy": "100 axis-grounded phenotype training items, 40 validation items, and 20 adversarial items. Terminal inputs and terminal scoring key are excluded.",
+  "counts": {"train": 100, "validation": 40, "adversarial": 20},
+  "train_files": ["train_part1.json", "train_part2.json", "train_part3.json", "train_part4.json"],
+  "validation_files": ["validation_part1.json", "validation_part2.json", "validation_part3.json", "validation_part4.json"],
+  "adversarial_file": "adversarial_full.json",
+  "source_hashes": {
+    "pretorius_phenotype_train_battery_v1.json": "3cdc9fcc1d10420540ba153326d936cdbdc497a57b3319e1bf2f07f78e6c6a69",
+    "pretorius_validation_v1.json": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246",
+    "pretorius_adversarial_v1.json": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
+    "terminal_inputs_v1.json": "1e5d6aac471c8c9939199c77cf629acc52b89a7e392325e64175dd921a0a06c7",
+    "terminal_key_v1.json": "31faa69df33084fa335225390c415bafc6c1d66e09cc148d58b471711920ec00"
+  }
+}

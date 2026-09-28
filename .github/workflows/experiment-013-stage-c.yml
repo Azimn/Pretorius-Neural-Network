@@ -1,0 +1,61 @@
+name: Experiment 013 Stage C cross-topology comparison
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'experiments/experiment_013_stage_c.py'
+      - 'tests/test_experiment_013_stage_c.py'
+      - '.github/workflows/experiment-013-stage-c.yml'
+      - 'requirements.txt'
+
+jobs:
+  stage-c:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install declared dependencies and test runner
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install pytest
+      - name: Preflight imports, public splits, module resolution, and Stage B artifact contract
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/experiments
+        run: |
+          python - <<'PY'
+          import numpy, scipy
+          import persona_net
+          import experiment_013_cross_topology, experiment_013_stage_c
+          from pathlib import Path
+          from persona_net.v04_data import load_v04_split
+          root = Path.cwd() / 'data' / 'v0_4'
+          expected = {'train': 100, 'validation': 40, 'adversarial': 20}
+          actual = {name: len(load_v04_split(root, name)) for name in expected}
+          assert actual == expected, (actual, expected)
+          print('preflight ok', actual)
+          PY
+      - name: Stage C unit preflight
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/experiments
+        run: python -m pytest -q tests/test_experiment_013_alignment.py tests/test_experiment_013_stage_c.py
+      - name: Run preregistered independent-topology Stage C
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/experiments
+        run: python experiments/experiment_013_stage_c.py --neurons 1024 --training-neural-steps 24000
+      - name: Verify expected immutable report path
+        if: always()
+        run: test -f results/experiment_013_cross_topology/stage_c_n1024_steps24000.json
+      - name: Upload immutable Stage C report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-013-stage-c-${{ github.sha }}
+          path: results/experiment_013_cross_topology/stage_c_n1024_steps24000.json
+          if-no-files-found: error
+          retention-days: 90

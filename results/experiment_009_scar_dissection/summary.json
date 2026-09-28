@@ -1,0 +1,88 @@
+{
+  "experiment": "009_scar_dissection",
+  "status": "three_seed_standard_evaluation",
+  "terminal_battery_touched": false,
+  "neurons": 1024,
+  "mature_neural_steps": 24000,
+  "relearning_neural_steps": 12000,
+  "plasticity_multiplier": 16.0,
+  "targeted_lesion_fraction": 0.10,
+  "evaluation": {
+    "settle_steps": 40,
+    "probe_steps": 60
+  },
+  "seeds": [1842, 101, 202],
+  "targeted_synapse_counts": [1626, 1627, 1626],
+  "means": {
+    "baseline": {
+      "zero": {
+        "validation_js": 0.777552007282737,
+        "validation_top1": 0.016666666666666666,
+        "adversarial_js": 0.7798395308427954,
+        "adversarial_top1": 0.05000000000000001
+      },
+      "founder_restore": {
+        "validation_js": 0.7784095428773498,
+        "validation_top1": 0.08333333333333333,
+        "adversarial_js": 0.7805957413758536,
+        "adversarial_top1": 0.10000000000000002
+      },
+      "same_sign_random": {
+        "validation_js": 0.7784666299579647,
+        "validation_top1": 0.075,
+        "adversarial_js": 0.7806404616356705,
+        "adversarial_top1": 0.10000000000000002
+      },
+      "trained_donor": {
+        "validation_js": 0.7836875532110072,
+        "validation_top1": 0.4749999999999999,
+        "adversarial_js": 0.7853045649827628,
+        "adversarial_top1": 0.3499999999999999
+      },
+      "virgin": {
+        "validation_js": 0.7784075724948393,
+        "validation_top1": 0.11666666666666668,
+        "adversarial_js": 0.7806101986978767,
+        "adversarial_top1": 0.08333333333333333
+      },
+      "mature": {
+        "validation_js": 0.7836642149897125,
+        "validation_top1": 0.4749999999999999,
+        "adversarial_js": 0.7853096165619524,
+        "adversarial_top1": 0.3499999999999999
+      }
+    },
+    "after_relearning": {
+      "zero": {
+        "validation_js": 0.7794203524623772,
+        "validation_top1": 0.26666666666666666,
+        "adversarial_js": 0.7814945722116455,
+        "adversarial_top1": 0.16666666666666666
+      },
+      "founder_restore": {
+        "validation_js": 0.7808008203494577,
+        "validation_top1": 0.375,
+        "adversarial_js": 0.7827138890332415,
+        "adversarial_top1": 0.26666666666666666
+      },
+      "same_sign_random": {
+        "validation_js": 0.7808623353558163,
+        "validation_top1": 0.375,
+        "adversarial_js": 0.7827599470254848,
+        "adversarial_top1": 0.26666666666666666
+      },
+      "trained_donor": {
+        "validation_js": 0.7906649503013861,
+        "validation_top1": 0.4749999999999999,
+        "adversarial_js": 0.7913627599365781,
+        "adversarial_top1": 0.3499999999999999
+      },
+      "virgin": {
+        "validation_js": 0.7805252460235516,
+        "validation_top1": 0.39999999999999997,
+        "adversarial_js": 0.7824980794029353,
+        "adversarial_top1": 0.26666666666666666
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+name: Experiment 015 learned delta necessity
+
+on:
+  push:
+    branches: [v0.4-learned-delta-necessity]
+    paths:
+      - 'experiments/experiment_015_learned_delta_necessity.py'
+      - 'tests/test_experiment_015.py'
+      - '.github/workflows/experiment-015.yml'
+      - 'requirements.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  experiment:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+      - name: Install declared dependencies and test runner
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install pytest
+      - name: Runtime, data, protocol, and artifact preflight
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/experiments
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import numpy, scipy, persona_net
+          import experiment_015_learned_delta_necessity as e
+          from persona_net.v04_data import load_v04_split
+          root=Path.cwd()/"data"/"v0_4"
+          actual={s:len(load_v04_split(root,s)) for s in ("train","validation","adversarial")}
+          assert actual=={"train":100,"validation":40,"adversarial":20}, actual
+          assert e.SEEDS==(1842,101,202,303,404,505)
+          assert e.CYCLIC_PAIRS==((1842,101),(101,202),(202,303),(303,404),(404,505),(505,1842))
+          assert e.CORE_FRACTION==0.01
+          assert e.RANDOMIZATION_NAMESPACE=="experiment015-v1-preregistered"
+          expected=Path("results/experiment_015_learned_delta_necessity/report_n1024_steps24000.json")
+          assert expected.name=="report_n1024_steps24000.json"
+          print("preflight ok",actual,"numpy",numpy.__version__,"scipy",scipy.__version__)
+          PY
+      - name: Protocol and null-construction unit preflights
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/experiments
+        run: python -m pytest -q tests/test_experiment_013_alignment.py tests/test_experiment_013_stage_c.py tests/test_experiment_013_stage_d.py tests/test_experiment_014.py tests/test_experiment_015.py tests/test_neural_step_accounting.py tests/test_v04_public_data.py
+      - name: Run preregistered Experiment 015
+        env:
+          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/experiments
+        run: python experiments/experiment_015_learned_delta_necessity.py --neurons 1024 --training-neural-steps 24000
+      - name: Verify expected immutable report path
+        if: always()
+        run: test -f results/experiment_015_learned_delta_necessity/report_n1024_steps24000.json
+      - name: Report SHA-256
+        if: success()
+        run: sha256sum results/experiment_015_learned_delta_necessity/report_n1024_steps24000.json
+      - name: Upload immutable Experiment 015 report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: experiment-015-learned-delta-necessity-${{ github.sha }}
+          path: results/experiment_015_learned_delta_necessity/report_n1024_steps24000.json
+          if-no-files-found: error
+          retention-days: 90
