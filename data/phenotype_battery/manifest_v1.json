@@ -1,0 +1,69 @@
+{
+  "battery_name": "Pretorius Phenotype Battery",
+  "version": "1.0",
+  "counts": {
+    "domains": 20,
+    "train_axis_grounded": 100,
+    "train_legacy_v02": 30,
+    "train_total": 130,
+    "validation": 40,
+    "adversarial": 20,
+    "terminal": 20,
+    "original_holdout_preserved": 8
+  },
+  "split_rules": {
+    "train": "May be used by inverse synthesis and hyperparameter development.",
+    "validation": "May be inspected and used for model selection, but never presented during learning.",
+    "adversarial": "Designed to catch shallow heuristics such as always resisting authority, always pursuing novelty, always dominating dependents, or always accepting praise.",
+    "terminal": "Run only after architecture and hyperparameters are frozen. Inputs and scoring key are stored separately.",
+    "original_holdout": "The eight v0.2 holdouts remain a separate historical benchmark and are not duplicated here."
+  },
+  "metrics_recommended": [
+    "soft-target Jensen-Shannon similarity",
+    "target probability mass",
+    "top-1 target agreement",
+    "top-3 target coverage",
+    "domain macro average",
+    "adversarial minus validation degradation",
+    "terminal score after freeze"
+  ],
+  "files": {
+    "pretorius_profile_v1.json": {
+      "sha256": "4d7b53f059d22e2f348e7e8f59546e8960aff5301d854020d908a6dcce430173"
+    },
+    "pretorius_train_v1.json": {
+      "sha256": "64a530382db3455db55265234474cbccdaa85098968d143e12fae01c41e0d24c"
+    },
+    "pretorius_validation_v1.json": {
+      "sha256": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246"
+    },
+    "pretorius_adversarial_v1.json": {
+      "sha256": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf"
+    },
+    "pretorius_terminal_inputs_v1.json": {
+      "sha256": "1e5d6aac471c8c9939199c77cf629acc52b89a7e392325e64175dd921a0a06c7"
+    },
+    "pretorius_terminal_key_v1.json": {
+      "sha256": "31faa69df33084fa335225390c415bafc6c1d66e09cc148d58b471711920ec00"
+    },
+    "pretorius_phenotype_train_battery_v1.json": {
+      "sha256": "3cdc9fcc1d10420540ba153326d936cdbdc497a57b3319e1bf2f07f78e6c6a69"
+    }
+  },
+  "artifact_hashes": {
+    "data/phenotype_battery/pretorius_profile_v1.json": "4d7b53f059d22e2f348e7e8f59546e8960aff5301d854020d908a6dcce430173",
+    "data/phenotype_battery/pretorius_train_v1.json": "64a530382db3455db55265234474cbccdaa85098968d143e12fae01c41e0d24c",
+    "data/phenotype_battery/pretorius_validation_v1.json": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246",
+    "data/phenotype_battery/pretorius_adversarial_v1.json": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
+    "data/phenotype_battery/pretorius_terminal_inputs_v1.json": "1e5d6aac471c8c9939199c77cf629acc52b89a7e392325e64175dd921a0a06c7",
+    "data/phenotype_battery/pretorius_terminal_key_v1.json": "31faa69df33084fa335225390c415bafc6c1d66e09cc148d58b471711920ec00",
+    "data/phenotype_battery/pretorius_phenotype_train_battery_v1.json": "3cdc9fcc1d10420540ba153326d936cdbdc497a57b3319e1bf2f07f78e6c6a69",
+    "run_pis_battery.py": "23849e8febfe99aebf0f9a71487be49841d096430e237dd38beef06c94184b02",
+    "evaluate_phenotype_battery.py": "68a693bf32031d916305f90a1a6e597b8b4023b3add1d24d4c3a7cacff3b6b82",
+    "run_terminal_blind.py": "d526ae1254a22954c8ef656cb6dab4b0ab1042ce19515fb24bfb8614300ea3c8",
+    "score_terminal.py": "aeba35eabb1beafb9e290d0775a7d533171d893d9a775e7ef8207a048b4b843c",
+    "persona_net/battery.py": "ee0bda9362820a22b5362541eafd74c61c340d5586a8876f2e30699c5ffd3049",
+    "tests/test_battery.py": "27f9bd4fc3b1a8ee0ab4d64ba8f57ac71702a66dfa726371b34850544c1cbdaf",
+    "README_PHENOTYPE_BATTERY.md": "7cb40a3d8680b51e818e56af9ce775cf76a225209de96fe343ea8d8413830b12"
+  }
+}
