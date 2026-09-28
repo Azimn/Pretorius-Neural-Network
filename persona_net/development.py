@@ -12,8 +12,13 @@ from .network import PlasticRecurrentPersonaNet
 
 @dataclass
 class DevelopmentReport:
+    # `ticks` is retained for v0.3 compatibility. It counts curriculum-loop
+    # iterations, not neural updates. v0.4 experiments must use neural_steps.
     ticks: int
     event_ticks: Dict[str, int]
+    neural_steps: int
+    start_neural_step: int
+    end_neural_step: int
 
 
 class BiographyCurriculum:
@@ -22,6 +27,11 @@ class BiographyCurriculum:
     `exposure_weight` controls how much simulated developmental time an event
     or phase receives. Long periods can therefore occupy more ticks without
     inventing undocumented biographical episodes.
+
+    Important: an active curriculum tick executes two neural updates (context,
+    then action/outcome), while a consolidation tick executes one. Therefore
+    curriculum ticks are not a valid compute or learning budget. Use the
+    `neural_steps` field of DevelopmentReport for matched v0.4 comparisons.
     """
 
     def __init__(self, events: List[Dict], encoder: ExperienceEncoder):
@@ -60,6 +70,7 @@ class BiographyCurriculum:
     ) -> DevelopmentReport:
         allocations = self.allocations(total_ticks)
         done = 0
+        start_neural_step = int(net.tick)
 
         for event in self.events:
             ticks = allocations[event["id"]]
@@ -97,7 +108,7 @@ class BiographyCurriculum:
 
                 done += 1
                 if progress_every and done % progress_every == 0:
-                    print(f"development: {done:,}/{total_ticks:,} ticks")
+                    print(f"development: {done:,}/{total_ticks:,} curriculum ticks")
 
             # Offline-style replay: preserve the experience but remove the
             # explicit action teaching channel and external reward.
@@ -113,6 +124,13 @@ class BiographyCurriculum:
                     net.step(x, reward=0.0, learn=True)
                     done += 1
                     if progress_every and done % progress_every == 0:
-                        print(f"development: {done:,}/{total_ticks:,} ticks")
+                        print(f"development: {done:,}/{total_ticks:,} curriculum ticks")
 
-        return DevelopmentReport(ticks=done, event_ticks=allocations)
+        end_neural_step = int(net.tick)
+        return DevelopmentReport(
+            ticks=done,
+            event_ticks=allocations,
+            neural_steps=end_neural_step - start_neural_step,
+            start_neural_step=start_neural_step,
+            end_neural_step=end_neural_step,
+        )
