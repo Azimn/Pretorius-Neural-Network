@@ -12,8 +12,13 @@ from .network import PlasticRecurrentPersonaNet
 
 @dataclass
 class PhenotypeTrainingReport:
+    # `ticks` is retained for v0.3 compatibility. In this curriculum each tick
+    # is exactly one call to net.step, but v0.4 code should use neural_steps.
     ticks: int
     presentations: int
+    neural_steps: int
+    start_neural_step: int
+    end_neural_step: int
 
 
 class PhenotypeCurriculum:
@@ -41,8 +46,9 @@ class PhenotypeCurriculum:
         return {a: v / total for a, v in target.items()}
 
     def run(self, net: PlasticRecurrentPersonaNet, total_ticks: int, progress_every: int = 10000) -> PhenotypeTrainingReport:
+        start_neural_step = int(net.tick)
         if not self.items:
-            return PhenotypeTrainingReport(0, 0)
+            return PhenotypeTrainingReport(0, 0, 0, start_neural_step, start_neural_step)
 
         done = 0
         presentations = 0
@@ -73,6 +79,13 @@ class PhenotypeCurriculum:
             done += 1
 
             if progress_every and done % progress_every < 2:
-                print(f'phenotype synthesis: {done:,}/{total_ticks:,} ticks')
+                print(f'phenotype synthesis: {done:,}/{total_ticks:,} neural steps')
 
-        return PhenotypeTrainingReport(done, presentations)
+        end_neural_step = int(net.tick)
+        return PhenotypeTrainingReport(
+            ticks=done,
+            presentations=presentations,
+            neural_steps=end_neural_step - start_neural_step,
+            start_neural_step=start_neural_step,
+            end_neural_step=end_neural_step,
+        )
