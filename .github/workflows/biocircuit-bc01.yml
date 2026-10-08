@@ -1,0 +1,47 @@
+name: BioCircuit BC01 exploratory Pretorius
+on:
+  push:
+    paths:
+      - "biocircuit/bc01.py"
+      - "scripts/demo_biocircuit_bc01.py"
+      - "resources/biocircuit/**"
+      - "tests_biocircuit/**"
+      - "persona_net/**"
+      - ".github/workflows/biocircuit-bc01.yml"
+  pull_request:
+    paths:
+      - "biocircuit/bc01.py"
+      - "scripts/demo_biocircuit_bc01.py"
+      - "resources/biocircuit/**"
+      - "tests_biocircuit/**"
+      - "persona_net/**"
+      - ".github/workflows/biocircuit-bc01.yml"
+  workflow_dispatch:
+
+jobs:
+  bc01-preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install CPU dependencies
+        run: python -m pip install "numpy>=1.26,<3" "scipy>=1.11,<2"
+      - name: Run BC00 and BC01 unit tests
+        run: python -m unittest discover -s tests_biocircuit -v
+      - name: Run source-grounded demo
+        run: |
+          python scripts/demo_biocircuit_bc01.py --neurons 256 --seed 1842 --exposures 8 --output results/biocircuit/BC01_preview.json --checkpoint results/biocircuit/BC01_preview.npz
+          python -c 'import json; x=json.load(open("results/biocircuit/BC01_preview.json")); assert len(x["tests"]) == 3; assert all(v["checkpoint_restart_exact"] for v in x["tests"])'
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: biocircuit-bc01-preview
+          path: |
+            results/biocircuit/BC01_preview.json
+            results/biocircuit/BC01_preview.npz
+            results/biocircuit/BC01_preview.bc01.json
+          if-no-files-found: warn
+          retention-days: 30
