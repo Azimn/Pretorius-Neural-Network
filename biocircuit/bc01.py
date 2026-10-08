@@ -97,7 +97,9 @@ def retrieve(corpus: Corpus, question: str) -> dict:
         cues = words(" ".join(event["recall_cues"]) + " " + event["title"])
         narrative = words(event["memory_text"])
         overlap = q & (cues | narrative)
-        if overlap:
+        # Require at least two independent informative matches for multiword
+        # questions. One shared adjective ("purple") is not source evidence.
+        if len(overlap) >= min(2, len(q)) and len(overlap) / len(q) >= 0.5:
             score = (2.0 * len(overlap & cues) + len(overlap & narrative)) / max(1, len(q))
             ranked.append((score, event))
     if not ranked:
@@ -204,6 +206,14 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
     lesioned.W.data[:] = pristine
     lesioned.bias[:] = net.bias
     no_plasticity = PlasticRecurrentPersonaNet(cfg, encoder)
+    # Matched-tick blank exposure helps expose uniform drift and weight decay.
+    # It is not an unrelated-data or independently reviewed control.
+    blank_control = PlasticRecurrentPersonaNet(cfg, encoder)
+    zero = np.zeros(encoder.input_dim, dtype=np.float32)
+    for _ in corpus.records:
+        blank_control.reset_fast_state()
+        for _ in range(exposures):
+            blank_control.step(zero, reward=0.0, learn=True)
     generic = PlasticRecurrentPersonaNet(cfg, encoder)
     if mode != "generic":
         generic_inputs = [represent(row["memory_text"], encoder, None) for row in corpus.records]
@@ -217,6 +227,7 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
         learned = settle(net, query_vec)
         lesion_scores = settle(lesioned, query_vec)
         clean_scores = settle(no_plasticity, query_vec)
+        blank_scores = settle(blank_control, query_vec)
         if restored is not None:
             reloaded = settle(restored, query_vec)
             restart_exact = learned == reloaded
@@ -230,7 +241,10 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
             "local_or_selected": report_scores(learned),
             "recurrent_weight_lesion": report_scores(lesion_scores),
             "no_plasticity": report_scores(clean_scores),
+            "blank_exposure": report_scores(blank_scores),
             "generic_recurrent": report_scores(control_scores),
+            "content_vs_blank_score_max_abs": max(abs(learned[a] - blank_scores[a]) for a in ACTIONS),
+            "content_vs_blank_changes_choice": report_scores(learned)["choice"] != report_scores(blank_scores)["choice"],
             "recurrent_delta_score_max_abs": gap,
             "recurrent_delta_changes_choice": report_scores(learned)["choice"] != report_scores(lesion_scores)["choice"],
             "checkpoint_restart_exact": restart_exact,
