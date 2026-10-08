@@ -1,3 +1,10 @@
+
+## BC01-D4 complete: gain improves choice activity, not causal action learning (2026-10-08)
+
+D4's [frozen protocol](BIOCIRCUIT_D4_PROTOCOL.md), [implementation](../biocircuit/bc01_d4.py), [runner](../scripts/run_biocircuit_bc01_d4.py), [permanent full 27-condition evidence](../results/biocircuit/BC01_D4_FULL_PER_CASE.json) and [measured negative outcome](../results/biocircuit/BC01_D4_RESULTS.md) are now committed. Reuses canonical 450-event v12 source, pinned owner TF-IDF L2 v2 encoder, 16 developmental interpretations and preexisting `PlasticRecurrentPersonaNet` with four-class action populations. Prespecified gains 1,4,12 only multiply source-card sensory inputs during training and tests; 450 unlabeled background events and all action teaching channels are unchanged. [Green CI 37847739209](https://github.com/Azimn/Pretorius-Neural-Network/actions/runs/37847739209): **33 tests**, full 3-seed/3-mode/3-gain matrix, exact checkpoint reload and fresh Python independent replay of all numeric results, plus archived raw files.
+
+The source sensory/teacher direct-drive ratio rises 0.08543 → 0.34171 → 1.02513. Mean targeted accuracies rise 20.14% → 23.61% → 27.08%, but shuffled-label controls tie targeted in every gain, and the 12× recurrent-lesion/no-learning controls attain 26.39%. Only two of 144 D4 12× policy choices flip after the targeted learned-W lesion, with no demonstrated source-specific improvement. **Zero conditions pass all causal learning controls.** No increase in model size, pretrained semantic input, or direct integration with canonical Pretorius is warranted on this evidence. Implement [D5 Issue #35](https://github.com/Azimn/Pretorius-Neural-Network/issues/35) to instrument per-action recurrent eligibility, signal clipping and readout contribution under unchanged source cues; retain this negative source-v2 D4 result as the control baseline.
+
 # BioCircuit | Current Status, Decisions, Provenance and Next-Turn Handoff
 
 **Project:** Pretorius BioCircuit (fly-inspired synthetic developmental neural architecture).  

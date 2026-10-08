@@ -1,0 +1,92 @@
+name: BioCircuit BC01 D4 sensory drive controls
+on:
+  push:
+    paths:
+      - "biocircuit/bc01_d4.py"
+      - "scripts/run_biocircuit_bc01_d4.py"
+      - "tests_biocircuit/test_bc01_d4.py"
+      - ".github/workflows/biocircuit-bc01-d4.yml"
+  pull_request:
+    paths:
+      - "biocircuit/bc01_d4.py"
+      - "scripts/run_biocircuit_bc01_d4.py"
+      - "tests_biocircuit/test_bc01_d4.py"
+      - ".github/workflows/biocircuit-bc01-d4.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  gain-sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      PYTHONHASHSEED: "17"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Numerical dependencies
+        run: python -m pip install "numpy>=1.26,<3" "scipy>=1.11,<2" "scikit-learn>=1.5,<2"
+      - name: Pin source-owned independent L2 v2 encoder and source
+        uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Connectome
+          ref: 7cd631f3b533203e39465ec31c4ee42945610e2f
+          path: upstream-connectome
+      - name: All existing BioCircuit regressions and new D4 gain identity
+        run: python -m unittest discover -s tests_biocircuit -v
+      - name: Build and validate the same frozen cache per seed
+        run: |
+          for seed in 31 37 43; do
+            python upstream-connectome/scripts/build_shared_memory_l2.py --seed "$seed" --output-dir "data/derived/shared-l2-cache/seed$seed" --report "results/biocircuit/d4-l2-cache-$seed.json"
+          done
+      - name: Fixed 1x 4x 12x sweep, 3 seeds and 3 modes
+        run: |
+          python scripts/run_biocircuit_bc01_d4.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --cache-root data/derived/shared-l2-cache --connectome-root upstream-connectome --seeds 31,37,43 --modes local,global,generic --gains 1,4,12 --checkpoint-dir results/biocircuit/d4_checkpoints --output results/biocircuit/BC01_D4.json
+          python -c 'import json; d=json.load(open("results/biocircuit/BC01_D4.json")); assert len(d["trials"])==27 and d["source_event_count"]==450 and len(d["summary"])==3; assert all(t["checkpoint_restart_exact"] for t in d["trials"]); assert all(t["input_drive"]["sensory_to_teacher_ratio_mean"]>0 for t in d["trials"])'
+      - name: Independent process repeat, compare every numerical/neural result
+        run: |
+          PYTHONHASHSEED=71337 python scripts/run_biocircuit_bc01_d4.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --cache-root data/derived/shared-l2-cache --connectome-root upstream-connectome --seeds 31,37,43 --modes local,global,generic --gains 1,4,12 --checkpoint-dir results/biocircuit/d4_repeat_checkpoints --output results/biocircuit/BC01_D4_REPEAT.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path("results/biocircuit/BC01_D4.json").read_text())
+          b=json.loads(Path("results/biocircuit/BC01_D4_REPEAT.json").read_text())
+          for data in (a,b):
+              for trial in data["trials"]:
+                  trial.pop("elapsed_seconds_observed")
+              for gain in data["summary"].values():
+                  gain.pop("wall_seconds_total_observed")
+          assert a==b, "Cross-process numeric results differ after excluding nondeterministic elapsed seconds"
+          print("D4 27 conditions exactly reproduced in separate Python hash-seed process")
+          PY
+      - name: Commit measured source-linked D4 output into branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/feature/bc01-d4-input-gain'
+        run: |
+          cp results/biocircuit/BC01_D4.json results/biocircuit/BC01_D4_FULL_PER_CASE.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/biocircuit/BC01_D4_FULL_PER_CASE.json
+          git commit -m "Archive D4 source-conditioned sensory drive sweep CI run ${{ github.run_id }}"
+          # Documentation or another checkout can advance the branch while
+          # this long CPU experiment runs. Preserve those commits; never
+          # force-push or discard previously verified source artifacts.
+          git fetch origin feature/bc01-d4-input-gain
+          git rebase FETCH_HEAD
+          git push origin HEAD:refs/heads/feature/bc01-d4-input-gain
+      - name: Upload raw results and checkpoints
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: biocircuit-bc01-d4-sensory-gain
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            results/biocircuit/BC01_D4.json
+            results/biocircuit/BC01_D4_REPEAT.json
+            results/biocircuit/d4-l2-cache-*.json
+            results/biocircuit/d4_checkpoints/
