@@ -32,8 +32,13 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: Azimn/Pretorius-Connectome
-          ref: 597fb23473a60eecf2e1b50f79c22bfbea816be5
+          ref: b74448d70621ab51c5ea8130237bcc3ab446fe3b
+          # This commit contains immutable L1 manifest + archive; L0 blob remains pinned in BC01.
           path: upstream-connectome
+      - name: Assert source of shared L1 is present
+        run: |
+          test -f upstream-connectome/artifacts/shared_memory/v1/manifest.json
+          test -f upstream-connectome/artifacts/shared_memory/v1/pretorius_l1_v1.jsonl.gz
       - name: Run BC00 and BC01 unit tests
         run: python -m unittest discover -s tests_biocircuit -v
       - name: Run source-grounded demo
@@ -44,6 +49,19 @@ jobs:
         run: |
           python scripts/demo_biocircuit_bc01.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --neurons 256 --seed 1842 --exposures 8 --output results/biocircuit/BC01_full_450_preview.json --checkpoint results/biocircuit/BC01_full_450_preview.npz
           python -c 'import json; x=json.load(open("results/biocircuit/BC01_full_450_preview.json")); assert x["corpus_events"] == 450; assert x["corpus_kind"] == "full"; assert all(v["checkpoint_restart_exact"] for v in x["tests"]); assert x["tests"][2]["retrieval"]["candidate"] is None'
+      - name: Prove BC01 can consume identical portable 450-memory records
+        run: |
+          python scripts/demo_biocircuit_bc01.py --shared-l1 upstream-connectome/artifacts/shared_memory/v1/pretorius_l1_v1.jsonl.gz --shared-manifest upstream-connectome/artifacts/shared_memory/v1/manifest.json --neurons 256 --seed 1842 --exposures 8 --output results/biocircuit/BC01_shared_L1_preview.json --checkpoint results/biocircuit/BC01_shared_L1_preview.npz
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a = json.loads(Path("results/biocircuit/BC01_full_450_preview.json").read_text())
+          b = json.loads(Path("results/biocircuit/BC01_shared_L1_preview.json").read_text())
+          assert a["corpus_events"] == b["corpus_events"] == 450
+          assert a["corpus_kind"] == b["corpus_kind"] == "full"
+          assert a["tests"] == b["tests"], "Same seed and source must yield identical BC01 evaluation"
+          print("BC01 original-L0 and portable-L1 tests match exactly")
+          PY
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -55,5 +73,8 @@ jobs:
             results/biocircuit/BC01_full_450_preview.json
             results/biocircuit/BC01_full_450_preview.npz
             results/biocircuit/BC01_full_450_preview.bc01.json
+            results/biocircuit/BC01_shared_L1_preview.json
+            results/biocircuit/BC01_shared_L1_preview.npz
+            results/biocircuit/BC01_shared_L1_preview.bc01.json
           if-no-files-found: warn
           retention-days: 30
