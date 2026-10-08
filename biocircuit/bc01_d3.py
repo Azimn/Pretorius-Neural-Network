@@ -8,8 +8,8 @@ controls; all labels remain outside evaluation inputs.
 from __future__ import annotations
 
 import copy
-from hashlib import sha256
-import json
+from pathlib import Path
+import tempfile
 
 import numpy as np
 
@@ -128,7 +128,8 @@ def _distribution(rows, key):
 def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
                neurons=256, seed=31, mode="local", shared=None,
                background_ticks=8, epochs=3, card_ticks=32,
-               settle_ticks=32, eta=0.03, gain=1.0) -> dict:
+               settle_ticks=32, eta=0.03, gain=1.0,
+               checkpoint_dir=None) -> dict:
     cards = validate_cards(corpus, cards)
     if shared is not None:
         shared.verify_corpus(corpus)
@@ -176,6 +177,15 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
            or not np.array_equal(model.motor_b, original_motor_bias)
            for model in models.values()):
         raise AssertionError("D3 must never train a motor decoder")
+    if checkpoint_dir is None:
+        scratch = tempfile.TemporaryDirectory(prefix="bc01_d3_")
+        checkpoint = Path(scratch.name) / "targeted.npz"
+    else:
+        scratch = None
+        checkpoint = Path(checkpoint_dir) / f"bc01_d3_{mode}_{seed}.npz"
+        checkpoint.parent.mkdir(parents=True, exist_ok=True)
+    models["targeted"].save(checkpoint)
+    restored = PlasticRecurrentPersonaNet.load(checkpoint, cfg, encoder)
     query_vectors = [represent(card["probe"], encoder, circuit, shared=shared)
                      for card in cards]
     # Pre-/post-learning physiology: use fixed query order and independent
@@ -193,6 +203,12 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
             }
         rows.append({"event_id": card["event_id"], "target": card["action"],
                      "probe": card["probe"], "conditions": conditions})
+    restart_equal = []
+    for query, row in zip(query_vectors, rows):
+        scores, _, _ = _scores(restored, query, settle_ticks)
+        restart_equal.append(scores == row["conditions"]["targeted"]["scores"])
+    if scratch is not None:
+        scratch.cleanup()
     metrics = {name: _distribution(rows, name) for name in models}
     spread = {}
     physiology = {}
@@ -236,7 +252,10 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
         "card_ticks": card_ticks, "epochs": epochs, "settle_ticks": settle_ticks,
         "training_budget": "equal 32 ticks per card; targeted 16 cue + 16 teacher; generic 32 co-presented",
         "result": metrics, "neural_cue_rms_spread": spread, "physiology": physiology,
-        "recurrent_delta_l1": deltas, "gates": gates,
+        "recurrent_delta_l1": deltas,
+        "checkpoint_restart_exact": bool(all(restart_equal)),
+        "checkpoint_name": checkpoint.name if checkpoint_dir is not None else None,
+        "gates": gates,
         "passes_all_development_gates": all(gates.values()),
         "notes": "Provisional labels, reused lexical development prompts; positive outcome is not independent generalization.",
         "rows": rows,
