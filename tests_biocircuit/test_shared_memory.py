@@ -40,7 +40,7 @@ class BC01SharedTests(unittest.TestCase):
             text = self.corpus.records[i]["memory_text"]
             for circuit in (None, make_circuit(128, 34, "local")):
                 raw = represent(text, encoder, circuit)
-                cached = represent(text, encoder, circuit, self.values[i])
+                cached = represent(text, encoder, circuit, sensory_override=self.values[i])
                 np.testing.assert_array_equal(raw, cached)
         question = "What did I recall of the beetle?"
         np.testing.assert_array_equal(represent(question, encoder, None),
