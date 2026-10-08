@@ -14,7 +14,7 @@ on:
       - ".github/workflows/biocircuit-bc01-d3.yml"
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   source-verified-development:
     runs-on: ubuntu-latest
@@ -48,6 +48,16 @@ jobs:
       - name: Historical encoder check without shared preprocessing
         run: |
           python scripts/run_biocircuit_bc01_d3.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --neurons 256 --seeds 31 --modes local --eta 0.03 --output results/biocircuit/BC01_D3_LEGACY.json
+      - name: Commit complete D3 per-case evidence to research branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/feature/bc01-d3-credit-diagnostics'
+        run: |
+          cp results/biocircuit/BC01_D3.json results/biocircuit/BC01_D3_FULL_PER_CASE.json
+          cp results/biocircuit/BC01_D3_LEGACY.json results/biocircuit/BC01_D3_LEGACY_PER_CASE.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/biocircuit/BC01_D3_FULL_PER_CASE.json results/biocircuit/BC01_D3_LEGACY_PER_CASE.json
+          git commit -m "Archive measured D3 source-grounded raw per-case traces (CI run ${{ github.run_id }})"
+          git push origin HEAD:refs/heads/feature/bc01-d3-credit-diagnostics
       - name: Archive complete neural traces and controls
         if: always()
         uses: actions/upload-artifact@v4
