@@ -21,8 +21,21 @@ class BioCircuitSharedFeatures:
         library = root / "src/pretorius_connectome/shared_memory_l2.py"
         if not library.is_file():
             raise ValueError("Missing canonical shared-memory provider checkout")
+        # Python reuses cached modules even after sys.path changes. Prevent
+        # a long-running research process from silently importing another
+        # checkout's source-pinned feature implementation or dependencies.
+        package_dir = (root / "src" / "pretorius_connectome").resolve()
+        for name, loaded in tuple(sys.modules.items()):
+            if name == "pretorius_connectome" or name.startswith("pretorius_connectome."):
+                origin = getattr(loaded, "__file__", None)
+                if origin is not None and not Path(origin).resolve().is_relative_to(package_dir):
+                    raise ValueError(
+                        "Loaded shared-memory provider belongs to a different checkout: " + name
+                    )
         sys.path.insert(0, str(root / "src"))
         from pretorius_connectome.shared_memory_l2 import SharedCache, SOURCE, SIDECARS
+        if Path(sys.modules["pretorius_connectome.shared_memory_l2"].__file__).resolve() != library:
+            raise ValueError("Shared-memory provider module mismatch with requested checkout")
         self.cache = SharedCache(cache_path)
         self.cache.assert_original(SOURCE, SIDECARS)
         self.cache_file_sha = sha256((Path(cache_path) / "manifest.json").read_bytes()).hexdigest()
