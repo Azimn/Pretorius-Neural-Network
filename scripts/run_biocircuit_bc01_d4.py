@@ -84,7 +84,7 @@ def main():
                       f"blank={trial['result']['targeted_blank_cue']['accuracy']:.4f} "
                       f"drive={trial['input_drive']['sensory_to_teacher_ratio_mean']:.4f} "
                       f"replay={trial['checkpoint_restart_exact']} "
-                      f"cpu_wall_seconds={elapsed}", flush=True)
+                      f"wall_seconds={elapsed}", flush=True)
     summary = {}
     for gain in gains:
         subset = [trial for trial in cases if trial["sensory_gain"] == gain]
