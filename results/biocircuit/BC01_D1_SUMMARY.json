@@ -1,0 +1,169 @@
+{
+  "schema": "BC01-D1-summary-v1",
+  "source_run": "https://github.com/Azimn/Pretorius-Neural-Network/actions/runs/37836147694",
+  "raw_artifact": "biocircuit-bc01-grounded-decision-assay",
+  "source_repo_commit": "597fb23473a60eecf2e1b50f79c22bfbea816be5",
+  "source_blob": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+  "source_events": 450,
+  "decision_cards": 16,
+  "card_distribution": {
+    "challenge": 4,
+    "create": 4,
+    "cooperate": 4,
+    "approach": 4
+  },
+  "chance_majority_class": 0.25,
+  "neurons": 256,
+  "plasticity_gain": 1,
+  "epochs": 3,
+  "card_ticks": 32,
+  "background_ticks": 8,
+  "settle_ticks": 32,
+  "status": "negative, development-only, not a confirmatory experiment",
+  "trials": [
+    {
+      "seed": 31,
+      "mode": "local",
+      "accuracy": {
+        "cue_only": 0.3125,
+        "decoder_only": 0.25,
+        "intact": 0.25,
+        "no_plasticity": 0.375,
+        "recurrent_lesion": 0.375,
+        "retrieval_only": 1,
+        "shuffled_labels": 0.375
+      },
+      "recurrent_lesion_choice_flips": 6,
+      "recurrent_delta_l1": 154.406219,
+      "checkpoint_reproduced_all": true
+    },
+    {
+      "seed": 31,
+      "mode": "global",
+      "accuracy": {
+        "cue_only": 0.3125,
+        "decoder_only": 0.25,
+        "intact": 0.3125,
+        "no_plasticity": 0.3125,
+        "recurrent_lesion": 0.3125,
+        "retrieval_only": 1,
+        "shuffled_labels": 0.375
+      },
+      "recurrent_lesion_choice_flips": 5,
+      "recurrent_delta_l1": 154.302002,
+      "checkpoint_reproduced_all": true
+    },
+    {
+      "seed": 31,
+      "mode": "generic",
+      "accuracy": {
+        "cue_only": 0.25,
+        "decoder_only": 0.25,
+        "intact": 0.3125,
+        "no_plasticity": 0.3125,
+        "recurrent_lesion": 0.3125,
+        "retrieval_only": 1,
+        "shuffled_labels": 0.3125
+      },
+      "recurrent_lesion_choice_flips": 4,
+      "recurrent_delta_l1": 154.392303,
+      "checkpoint_reproduced_all": true
+    },
+    {
+      "seed": 37,
+      "mode": "local",
+      "accuracy": {
+        "cue_only": 0.25,
+        "decoder_only": 0.25,
+        "intact": 0.25,
+        "no_plasticity": 0.125,
+        "recurrent_lesion": 0.125,
+        "retrieval_only": 1,
+        "shuffled_labels": 0.1875
+      },
+      "recurrent_lesion_choice_flips": 3,
+      "recurrent_delta_l1": 164.50589,
+      "checkpoint_reproduced_all": true
+    },
+    {
+      "seed": 37,
+      "mode": "global",
+      "accuracy": {
+        "cue_only": 0.125,
+        "decoder_only": 0.25,
+        "intact": 0.1875,
+        "no_plasticity": 0.125,
+        "recurrent_lesion": 0.125,
+        "retrieval_only": 1,
+        "shuffled_labels": 0.125
+      },
+      "recurrent_lesion_choice_flips": 2,
+      "recurrent_delta_l1": 164.654022,
+      "checkpoint_reproduced_all": true
+    },
+    {
+      "seed": 37,
+      "mode": "generic",
+      "accuracy": {
+        "cue_only": 0.1875,
+        "decoder_only": 0.25,
+        "intact": 0.25,
+        "no_plasticity": 0.125,
+        "recurrent_lesion": 0.125,
+        "retrieval_only": 1,
+        "shuffled_labels": 0.1875
+      },
+      "recurrent_lesion_choice_flips": 3,
+      "recurrent_delta_l1": 164.765015,
+      "checkpoint_reproduced_all": true
+    },
+    {
+      "seed": 43,
+      "mode": "local",
+      "accuracy": {
+        "cue_only": 0.1875,
+        "decoder_only": 0.25,
+        "intact": 0.1875,
+        "no_plasticity": 0.25,
+        "recurrent_lesion": 0.25,
+        "retrieval_only": 1,
+        "shuffled_labels": 0.25
+      },
+      "recurrent_lesion_choice_flips": 3,
+      "recurrent_delta_l1": 157.119278,
+      "checkpoint_reproduced_all": true
+    },
+    {
+      "seed": 43,
+      "mode": "global",
+      "accuracy": {
+        "cue_only": 0.25,
+        "decoder_only": 0.25,
+        "intact": 0.25,
+        "no_plasticity": 0.25,
+        "recurrent_lesion": 0.25,
+        "retrieval_only": 1,
+        "shuffled_labels": 0.3125
+      },
+      "recurrent_lesion_choice_flips": 3,
+      "recurrent_delta_l1": 157.141663,
+      "checkpoint_reproduced_all": true
+    },
+    {
+      "seed": 43,
+      "mode": "generic",
+      "accuracy": {
+        "cue_only": 0.25,
+        "decoder_only": 0.25,
+        "intact": 0.25,
+        "no_plasticity": 0.25,
+        "recurrent_lesion": 0.25,
+        "retrieval_only": 1,
+        "shuffled_labels": 0.375
+      },
+      "recurrent_lesion_choice_flips": 4,
+      "recurrent_delta_l1": 157.120041,
+      "checkpoint_reproduced_all": true
+    }
+  ]
+}
