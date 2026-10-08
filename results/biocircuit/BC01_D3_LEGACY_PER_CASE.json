@@ -1,0 +1,2947 @@
+{
+  "action_cards": 16,
+  "input": "legacy signed lexical",
+  "schema": "BC01-D3-exploratory-v1",
+  "source_events": 450,
+  "source_git_blob": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+  "status": "development-only, provisional source-action labels, not confirmatory",
+  "trials": [
+    {
+      "annotated_cards": 16,
+      "background_ticks": 8,
+      "card_ticks": 32,
+      "checkpoint_name": null,
+      "checkpoint_restart_exact": true,
+      "epochs": 3,
+      "eta": 0.03,
+      "gain": 1.0,
+      "gates": {
+        "above_balanced_chance": true,
+        "beats_blank_cue_training": false,
+        "beats_generic_hebb": true,
+        "beats_recurrent_lesion": false,
+        "beats_shuffled_teacher": false,
+        "more_than_one_action": true
+      },
+      "input_drive": {
+        "interpretation": "OFFLINE reference target teacher column; never injected into evaluation input",
+        "per_source_card": [
+          {
+            "event_id": "E09-001",
+            "sensory_drive_l2": 0.4733969271183014,
+            "sensory_to_teacher_drive_ratio": 0.07540941526455591,
+            "teacher_drive_l2": 6.2776899337768555
+          },
+          {
+            "event_id": "E09-003",
+            "sensory_drive_l2": 0.44151708483695984,
+            "sensory_to_teacher_drive_ratio": 0.07033113923983329,
+            "teacher_drive_l2": 6.2776899337768555
+          },
+          {
+            "event_id": "E01-002",
+            "sensory_drive_l2": 0.4980919659137726,
+            "sensory_to_teacher_drive_ratio": 0.07934319330328964,
+            "teacher_drive_l2": 6.2776899337768555
+          },
+          {
+            "event_id": "E13-001",
+            "sensory_drive_l2": 0.5066439509391785,
+            "sensory_to_teacher_drive_ratio": 0.0807054754668913,
+            "teacher_drive_l2": 6.2776899337768555
+          },
+          {
+            "event_id": "E01-001",
+            "sensory_drive_l2": 0.4767586588859558,
+            "sensory_to_teacher_drive_ratio": 0.07626637327247292,
+            "teacher_drive_l2": 6.251230239868164
+          },
+          {
+            "event_id": "E01-003",
+            "sensory_drive_l2": 0.5017973780632019,
+            "sensory_to_teacher_drive_ratio": 0.08027177992308032,
+            "teacher_drive_l2": 6.251230239868164
+          },
+          {
+            "event_id": "E13-002",
+            "sensory_drive_l2": 0.5412730574607849,
+            "sensory_to_teacher_drive_ratio": 0.08658664561876706,
+            "teacher_drive_l2": 6.251230239868164
+          },
+          {
+            "event_id": "E01-008",
+            "sensory_drive_l2": 0.5617024302482605,
+            "sensory_to_teacher_drive_ratio": 0.08985470198584568,
+            "teacher_drive_l2": 6.251230239868164
+          },
+          {
+            "event_id": "E01-004",
+            "sensory_drive_l2": 0.4746415615081787,
+            "sensory_to_teacher_drive_ratio": 0.07593080882467364,
+            "teacher_drive_l2": 6.250974655151367
+          },
+          {
+            "event_id": "E01-005",
+            "sensory_drive_l2": 0.4752509593963623,
+            "sensory_to_teacher_drive_ratio": 0.07602829728396238,
+            "teacher_drive_l2": 6.250974655151367
+          },
+          {
+            "event_id": "E09-006",
+            "sensory_drive_l2": 0.480259507894516,
+            "sensory_to_teacher_drive_ratio": 0.0768295400939978,
+            "teacher_drive_l2": 6.250974655151367
+          },
+          {
+            "event_id": "E01-011",
+            "sensory_drive_l2": 0.5754680633544922,
+            "sensory_to_teacher_drive_ratio": 0.09206053377296204,
+            "teacher_drive_l2": 6.250974655151367
+          },
+          {
+            "event_id": "E16-001",
+            "sensory_drive_l2": 0.5609515309333801,
+            "sensory_to_teacher_drive_ratio": 0.09014095167002421,
+            "teacher_drive_l2": 6.223048686981201
+          },
+          {
+            "event_id": "E16-002",
+            "sensory_drive_l2": 0.5154756903648376,
+            "sensory_to_teacher_drive_ratio": 0.08283330507171313,
+            "teacher_drive_l2": 6.223048686981201
+          },
+          {
+            "event_id": "E16-003",
+            "sensory_drive_l2": 0.5351054072380066,
+            "sensory_to_teacher_drive_ratio": 0.08598766202126341,
+            "teacher_drive_l2": 6.223048686981201
+          },
+          {
+            "event_id": "E09-009",
+            "sensory_drive_l2": 0.4451599717140198,
+            "sensory_to_teacher_drive_ratio": 0.0715340653923064,
+            "teacher_drive_l2": 6.223048686981201
+          }
+        ],
+        "sensory_norm_mean": 0.503968384116888,
+        "sensory_to_teacher_ratio_mean": 0.08063211801285244,
+        "teacher_norm_mean": 6.250735878944397
+      },
+      "input_encoder": "legacy BC01 hashed lexical",
+      "mode": "local",
+      "neural_cue_rms_spread": {
+        "generic_hebb": 0.0022928721737116575,
+        "no_training": 0.0021755623165518045,
+        "targeted": 0.0021791630424559116,
+        "targeted_blank_cue": 0.0021791616454720497,
+        "targeted_recurrent_lesion": 0.0021755623165518045,
+        "targeted_shuffled": 0.0021791760809719563
+      },
+      "neurons": 256,
+      "notes": "Provisional labels, reused lexical development prompts; positive outcome is not independent generalization.",
+      "passes_all_development_gates": false,
+      "physiology": {
+        "generic_hebb": {
+          "bias_mean": -2.4556031227111816,
+          "bias_std": 0.0004002410569228232,
+          "fraction_above_point99": 0.0,
+          "fraction_below_point01": 0.0,
+          "mean_rate": 0.0954468846321106,
+          "std_rate": 0.0031961107160896063
+        },
+        "no_training": {
+          "bias_mean": -2.4545793533325195,
+          "bias_std": 0.0001174995195469819,
+          "fraction_above_point99": 0.0,
+          "fraction_below_point01": 0.0,
+          "mean_rate": 0.09011554718017578,
+          "std_rate": 0.002697913208976388
+        },
+        "targeted": {
+          "bias_mean": -2.4545793533325195,
+          "bias_std": 0.0001174995195469819,
+          "fraction_above_point99": 0.0,
+          "fraction_below_point01": 0.0,
+          "mean_rate": 0.09026108682155609,
+          "std_rate": 0.0027292047161608934
+        },
+        "targeted_blank_cue": {
+          "bias_mean": -2.4545793533325195,
+          "bias_std": 0.0001174995195469819,
+          "fraction_above_point99": 0.0,
+          "fraction_below_point01": 0.0,
+          "mean_rate": 0.09026120603084564,
+          "std_rate": 0.0027290068101137877
+        },
+        "targeted_recurrent_lesion": {
+          "bias_mean": -2.4545793533325195,
+          "bias_std": 0.0001174995195469819,
+          "fraction_above_point99": 0.0,
+          "fraction_below_point01": 0.0,
+          "mean_rate": 0.09011554718017578,
+          "std_rate": 0.002697913208976388
+        },
+        "targeted_shuffled": {
+          "bias_mean": -2.4545793533325195,
+          "bias_std": 0.0001174995195469819,
+          "fraction_above_point99": 0.0,
+          "fraction_below_point01": 0.0,
+          "mean_rate": 0.0902615338563919,
+          "std_rate": 0.0027292778249830008
+        }
+      },
+      "recurrent_delta_l1": {
+        "generic_hebb": 154.40621948242188,
+        "no_training": 0.0,
+        "targeted": 4.508837699890137,
+        "targeted_blank_cue": 4.512213706970215,
+        "targeted_recurrent_lesion": 0.0,
+        "targeted_shuffled": 4.52112340927124
+      },
+      "result": {
+        "generic_hebb": {
+          "accuracy": 0.25,
+          "choice_histogram": {
+            "approach": 4,
+            "challenge": 2,
+            "cooperate": 8,
+            "create": 2
+          },
+          "confusion": {
+            "approach": {
+              "approach": 2,
+              "challenge": 0,
+              "cooperate": 2,
+              "create": 0
+            },
+            "challenge": {
+              "approach": 1,
+              "challenge": 0,
+              "cooperate": 3,
+              "create": 0
+            },
+            "cooperate": {
+              "approach": 1,
+              "challenge": 1,
+              "cooperate": 1,
+              "create": 1
+            },
+            "create": {
+              "approach": 0,
+              "challenge": 1,
+              "cooperate": 2,
+              "create": 1
+            }
+          },
+          "constant_action": false,
+          "distinct_choices": 4
+        },
+        "no_training": {
+          "accuracy": 0.375,
+          "choice_histogram": {
+            "approach": 10,
+            "challenge": 0,
+            "cooperate": 4,
+            "create": 2
+          },
+          "confusion": {
+            "approach": {
+              "approach": 4,
+              "challenge": 0,
+              "cooperate": 0,
+              "create": 0
+            },
+            "challenge": {
+              "approach": 3,
+              "challenge": 0,
+              "cooperate": 1,
+              "create": 0
+            },
+            "cooperate": {
+              "approach": 2,
+              "challenge": 0,
+              "cooperate": 1,
+              "create": 1
+            },
+            "create": {
+              "approach": 1,
+              "challenge": 0,
+              "cooperate": 2,
+              "create": 1
+            }
+          },
+          "constant_action": false,
+          "distinct_choices": 3
+        },
+        "targeted": {
+          "accuracy": 0.375,
+          "choice_histogram": {
+            "approach": 10,
+            "challenge": 0,
+            "cooperate": 4,
+            "create": 2
+          },
+          "confusion": {
+            "approach": {
+              "approach": 4,
+              "challenge": 0,
+              "cooperate": 0,
+              "create": 0
+            },
+            "challenge": {
+              "approach": 3,
+              "challenge": 0,
+              "cooperate": 1,
+              "create": 0
+            },
+            "cooperate": {
+              "approach": 2,
+              "challenge": 0,
+              "cooperate": 1,
+              "create": 1
+            },
+            "create": {
+              "approach": 1,
+              "challenge": 0,
+              "cooperate": 2,
+              "create": 1
+            }
+          },
+          "constant_action": false,
+          "distinct_choices": 3
+        },
+        "targeted_blank_cue": {
+          "accuracy": 0.375,
+          "choice_histogram": {
+            "approach": 10,
+            "challenge": 0,
+            "cooperate": 4,
+            "create": 2
+          },
+          "confusion": {
+            "approach": {
+              "approach": 4,
+              "challenge": 0,
+              "cooperate": 0,
+              "create": 0
+            },
+            "challenge": {
+              "approach": 3,
+              "challenge": 0,
+              "cooperate": 1,
+              "create": 0
+            },
+            "cooperate": {
+              "approach": 2,
+              "challenge": 0,
+              "cooperate": 1,
+              "create": 1
+            },
+            "create": {
+              "approach": 1,
+              "challenge": 0,
+              "cooperate": 2,
+              "create": 1
+            }
+          },
+          "constant_action": false,
+          "distinct_choices": 3
+        },
+        "targeted_recurrent_lesion": {
+          "accuracy": 0.375,
+          "choice_histogram": {
+            "approach": 10,
+            "challenge": 0,
+            "cooperate": 4,
+            "create": 2
+          },
+          "confusion": {
+            "approach": {
+              "approach": 4,
+              "challenge": 0,
+              "cooperate": 0,
+              "create": 0
+            },
+            "challenge": {
+              "approach": 3,
+              "challenge": 0,
+              "cooperate": 1,
+              "create": 0
+            },
+            "cooperate": {
+              "approach": 2,
+              "challenge": 0,
+              "cooperate": 1,
+              "create": 1
+            },
+            "create": {
+              "approach": 1,
+              "challenge": 0,
+              "cooperate": 2,
+              "create": 1
+            }
+          },
+          "constant_action": false,
+          "distinct_choices": 3
+        },
+        "targeted_shuffled": {
+          "accuracy": 0.375,
+          "choice_histogram": {
+            "approach": 9,
+            "challenge": 1,
+            "cooperate": 4,
+            "create": 2
+          },
+          "confusion": {
+            "approach": {
+              "approach": 4,
+              "challenge": 0,
+              "cooperate": 0,
+              "create": 0
+            },
+            "challenge": {
+              "approach": 3,
+              "challenge": 0,
+              "cooperate": 1,
+              "create": 0
+            },
+            "cooperate": {
+              "approach": 1,
+              "challenge": 1,
+              "cooperate": 1,
+              "create": 1
+            },
+            "create": {
+              "approach": 1,
+              "challenge": 0,
+              "cooperate": 2,
+              "create": 1
+            }
+          },
+          "constant_action": false,
+          "distinct_choices": 4
+        }
+      },
+      "rows": [
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.25390173625761936,
+                "challenge": 0.24316458155468307,
+                "cooperate": 0.2567628575769785,
+                "create": 0.2461708246107192
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09552621841430664,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09840512275695801,
+                  "challenge": 0.09696482867002487,
+                  "cooperate": 0.09877864271402359,
+                  "create": 0.09737440198659897
+                },
+                "rate_max": 0.10675053298473358,
+                "rate_min": 0.08707233518362045,
+                "rate_std": 0.002936688717454672
+              }
+            },
+            "no_training": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2566985289111816,
+                "challenge": 0.24237066198473536,
+                "cooperate": 0.2549585404783805,
+                "create": 0.24597226862570248
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09019039571285248,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09133407473564148,
+                  "challenge": 0.08941960334777832,
+                  "cooperate": 0.09110736101865768,
+                  "create": 0.08991128951311111
+                },
+                "rate_max": 0.10061488300561905,
+                "rate_min": 0.08213081955909729,
+                "rate_std": 0.002482050098478794
+              }
+            },
+            "targeted": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25677945339358954,
+                "challenge": 0.24222563738053227,
+                "cooperate": 0.2552067962613196,
+                "create": 0.24578811296455866
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09033632278442383,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09220680594444275,
+                  "challenge": 0.09026187658309937,
+                  "cooperate": 0.0920020267367363,
+                  "create": 0.09074854850769043
+                },
+                "rate_max": 0.101449154317379,
+                "rate_min": 0.08212155848741531,
+                "rate_std": 0.0025254799984395504
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25674179985935547,
+                "challenge": 0.24227956338508777,
+                "cooperate": 0.255160476064227,
+                "create": 0.24581816069132978
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09033643454313278,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0922023132443428,
+                  "challenge": 0.09026969224214554,
+                  "cooperate": 0.09199637174606323,
+                  "create": 0.09075301885604858
+                },
+                "rate_max": 0.10144677013158798,
+                "rate_min": 0.08212170749902725,
+                "rate_std": 0.0025250143371522427
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2566985289111816,
+                "challenge": 0.24237066198473536,
+                "cooperate": 0.2549585404783805,
+                "create": 0.24597226862570248
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09019039571285248,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09133407473564148,
+                  "challenge": 0.08941960334777832,
+                  "cooperate": 0.09110736101865768,
+                  "create": 0.08991128951311111
+                },
+                "rate_max": 0.10061488300561905,
+                "rate_min": 0.08213081955909729,
+                "rate_std": 0.002482050098478794
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2566869591707047,
+                "challenge": 0.24229956081923792,
+                "cooperate": 0.2551673917593819,
+                "create": 0.2458460882506754
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09033676236867905,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09219691157341003,
+                  "challenge": 0.09027416259050369,
+                  "cooperate": 0.09199899435043335,
+                  "create": 0.09075852483510971
+                },
+                "rate_max": 0.1014387458562851,
+                "rate_min": 0.08212164789438248,
+                "rate_std": 0.00252525694668293
+              }
+            }
+          },
+          "event_id": "E09-001",
+          "probe": "Heed the turned glove and the millstream map",
+          "target": "challenge"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2549807273985944,
+                "challenge": 0.25098453332081166,
+                "cooperate": 0.24945294307858096,
+                "create": 0.24458179620201306
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09551384299993515,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09798023849725723,
+                  "challenge": 0.09745368361473083,
+                  "cooperate": 0.09724964946508408,
+                  "create": 0.09659229964017868
+                },
+                "rate_max": 0.1054152250289917,
+                "rate_min": 0.08660481125116348,
+                "rate_std": 0.00287075387313962
+              }
+            },
+            "no_training": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2576854459724549,
+                "challenge": 0.24954620859774304,
+                "cooperate": 0.2482698823527746,
+                "create": 0.24449846307702744
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.090180404484272,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09093613177537918,
+                  "challenge": 0.0898662805557251,
+                  "cooperate": 0.08969535678625107,
+                  "create": 0.08918511122465134
+                },
+                "rate_max": 0.09747021645307541,
+                "rate_min": 0.082909494638443,
+                "rate_std": 0.0024094749242067337
+              }
+            },
+            "targeted": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2577796405611276,
+                "challenge": 0.2494608329933494,
+                "cooperate": 0.24845274819192498,
+                "create": 0.24430677825359812
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09032551944255829,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09180554002523422,
+                  "challenge": 0.09071210026741028,
+                  "cooperate": 0.0905771255493164,
+                  "create": 0.0900161936879158
+                },
+                "rate_max": 0.09752923250198364,
+                "rate_min": 0.08287735283374786,
+                "rate_std": 0.0024205464869737625
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2577408482245762,
+                "challenge": 0.24951596698539064,
+                "cooperate": 0.2484078081191169,
+                "create": 0.2443353766709162
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09032563865184784,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09180107712745667,
+                  "challenge": 0.09072002023458481,
+                  "cooperate": 0.09057164937257767,
+                  "create": 0.09002064913511276
+                },
+                "rate_max": 0.09753995388746262,
+                "rate_min": 0.08287733793258667,
+                "rate_std": 0.0024204973597079515
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2576854459724549,
+                "challenge": 0.24954620859774304,
+                "cooperate": 0.2482698823527746,
+                "create": 0.24449846307702744
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.090180404484272,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09093613177537918,
+                  "challenge": 0.0898662805557251,
+                  "cooperate": 0.08969535678625107,
+                  "create": 0.08918511122465134
+                },
+                "rate_max": 0.09747021645307541,
+                "rate_min": 0.082909494638443,
+                "rate_std": 0.0024094749242067337
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25768601095557897,
+                "challenge": 0.24953699476811175,
+                "cooperate": 0.248414472187582,
+                "create": 0.2443625220887273
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.0903259664773941,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09179570525884628,
+                  "challenge": 0.09072455018758774,
+                  "cooperate": 0.09057426452636719,
+                  "create": 0.09002607315778732
+                },
+                "rate_max": 0.09754618257284164,
+                "rate_min": 0.0828772783279419,
+                "rate_std": 0.0024208850227296352
+              }
+            }
+          },
+          "event_id": "E09-003",
+          "probe": "A gallery stove and the lamp shadow",
+          "target": "challenge"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2512357949158364,
+                "challenge": 0.24916064754633185,
+                "cooperate": 0.25893355008674324,
+                "create": 0.24067000745108855
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.0953674465417862,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09738274663686752,
+                  "challenge": 0.09710627794265747,
+                  "cooperate": 0.09838873147964478,
+                  "create": 0.09595057368278503
+                },
+                "rate_max": 0.1038704439997673,
+                "rate_min": 0.0841686949133873,
+                "rate_std": 0.003153696656227112
+              }
+            },
+            "no_training": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.25430717113566403,
+                "challenge": 0.2478491422185893,
+                "cooperate": 0.2570688961168945,
+                "create": 0.24077479052885212
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09004506468772888,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09040383249521255,
+                  "challenge": 0.08954641222953796,
+                  "cooperate": 0.0907638743519783,
+                  "create": 0.0885811373591423
+                },
+                "rate_max": 0.09801170974969864,
+                "rate_min": 0.07917244732379913,
+                "rate_std": 0.0026864514220505953
+              }
+            },
+            "targeted": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2543536394474774,
+                "challenge": 0.2477575533345284,
+                "cooperate": 0.2573266399702097,
+                "create": 0.24056216724778456
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09018990397453308,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09126562625169754,
+                  "challenge": 0.09038979560136795,
+                  "cooperate": 0.09165298193693161,
+                  "create": 0.08940739184617996
+                },
+                "rate_max": 0.09799257665872574,
+                "rate_min": 0.07993806898593903,
+                "rate_std": 0.0026999746914952993
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.254316204782814,
+                "challenge": 0.2478125221568654,
+                "cooperate": 0.25728025663189885,
+                "create": 0.2405910164284218
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09019000828266144,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.091261126101017,
+                  "challenge": 0.09039759635925293,
+                  "cooperate": 0.09164737910032272,
+                  "create": 0.08941179513931274
+                },
+                "rate_max": 0.09799271821975708,
+                "rate_min": 0.07993843406438828,
+                "rate_std": 0.0026997565291821957
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.25430717113566403,
+                "challenge": 0.2478491422185893,
+                "cooperate": 0.2570688961168945,
+                "create": 0.24077479052885212
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09004506468772888,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09040383249521255,
+                  "challenge": 0.08954641222953796,
+                  "cooperate": 0.0907638743519783,
+                  "create": 0.0885811373591423
+                },
+                "rate_max": 0.09801170974969864,
+                "rate_min": 0.07917244732379913,
+                "rate_std": 0.0026864514220505953
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2542649218231074,
+                "challenge": 0.24783283689752997,
+                "cooperate": 0.2572855323714453,
+                "create": 0.24061670890791728
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.0901903361082077,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09125617891550064,
+                  "challenge": 0.09040210396051407,
+                  "cooperate": 0.09164983779191971,
+                  "create": 0.08941712975502014
+                },
+                "rate_max": 0.09799269586801529,
+                "rate_min": 0.07995510846376419,
+                "rate_std": 0.002699712524190545
+              }
+            }
+          },
+          "event_id": "E01-002",
+          "probe": "Candle wax and the telegraph diagram",
+          "target": "challenge"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2547474425429216,
+                "challenge": 0.24558338996487183,
+                "cooperate": 0.25549502716803074,
+                "create": 0.24417414032417584
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09513232856988907,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09782149642705917,
+                  "challenge": 0.09660029411315918,
+                  "cooperate": 0.09791917353868484,
+                  "create": 0.09640846401453018
+                },
+                "rate_max": 0.10563672333955765,
+                "rate_min": 0.08558206260204315,
+                "rate_std": 0.003200984327122569
+              }
+            },
+            "no_training": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2575021195096929,
+                "challenge": 0.24465819940411485,
+                "cooperate": 0.2539004108881649,
+                "create": 0.24393927019802736
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08982875943183899,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0908045694231987,
+                  "challenge": 0.08909904211759567,
+                  "cooperate": 0.09033504128456116,
+                  "create": 0.08900094777345657
+                },
+                "rate_max": 0.1000349372625351,
+                "rate_min": 0.08061210811138153,
+                "rate_std": 0.0027052615769207478
+              }
+            },
+            "targeted": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2575861956841449,
+                "challenge": 0.24453565437852828,
+                "cooperate": 0.2541247637634779,
+                "create": 0.24375338617384887
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08997352421283722,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.091670460999012,
+                  "challenge": 0.08993735164403915,
+                  "cooperate": 0.09121949225664139,
+                  "create": 0.08983054757118225
+                },
+                "rate_max": 0.10000834614038467,
+                "rate_min": 0.08139459043741226,
+                "rate_std": 0.00273213186301291
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2575495313279696,
+                "challenge": 0.24458841290689198,
+                "cooperate": 0.25407831273532655,
+                "create": 0.24378374302981196
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08997364342212677,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09166613221168518,
+                  "challenge": 0.08994495868682861,
+                  "cooperate": 0.09121381491422653,
+                  "create": 0.08983511477708817
+                },
+                "rate_max": 0.10000830888748169,
+                "rate_min": 0.08139517158269882,
+                "rate_std": 0.002731621265411377
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2575021195096929,
+                "challenge": 0.24465819940411485,
+                "cooperate": 0.2539004108881649,
+                "create": 0.24393927019802736
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08982875943183899,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0908045694231987,
+                  "challenge": 0.08909904211759567,
+                  "cooperate": 0.09033504128456116,
+                  "create": 0.08900094777345657
+                },
+                "rate_max": 0.1000349372625351,
+                "rate_min": 0.08061210811138153,
+                "rate_std": 0.0027052615769207478
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25749758239743153,
+                "challenge": 0.24460773931291016,
+                "cooperate": 0.25408458808433904,
+                "create": 0.24381009020531932
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08997396379709244,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09166109561920166,
+                  "challenge": 0.08994928002357483,
+                  "cooperate": 0.0912163257598877,
+                  "create": 0.08984040468931198
+                },
+                "rate_max": 0.10000821202993393,
+                "rate_min": 0.08141228556632996,
+                "rate_std": 0.0027313996106386185
+              }
+            }
+          },
+          "event_id": "E13-001",
+          "probe": "The loose plank at the rear wall",
+          "target": "challenge"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.24473563857355743,
+                "challenge": 0.24322663214592669,
+                "cooperate": 0.2558404953553972,
+                "create": 0.25619723392511873
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.095427505671978,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09694990515708923,
+                  "challenge": 0.09674374014139175,
+                  "cooperate": 0.09842909127473831,
+                  "create": 0.09847553819417953
+                },
+                "rate_max": 0.10477127134799957,
+                "rate_min": 0.08634219318628311,
+                "rate_std": 0.0031013907864689827
+              }
+            },
+            "no_training": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.2481526453292041,
+                "challenge": 0.2424196160539843,
+                "cooperate": 0.2541368260122098,
+                "create": 0.25529091260460185
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09009698778390884,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.08997584134340286,
+                  "challenge": 0.08919671177864075,
+                  "cooperate": 0.09077013283967972,
+                  "create": 0.09092116355895996
+                },
+                "rate_max": 0.09849618375301361,
+                "rate_min": 0.08226887136697769,
+                "rate_std": 0.002582584973424673
+              }
+            },
+            "targeted": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.24815174250660052,
+                "challenge": 0.24228016896305382,
+                "cooperate": 0.2543781714253041,
+                "create": 0.2551899171050416
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09024271368980408,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09083598852157593,
+                  "challenge": 0.09003780037164688,
+                  "cooperate": 0.09166204184293747,
+                  "create": 0.09176824241876602
+                },
+                "rate_max": 0.0984857976436615,
+                "rate_min": 0.08226250857114792,
+                "rate_std": 0.002616980578750372
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.24811556775679044,
+                "challenge": 0.24233366577674234,
+                "cooperate": 0.25433017410586195,
+                "create": 0.25522059236060524
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09024283289909363,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0908316969871521,
+                  "challenge": 0.09004572778940201,
+                  "cooperate": 0.09165631979703903,
+                  "create": 0.09177281707525253
+                },
+                "rate_max": 0.09848564118146896,
+                "rate_min": 0.08226252347230911,
+                "rate_std": 0.002617116551846266
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.2481526453292041,
+                "challenge": 0.2424196160539843,
+                "cooperate": 0.2541368260122098,
+                "create": 0.25529091260460185
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09009698778390884,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.08997584134340286,
+                  "challenge": 0.08919671177864075,
+                  "cooperate": 0.09077013283967972,
+                  "create": 0.09092116355895996
+                },
+                "rate_max": 0.09849618375301361,
+                "rate_min": 0.08226887136697769,
+                "rate_std": 0.002582584973424673
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.24806281104444972,
+                "challenge": 0.24235271176859607,
+                "cooperate": 0.2543352682451838,
+                "create": 0.2552492089417704
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09024316817522049,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09082645922899246,
+                  "challenge": 0.09005019813776016,
+                  "cooperate": 0.09165883809328079,
+                  "create": 0.09177840501070023
+                },
+                "rate_max": 0.09848584979772568,
+                "rate_min": 0.08226270973682404,
+                "rate_std": 0.002617710502818227
+              }
+            }
+          },
+          "event_id": "E01-001",
+          "probe": "Remember camphor and the beetle in the drawer",
+          "target": "create"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.254195476538493,
+                "challenge": 0.24177855640240206,
+                "cooperate": 0.2593125691669733,
+                "create": 0.24471339789213165
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09547558426856995,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09815985709428787,
+                  "challenge": 0.09649048000574112,
+                  "cooperate": 0.09882421046495438,
+                  "create": 0.09689266234636307
+                },
+                "rate_max": 0.10457753390073776,
+                "rate_min": 0.08645617961883545,
+                "rate_std": 0.003079261165112257
+              }
+            },
+            "no_training": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2570539124156514,
+                "challenge": 0.2409998641745843,
+                "cooperate": 0.2573156428611692,
+                "create": 0.24463058054859504
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09014230966567993,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09110677242279053,
+                  "challenge": 0.08895712345838547,
+                  "cooperate": 0.09114069491624832,
+                  "create": 0.08945555239915848
+                },
+                "rate_max": 0.09901341050863266,
+                "rate_min": 0.08006931096315384,
+                "rate_std": 0.0025909850373864174
+              }
+            },
+            "targeted": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2571315795275696,
+                "challenge": 0.24084523613290773,
+                "cooperate": 0.2575836022505245,
+                "create": 0.24443958208899824
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.0902879536151886,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09197733551263809,
+                  "challenge": 0.08979622274637222,
+                  "cooperate": 0.09203588217496872,
+                  "create": 0.09029000997543335
+                },
+                "rate_max": 0.09899384528398514,
+                "rate_min": 0.08087031543254852,
+                "rate_std": 0.0026218120474368334
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2570946686617077,
+                "challenge": 0.2409003529254923,
+                "cooperate": 0.2575367253087875,
+                "create": 0.24446825310401243
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09028807282447815,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0919729694724083,
+                  "challenge": 0.0898042693734169,
+                  "cooperate": 0.09203023463487625,
+                  "create": 0.09029433876276016
+                },
+                "rate_max": 0.09899389743804932,
+                "rate_min": 0.0808630958199501,
+                "rate_std": 0.0026215887628495693
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2570539124156514,
+                "challenge": 0.2409998641745843,
+                "cooperate": 0.2573156428611692,
+                "create": 0.24463058054859504
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09014230966567993,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09110677242279053,
+                  "challenge": 0.08895712345838547,
+                  "cooperate": 0.09114069491624832,
+                  "create": 0.08945555239915848
+                },
+                "rate_max": 0.09901341050863266,
+                "rate_min": 0.08006931096315384,
+                "rate_std": 0.0025909850373864174
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.25704013053739994,
+                "challenge": 0.24092064460808665,
+                "cooperate": 0.25754322060478063,
+                "create": 0.2444960042497327
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09028838574886322,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09196758270263672,
+                  "challenge": 0.08980876207351685,
+                  "cooperate": 0.09203276038169861,
+                  "create": 0.0902998074889183
+                },
+                "rate_max": 0.09899389743804932,
+                "rate_min": 0.08086137473583221,
+                "rate_std": 0.002621818333864212
+              }
+            }
+          },
+          "event_id": "E01-003",
+          "probe": "The divided glass neck and failed joint",
+          "target": "create"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "challenge",
+              "scores": {
+                "approach": 0.24823858435701252,
+                "challenge": 0.25299288308921025,
+                "cooperate": 0.25194980024668057,
+                "create": 0.24681873230709667
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09534108638763428,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09732604026794434,
+                  "challenge": 0.09795840829610825,
+                  "cooperate": 0.0978206917643547,
+                  "create": 0.09713483601808548
+                },
+                "rate_max": 0.10756589472293854,
+                "rate_min": 0.08386456966400146,
+                "rate_std": 0.003337650094181299
+              }
+            },
+            "no_training": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2514295997110778,
+                "challenge": 0.25129756698721384,
+                "cooperate": 0.25071352345158615,
+                "create": 0.24655930985012217
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09001713991165161,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0903371050953865,
+                  "challenge": 0.09031959623098373,
+                  "cooperate": 0.09024203568696976,
+                  "create": 0.08968508988618851
+                },
+                "rate_max": 0.0993199348449707,
+                "rate_min": 0.07966175675392151,
+                "rate_std": 0.002801824128255248
+              }
+            },
+            "targeted": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25145749462166506,
+                "challenge": 0.2512437811763819,
+                "cooperate": 0.25090577296172334,
+                "create": 0.24639295124022975
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.0901624783873558,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09119859337806702,
+                  "challenge": 0.09117025136947632,
+                  "cooperate": 0.09112537652254105,
+                  "create": 0.09052038192749023
+                },
+                "rate_max": 0.10024698823690414,
+                "rate_min": 0.07964123040437698,
+                "rate_std": 0.002836489351466298
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2514218451287216,
+                "challenge": 0.2512991966497783,
+                "cooperate": 0.2508587068092732,
+                "create": 0.2464202514122269
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09016259014606476,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09119438380002975,
+                  "challenge": 0.09117811918258667,
+                  "cooperate": 0.09111963957548141,
+                  "create": 0.0905245915055275
+                },
+                "rate_max": 0.1002558246254921,
+                "rate_min": 0.07964123785495758,
+                "rate_std": 0.0028365838807076216
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2514295997110778,
+                "challenge": 0.25129756698721384,
+                "cooperate": 0.25071352345158615,
+                "create": 0.24655930985012217
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09001713991165161,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0903371050953865,
+                  "challenge": 0.09031959623098373,
+                  "cooperate": 0.09024203568696976,
+                  "create": 0.08968508988618851
+                },
+                "rate_max": 0.0993199348449707,
+                "rate_min": 0.07966175675392151,
+                "rate_std": 0.002801824128255248
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25136833096639044,
+                "challenge": 0.25132220714912895,
+                "cooperate": 0.25086339672625274,
+                "create": 0.24644606515822787
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09016294777393341,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09118927270174026,
+                  "challenge": 0.09118315577507019,
+                  "cooperate": 0.09112224727869034,
+                  "create": 0.09053006768226624
+                },
+                "rate_max": 0.1002882570028305,
+                "rate_min": 0.07964126020669937,
+                "rate_std": 0.0028374961111694574
+              }
+            }
+          },
+          "event_id": "E13-002",
+          "probe": "An empty bell jar between two chairs",
+          "target": "create"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.25349633752752554,
+                "challenge": 0.24478593614152272,
+                "cooperate": 0.2611156523213393,
+                "create": 0.24060207400961242
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.0952034443616867,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09761101007461548,
+                  "challenge": 0.09644550085067749,
+                  "cooperate": 0.09859814494848251,
+                  "create": 0.09587084501981735
+                },
+                "rate_max": 0.10825405269861221,
+                "rate_min": 0.08435574918985367,
+                "rate_std": 0.003426521783694625
+              }
+            },
+            "no_training": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.25631303662443544,
+                "challenge": 0.24382673790674547,
+                "cooperate": 0.25906730069563155,
+                "create": 0.24079292477318753
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08989554643630981,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09060388803482056,
+                  "challenge": 0.08893916755914688,
+                  "cooperate": 0.09096016734838486,
+                  "create": 0.0885218158364296
+                },
+                "rate_max": 0.10127110779285431,
+                "rate_min": 0.07819102704524994,
+                "rate_std": 0.0029571037739515305
+              }
+            },
+            "targeted": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2563853389005601,
+                "challenge": 0.24368697867141972,
+                "cooperate": 0.2593475352051103,
+                "create": 0.24058014722290988
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.0900401920080185,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09146817773580551,
+                  "challenge": 0.08977494388818741,
+                  "cooperate": 0.09185109287500381,
+                  "create": 0.0893472358584404
+                },
+                "rate_max": 0.10167168825864792,
+                "rate_min": 0.07896696031093597,
+                "rate_std": 0.0029765372164547443
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2563474563416572,
+                "challenge": 0.24374395373607213,
+                "cooperate": 0.25930075292258103,
+                "create": 0.24060783699968968
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09004028886556625,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09146352857351303,
+                  "challenge": 0.08978301286697388,
+                  "cooperate": 0.09184535592794418,
+                  "create": 0.0893513485789299
+                },
+                "rate_max": 0.10166165977716446,
+                "rate_min": 0.07895977050065994,
+                "rate_std": 0.002975983778014779
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.25631303662443544,
+                "challenge": 0.24382673790674547,
+                "cooperate": 0.25906730069563155,
+                "create": 0.24079292477318753
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08989554643630981,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09060388803482056,
+                  "challenge": 0.08893916755914688,
+                  "cooperate": 0.09096016734838486,
+                  "create": 0.0885218158364296
+                },
+                "rate_max": 0.10127110779285431,
+                "rate_min": 0.07819102704524994,
+                "rate_std": 0.0029571037739515305
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2562943956118117,
+                "challenge": 0.24376524898451157,
+                "cooperate": 0.2593066564741796,
+                "create": 0.24063369892949713
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09004063159227371,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09145844727754593,
+                  "challenge": 0.08978774398565292,
+                  "cooperate": 0.09184793382883072,
+                  "create": 0.08935675024986267
+                },
+                "rate_max": 0.10168135166168213,
+                "rate_min": 0.07895849645137787,
+                "rate_std": 0.002976394258439541
+              }
+            }
+          },
+          "event_id": "E01-008",
+          "probe": "The blue boards and red ink",
+          "target": "create"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "challenge",
+              "scores": {
+                "approach": 0.2509404859445276,
+                "challenge": 0.25595761051953714,
+                "cooperate": 0.24471477275850292,
+                "create": 0.24838713077743227
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09546564519405365,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09796527773141861,
+                  "challenge": 0.09862514585256577,
+                  "cooperate": 0.09712786227464676,
+                  "create": 0.09762436896562576
+                },
+                "rate_max": 0.11169848591089249,
+                "rate_min": 0.08237596601247787,
+                "rate_std": 0.003187884110957384
+              }
+            },
+            "no_training": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2540050148745153,
+                "challenge": 0.2539391081795864,
+                "cooperate": 0.243908892284418,
+                "create": 0.24814698466148033
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09013189375400543,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09093105792999268,
+                  "challenge": 0.09092240780591965,
+                  "cooperate": 0.08957908302545547,
+                  "create": 0.0901532992720604
+                },
+                "rate_max": 0.10233420133590698,
+                "rate_min": 0.07846087217330933,
+                "rate_std": 0.0026520313695073128
+              }
+            },
+            "targeted": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25405906089130353,
+                "challenge": 0.2539090749174902,
+                "cooperate": 0.2440505075919478,
+                "create": 0.24798135659925846
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09027774631977081,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09179902821779251,
+                  "challenge": 0.09177934378385544,
+                  "cooperate": 0.09045930951833725,
+                  "create": 0.09099192172288895
+                },
+                "rate_max": 0.10334929823875427,
+                "rate_min": 0.07844515889883041,
+                "rate_std": 0.002695811679586768
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25402100475256806,
+                "challenge": 0.2539666739036708,
+                "cooperate": 0.24400326078530468,
+                "create": 0.2480090605584565
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09027788043022156,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09179473668336868,
+                  "challenge": 0.09178760647773743,
+                  "cooperate": 0.09045355767011642,
+                  "create": 0.09099634736776352
+                },
+                "rate_max": 0.10337192565202713,
+                "rate_min": 0.07844535261392593,
+                "rate_std": 0.0026961236726492643
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2540050148745153,
+                "challenge": 0.2539391081795864,
+                "cooperate": 0.243908892284418,
+                "create": 0.24814698466148033
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09013189375400543,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09093105792999268,
+                  "challenge": 0.09092240780591965,
+                  "cooperate": 0.08957908302545547,
+                  "create": 0.0901532992720604
+                },
+                "rate_max": 0.10233420133590698,
+                "rate_min": 0.07846087217330933,
+                "rate_std": 0.0026520313695073128
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "challenge",
+              "scores": {
+                "approach": 0.25396577965886996,
+                "challenge": 0.25398757865208543,
+                "cooperate": 0.2440080191824875,
+                "create": 0.24803862250655717
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09027820825576782,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09178929775953293,
+                  "challenge": 0.09179215878248215,
+                  "cooperate": 0.09045601636171341,
+                  "create": 0.09100212901830673
+                },
+                "rate_max": 0.10337430983781815,
+                "rate_min": 0.0784454345703125,
+                "rate_std": 0.0026966736186295748
+              }
+            }
+          },
+          "event_id": "E01-004",
+          "probe": "A frog leg and iodine stain",
+          "target": "cooperate"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25636693079545003,
+                "challenge": 0.24680125914822054,
+                "cooperate": 0.25163380377384387,
+                "create": 0.24519800628248567
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09571193158626556,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09888976812362671,
+                  "challenge": 0.09762222319841385,
+                  "cooperate": 0.09826860576868057,
+                  "create": 0.09740497916936874
+                },
+                "rate_max": 0.10731842368841171,
+                "rate_min": 0.08234662562608719,
+                "rate_std": 0.003136090701445937
+              }
+            },
+            "no_training": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2590502549147499,
+                "challenge": 0.24560225962141863,
+                "cooperate": 0.2502876609697703,
+                "create": 0.24505982449406116
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09035466611385345,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09176507592201233,
+                  "challenge": 0.08998811990022659,
+                  "cooperate": 0.09061803668737411,
+                  "create": 0.08991441875696182
+                },
+                "rate_max": 0.1008325070142746,
+                "rate_min": 0.07824430614709854,
+                "rate_std": 0.0026146324817091227
+              }
+            },
+            "targeted": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2591524119324328,
+                "challenge": 0.24548727608408322,
+                "cooperate": 0.25048829674720674,
+                "create": 0.24487201523627722
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09050121903419495,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0926438644528389,
+                  "challenge": 0.09083815664052963,
+                  "cooperate": 0.09151039272546768,
+                  "create": 0.09075450897216797
+                },
+                "rate_max": 0.10081569105386734,
+                "rate_min": 0.07823450118303299,
+                "rate_std": 0.002655426738783717
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2591131271623181,
+                "challenge": 0.24554427956182745,
+                "cooperate": 0.25044108883416616,
+                "create": 0.24490150444168834
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.0905013456940651,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09263933449983597,
+                  "challenge": 0.09084641933441162,
+                  "cooperate": 0.09150463342666626,
+                  "create": 0.0907590463757515
+                },
+                "rate_max": 0.10081564635038376,
+                "rate_min": 0.07823456823825836,
+                "rate_std": 0.002655478660017252
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2590502549147499,
+                "challenge": 0.24560225962141863,
+                "cooperate": 0.2502876609697703,
+                "create": 0.24505982449406116
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09035466611385345,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09176507592201233,
+                  "challenge": 0.08998811990022659,
+                  "cooperate": 0.09061803668737411,
+                  "create": 0.08991441875696182
+                },
+                "rate_max": 0.1008325070142746,
+                "rate_min": 0.07824430614709854,
+                "rate_std": 0.0026146324817091227
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.259057397204505,
+                "challenge": 0.24556528140921138,
+                "cooperate": 0.25044627504800115,
+                "create": 0.24493104633828247
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09050166606903076,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09263388067483902,
+                  "challenge": 0.09085098654031754,
+                  "cooperate": 0.09150703996419907,
+                  "create": 0.09076478332281113
+                },
+                "rate_max": 0.10081551223993301,
+                "rate_min": 0.07823453843593597,
+                "rate_std": 0.0026556996162980795
+              }
+            }
+          },
+          "event_id": "E01-005",
+          "probe": "Yellow sediment and filter paper",
+          "target": "cooperate"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2517832655929943,
+                "challenge": 0.23757389657169198,
+                "cooperate": 0.25927388688787517,
+                "create": 0.2513689509474385
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09545665979385376,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09762457758188248,
+                  "challenge": 0.09568824619054794,
+                  "cooperate": 0.09860178828239441,
+                  "create": 0.09756968170404434
+                },
+                "rate_max": 0.10896236449480057,
+                "rate_min": 0.08390438556671143,
+                "rate_std": 0.0030861080158501863
+              }
+            },
+            "no_training": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2548450000628613,
+                "challenge": 0.2371537907750812,
+                "cooperate": 0.2572366642880172,
+                "create": 0.2507645448740402
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.0901230126619339,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09061489254236221,
+                  "challenge": 0.08821666985750198,
+                  "cooperate": 0.09092625975608826,
+                  "create": 0.09007685631513596
+                },
+                "rate_max": 0.1032334417104721,
+                "rate_min": 0.07995778322219849,
+                "rate_std": 0.0025922164786607027
+              }
+            },
+            "targeted": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2548969676278218,
+                "challenge": 0.23697067762114316,
+                "cooperate": 0.25750665147971824,
+                "create": 0.2506257032713168
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.0902683287858963,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09148026257753372,
+                  "challenge": 0.08904949575662613,
+                  "cooperate": 0.09181980043649673,
+                  "create": 0.09091696888208389
+                },
+                "rate_max": 0.10321315377950668,
+                "rate_min": 0.07993785291910172,
+                "rate_std": 0.0026097639929503202
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.25486015469312046,
+                "challenge": 0.23702512431566397,
+                "cooperate": 0.2574573191136415,
+                "create": 0.25065740187757407
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09026843309402466,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09147580713033676,
+                  "challenge": 0.08905751258134842,
+                  "cooperate": 0.09181377291679382,
+                  "create": 0.0909215435385704
+                },
+                "rate_max": 0.10321298241615295,
+                "rate_min": 0.07993786782026291,
+                "rate_std": 0.0026094643399119377
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2548450000628613,
+                "challenge": 0.2371537907750812,
+                "cooperate": 0.2572366642880172,
+                "create": 0.2507645448740402
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.0901230126619339,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09061489254236221,
+                  "challenge": 0.08821666985750198,
+                  "cooperate": 0.09092625975608826,
+                  "create": 0.09007685631513596
+                },
+                "rate_max": 0.1032334417104721,
+                "rate_min": 0.07995778322219849,
+                "rate_std": 0.0025922164786607027
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2548061178997903,
+                "challenge": 0.23704453217110535,
+                "cooperate": 0.25746245886995334,
+                "create": 0.25068689105915104
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09026876837015152,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09147053956985474,
+                  "challenge": 0.08906204253435135,
+                  "cooperate": 0.0918162390589714,
+                  "create": 0.09092726558446884
+                },
+                "rate_max": 0.10321295261383057,
+                "rate_min": 0.07993785291910172,
+                "rate_std": 0.002609712304547429
+              }
+            }
+          },
+          "event_id": "E09-006",
+          "probe": "The prescription label and midday customers",
+          "target": "cooperate"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.24742909100159807,
+                "challenge": 0.2435868007742418,
+                "cooperate": 0.2520757480445638,
+                "create": 0.2569083601795964
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09529365599155426,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09783020615577698,
+                  "challenge": 0.09730851650238037,
+                  "cooperate": 0.09845039248466492,
+                  "create": 0.09908338636159897
+                },
+                "rate_max": 0.11270158737897873,
+                "rate_min": 0.08045680820941925,
+                "rate_std": 0.0036201071925461292
+              }
+            },
+            "no_training": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.250745755530063,
+                "challenge": 0.24261326386067414,
+                "cooperate": 0.25065934742221246,
+                "create": 0.2559816331870505
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08996938169002533,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09081853181123734,
+                  "challenge": 0.0897195041179657,
+                  "cooperate": 0.09080704301595688,
+                  "create": 0.09150740504264832
+                },
+                "rate_max": 0.10389518737792969,
+                "rate_min": 0.0763268694281578,
+                "rate_std": 0.002997378120198846
+              }
+            },
+            "targeted": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.25076516633429846,
+                "challenge": 0.2424903769930703,
+                "cooperate": 0.25087269401515155,
+                "create": 0.25587176265747963
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09011536836624146,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09168270975351334,
+                  "challenge": 0.09056421369314194,
+                  "cooperate": 0.09169699996709824,
+                  "create": 0.09235469251871109
+                },
+                "rate_max": 0.10482796281576157,
+                "rate_min": 0.07631512731313705,
+                "rate_std": 0.0030625388026237488
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.25072832379162835,
+                "challenge": 0.24254624499305658,
+                "cooperate": 0.25082406205333757,
+                "create": 0.2559013691619775
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09011547267436981,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09167832881212234,
+                  "challenge": 0.09057240933179855,
+                  "cooperate": 0.09169105440378189,
+                  "create": 0.09235906600952148
+                },
+                "rate_max": 0.10482445359230042,
+                "rate_min": 0.07631514221429825,
+                "rate_std": 0.0030624407809227705
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.250745755530063,
+                "challenge": 0.24261326386067414,
+                "cooperate": 0.25065934742221246,
+                "create": 0.2559816331870505
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08996938169002533,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09081853181123734,
+                  "challenge": 0.0897195041179657,
+                  "cooperate": 0.09080704301595688,
+                  "create": 0.09150740504264832
+                },
+                "rate_max": 0.10389518737792969,
+                "rate_min": 0.0763268694281578,
+                "rate_std": 0.002997378120198846
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "create",
+              "scores": {
+                "approach": 0.2506773127695652,
+                "challenge": 0.24256487781260855,
+                "cooperate": 0.2508278004743612,
+                "create": 0.2559300089434651
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09011583030223846,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09167345613241196,
+                  "challenge": 0.09057687968015671,
+                  "cooperate": 0.0916934609413147,
+                  "create": 0.09236470609903336
+                },
+                "rate_max": 0.10482721030712128,
+                "rate_min": 0.07631508260965347,
+                "rate_std": 0.0030630386900156736
+              }
+            }
+          },
+          "event_id": "E01-011",
+          "probe": "The pie box and Sunday table",
+          "target": "cooperate"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.2552805233220594,
+                "challenge": 0.2506445302674592,
+                "cooperate": 0.2575595559401526,
+                "create": 0.23651539047032868
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09517991542816162,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09824135899543762,
+                  "challenge": 0.09763044863939285,
+                  "cooperate": 0.0985376238822937,
+                  "create": 0.09569636732339859
+                },
+                "rate_max": 0.11193004250526428,
+                "rate_min": 0.0828113704919815,
+                "rate_std": 0.0033826471772044897
+              }
+            },
+            "no_training": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25808220383814434,
+                "challenge": 0.24912572975613834,
+                "cooperate": 0.2557477797918077,
+                "create": 0.23704428661390964
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08987297117710114,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09120610356330872,
+                  "challenge": 0.09002875536680222,
+                  "cooperate": 0.09090322256088257,
+                  "create": 0.08837173134088516
+                },
+                "rate_max": 0.10661064088344574,
+                "rate_min": 0.07801638543605804,
+                "rate_std": 0.002880195854231715
+              }
+            },
+            "targeted": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25816485900921304,
+                "challenge": 0.24904230803442404,
+                "cooperate": 0.2559974582648113,
+                "create": 0.23679537469155162
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09001805633306503,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09207402914762497,
+                  "challenge": 0.09087484329938889,
+                  "cooperate": 0.0917930006980896,
+                  "create": 0.08919396251440048
+                },
+                "rate_max": 0.10658268630504608,
+                "rate_min": 0.07800376415252686,
+                "rate_std": 0.002920171245932579
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25812581138198093,
+                "challenge": 0.2491004997840863,
+                "cooperate": 0.2559513583154712,
+                "create": 0.23682233051846152
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09001815319061279,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0920693650841713,
+                  "challenge": 0.09088300913572311,
+                  "cooperate": 0.09178737550973892,
+                  "create": 0.08919813483953476
+                },
+                "rate_max": 0.10658266395330429,
+                "rate_min": 0.07800394296646118,
+                "rate_std": 0.002919926308095455
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25808220383814434,
+                "challenge": 0.24912572975613834,
+                "cooperate": 0.2557477797918077,
+                "create": 0.23704428661390964
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.08987297117710114,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09120610356330872,
+                  "challenge": 0.09002875536680222,
+                  "cooperate": 0.09090322256088257,
+                  "create": 0.08837173134088516
+                },
+                "rate_max": 0.10661064088344574,
+                "rate_min": 0.07801638543605804,
+                "rate_std": 0.002880195854231715
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2580723711171984,
+                "challenge": 0.2491237554284211,
+                "cooperate": 0.2559569454234403,
+                "create": 0.23684692803094026
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09001849591732025,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0920642539858818,
+                  "challenge": 0.09088791161775589,
+                  "cooperate": 0.09178989380598068,
+                  "create": 0.08920338749885559
+                },
+                "rate_max": 0.1065826267004013,
+                "rate_min": 0.0780038833618164,
+                "rate_std": 0.0029201044235378504
+              }
+            }
+          },
+          "event_id": "E16-001",
+          "probe": "Blue pigment and swapped notebooks",
+          "target": "approach"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2578688229853536,
+                "challenge": 0.2430891716761729,
+                "cooperate": 0.24712409490942855,
+                "create": 0.251917910429045
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09561055898666382,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09909208863973618,
+                  "challenge": 0.09712466597557068,
+                  "cooperate": 0.09767340868711472,
+                  "create": 0.0983138307929039
+                },
+                "rate_max": 0.10739713162183762,
+                "rate_min": 0.0859944075345993,
+                "rate_std": 0.0032201188150793314
+              }
+            },
+            "no_training": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2604673677983646,
+                "challenge": 0.24214385843771413,
+                "cooperate": 0.2460498821617548,
+                "create": 0.2513388916021665
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09026139974594116,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09196705371141434,
+                  "challenge": 0.08953553438186646,
+                  "cooperate": 0.09006894379854202,
+                  "create": 0.09077787399291992
+                },
+                "rate_max": 0.09975481033325195,
+                "rate_min": 0.08161104470491409,
+                "rate_std": 0.0027237185277044773
+              }
+            },
+            "targeted": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2605791308506876,
+                "challenge": 0.24201260637548583,
+                "cooperate": 0.2462129064809637,
+                "create": 0.2511953562928629
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09040774405002594,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09284525364637375,
+                  "challenge": 0.09038136154413223,
+                  "cooperate": 0.09095492213964462,
+                  "create": 0.0916227325797081
+                },
+                "rate_max": 0.10054496675729752,
+                "rate_min": 0.08158791810274124,
+                "rate_std": 0.002768318634480238
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.26053830535343964,
+                "challenge": 0.24206795120532368,
+                "cooperate": 0.24616772894965927,
+                "create": 0.2512260144915774
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09040787816047668,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09284055978059769,
+                  "challenge": 0.09038951247930527,
+                  "cooperate": 0.09094933420419693,
+                  "create": 0.0916273295879364
+                },
+                "rate_max": 0.10055719316005707,
+                "rate_min": 0.08158797770738602,
+                "rate_std": 0.0027683512307703495
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2604673677983646,
+                "challenge": 0.24214385843771413,
+                "cooperate": 0.2460498821617548,
+                "create": 0.2513388916021665
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09026139974594116,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09196705371141434,
+                  "challenge": 0.08953553438186646,
+                  "cooperate": 0.09006894379854202,
+                  "create": 0.09077787399291992
+                },
+                "rate_max": 0.09975481033325195,
+                "rate_min": 0.08161104470491409,
+                "rate_std": 0.0027237185277044773
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2604819228663849,
+                "challenge": 0.2420891999230148,
+                "cooperate": 0.24617255469825597,
+                "create": 0.2512563225123443
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09040819853544235,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09283504635095596,
+                  "challenge": 0.09039413928985596,
+                  "cooperate": 0.09095168858766556,
+                  "create": 0.09163305163383484
+                },
+                "rate_max": 0.10056914389133453,
+                "rate_min": 0.0815880075097084,
+                "rate_std": 0.002768647624179721
+              }
+            }
+          },
+          "event_id": "E16-002",
+          "probe": "Chestnut cones and wet stone",
+          "target": "approach"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2567022476742663,
+                "challenge": 0.24402080592966388,
+                "cooperate": 0.2536064479417842,
+                "create": 0.2456704984542856
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09582541882991791,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09846457093954086,
+                  "challenge": 0.09677579253911972,
+                  "cooperate": 0.09806013107299805,
+                  "create": 0.09700038284063339
+                },
+                "rate_max": 0.11099844425916672,
+                "rate_min": 0.0866156816482544,
+                "rate_std": 0.003317618742585182
+              }
+            },
+            "no_training": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2593134913532015,
+                "challenge": 0.24302737322234552,
+                "cooperate": 0.2520155950072707,
+                "create": 0.24564354041718234
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09046553820371628,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09136882424354553,
+                  "challenge": 0.08920670300722122,
+                  "cooperate": 0.09041726589202881,
+                  "create": 0.08956361562013626
+                },
+                "rate_max": 0.10544228553771973,
+                "rate_min": 0.0815981775522232,
+                "rate_std": 0.0028817818965762854
+              }
+            },
+            "targeted": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2594208134269103,
+                "challenge": 0.2428961282121148,
+                "cooperate": 0.2522351653129851,
+                "create": 0.2454478930479898
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09061133861541748,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09224452823400497,
+                  "challenge": 0.090050607919693,
+                  "cooperate": 0.09130820631980896,
+                  "create": 0.09039896726608276
+                },
+                "rate_max": 0.10541349649429321,
+                "rate_min": 0.08158465474843979,
+                "rate_std": 0.0028921589255332947
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.259379085430238,
+                "challenge": 0.24295163724021676,
+                "cooperate": 0.2521904781642315,
+                "create": 0.24547879916531373
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09061144292354584,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09223955869674683,
+                  "challenge": 0.09005861729383469,
+                  "cooperate": 0.09130269289016724,
+                  "create": 0.09040355682373047
+                },
+                "rate_max": 0.10541338473558426,
+                "rate_min": 0.08158484846353531,
+                "rate_std": 0.0028914797585457563
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2593134913532015,
+                "challenge": 0.24302737322234552,
+                "cooperate": 0.2520155950072707,
+                "create": 0.24564354041718234
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09046553820371628,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09136882424354553,
+                  "challenge": 0.08920670300722122,
+                  "cooperate": 0.09041726589202881,
+                  "create": 0.08956361562013626
+                },
+                "rate_max": 0.10544228553771973,
+                "rate_min": 0.0815981775522232,
+                "rate_std": 0.0028817818965762854
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2593228116513857,
+                "challenge": 0.24297413374604393,
+                "cooperate": 0.2521968057267151,
+                "create": 0.24550624887585526
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.0906117707490921,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09223396331071854,
+                  "challenge": 0.09006334096193314,
+                  "cooperate": 0.09130516648292542,
+                  "create": 0.09040892124176025
+                },
+                "rate_max": 0.1054132953286171,
+                "rate_min": 0.08158481121063232,
+                "rate_std": 0.002891044830903411
+              }
+            }
+          },
+          "event_id": "E16-003",
+          "probe": "Red wine and the unlatching door",
+          "target": "approach"
+        },
+        {
+          "conditions": {
+            "generic_hebb": {
+              "choice": "cooperate",
+              "scores": {
+                "approach": 0.25453184122510875,
+                "challenge": 0.24478425349415622,
+                "cooperate": 0.2558702688499327,
+                "create": 0.24481363643080234
+              },
+              "trace": {
+                "bias_mean": -2.4556031227111816,
+                "bias_std": 0.0004002410569228232,
+                "mean_rate": 0.09561892598867416,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.0981839969754219,
+                  "challenge": 0.09688237309455872,
+                  "cooperate": 0.09835881739854813,
+                  "create": 0.09688637405633926
+                },
+                "rate_max": 0.10740755498409271,
+                "rate_min": 0.08575142174959183,
+                "rate_std": 0.002899188781157136
+              }
+            },
+            "no_training": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2572920222366359,
+                "challenge": 0.2438150517001871,
+                "cooperate": 0.2541269611205959,
+                "create": 0.24476596494258115
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09027320146560669,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09111569076776505,
+                  "challenge": 0.0893222987651825,
+                  "cooperate": 0.0907030999660492,
+                  "create": 0.08945205062627792
+                },
+                "rate_max": 0.09951304644346237,
+                "rate_min": 0.0818992406129837,
+                "rate_std": 0.0024342897813767195
+              }
+            },
+            "targeted": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2573757184215184,
+                "challenge": 0.24369138135955967,
+                "cooperate": 0.25436320248837496,
+                "create": 0.244569697730547
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09041900932788849,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09198778122663498,
+                  "challenge": 0.09016663581132889,
+                  "cooperate": 0.09159532189369202,
+                  "create": 0.09028656035661697
+                },
+                "rate_max": 0.10049208253622055,
+                "rate_min": 0.08187511563301086,
+                "rate_std": 0.002455332549288869
+              }
+            },
+            "targeted_blank_cue": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.25733682100080224,
+                "challenge": 0.24374644515730465,
+                "cooperate": 0.25431714310009734,
+                "create": 0.24459959074179577
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09041912853717804,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09198322892189026,
+                  "challenge": 0.09017465263605118,
+                  "cooperate": 0.09158977121114731,
+                  "create": 0.09029112011194229
+                },
+                "rate_max": 0.10047581791877747,
+                "rate_min": 0.08187514543533325,
+                "rate_std": 0.0024548948276787996
+              }
+            },
+            "targeted_recurrent_lesion": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2572920222366359,
+                "challenge": 0.2438150517001871,
+                "cooperate": 0.2541269611205959,
+                "create": 0.24476596494258115
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09027320146560669,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09111569076776505,
+                  "challenge": 0.0893222987651825,
+                  "cooperate": 0.0907030999660492,
+                  "create": 0.08945205062627792
+                },
+                "rate_max": 0.09951304644346237,
+                "rate_min": 0.0818992406129837,
+                "rate_std": 0.0024342897813767195
+              }
+            },
+            "targeted_shuffled": {
+              "choice": "approach",
+              "scores": {
+                "approach": 0.2572826771626134,
+                "challenge": 0.2437673988177581,
+                "cooperate": 0.25432269027403187,
+                "create": 0.24462723374559664
+              },
+              "trace": {
+                "bias_mean": -2.4545793533325195,
+                "bias_std": 0.0001174995195469819,
+                "mean_rate": 0.09041944891214371,
+                "near_one_fraction": 0.0,
+                "near_zero_fraction": 0.0,
+                "population_mean": {
+                  "approach": 0.09197790175676346,
+                  "challenge": 0.0901792049407959,
+                  "cooperate": 0.09159218519926071,
+                  "create": 0.09029657393693924
+                },
+                "rate_max": 0.10048656165599823,
+                "rate_min": 0.0818752720952034,
+                "rate_std": 0.002455066191032529
+              }
+            }
+          },
+          "event_id": "E09-009",
+          "probe": "The raised spoon and pears at the dinner",
+          "target": "approach"
+        }
+      ],
+      "schema": "BC01-D3-development-diagnostic-v1",
+      "seed": 31,
+      "settle_ticks": 32,
+      "shared_feature_manifest_sha256": null,
+      "source_commit": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+      "training_budget": "equal 32 teacher/cue exposure ticks; targeted additionally simulates 16 matched no-teacher counterfactual ticks per card; compute NOT matched"
+    }
+  ]
+}
