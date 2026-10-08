@@ -66,7 +66,7 @@ def _train_generic(net, cards, encoder, circuit, shared, epochs: int,
 
 def _train_targeted(net, cards, encoder, circuit, shared, epochs: int,
                     ticks: int, labels, eta: float, blank_cues: bool = False,
-                    sensory_gain: float = 1.0):
+                    sensory_gain: float = 1.0, observer=None):
     """One bounded three-factor update per event on EXISTING sparse W entries.
 
     Factor 1: cue-only presynaptic firing above target (context).
@@ -81,7 +81,7 @@ def _train_targeted(net, cards, encoder, circuit, shared, epochs: int,
     pre_ticks = ticks // 2
     post_ticks = ticks - pre_ticks
     masks = {a: np.isin(net.post_idx, net.action_populations[a]) for a in EVAL_ACTIONS}
-    for _ in range(epochs):
+    for epoch in range(epochs):
         for card, label in zip(cards, labels):
             stimulus = represent(card["training_cues"], encoder, circuit, shared=shared)
             stimulus[:encoder.sensory_dim] *= sensory_gain
@@ -118,10 +118,60 @@ def _train_targeted(net, cards, encoder, circuit, shared, epochs: int,
                 * np.maximum(post_response[net.post_idx] - no_teacher_response[net.post_idx], 0.0)
                 * masks[label]
             )
+            # D5 diagnostic observer is strictly optional and never
+            # changes the original D4 update. Capture a copy ONLY for
+            # audit mode, so ordinary D4 retains identical numeric behavior.
+            if observer is not None:
+                w_before = net.W.data.copy()
             net.W.data += (eta * correlation).astype(np.float32)
             sign_exc = net.excitatory[net.pre_idx]
+            if observer is not None:
+                proposed = net.W.data.copy()
             net.W.data[sign_exc] = np.clip(net.W.data[sign_exc], 0.0, net.max_abs_weight)
             net.W.data[~sign_exc] = np.clip(net.W.data[~sign_exc], -net.max_abs_weight, 0.0)
+            if observer is not None:
+                selected = masks[label]
+                eligible = selected & (correlation > 0)
+                delta = net.W.data - w_before
+                fixed_cue = float(np.linalg.norm(net.Win.dot(cue)))
+                teacher_col = encoder.action_offset + ACTIONS.index(label)
+                fixed_teacher = float(np.linalg.norm(net.Win[:, teacher_col].toarray()))
+                observer({
+                    "event_id": card["event_id"], "epoch": epoch, "teaching_action": label,
+                    "blank_cues": bool(blank_cues), "sensory_gain": float(sensory_gain),
+                    "action_population_size": int(len(net.action_populations[label])),
+                    "candidate_incoming_edges": int(np.count_nonzero(selected)),
+                    "eligible_edges": int(np.count_nonzero(eligible)),
+                    "eligible_exc": int(np.count_nonzero(eligible & sign_exc)),
+                    "eligible_inh": int(np.count_nonzero(eligible & ~sign_exc)),
+                    "modified_edges": int(np.count_nonzero(delta)),
+                    "clipped_edges": int(np.count_nonzero(eligible & (proposed != net.W.data))),
+                    "clipped_dale_edges": int(np.count_nonzero(
+                        eligible & (((proposed < 0) & sign_exc) |
+                                    ((proposed > 0) & ~sign_exc))
+                    )),
+                    "clipped_max_edges": int(np.count_nonzero(
+                        eligible & (np.abs(proposed) > net.max_abs_weight)
+                    )),
+                    "cue_pre_rate_mean": float(np.mean(pre_response)),
+                    "cue_pre_above_target_fraction": float(np.mean(pre_response > net.target_rate)),
+                    "teacher_counterfactual_target_mean": float(np.mean(
+                        (post_response - no_teacher_response)[net.action_populations[label]]
+                    )),
+                    "teacher_counterfactual_target_positive_fraction": float(np.mean(
+                        (post_response - no_teacher_response)[net.action_populations[label]] > 0
+                    )),
+                    "eligibility_sum": float(np.sum(correlation)),
+                    "eligibility_max": float(np.max(correlation)) if correlation.size else 0.0,
+                    "recurrent_delta_l1": float(np.sum(np.abs(delta))),
+                    "exc_recurrent_delta_l1": float(np.sum(np.abs(delta[sign_exc]))),
+                    "inh_recurrent_delta_l1": float(np.sum(np.abs(delta[~sign_exc]))),
+                    "fixed_cue_drive_l2": fixed_cue,
+                    "fixed_teacher_drive_l2": fixed_teacher,
+                    "cue_teacher_input_ratio": fixed_cue / max(fixed_teacher, 1e-12),
+                    "bias_mean": float(np.mean(net.bias)),
+                    "mean_population_rate": float(np.mean(net.rate[net.action_populations[label]])),
+                })
 
 
 def _distribution(rows, key):
