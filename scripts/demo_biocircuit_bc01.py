@@ -10,6 +10,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from biocircuit.bc01 import FIXTURE_PATH, demo, load_corpus  # noqa: E402
+from biocircuit.shared_memory_adapter import load_shared_corpus  # noqa: E402
 from biocircuit.shared_memory import load_bc_shared  # noqa: E402
 
 DEFAULT_QUESTIONS = [
@@ -23,8 +24,12 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--corpus", type=Path, default=FIXTURE_PATH,
                         help="Pinned original 450-event v12 JSONL or bundled 3-event smoke JSONL")
+    parser.add_argument("--shared-l1", type=Path,
+                        help="Verified canonical 450-memory portable gzip L1")
+    parser.add_argument("--shared-manifest", type=Path,
+                        help="Pinned manifest, required together with --shared-l1")
     parser.add_argument("--shared-dir", type=Path,
-                        help="canonical L1+BC lexical L2 cache; requires pinned full corpus")
+                        help="canonical published compressed L1 + exact BC lexical L2 cache")
     parser.add_argument("--neurons", type=int, default=512)
     parser.add_argument("--seed", type=int, default=1842)
     parser.add_argument("--mode", choices=["local", "global", "generic"], default="local")
@@ -37,10 +42,18 @@ def main() -> None:
     parser.add_argument("--output", type=Path,
                         default=Path("results/biocircuit/BC01_preview.json"))
     args = parser.parse_args()
-    corpus = load_corpus(args.corpus)
-    sensory = None
     if args.shared_dir:
-        sensory, _ = load_bc_shared(args.shared_dir, corpus)
+        if args.shared_l1 or args.shared_manifest:
+            parser.error("--shared-dir is exclusive with explicit --shared-l1 and --shared-manifest")
+        args.shared_l1 = args.shared_dir / "pretorius_l1_v1.jsonl.gz"
+        args.shared_manifest = args.shared_dir / "manifest.json"
+    if (args.shared_l1 is None) != (args.shared_manifest is None):
+        parser.error("--shared-l1 requires --shared-manifest and vice versa")
+    corpus = (load_shared_corpus(args.shared_l1, args.shared_manifest)
+              if args.shared_l1 is not None else load_corpus(args.corpus))
+    cached = None
+    if args.shared_dir:
+        cached, _ = load_bc_shared(args.shared_dir, corpus)
     questions = args.question or DEFAULT_QUESTIONS
     if args.interactive:
         print("Enter an additional question, or an empty line to finish:")
@@ -54,14 +67,14 @@ def main() -> None:
             questions.append(question)
     result = demo(corpus, questions, neurons=args.neurons, seed=args.seed,
                   mode=args.mode, exposures=args.exposures, checkpoint=args.checkpoint,
-                  shared_sensory=sensory)
+                  shared_sensory=cached)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
                            encoding="utf-8")
     print("BioCircuit BC01 exploratory Pretorius")
     print(f"Pinned {result['corpus_kind']} autobiography: {result['corpus_events']} reconstructed events")
     print("Encoding: hashed lexical fallback (NOT semantic embedding)")
-    print("Shared source cache:", bool(sensory is not None))
+    print("Canonical BC sensory cache:", bool(cached is not None))
     print(f"Recurrent synapses changed: {result['recurrent_changed_synapses']}")
     for row in result["tests"]:
         print("\nQuestion:", row["query"])
