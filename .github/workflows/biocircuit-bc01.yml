@@ -32,8 +32,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: Azimn/Pretorius-Connectome
-          ref: 597fb23473a60eecf2e1b50f79c22bfbea816be5
+          ref: feature/shared-memory-v1
           path: upstream-connectome
+      - name: Export verified canonical L1/BC01 L2 once
+        run: python upstream-connectome/scripts/export_shared_memory.py --output results/shared_memory/v1
+      - name: Validate cached artifact replay
+        run: python upstream-connectome/scripts/export_shared_memory.py --output results/shared_memory/v1 --validate-only
       - name: Run BC00 and BC01 unit tests
         run: python -m unittest discover -s tests_biocircuit -v
       - name: Run source-grounded demo
@@ -44,6 +48,10 @@ jobs:
         run: |
           python scripts/demo_biocircuit_bc01.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --neurons 256 --seed 1842 --exposures 8 --output results/biocircuit/BC01_full_450_preview.json --checkpoint results/biocircuit/BC01_full_450_preview.npz
           python -c 'import json; x=json.load(open("results/biocircuit/BC01_full_450_preview.json")); assert x["corpus_events"] == 450; assert x["corpus_kind"] == "full"; assert all(v["checkpoint_restart_exact"] for v in x["tests"]); assert x["tests"][2]["retrieval"]["candidate"] is None'
+      - name: Run full BC01 using SAME cached canonical sensory input
+        run: |
+          python scripts/demo_biocircuit_bc01.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --shared-dir results/shared_memory/v1 --neurons 256 --seed 1842 --exposures 8 --output results/biocircuit/BC01_cached_full_450.json --checkpoint results/biocircuit/BC01_cached_full_450.npz
+          python -c 'import json; a=json.load(open("results/biocircuit/BC01_full_450_preview.json")); b=json.load(open("results/biocircuit/BC01_cached_full_450.json")); assert a["tests"] == b["tests"]; assert a["recurrent_changed_synapses"] == b["recurrent_changed_synapses"]; assert b["shared_cached_source"]; print("EXACT BC01 FULL SOURCE VECTORS AND OUTPUTS MATCH")'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -55,5 +63,9 @@ jobs:
             results/biocircuit/BC01_full_450_preview.json
             results/biocircuit/BC01_full_450_preview.npz
             results/biocircuit/BC01_full_450_preview.bc01.json
+            results/biocircuit/BC01_cached_full_450.json
+            results/biocircuit/BC01_cached_full_450.npz
+            results/biocircuit/BC01_cached_full_450.bc01.json
+            results/shared_memory/v1/manifest.json
           if-no-files-found: warn
           retention-days: 30
