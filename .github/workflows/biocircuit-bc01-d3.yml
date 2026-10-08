@@ -47,7 +47,7 @@ jobs:
           python -c 'import json; r=json.load(open("results/biocircuit/BC01_D3.json")); assert len(r["trials"])==9 and r["source_events"]==450; assert all(x["checkpoint_restart_exact"] for x in r["trials"]); assert all(x["shared_feature_manifest_sha256"] for x in r["trials"])'
       - name: Repeat full experiment in fresh Python process and require exact identity
         run: |
-          python scripts/run_biocircuit_bc01_d3.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --cache-root data/derived/shared-l2-cache --connectome-root upstream-connectome --neurons 256 --seeds 31,37,43 --modes local,global,generic --eta 0.03 --gain 1 --output results/biocircuit/BC01_D3_REPEAT.json
+          python scripts/run_biocircuit_bc01_d3.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --cache-root data/derived/shared-l2-cache --connectome-root upstream-connectome --neurons 256 --seeds 31,37,43 --modes local,global,generic --eta 0.03 --gain 1 --checkpoint-dir results/biocircuit/d3_repeat_checkpoints --output results/biocircuit/BC01_D3_REPEAT.json
           python -c 'import json; a=json.load(open("results/biocircuit/BC01_D3.json")); b=json.load(open("results/biocircuit/BC01_D3_REPEAT.json")); assert a["trials"]==b["trials"], "Source-verified neural D3 replay drift"'
       - name: Historical encoder check without shared preprocessing
         run: |
