@@ -1,5 +1,9 @@
 # Pretorius Neural Network
 
+
+> **BioCircuit current handoff and next action:** [Start here: status, decisions, evidence ledger and chat-independent handoff](research/BIOCIRCUIT_CURRENT_STATUS_AND_HANDOFF.md). The first functional BC00 prototype has shipped; [BC01 Issue #26](https://github.com/Azimn/Pretorius-Neural-Network/issues/26) is the prioritized next deliverable: a one-command evidence-grounded Pretorius memory/decision demo with recurrent causal tests and checkpoint restart. This remains a research module of this repository, not a separate production character. For actual FlyWire imprinting use [Pretorius-Connectome](https://github.com/Azimn/Pretorius-Connectome); for the definitive character use [The Doctor Lives](https://github.com/Azimn/The-Doctor-Lives).
+
+
 Experimental research repository for building, testing, and deliberately perturbing a neural representation of Doctor Pretorius.
 
 The project is centered on a falsifiable question: can a character phenotype become an property of a plastic recurrent neural substrate rather than merely a prompt, lookup table, or trained output layer?
