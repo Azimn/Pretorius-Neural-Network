@@ -64,3 +64,13 @@ This repository is experimental research software. It does not assert consciousn
 BioCircuit's initial executable kernel is available in `biocircuit/` with a runnable script `scripts/run_biocircuit_bc00.py`, deterministic tests in `tests_biocircuit/`, and an independent CI workflow. Its 4,096-unit matched local-inhibition and global-inhibition models learn 128 random synthetic associations, preserving equal connection, activity and synaptic-update budgets. On three seeds, compartment-local competition achieved 96.6% on original trained cues and 57.3% on damaged cues, while the simpler global control achieved 88.3% and **66.7%** respectively. Thus the biological-inspired circuit has NOT demonstrated an advantage in robustness. Full destruction of the learned output synapses dropped both to chance-level accuracy. This is an early working software prototype, not a real fly connectome, recurrent persona, or semantic autobiography imprint.
 
 [Run instructions](research/BIOCIRCUIT_BC00_README.md) · [Measured results and limitations](results/biocircuit/BC00_RESULTS.md) · [Architecture RFC](research/BIOCIRCUIT_RFC_V0_1.md).
+
+## BioCircuit BC01 exploratory Pretorius demo
+
+BC01 development now has a source-locked offline CLI, real three-event smoke fixture, pinned 450-event full-corpus import path, fixed local/global circuit bridge into the existing recurrent donor, untrained generic policy readout, synaptic-delta lesion, and checkpoint restart comparison. **This is an exploratory implementation, not a successful autobiographical neural-imprint claim.** The external lexical retriever cites original reconstructed text but returns `unknown` for unverified support/refutation. Actions have not been independently validated for semantic appropriateness.
+
+```sh
+python scripts/demo_biocircuit_bc01.py
+```
+
+[BC01 run guide and limitations](research/BIOCIRCUIT_BC01_PREVIEW.md) · [Tracked completion gates](https://github.com/Azimn/Pretorius-Neural-Network/issues/26).
