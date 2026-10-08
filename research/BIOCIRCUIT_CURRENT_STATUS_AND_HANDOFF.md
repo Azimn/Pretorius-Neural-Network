@@ -7,6 +7,14 @@
 **Canonical character:** [The-Doctor-Lives](https://github.com/Azimn/The-Doctor-Lives).  
 **Independent anatomical experiment:** [Pretorius-Connectome](https://github.com/Azimn/Pretorius-Connectome).
 
+## BC01 implementation update: first runnable preview merged (2026-10-08)
+
+**PR #27 merged to main at `1b6c8781a9f2283f4e8e7ae20375d30349740606`.** An executable [BC01 exploratory CLI](../scripts/demo_biocircuit_bc01.py), [pinned importer and recurrent bridge](../biocircuit/bc01.py), [run guide](BIOCIRCUIT_BC01_PREVIEW.md), [measurements and adverse findings](../results/biocircuit/BC01_PREVIEW_RESULTS.md), [tests](../tests_biocircuit/test_bc01.py), and [CI workflow](../.github/workflows/biocircuit-bc01.yml) now exist. Do not reimplement these. The runner uses the byte-pinned authentic three-event smoke fixture or the original complete 450-event v12 corpus at frozen upstream commit `597fb23473a60eecf2e1b50f79c22bfbea816be5`.
+
+**Observed result:** the full 450-memory CI experiment successfully loads the corpus and reproduces policy probabilities after checkpoint reload, but its targeted recurrent weight lesion changed no chosen actions across the three demonstration questions. Measured score differences were around `6.6e-6` to `7.7e-6` at 256 units, one seed. A blank-input matched-tick control produced differences around `2.2e-6`. An unrelated spacecraft query initially returned a false lexical source candidate, then a lexical-overlap gate fixed that particular error. **There is no demonstrated autobiographical neural policy learning or verified claim entailment.** The first preview is successful *integration*, not a passed BC01 research hypothesis.
+
+**Immediate next step under open Issue #26:** define independent source-anchored behavior/policy targets and a fair recurrent-only causal endpoint, without event-ID leakage. Add retrieval-only/decoder-only, matched generic/local/global and scrambled-content controls, multiseed outcome reporting, and support/refute/unknown evaluation. Do not treat the included development questions or Pilot 04-06 cases as confirmatory holdouts. Keep production The Doctor Lives untouched.
+
 ## Executive handoff: read this first in a new conversation
 
 The user values working deliverables and high-speed, incremental execution, not another long chain of planning-only neural research. **Do not create a new repository, reimplement the existing engines from scratch, or resume from a stale chat summary.** Continue from committed code and actual evidence in these repositories. Current immediate priority is **BC01**, a runnable, source-grounded Pretorius neural-memory demonstration with checkpoint persistence and a concrete causal ablation test. Use the existing BioCircuit BC00 kernel and generic recurrent `persona_net` implementation; publish an executable script and test artifact before expanding to 65,536 neurons.
