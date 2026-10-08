@@ -54,3 +54,9 @@ The sealed terminal battery is intentionally not committed to this public reposi
 v0.4 promotes recurrent-substrate performance to the primary endpoint. The learned motor decoder becomes a control rather than the default evidence for persona acquisition. Neural-update budgets will be matched exactly, and the recurrent phenotype will be stress-tested using lesions, transplants, noise, washout, and partial identity grafts before the terminal set is opened.
 
 This repository is experimental research software. It does not assert consciousness, sentience, biological equivalence, or human psychological fidelity.
+
+## BioCircuit BC00 executable prototype
+
+BioCircuit's initial executable kernel is available in `biocircuit/` with a runnable script `scripts/run_biocircuit_bc00.py`, deterministic tests in `tests_biocircuit/`, and an independent CI workflow. Its 4,096-unit matched local-inhibition and global-inhibition models learn 128 random synthetic associations, preserving equal connection, activity and synaptic-update budgets. On three seeds, compartment-local competition achieved 96.6% on original trained cues and 57.3% on damaged cues, while the simpler global control achieved 88.3% and **66.7%** respectively. Thus the biological-inspired circuit has NOT demonstrated an advantage in robustness. Full destruction of the learned output synapses dropped both to chance-level accuracy. This is an early working software prototype, not a real fly connectome, recurrent persona, or semantic autobiography imprint.
+
+[Run instructions](research/BIOCIRCUIT_BC00_README.md) · [Measured results and limitations](results/biocircuit/BC00_RESULTS.md) · [Architecture RFC](research/BIOCIRCUIT_RFC_V0_1.md).
