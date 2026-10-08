@@ -1,0 +1,56 @@
+name: BioCircuit consumes canonical shared memory
+on:
+  push:
+    paths:
+      - "biocircuit/bc01.py"
+      - "biocircuit/shared_features.py"
+      - "scripts/demo_biocircuit_bc01.py"
+      - "tests_biocircuit/test_shared_feature_consumer.py"
+      - ".github/workflows/biocircuit-shared-memory.yml"
+  pull_request:
+    paths:
+      - "biocircuit/bc01.py"
+      - "biocircuit/shared_features.py"
+      - "scripts/demo_biocircuit_bc01.py"
+      - "tests_biocircuit/test_shared_feature_consumer.py"
+      - ".github/workflows/biocircuit-shared-memory.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: CPU dependency installation
+        run: python -m pip install "numpy>=1.26,<3" "scipy>=1.11,<2" "scikit-learn>=1.5,<2"
+      - name: Pin canonical shared source provider
+        uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Connectome
+          ref: 06bece269459a43d9e4ed09e5baabbacbd2082f7
+          path: upstream-connectome
+      - name: Existing BC00 and BC01 plus new cross-repository regressions
+        run: OPENBLAS_NUM_THREADS=1 python -m unittest discover -s tests_biocircuit -v
+      - name: Build once and run BioCircuit with shared L2
+        run: |
+          OPENBLAS_NUM_THREADS=1 python upstream-connectome/scripts/build_shared_memory_l2.py --seed 31 --output-dir data/derived/shared-memory-l2-seed31 --report results/biocircuit/shared-build.json
+          OPENBLAS_NUM_THREADS=1 python scripts/demo_biocircuit_bc01.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --shared-cache data/derived/shared-memory-l2-seed31 --connectome-root upstream-connectome --neurons 256 --seed 31 --output results/biocircuit/BC01_shared_v1.json --checkpoint results/biocircuit/BC01_shared_v1.npz
+          python -c 'import json; x=json.load(open("results/biocircuit/BC01_shared_v1.json")); assert x["corpus_events"]==450 and x["shared_fit_seed"]==31 and all(y["checkpoint_restart_exact"] for y in x["tests"])'
+      - name: Run unchanged historical BC01 input baseline
+        run: |
+          OPENBLAS_NUM_THREADS=1 python scripts/demo_biocircuit_bc01.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --neurons 256 --seed 31 --output results/biocircuit/BC01_legacy_v1.json --checkpoint results/biocircuit/BC01_legacy_v1.npz
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: biocircuit-shared-memory-integration
+          path: |
+            results/biocircuit/BC01_shared_v1.json
+            results/biocircuit/BC01_legacy_v1.json
+            results/biocircuit/shared-build.json
+            data/derived/shared-memory-l2-seed31/manifest.json
+          retention-days: 30
