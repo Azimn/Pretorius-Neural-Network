@@ -18,7 +18,7 @@ permissions:
 jobs:
   source-verified-development:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35
     env:
       OPENBLAS_NUM_THREADS: "1"
     steps:
@@ -32,7 +32,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Azimn/Pretorius-Connectome
-          ref: 564e52403b6e112f7618a5ad7dd77d2483967a6a
+          ref: 7cd631f3b533203e39465ec31c4ee42945610e2f
           path: upstream-connectome
       - name: Regression tests including all prior BC01 baselines
         run: python -m unittest discover -s tests_biocircuit -v
@@ -45,6 +45,10 @@ jobs:
         run: |
           python scripts/run_biocircuit_bc01_d3.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --cache-root data/derived/shared-l2-cache --connectome-root upstream-connectome --neurons 256 --seeds 31,37,43 --modes local,global,generic --eta 0.03 --gain 1 --checkpoint-dir results/biocircuit/d3_checkpoints --output results/biocircuit/BC01_D3.json
           python -c 'import json; r=json.load(open("results/biocircuit/BC01_D3.json")); assert len(r["trials"])==9 and r["source_events"]==450; assert all(x["checkpoint_restart_exact"] for x in r["trials"]); assert all(x["shared_feature_manifest_sha256"] for x in r["trials"])'
+      - name: Repeat full experiment in fresh Python process and require exact identity
+        run: |
+          python scripts/run_biocircuit_bc01_d3.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --cache-root data/derived/shared-l2-cache --connectome-root upstream-connectome --neurons 256 --seeds 31,37,43 --modes local,global,generic --eta 0.03 --gain 1 --output results/biocircuit/BC01_D3_REPEAT.json
+          python -c 'import json; a=json.load(open("results/biocircuit/BC01_D3.json")); b=json.load(open("results/biocircuit/BC01_D3_REPEAT.json")); assert a["trials"]==b["trials"], "Source-verified neural D3 replay drift"'
       - name: Historical encoder check without shared preprocessing
         run: |
           python scripts/run_biocircuit_bc01_d3.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --neurons 256 --seeds 31 --modes local --eta 0.03 --output results/biocircuit/BC01_D3_LEGACY.json
@@ -66,6 +70,7 @@ jobs:
           path: |
             results/biocircuit/BC01_D3.json
             results/biocircuit/BC01_D3_LEGACY.json
+            results/biocircuit/BC01_D3_REPEAT.json
             results/biocircuit/d3-cache-*.json
             results/biocircuit/d3_checkpoints/
           retention-days: 30
