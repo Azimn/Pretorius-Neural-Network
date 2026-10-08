@@ -13,11 +13,11 @@ from persona_net.encoding import ExperienceEncoder
 
 ROOT = Path(__file__).resolve().parents[1]
 UPSTREAM = ROOT / "upstream-connectome"
-ARTIFACT = ROOT / "results/shared_memory/v1"
+ARTIFACT = UPSTREAM / "artifacts/shared_memory/v1"
 FULL = UPSTREAM / "memories/current/Pretorius_v12_450_Events_Complete.jsonl"
 
 
-@unittest.skipUnless(FULL.is_file() and (ARTIFACT / "manifest.json").is_file(),
+@unittest.skipUnless(FULL.is_file() and (ARTIFACT / "bc01_l2_manifest.json").is_file(),
                      "upstream canonical bundle required; BC01 workflow creates it")
 class BC01SharedTests(unittest.TestCase):
     @classmethod
@@ -74,8 +74,8 @@ class BC01SharedTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 load_bc_shared(dest, self.corpus)
             shutil.copy2(ARTIFACT / "manifest.json", dest / "manifest.json")
-            (dest / "bc01_lexical_256.npy").write_bytes(
-                (dest / "bc01_lexical_256.npy").read_bytes() + b"tamper")
+            (dest / "bc01_sensory_256.npy").write_bytes(
+                (dest / "bc01_sensory_256.npy").read_bytes() + b"tamper")
             with self.assertRaises(ValueError):
                 load_bc_shared(dest, self.corpus)
         with self.assertRaises(ValueError):
