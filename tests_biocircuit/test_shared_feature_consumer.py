@@ -3,6 +3,8 @@ from pathlib import Path
 import json
 import sys
 import tempfile
+import types
+from unittest.mock import patch
 import unittest
 
 import numpy as np
@@ -46,6 +48,19 @@ class BC01SharedCacheTests(unittest.TestCase):
         self.assertEqual(x.shape, (256,))
         self.assertTrue(np.all(np.isfinite(x)))
         self.assertEqual(self.shared.projection_version, "bc01-signed-feature-bucket-v1")
+
+    def test_cached_provider_from_another_checkout_is_rejected(self):
+        # In a long-lived Python session, sys.path changes alone cannot
+        # safely switch provider modules already in sys.modules.
+        from biocircuit.shared_features import BioCircuitSharedFeatures
+        with tempfile.TemporaryDirectory() as other:
+            impostor = types.ModuleType("pretorius_connectome.shared_memory_l2")
+            impostor.__file__ = str(Path(other) / "shared_memory_l2.py")
+            with patch.dict(sys.modules, {
+                "pretorius_connectome.shared_memory_l2": impostor
+            }):
+                with self.assertRaisesRegex(ValueError, "different checkout"):
+                    BioCircuitSharedFeatures(self.dir, UPSTREAM)
 
     def test_tampered_input_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "differs"):
