@@ -89,6 +89,17 @@ def _train_targeted(net, cards, encoder, circuit, shared, epochs: int,
             for _ in range(pre_ticks):
                 net.step(cue, learn=False)
             pre_response = net.rate.copy()
+            # Strict paired counterfactual: run the same second-phase time
+            # window *without* teaching, from the same fast state. Comparing
+            # unpaired timepoints can yield a zero learning signal simply
+            # because the rate network is settling down after reset.
+            before_v, before_rate, before_tick = net.v.copy(), net.rate.copy(), net.tick
+            for _ in range(post_ticks):
+                net.step(cue, learn=False)
+            no_teacher_response = net.rate.copy()
+            net.v[:] = before_v
+            net.rate[:] = before_rate
+            net.tick = before_tick
             # Teacher never contains event IDs, source text or policy
             # features; it activates the donor's EXISTING action channel.
             teacher = cue.copy()
@@ -96,11 +107,12 @@ def _train_targeted(net, cards, encoder, circuit, shared, epochs: int,
             for _ in range(post_ticks):
                 net.step(teacher, learn=False)
             post_response = net.rate.copy()
-            # Only the taught action's existing incoming recurrent edges
-            # receive activity-gated weight adjustments.
+            # Match the exact time window, not pre-/post-settling rates.
+            # Counterfactual branch adds extra inference ticks and is not
+            # a strict FLOP-matched comparator to global Hebbian exposure.
             correlation = (
                 np.maximum(pre_response[net.pre_idx] - net.target_rate, 0.0)
-                * np.maximum(post_response[net.post_idx] - pre_response[net.post_idx], 0.0)
+                * np.maximum(post_response[net.post_idx] - no_teacher_response[net.post_idx], 0.0)
                 * masks[label]
             )
             net.W.data += (eta * correlation).astype(np.float32)
@@ -250,7 +262,7 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
                           if shared else "legacy BC01 hashed lexical"),
         "eta": eta, "gain": gain, "background_ticks": background_ticks,
         "card_ticks": card_ticks, "epochs": epochs, "settle_ticks": settle_ticks,
-        "training_budget": "equal 32 ticks per card; targeted 16 cue + 16 teacher; generic 32 co-presented",
+        "training_budget": "equal 32 teacher/cue exposure ticks; targeted additionally simulates 16 matched no-teacher counterfactual ticks per card; compute NOT matched",
         "result": metrics, "neural_cue_rms_spread": spread, "physiology": physiology,
         "recurrent_delta_l1": deltas,
         "checkpoint_restart_exact": bool(all(restart_equal)),
