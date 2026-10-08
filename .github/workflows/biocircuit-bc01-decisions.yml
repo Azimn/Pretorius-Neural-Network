@@ -39,12 +39,18 @@ jobs:
         run: |
           python scripts/run_biocircuit_bc01_decisions.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --neurons 256 --seeds 31,37,43 --modes local,global,generic --epochs 3 --card-ticks 32 --background-ticks 8 --settle-ticks 32 --checkpoint-dir results/biocircuit/d1_checkpoints --output results/biocircuit/BC01_D1.json
           python -c 'import json; x=json.load(open("results/biocircuit/BC01_D1.json")); assert len(x["trials"])==9; assert x["events"]==450 and x["decision_cards"]==16; assert all(t["checkpoint_reproduced_all"] for t in x["trials"])'
+      - name: Run separately labelled D2 post-hoc plasticity sensitivity diagnostic
+        run: |
+          python scripts/run_biocircuit_bc01_decisions.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --neurons 256 --seeds 31,37,43 --modes local,global,generic --epochs 3 --card-ticks 32 --background-ticks 8 --settle-ticks 32 --plasticity-gain 10 --checkpoint-dir results/biocircuit/d2_checkpoints --output results/biocircuit/BC01_D2.json
+          python -c 'import json; x=json.load(open("results/biocircuit/BC01_D2.json")); assert len(x["trials"])==9; assert all(t["checkpoint_reproduced_all"] for t in x["trials"])'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: biocircuit-bc01-grounded-decision-assay
           path: |
             results/biocircuit/BC01_D1.json
+            results/biocircuit/BC01_D2.json
             results/biocircuit/d1_checkpoints/
+            results/biocircuit/d2_checkpoints/
           if-no-files-found: warn
           retention-days: 30
