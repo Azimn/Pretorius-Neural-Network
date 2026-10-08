@@ -28,17 +28,21 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install CPU dependencies
-        run: python -m pip install "numpy>=1.26,<3" "scipy>=1.11,<2"
+        run: python -m pip install "numpy>=1.26,<3" "scipy>=1.11,<2" "scikit-learn>=1.5,<2"
       - uses: actions/checkout@v4
         with:
           repository: Azimn/Pretorius-Connectome
-          ref: b74448d70621ab51c5ea8130237bcc3ab446fe3b
+          ref: 81146c8b8b3cc0d538c5055bdabf1f767e0edd2f
           # This commit contains immutable L1 manifest + archive; L0 blob remains pinned in BC01.
           path: upstream-connectome
       - name: Assert source of shared L1 is present
         run: |
           test -f upstream-connectome/artifacts/shared_memory/v1/manifest.json
           test -f upstream-connectome/artifacts/shared_memory/v1/pretorius_l1_v1.jsonl.gz
+      - name: Add exact BC01 lexical L2 to existing published L1
+        run: python upstream-connectome/scripts/export_shared_memory.py --output upstream-connectome/artifacts/shared_memory/v1
+      - name: Validate replayed cached BC01 L2
+        run: python upstream-connectome/scripts/export_shared_memory.py --output upstream-connectome/artifacts/shared_memory/v1 --validate-only
       - name: Run BC00 and BC01 unit tests
         run: python -m unittest discover -s tests_biocircuit -v
       - name: Run source-grounded demo
@@ -62,6 +66,10 @@ jobs:
           assert a["tests"] == b["tests"], "Same seed and source must yield identical BC01 evaluation"
           print("BC01 original-L0 and portable-L1 tests match exactly")
           PY
+      - name: Prove canonical BC01 L2 preserves full 450 event neurobehavior
+        run: |
+          python scripts/demo_biocircuit_bc01.py --shared-dir upstream-connectome/artifacts/shared_memory/v1 --neurons 256 --seed 1842 --exposures 8 --output results/biocircuit/BC01_shared_L2_preview.json --checkpoint results/biocircuit/BC01_shared_L2_preview.npz
+          python -c 'import json; a=json.load(open("results/biocircuit/BC01_full_450_preview.json")); b=json.load(open("results/biocircuit/BC01_shared_L2_preview.json")); assert a["tests"]==b["tests"]; assert a["recurrent_changed_synapses"]==b["recurrent_changed_synapses"]; assert b["shared_cached_source"]; print("PASS: 450 source features and all BC01 decisions/restart checks match exactly")'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -76,5 +84,9 @@ jobs:
             results/biocircuit/BC01_shared_L1_preview.json
             results/biocircuit/BC01_shared_L1_preview.npz
             results/biocircuit/BC01_shared_L1_preview.bc01.json
+            results/biocircuit/BC01_shared_L2_preview.json
+            results/biocircuit/BC01_shared_L2_preview.npz
+            results/biocircuit/BC01_shared_L2_preview.bc01.json
+            upstream-connectome/artifacts/shared_memory/v1/bc01_l2_manifest.json
           if-no-files-found: warn
           retention-days: 30

@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from biocircuit.bc01 import FIXTURE_PATH, demo, load_corpus  # noqa: E402
 from biocircuit.shared_memory_adapter import load_shared_corpus  # noqa: E402
+from biocircuit.shared_memory import load_bc_shared  # noqa: E402
 
 DEFAULT_QUESTIONS = [
     "What do you remember of the millstream map and turned glove?",
@@ -31,6 +32,8 @@ def main() -> None:
                         help="Optional canonical trained-episode L2 TF-IDF cache")
     parser.add_argument("--connectome-root", type=Path,
                         help="Pinned Pretorius-Connectome checkout; required with --shared-cache")
+    parser.add_argument("--shared-dir", type=Path,
+                        help="Exact pinned BC01 sensory cache atop canonical published L1")
     parser.add_argument("--neurons", type=int, default=512)
     parser.add_argument("--seed", type=int, default=1842)
     parser.add_argument("--mode", choices=["local", "global", "generic"], default="local")
@@ -43,6 +46,11 @@ def main() -> None:
     parser.add_argument("--output", type=Path,
                         default=Path("results/biocircuit/BC01_preview.json"))
     args = parser.parse_args()
+    if args.shared_dir:
+        if args.shared_l1 or args.shared_manifest or args.shared_cache or args.connectome_root:
+            parser.error("--shared-dir cannot be combined with the other shared flags")
+        args.shared_l1 = args.shared_dir / "pretorius_l1_v1.jsonl.gz"
+        args.shared_manifest = args.shared_dir / "manifest.json"
     if (args.shared_l1 is None) != (args.shared_manifest is None):
         parser.error("--shared-l1 requires --shared-manifest and vice versa")
     corpus = (load_shared_corpus(args.shared_l1, args.shared_manifest)
@@ -54,6 +62,9 @@ def main() -> None:
         from biocircuit.shared_features import BioCircuitSharedFeatures
         shared = BioCircuitSharedFeatures(args.shared_cache, args.connectome_root)
         shared.verify_corpus(corpus)
+    cached_source = None
+    if args.shared_dir:
+        cached_source, _ = load_bc_shared(args.shared_dir, corpus)
     questions = args.question or DEFAULT_QUESTIONS
     if args.interactive:
         print("Enter an additional question, or an empty line to finish:")
@@ -67,13 +78,14 @@ def main() -> None:
             questions.append(question)
     result = demo(corpus, questions, neurons=args.neurons, seed=args.seed,
                   mode=args.mode, exposures=args.exposures, checkpoint=args.checkpoint,
-                  shared=shared)
+                  shared=shared, shared_sensory=cached_source)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
                            encoding="utf-8")
     print("BioCircuit BC01 exploratory Pretorius")
     print(f"Pinned {result['corpus_kind']} autobiography: {result['corpus_events']} reconstructed events")
     print("Encoding:", result["encoder"], "(NOT semantic entailment)")
+    print("Canonical exact BC01 cached source:", bool(cached_source is not None))
     print(f"Recurrent synapses changed: {result['recurrent_changed_synapses']}")
     for row in result["tests"]:
         print("\nQuestion:", row["query"])
