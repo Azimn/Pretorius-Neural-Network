@@ -86,3 +86,9 @@ python scripts/run_biocircuit_bc01_decisions.py --corpus Pretorius-Connectome/me
 ```
 
 [Grounded decision cards](resources/biocircuit/bc01_decision_cards_v1.json) · [D1 measured results](results/biocircuit/BC01_D1_RESULTS.md) · [D2 dose sensitivity](results/biocircuit/BC01_D2_RESULTS.md) · [Persistent BC01 requirements](https://github.com/Azimn/Pretorius-Neural-Network/issues/26). The old one-command small smoke remains at `python scripts/demo_biocircuit_bc01.py`.
+
+## Shared memory consumer (BioCircuit ↔ Pretorius-Connectome)
+
+Both architectures can now consume the same source-owned, versioned **L2 TF-IDF feature cache** built from the existing immutable 450-memory L1 archive. BioCircuit's optional adapter lives in `biocircuit/shared_features.py` and projects the cache into 256 sensory channels using a separate, fixed signed hashing layer; FlyWire retains its own graph projection and the raw biological v783 synapse graph unchanged. Neither system imports the other's trained neural weights. The old BC01 lexical-hash runner remains the default for historical comparability.
+
+The cross-repository proof passed 18 tests with exact 450-event source correspondence, reproducible query encoding and checkpoint reload. Both shared-cache and old BC01 inference still exhibited **no useful recurrent lesion-dependent action changes** on the three development questions. [Measured integration results](results/biocircuit/BC01_SHARED_MEMORY_RESULTS.md) · [Source L1/L2 implementation](https://github.com/Azimn/Pretorius-Connectome/blob/main/docs/SHARED_MEMORY_L2_IMPLEMENTATION.md) · [Tracker](https://github.com/Azimn/Pretorius-Connectome/issues/10).

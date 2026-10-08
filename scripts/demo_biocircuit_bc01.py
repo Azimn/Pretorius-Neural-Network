@@ -27,6 +27,10 @@ def main() -> None:
                         help="Verified canonical 450-memory portable gzip L1")
     parser.add_argument("--shared-manifest", type=Path,
                         help="Pinned manifest, required together with --shared-l1")
+    parser.add_argument("--shared-cache", type=Path,
+                        help="Optional canonical trained-episode L2 TF-IDF cache")
+    parser.add_argument("--connectome-root", type=Path,
+                        help="Pinned Pretorius-Connectome checkout; required with --shared-cache")
     parser.add_argument("--neurons", type=int, default=512)
     parser.add_argument("--seed", type=int, default=1842)
     parser.add_argument("--mode", choices=["local", "global", "generic"], default="local")
@@ -43,6 +47,13 @@ def main() -> None:
         parser.error("--shared-l1 requires --shared-manifest and vice versa")
     corpus = (load_shared_corpus(args.shared_l1, args.shared_manifest)
               if args.shared_l1 is not None else load_corpus(args.corpus))
+    if bool(args.shared_cache) != bool(args.connectome_root):
+        parser.error("--shared-cache and --connectome-root must be supplied together")
+    shared = None
+    if args.shared_cache:
+        from biocircuit.shared_features import BioCircuitSharedFeatures
+        shared = BioCircuitSharedFeatures(args.shared_cache, args.connectome_root)
+        shared.verify_corpus(corpus)
     questions = args.question or DEFAULT_QUESTIONS
     if args.interactive:
         print("Enter an additional question, or an empty line to finish:")
@@ -55,13 +66,14 @@ def main() -> None:
                 break
             questions.append(question)
     result = demo(corpus, questions, neurons=args.neurons, seed=args.seed,
-                  mode=args.mode, exposures=args.exposures, checkpoint=args.checkpoint)
+                  mode=args.mode, exposures=args.exposures, checkpoint=args.checkpoint,
+                  shared=shared)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
                            encoding="utf-8")
     print("BioCircuit BC01 exploratory Pretorius")
     print(f"Pinned {result['corpus_kind']} autobiography: {result['corpus_events']} reconstructed events")
-    print("Encoding: hashed lexical fallback (NOT semantic embedding)")
+    print("Encoding:", result["encoder"], "(NOT semantic entailment)")
     print(f"Recurrent synapses changed: {result['recurrent_changed_synapses']}")
     for row in result["tests"]:
         print("\nQuestion:", row["query"])
