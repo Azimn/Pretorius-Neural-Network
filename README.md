@@ -74,3 +74,15 @@ python scripts/demo_biocircuit_bc01.py
 ```
 
 [BC01 run guide and limitations](research/BIOCIRCUIT_BC01_PREVIEW.md) · [Tracked completion gates](https://github.com/Azimn/Pretorius-Neural-Network/issues/26).
+
+## BC01: source-grounded decision experiment (D1 and D2)
+
+BioCircuit's new development-only decision runner uses the 450-event frozen autobiography as its source, then checks 16 individually source-verified first-person decision records against fixed action-population readouts. Both a baseline plasticity dose (D1) and a tenfold increase (D2) ran successfully across three seeds and the compartment-local, global and generic recurrent conditions. **Neither establishes useful synaptic decision learning.** D1 approximated chance and D2 collapsed all predictions to a single class per seed. These negative results are as important as the runnable integration, and are retained verbatim in the measured reports.
+
+Run on a checkout that also contains the pinned sibling `Pretorius-Connectome` repository:
+
+```sh
+python scripts/run_biocircuit_bc01_decisions.py --corpus Pretorius-Connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl
+```
+
+[Grounded decision cards](resources/biocircuit/bc01_decision_cards_v1.json) · [D1 measured results](results/biocircuit/BC01_D1_RESULTS.md) · [D2 dose sensitivity](results/biocircuit/BC01_D2_RESULTS.md) · [Persistent BC01 requirements](https://github.com/Azimn/Pretorius-Neural-Network/issues/26). The old one-command small smoke remains at `python scripts/demo_biocircuit_bc01.py`.

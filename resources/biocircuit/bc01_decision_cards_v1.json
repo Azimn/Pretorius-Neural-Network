@@ -1,0 +1,121 @@
+{
+  "schema": "BC01 decision cards v1",
+  "status": "development-only; subjective action interpretation, not independently adjudicated",
+  "source_commit": "597fb23473a60eecf2e1b50f79c22bfbea816be5",
+  "source_git_blob": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+  "notes": "Action codes interpret an explicitly source-recorded first-person choice. Card IDs join only at training and evaluation metadata; no IDs or labels in query features.",
+  "cards": [
+    {
+      "event_id": "E09-001",
+      "action": "challenge",
+      "source_decision": "I denounced the delay, then repeated the dispute over supper",
+      "training_cues": "turned glove millstream map",
+      "probe": "Heed the turned glove and the millstream map"
+    },
+    {
+      "event_id": "E09-003",
+      "action": "challenge",
+      "source_decision": "I repeated it conspicuously from the demonstration floor",
+      "training_cues": "gallery stove lamp shadow",
+      "probe": "A gallery stove and the lamp shadow"
+    },
+    {
+      "event_id": "E01-002",
+      "action": "challenge",
+      "source_decision": "I drafted a testable objection",
+      "training_cues": "candle wax telegraph diagram",
+      "probe": "Candle wax and the telegraph diagram"
+    },
+    {
+      "event_id": "E13-001",
+      "action": "challenge",
+      "source_decision": "I returned with measurements instead of leaving the disagreement alone",
+      "training_cues": "loose plank rear wall",
+      "probe": "The loose plank at the rear wall"
+    },
+    {
+      "event_id": "E01-001",
+      "action": "create",
+      "source_decision": "I restored the specimen drawer rather than complain further",
+      "training_cues": "camphor beetle second brass key",
+      "probe": "Remember camphor and the beetle in the drawer"
+    },
+    {
+      "event_id": "E01-003",
+      "action": "create",
+      "source_decision": "I kept the failed joint and commissioned a revision",
+      "training_cues": "divided glass neck failed joint",
+      "probe": "The divided glass neck and failed joint"
+    },
+    {
+      "event_id": "E13-002",
+      "action": "create",
+      "source_decision": "I adopted a deliberate physical presentation",
+      "training_cues": "empty bell jar two chairs",
+      "probe": "An empty bell jar between two chairs"
+    },
+    {
+      "event_id": "E01-008",
+      "action": "create",
+      "source_decision": "I revised the ledger visibly",
+      "training_cues": "blue boards red ink",
+      "probe": "The blue boards and red ink"
+    },
+    {
+      "event_id": "E01-004",
+      "action": "cooperate",
+      "source_decision": "I helped with the bandage and accepted his paper",
+      "training_cues": "frog leg iodine stain",
+      "probe": "A frog leg and iodine stain"
+    },
+    {
+      "event_id": "E01-005",
+      "action": "cooperate",
+      "source_decision": "I recorded my error and returned with payment",
+      "training_cues": "yellow sediment filter paper",
+      "probe": "Yellow sediment and filter paper"
+    },
+    {
+      "event_id": "E09-006",
+      "action": "cooperate",
+      "source_decision": "I inspected a patient's ambiguous label instead of defending the joke",
+      "training_cues": "prescription label midday customers",
+      "probe": "The prescription label and midday customers"
+    },
+    {
+      "event_id": "E01-011",
+      "action": "cooperate",
+      "source_decision": "I accepted Clara's rule for one meal",
+      "training_cues": "pie box Sunday table",
+      "probe": "The pie box and Sunday table"
+    },
+    {
+      "event_id": "E16-001",
+      "action": "approach",
+      "source_decision": "I revisited the theatre with a pretext",
+      "training_cues": "blue pigment swapped notebooks",
+      "probe": "Blue pigment and swapped notebooks"
+    },
+    {
+      "event_id": "E16-002",
+      "action": "approach",
+      "source_decision": "I accompanied him and left separately",
+      "training_cues": "chestnut cones wet stone",
+      "probe": "Chestnut cones and wet stone"
+    },
+    {
+      "event_id": "E16-003",
+      "action": "approach",
+      "source_decision": "I initiated and later repeated the visits",
+      "training_cues": "red wine unlatching door",
+      "probe": "Red wine and the unlatching door"
+    },
+    {
+      "event_id": "E09-009",
+      "action": "approach",
+      "source_decision": "I began preserving a monthly dinner despite my objections",
+      "training_cues": "raised spoon pears",
+      "probe": "The raised spoon and pears at the dinner"
+    }
+  ]
+}
