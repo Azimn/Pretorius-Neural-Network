@@ -32,7 +32,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: Azimn/Pretorius-Connectome
-          ref: feature/shared-memory-v1
+          ref: 81146c8b8b3cc0d538c5055bdabf1f767e0edd2f
           # This commit contains immutable L1 manifest + archive; L0 blob remains pinned in BC01.
           path: upstream-connectome
       - name: Assert source of shared L1 is present
