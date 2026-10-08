@@ -214,7 +214,7 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
         blank_control.reset_fast_state()
         for _ in range(exposures):
             blank_control.step(zero, reward=0.0, learn=True)
-    generic = PlasticRecurrentPersonaNet(cfg, encoder)
+    generic = net if mode == "generic" else PlasticRecurrentPersonaNet(cfg, encoder)
     if mode != "generic":
         generic_inputs = [represent(row["memory_text"], encoder, None) for row in corpus.records]
         for x in generic_inputs:
