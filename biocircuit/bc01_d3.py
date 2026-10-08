@@ -200,6 +200,20 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
     restored = PlasticRecurrentPersonaNet.load(checkpoint, cfg, encoder)
     query_vectors = [represent(card["probe"], encoder, circuit, shared=shared)
                      for card in cards]
+    # Quantify whether the fixed input fan-in makes narrative cues weak
+    # relative to the action-teaching injection. Teaching drives are measured
+    # OFFLINE for diagnosis and NEVER passed into query inference.
+    coupling = []
+    for card, query in zip(cards, query_vectors):
+        sensory_norm = float(np.linalg.norm(net.Win.dot(query)))
+        action_col = encoder.action_offset + ACTIONS.index(card["action"])
+        teaching_norm = float(np.linalg.norm(net.Win[:, action_col].toarray()))
+        coupling.append({
+            "event_id": card["event_id"],
+            "sensory_drive_l2": sensory_norm,
+            "teacher_drive_l2": teaching_norm,
+            "sensory_to_teacher_drive_ratio": sensory_norm / max(teaching_norm, 1e-12),
+        })
     # Pre-/post-learning physiology: use fixed query order and independent
     # fast-state reset for every probe.
     rows = []
@@ -263,6 +277,13 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
         "eta": eta, "gain": gain, "background_ticks": background_ticks,
         "card_ticks": card_ticks, "epochs": epochs, "settle_ticks": settle_ticks,
         "training_budget": "equal 32 teacher/cue exposure ticks; targeted additionally simulates 16 matched no-teacher counterfactual ticks per card; compute NOT matched",
+        "input_drive": {
+            "per_source_card": coupling,
+            "sensory_norm_mean": float(np.mean([x["sensory_drive_l2"] for x in coupling])),
+            "teacher_norm_mean": float(np.mean([x["teacher_drive_l2"] for x in coupling])),
+            "sensory_to_teacher_ratio_mean": float(np.mean([x["sensory_to_teacher_drive_ratio"] for x in coupling])),
+            "interpretation": "OFFLINE reference target teacher column; never injected into evaluation input",
+        },
         "result": metrics, "neural_cue_rms_spread": spread, "physiology": physiology,
         "recurrent_delta_l1": deltas,
         "checkpoint_restart_exact": bool(all(restart_equal)),
