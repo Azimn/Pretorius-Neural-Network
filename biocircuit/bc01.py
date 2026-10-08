@@ -135,9 +135,16 @@ def make_circuit(neurons: int, seed: int, mode: str) -> Circuit | None:
     return Circuit(CircuitConfig(neurons=neurons, sensory_dim=256, active=active, seed=seed), mode)
 
 
-def represent(text: str, encoder: ExperienceEncoder, circuit: Circuit | None) -> np.ndarray:
-    """One shared, deterministic hashed LEXICAL input; no event ID or action."""
-    raw = encoder.encode(text).vector
+def represent(text: str, encoder: ExperienceEncoder, circuit: Circuit | None,
+              sensory_override: np.ndarray | None = None) -> np.ndarray:
+    """Same lexical source/query interface; optional verified cached source sensory."""
+    if sensory_override is None:
+        raw = encoder.encode(text).vector
+    else:
+        if sensory_override.shape != (encoder.sensory_dim,) or not np.all(np.isfinite(sensory_override)):
+            raise ValueError("invalid cached sensory vector")
+        raw = np.zeros(encoder.input_dim, dtype=np.float32)
+        raw[:encoder.sensory_dim] = sensory_override
     if circuit is None:
         return raw
     activity = circuit._activity(raw[:encoder.sensory_dim])
@@ -165,17 +172,26 @@ def report_scores(scores: dict[str, float]) -> dict:
 
 
 def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1842,
-         mode: str = "local", exposures: int = 8, checkpoint: str | Path | None = None) -> dict:
+         mode: str = "local", exposures: int = 8, checkpoint: str | Path | None = None,
+         shared_sensory: np.ndarray | None = None) -> dict:
     if exposures <= 0:
         raise ValueError("exposures must be positive")
     if any(EVENT_ID.search(q) for q in questions):
         raise ValueError("Event ID leakage in query")
     encoder = ExperienceEncoder(sensory_dim=256)
+    if shared_sensory is not None and (
+        shared_sensory.shape != (len(corpus.records), 256) or
+        shared_sensory.dtype != np.dtype("float32") or
+        not np.all(np.isfinite(shared_sensory))
+    ):
+        raise ValueError("incompatible shared sensory cache")
     cfg = neural_config(neurons, seed)
     circuit = make_circuit(neurons, seed, mode)
     net = PlasticRecurrentPersonaNet(cfg, encoder)
     pristine = net.W.data.copy()
-    trained_inputs = [represent(row["memory_text"], encoder, circuit) for row in corpus.records]
+    trained_inputs = [represent(row["memory_text"], encoder, circuit,
+                       None if shared_sensory is None else shared_sensory[i])
+                      for i, row in enumerate(corpus.records)]
     # Each memory is a first-person reconstructed exposure, not a verified
     # reward-labelled experience. Reward gate is held zero throughout.
     for x in trained_inputs:
@@ -193,6 +209,7 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
             "source_commit": SOURCE_COMMIT, "mode": mode, "seed": seed,
             "neurons": neurons, "exposures": exposures,
             "encoder": "hashed-lexical-v1; no semantic model",
+            "shared_cached_source": bool(shared_sensory is not None),
         }, sort_keys=True, indent=2) + "\n", encoding="utf-8")
         saved = json.loads(metadata_path.read_text(encoding="utf-8"))
         if saved["corpus_blob"] != corpus.blob_sha:
@@ -216,7 +233,9 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
             blank_control.step(zero, reward=0.0, learn=True)
     generic = net if mode == "generic" else PlasticRecurrentPersonaNet(cfg, encoder)
     if mode != "generic":
-        generic_inputs = [represent(row["memory_text"], encoder, None) for row in corpus.records]
+        generic_inputs = [represent(row["memory_text"], encoder, None,
+                          None if shared_sensory is None else shared_sensory[i])
+                         for i, row in enumerate(corpus.records)]
         for x in generic_inputs:
             generic.reset_fast_state()
             for _ in range(exposures):
@@ -255,7 +274,10 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
         "corpus_kind": corpus.source_kind, "corpus_events": len(corpus.records),
         "corpus_blob": corpus.blob_sha, "source_repo_commit": SOURCE_COMMIT,
         "encoder": "signed hashed lexical, not a semantic embedding",
-        "input_interface": "shared feature hash; fixed compartment-to-recurrence bridge",
+        "input_interface": ("validated external cached lexical source and unchanged query encoder"
+                            if shared_sensory is not None else
+                            "existing lexical encoder; fixed compartment-to-recurrence bridge"),
+        "shared_cached_source": bool(shared_sensory is not None),
         "mode": mode, "neurons": neurons, "seed": seed, "exposures_per_memory": exposures,
         "recurrent_changed_synapses": int(np.count_nonzero(delta)),
         "recurrent_delta_l1": float(np.abs(delta).sum()),
