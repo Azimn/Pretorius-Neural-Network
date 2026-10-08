@@ -10,6 +10,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from biocircuit.bc01 import FIXTURE_PATH, demo, load_corpus  # noqa: E402
+from biocircuit.shared_memory_adapter import load_shared_corpus  # noqa: E402
 
 DEFAULT_QUESTIONS = [
     "What do you remember of the millstream map and turned glove?",
@@ -22,6 +23,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--corpus", type=Path, default=FIXTURE_PATH,
                         help="Pinned original 450-event v12 JSONL or bundled 3-event smoke JSONL")
+    parser.add_argument("--shared-l1", type=Path,
+                        help="Verified canonical 450-memory portable gzip L1")
+    parser.add_argument("--shared-manifest", type=Path,
+                        help="Pinned manifest, required together with --shared-l1")
     parser.add_argument("--neurons", type=int, default=512)
     parser.add_argument("--seed", type=int, default=1842)
     parser.add_argument("--mode", choices=["local", "global", "generic"], default="local")
@@ -34,7 +39,10 @@ def main() -> None:
     parser.add_argument("--output", type=Path,
                         default=Path("results/biocircuit/BC01_preview.json"))
     args = parser.parse_args()
-    corpus = load_corpus(args.corpus)
+    if (args.shared_l1 is None) != (args.shared_manifest is None):
+        parser.error("--shared-l1 requires --shared-manifest and vice versa")
+    corpus = (load_shared_corpus(args.shared_l1, args.shared_manifest)
+              if args.shared_l1 is not None else load_corpus(args.corpus))
     questions = args.question or DEFAULT_QUESTIONS
     if args.interactive:
         print("Enter an additional question, or an empty line to finish:")
