@@ -35,7 +35,7 @@ class BioCircuitD3Tests(unittest.TestCase):
         weights=net.W.data.copy()
         original_topology=(net.W.indices.copy(),net.W.indptr.copy())
         original_motor=net.motor_w.copy()
-        _train_targeted(net,self.cards,encoder,None,epochs=2,ticks=8,
+        _train_targeted(net,self.cards,encoder,None,None,epochs=2,ticks=8,
                         labels=tuple(c["action"] for c in self.cards),eta=.03)
         edited=np.flatnonzero(weights!=net.W.data)
         self.assertGreater(len(edited),0)
