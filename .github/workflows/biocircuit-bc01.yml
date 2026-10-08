@@ -43,7 +43,7 @@ jobs:
       - name: Validate and run pinned 450-memory original
         run: |
           python scripts/demo_biocircuit_bc01.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --neurons 256 --seed 1842 --exposures 8 --output results/biocircuit/BC01_full_450_preview.json --checkpoint results/biocircuit/BC01_full_450_preview.npz
-          python -c 'import json; x=json.load(open("results/biocircuit/BC01_full_450_preview.json")); assert x["corpus_events"] == 450; assert x["corpus_kind"] == "full"; assert all(v["checkpoint_restart_exact"] for v in x["tests"])'
+          python -c 'import json; x=json.load(open("results/biocircuit/BC01_full_450_preview.json")); assert x["corpus_events"] == 450; assert x["corpus_kind"] == "full"; assert all(v["checkpoint_restart_exact"] for v in x["tests"]); assert x["tests"][2]["retrieval"]["candidate"] is None'
       - uses: actions/upload-artifact@v4
         if: always()
         with:
