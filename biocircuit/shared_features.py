@@ -18,11 +18,11 @@ PROJECTION = "bc01-signed-feature-bucket-v1"
 class BioCircuitSharedFeatures:
     def __init__(self, cache_path: str | Path, connectome_root: str | Path):
         root = Path(connectome_root).resolve()
-        library = root / "src/pretorius_connectome/shared_memory.py"
+        library = root / "src/pretorius_connectome/shared_memory_l2.py"
         if not library.is_file():
             raise ValueError("Missing canonical shared-memory provider checkout")
         sys.path.insert(0, str(root / "src"))
-        from pretorius_connectome.shared_memory import SharedCache, SOURCE, SIDECARS
+        from pretorius_connectome.shared_memory_l2 import SharedCache, SOURCE, SIDECARS
         self.cache = SharedCache(cache_path)
         self.cache.assert_original(SOURCE, SIDECARS)
         self.cache_file_sha = sha256((Path(cache_path) / "manifest.json").read_bytes()).hexdigest()
