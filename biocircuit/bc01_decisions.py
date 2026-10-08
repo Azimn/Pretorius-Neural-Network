@@ -90,6 +90,30 @@ def _expose(net: PlasticRecurrentPersonaNet, x: np.ndarray, ticks: int,
         net.step(x, reward=reward, learn=plastic)
 
 
+def motor_decoder_scores(net: PlasticRecurrentPersonaNet, x: np.ndarray,
+                         ticks: int) -> dict[str, float]:
+    """Learned output-only comparator, all recurrent parameters fixed."""
+    net.reset_fast_state()
+    for _ in range(ticks):
+        net.step(x, learn=False)
+    # Keep the same target choice set, even though motor has ten outputs.
+    raw = net.action_scores()
+    total = sum(raw[a] for a in EVAL_ACTIONS)
+    return {a: raw[a] / total for a in EVAL_ACTIONS}
+
+
+def train_decoder_only(net: PlasticRecurrentPersonaNet, cards: tuple[dict, ...],
+                       encoder: ExperienceEncoder, circuit, epochs: int,
+                       settle_ticks: int) -> None:
+    for _ in range(epochs):
+        for card in cards:
+            # No action teaching channel; this control exclusively trains
+            # the motor_w / motor_b decoder with a source-annotated target.
+            cue = represent(card["training_cues"], encoder, circuit)
+            motor_decoder_scores(net, cue, settle_ticks)
+            net.learn_motor(card["action"])
+
+
 def _fit_background(net: PlasticRecurrentPersonaNet, corpus: Corpus,
                     encoder: ExperienceEncoder, circuit, background_ticks: int) -> None:
     for memory in corpus.records:
@@ -110,10 +134,6 @@ def _fit_cards(net: PlasticRecurrentPersonaNet, cards: tuple[dict, ...],
             # Reward=+1 is an experimental association gate, not a
             # historical reward or a judgment about Pretorius's experience.
             _expose(net, x, ticks, plastic=plastic, reward=1.0)
-
-
-def _accuracy(rows: list[dict], condition: str) -> float:
-    return float(sum(row[condition]["choice"] == row["target"] for row in rows) / len(rows))
 
 
 def benchmark(corpus: Corpus, cards: tuple[dict, ...], mode: str = "local",
@@ -164,9 +184,10 @@ def benchmark(corpus: Corpus, cards: tuple[dict, ...], mode: str = "local",
     _fit_cards(cue_only, cards, encoder, circuit, epochs, card_ticks, teach=False)
     ablated = copy.deepcopy(trained)
     ablated.W.data[:] = pre_card_w
-    # Expose a decoder-only control, which is exactly the fixed readout
-    # with unchanged W/bias after base autobiography exposure.
+    # Decoder-only comparator: train ONLY motor output weights; no
+    # recurrent weights or biases update after the common source prelude.
     decoder_only = copy.deepcopy(base)
+    train_decoder_only(decoder_only, cards, encoder, circuit, epochs, settle_ticks)
     if checkpoint_dir is None:
         local = tempfile.TemporaryDirectory(prefix="bc01_decisions_")
         checkpoint_path = Path(local.name) / "trained.npz"
@@ -184,11 +205,12 @@ def benchmark(corpus: Corpus, cards: tuple[dict, ...], mode: str = "local",
         for key, model in (
             ("intact", trained), ("recurrent_lesion", ablated),
             ("no_plasticity", no_plastic), ("shuffled_labels", shuffled),
-            ("cue_only", cue_only), ("decoder_only", decoder_only),
-            ("restarted", restored),
+            ("cue_only", cue_only), ("restarted", restored),
         ):
             scores = read_population(model, query, settle_ticks)
             conditions[key] = {"choice": _choice(scores), "scores": scores}
+        decoder_scores = motor_decoder_scores(decoder_only, query, settle_ticks)
+        conditions["decoder_only"] = {"choice": _choice(decoder_scores), "scores": decoder_scores}
         # Lexical nearest-neighbour policy, uses EXTERNAL card labels:
         # this is an information-rich retrieval-only control.
         query_words = words(card["probe"])
@@ -231,7 +253,9 @@ def benchmark(corpus: Corpus, cards: tuple[dict, ...], mode: str = "local",
         "recurrent_lesion_choice_flips": sum(x["recurrent_lesion_changes_choice"] for x in rows),
         "mean_recurrent_lesion_score_max_abs": float(np.mean([x["recurrent_delta_score_max_abs"] for x in rows])),
         "recurrent_delta_l1": float(np.sum(np.abs(trained.W.data - pre_card_w))),
-        "trained_decoder_updated": False, "checkpoint_reproduced_all": all(x["restart_exact"] for x in rows),
+        "recurrent_conditions_decoder_updated": False,
+        "decoder_only_output_trained": True,
+        "checkpoint_reproduced_all": all(x["restart_exact"] for x in rows),
         "interpretation": "In-sample source-cue development assay. Human-readable action mappings are provisional; positive scores are NOT independent identity, semantic or out-of-sample evidence.",
         "rows": rows,
     }
