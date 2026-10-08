@@ -7,6 +7,12 @@
 **Canonical character:** [The-Doctor-Lives](https://github.com/Azimn/The-Doctor-Lives).  
 **Independent anatomical experiment:** [Pretorius-Connectome](https://github.com/Azimn/Pretorius-Connectome).
 
+## Cross-project shared memory L1/L2 is now operational (2026-10-08)
+
+The immutable full 450-memory L1 source and SHA-pinned export are owned by `Pretorius-Connectome`, with L2 split-fitted lexical cache code at `src/pretorius_connectome/shared_memory_l2.py` ([source PR #13](https://github.com/Azimn/Pretorius-Connectome/pull/13), merged at `06bece269459a43d9e4ed09e5baabbacbd2082f7`). **Do not create another BioCircuit TF-IDF fitter.** The optional BC01 adapter `biocircuit/shared_features.py` imports that implementation from a source checkout and performs only the versioned L3 256-bucket projection. The original BC01 256-channel signed lexical input is retained as a distinct unchanged control. Neither topology nor learned synapses are shared.
+
+[Cross-project measured result](../results/biocircuit/BC01_SHARED_MEMORY_RESULTS.md): GitHub Actions run 37840112970 passed 18 tests. Pinned full corpus, original and shared encoders, exact checkpoint reload and query/source feature equality were verified. No selected action changed under learned recurrent-weight lesion for any of three development prompts in either version. **Shared caching is an engineering integration win, not proof of neural memory.** Do not conflate this with BC01's still-open causal-behavior gate. Use exact source checkout in `upstream-connectome`; source implementation remains authoritative.
+
 ## BC01-D1/D2 update: 450-memory source-grounded behavioral evaluation
 
 The BC01 source-backed learning assay is implemented in `biocircuit/bc01_decisions.py`, `scripts/run_biocircuit_bc01_decisions.py`, and `resources/biocircuit/bc01_decision_cards_v1.json`. [D1 measured report](../results/biocircuit/BC01_D1_RESULTS.md), [D2 increased-plasticity negative diagnostic](../results/biocircuit/BC01_D2_RESULTS.md), machine-readable summaries, and [.github/workflows/biocircuit-bc01-decisions.yml](../.github/workflows/biocircuit-bc01-decisions.yml) are checked in. The 450 events remain read-only in Pretorius-Connectome. Every label card checks that its decision quotation exactly matches the original source.
