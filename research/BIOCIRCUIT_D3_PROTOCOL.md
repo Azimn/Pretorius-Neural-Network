@@ -10,12 +10,12 @@ This experiment changes **no recurrent topology**, increases no neural capacity 
 
 ## Candidate mechanism
 
-For each decision card, reset the existing `PlasticRecurrentPersonaNet` fast state. Present **cue only** for the first half of 32 ticks; record presynaptic rates. Then present the **same cue plus the recorded action teaching channel** for the second half; record the teaching-induced postsynaptic increase. Apply one source-label-gated local update to **already existing recurrent edges** arriving at that action population:
+For each decision card, reset the existing `PlasticRecurrentPersonaNet` fast state. Present **cue only** for the first half of 32 ticks; record presynaptic rates. Then run a *no-teacher counterfactual second half* from the saved cue-only network state, then restore that same state and run the **same cue plus the recorded action teaching channel** for the second half; compare the two responses at equal elapsed model time. The additional counterfactual steps cost extra inference CPU, and are not a matched-compute comparison with the older generic learner. Apply one source-label-gated local update to **already existing recurrent edges** arriving at that action population:
 
 ```
 delta_W[post,pre] = 0.03
                   * max(cue_rate[pre] - target_rate, 0)
-                  * max(taught_rate[post] - cue_rate[post], 0)
+                  * max(taught_rate[post] - matched_no_teacher_rate[post], 0)
                   * indicator(post belongs to taught action population)
 ```
 
@@ -23,7 +23,7 @@ Enforce the original Dale-like presynaptic sign, weight bounds, sparse CSR indic
 
 ## Fixed comparisons and verdict
 
-Retain the exact same 450-event background curriculum, 16 source cards, three epochs, 32 ticks per card, 32 probe-settle ticks, 256 units, three seeds `31,37,43`, and three input competition modes `local,global,generic`. The generic Hebbian control receives label and cue simultaneously for the same 32 total ticks. Targeted controls start from the **identical pre-card network** and include (i) shuffled teacher action assignments, (ii) no sensory cue during teaching, (iii) no further training, and (iv) recurrent-weight lesion restoring only pre-card synaptic weights. Source input uses the cache fitted on the matching training episode partition for each seed, with exact source and encoder hashes checked at load.
+Retain the exact same 450-event background curriculum, 16 source cards, three epochs, 32 ticks per card, 32 probe-settle ticks, 256 units, three seeds `31,37,43`, and three input competition modes `local,global,generic`. The generic Hebbian control receives label and cue simultaneously for 32 exposure ticks. The candidate executes 32 exposure ticks plus 16 additional matched-cue counterfactual ticks per card. **Compute is not equal**; the scientific comparator is equal data/teaching exposure, and runtime overhead must be disclosed. The original first implementation mistakenly compared different timepoints and yielded zero update on a fixture; CI caught it and this protocol explicitly preserves the correction. Targeted controls start from the **identical pre-card network** and include (i) shuffled teacher action assignments, (ii) no sensory cue during teaching, (iii) no further training, and (iv) recurrent-weight lesion restoring only pre-card synaptic weights. Source input uses the cache fitted on the matching training episode partition for each seed, with exact source and encoder hashes checked at load.
 
 Archive per-event action scores, predicted label, target, confusion matrix, action-count histogram, per-population firing means, low/high activity saturation, baseline and trained bias statistics, cue-response RMS variation, recurrent synaptic delta L1, trained checkpoint and exact restart replay.
 
