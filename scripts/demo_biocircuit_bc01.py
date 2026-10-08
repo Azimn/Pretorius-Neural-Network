@@ -67,6 +67,7 @@ def main() -> None:
         print("Neural policy:", row["local_or_selected"]["choice"])
         print("Learned-recurrence lesion policy:", row["recurrent_weight_lesion"]["choice"])
         print("Score difference:", round(row["recurrent_delta_score_max_abs"], 9))
+        print("Content versus blank exposure score difference:", round(row["content_vs_blank_score_max_abs"], 9))
         print("Policy changed after lesion:", row["recurrent_delta_changes_choice"])
         print("Checkpoint/restart exact:", row["checkpoint_restart_exact"])
     print("\nResearch JSON:", args.output)
