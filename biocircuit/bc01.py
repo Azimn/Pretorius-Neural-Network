@@ -136,15 +136,24 @@ def make_circuit(neurons: int, seed: int, mode: str) -> Circuit | None:
 
 
 def represent(text: str, encoder: ExperienceEncoder, circuit: Circuit | None,
+              shared=None, event_id: str | None = None,
               sensory_override: np.ndarray | None = None) -> np.ndarray:
-    """Same lexical source/query interface; optional verified cached source sensory."""
+    """Legacy hashed lexical, shared TF-IDF, or exact cached BC source input."""
+    if shared is not None and sensory_override is not None:
+        raise ValueError("select only one source-feature representation")
     if sensory_override is None:
         raw = encoder.encode(text).vector
     else:
-        if sensory_override.shape != (encoder.sensory_dim,) or not np.all(np.isfinite(sensory_override)):
-            raise ValueError("invalid cached sensory vector")
+        if (sensory_override.shape != (encoder.sensory_dim,) or
+            sensory_override.dtype != np.dtype("float32") or
+            not np.all(np.isfinite(sensory_override))):
+            raise ValueError("invalid source sensory cache")
         raw = np.zeros(encoder.input_dim, dtype=np.float32)
         raw[:encoder.sensory_dim] = sensory_override
+    if shared is not None:
+        raw[:encoder.sensory_dim] = shared.vectorize(
+            text, event_id=event_id, sensory_dim=encoder.sensory_dim
+        )
     if circuit is None:
         return raw
     activity = circuit._activity(raw[:encoder.sensory_dim])
@@ -173,25 +182,31 @@ def report_scores(scores: dict[str, float]) -> dict:
 
 def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1842,
          mode: str = "local", exposures: int = 8, checkpoint: str | Path | None = None,
-         shared_sensory: np.ndarray | None = None) -> dict:
+         shared=None, shared_sensory: np.ndarray | None = None) -> dict:
     if exposures <= 0:
         raise ValueError("exposures must be positive")
     if any(EVENT_ID.search(q) for q in questions):
         raise ValueError("Event ID leakage in query")
-    encoder = ExperienceEncoder(sensory_dim=256)
+    if shared is not None:
+        shared.verify_corpus(corpus)
+    if shared is not None and shared_sensory is not None:
+        raise ValueError("shared TF-IDF and cached BC sensory cannot be combined")
     if shared_sensory is not None and (
         shared_sensory.shape != (len(corpus.records), 256) or
         shared_sensory.dtype != np.dtype("float32") or
         not np.all(np.isfinite(shared_sensory))
     ):
-        raise ValueError("incompatible shared sensory cache")
+        raise ValueError("incompatible pinned BC sensory source cache")
+    encoder = ExperienceEncoder(sensory_dim=256)
     cfg = neural_config(neurons, seed)
     circuit = make_circuit(neurons, seed, mode)
     net = PlasticRecurrentPersonaNet(cfg, encoder)
     pristine = net.W.data.copy()
-    trained_inputs = [represent(row["memory_text"], encoder, circuit,
-                       None if shared_sensory is None else shared_sensory[i])
-                      for i, row in enumerate(corpus.records)]
+    trained_inputs = [
+        represent(row["memory_text"], encoder, circuit, shared,
+                  row["event_id"], None if shared_sensory is None else shared_sensory[i])
+        for i, row in enumerate(corpus.records)
+    ]
     # Each memory is a first-person reconstructed exposure, not a verified
     # reward-labelled experience. Reward gate is held zero throughout.
     for x in trained_inputs:
@@ -208,8 +223,9 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
             "schema": "BC01-preview-1", "corpus_blob": corpus.blob_sha,
             "source_commit": SOURCE_COMMIT, "mode": mode, "seed": seed,
             "neurons": neurons, "exposures": exposures,
-            "encoder": "hashed-lexical-v1; no semantic model",
-            "shared_cached_source": bool(shared_sensory is not None),
+            "encoder": ("shared-tfidf-l2-frozen-v1" if shared is not None
+                        else "hashed-lexical-v1; no semantic model"),
+            "shared_cache_manifest_sha256": (shared.cache_file_sha if shared is not None else None),
         }, sort_keys=True, indent=2) + "\n", encoding="utf-8")
         saved = json.loads(metadata_path.read_text(encoding="utf-8"))
         if saved["corpus_blob"] != corpus.blob_sha:
@@ -233,16 +249,18 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
             blank_control.step(zero, reward=0.0, learn=True)
     generic = net if mode == "generic" else PlasticRecurrentPersonaNet(cfg, encoder)
     if mode != "generic":
-        generic_inputs = [represent(row["memory_text"], encoder, None,
-                          None if shared_sensory is None else shared_sensory[i])
-                         for i, row in enumerate(corpus.records)]
+        generic_inputs = [
+            represent(row["memory_text"], encoder, None, shared, row["event_id"],
+                      None if shared_sensory is None else shared_sensory[i])
+            for i, row in enumerate(corpus.records)
+        ]
         for x in generic_inputs:
             generic.reset_fast_state()
             for _ in range(exposures):
                 generic.step(x, reward=0.0, learn=True)
     results = []
     for q in questions:
-        query_vec = represent(q, encoder, circuit)
+        query_vec = represent(q, encoder, circuit, shared)
         learned = settle(net, query_vec)
         lesion_scores = settle(lesioned, query_vec)
         clean_scores = settle(no_plasticity, query_vec)
@@ -252,7 +270,7 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
             restart_exact = learned == reloaded
         else:
             restart_exact = None
-        generic_vec = represent(q, encoder, None)
+        generic_vec = represent(q, encoder, None, shared)
         control_scores = settle(generic, generic_vec)
         gap = max(abs(learned[a] - lesion_scores[a]) for a in ACTIONS)
         results.append({
@@ -273,11 +291,16 @@ def demo(corpus: Corpus, questions: list[str], neurons: int = 512, seed: int = 1
         "status": "exploratory; NO evidence of semantic entailment or identity",
         "corpus_kind": corpus.source_kind, "corpus_events": len(corpus.records),
         "corpus_blob": corpus.blob_sha, "source_repo_commit": SOURCE_COMMIT,
-        "encoder": "signed hashed lexical, not a semantic embedding",
-        "input_interface": ("validated external cached lexical source and unchanged query encoder"
-                            if shared_sensory is not None else
-                            "existing lexical encoder; fixed compartment-to-recurrence bridge"),
+        "encoder": ("shared train-split TF-IDF L2 with BC01 256-bucket signed projection"
+                    if shared is not None else
+                    "canonical cached exact BC01 signed lexical source"
+                    if shared_sensory is not None else
+                    "signed hashed lexical, not a semantic embedding"),
         "shared_cached_source": bool(shared_sensory is not None),
+        "shared_cache_manifest_sha256": (shared.cache_file_sha if shared is not None else None),
+        "shared_fit_seed": (shared.cache.manifest["random_seed"] if shared is not None else None),
+        "shared_projection_version": (shared.projection_version if shared is not None else None),
+        "input_interface": "shared feature hash; fixed compartment-to-recurrence bridge",
         "mode": mode, "neurons": neurons, "seed": seed, "exposures_per_memory": exposures,
         "recurrent_changed_synapses": int(np.count_nonzero(delta)),
         "recurrent_delta_l1": float(np.abs(delta).sum()),
