@@ -7,6 +7,16 @@
 **Canonical character:** [The-Doctor-Lives](https://github.com/Azimn/The-Doctor-Lives).  
 **Independent anatomical experiment:** [Pretorius-Connectome](https://github.com/Azimn/Pretorius-Connectome).
 
+## BC01-D1/D2 update: 450-memory source-grounded behavioral evaluation
+
+The BC01 source-backed learning assay is implemented in `biocircuit/bc01_decisions.py`, `scripts/run_biocircuit_bc01_decisions.py`, and `resources/biocircuit/bc01_decision_cards_v1.json`. [D1 measured report](../results/biocircuit/BC01_D1_RESULTS.md), [D2 increased-plasticity negative diagnostic](../results/biocircuit/BC01_D2_RESULTS.md), machine-readable summaries, and [.github/workflows/biocircuit-bc01-decisions.yml](../.github/workflows/biocircuit-bc01-decisions.yml) are checked in. The 450 events remain read-only in Pretorius-Connectome. Every label card checks that its decision quotation exactly matches the original source.
+
+On the 16 development-only questions, D1 local/global/generic neural action accuracy averaged 22.92% / 25.00% / 27.08% across seeds 31, 37, 43; the four-way majority chance rate is 25%. Restoring the learned recurrent weight changes altered some decisions but did not consistently harm accuracy. The shuffled-label control frequently performed comparably or better. External lexical retrieval performed perfectly because the test reuses cue tokens and should not be mistaken for semantic generalization.
+
+D2 increased the donor recurrent plasticity coefficients tenfold with the rest unchanged. **Every trained neural model then predicted the exact same class for all 16 input probes**, delivering 25% accuracy for all nine topology/seed combinations. The chosen class depended on seed. Its large recurrent changes and lesion-sensitive actions demonstrate **maladaptive recurrent effects, not improved autobiographical decision behavior**. Exact checkpoint restart passed. **BC01 success gate is still OPEN.**
+
+The next implementation must diagnose per-class population activity, network saturation, selection diversity, state stability, action teaching and credit assignment, with controls detecting collapsed constant classifiers. Only if those mechanisms are resolved should further scaling or independently reviewed challenges be considered. Do not merge this experimental state into The Doctor Lives.
+
 ## BC01 implementation update: first runnable preview merged (2026-10-08)
 
 **PR #27 merged to main at `1b6c8781a9f2283f4e8e7ae20375d30349740606`.** An executable [BC01 exploratory CLI](../scripts/demo_biocircuit_bc01.py), [pinned importer and recurrent bridge](../biocircuit/bc01.py), [run guide](BIOCIRCUIT_BC01_PREVIEW.md), [measurements and adverse findings](../results/biocircuit/BC01_PREVIEW_RESULTS.md), [tests](../tests_biocircuit/test_bc01.py), and [CI workflow](../.github/workflows/biocircuit-bc01.yml) now exist. Do not reimplement these. The runner uses the byte-pinned authentic three-event smoke fixture or the original complete 450-event v12 corpus at frozen upstream commit `597fb23473a60eecf2e1b50f79c22bfbea816be5`.
