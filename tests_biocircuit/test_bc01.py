@@ -66,6 +66,7 @@ class BC01PreviewTests(unittest.TestCase):
             self.assertFalse(result["motor_decoder_trained"])
             self.assertGreater(result["recurrent_changed_synapses"], 0)
             self.assertTrue(all(x["checkpoint_restart_exact"] for x in result["tests"]))
+            self.assertTrue(all("content_vs_blank_score_max_abs" in x for x in result["tests"]))
             self.assertTrue(all(x["retrieval"]["verdict"] == "unknown" for x in result["tests"]))
             # No automatic pass condition here: meaningful behavioral changes
             # must be measured, not manufactured by an output-decoder lesion.
