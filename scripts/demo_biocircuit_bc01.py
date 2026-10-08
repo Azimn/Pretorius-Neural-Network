@@ -10,6 +10,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from biocircuit.bc01 import FIXTURE_PATH, demo, load_corpus  # noqa: E402
+from biocircuit.shared_memory import load_bc_shared  # noqa: E402
 
 DEFAULT_QUESTIONS = [
     "What do you remember of the millstream map and turned glove?",
@@ -22,6 +23,8 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--corpus", type=Path, default=FIXTURE_PATH,
                         help="Pinned original 450-event v12 JSONL or bundled 3-event smoke JSONL")
+    parser.add_argument("--shared-dir", type=Path,
+                        help="canonical L1+BC lexical L2 cache; requires pinned full corpus")
     parser.add_argument("--neurons", type=int, default=512)
     parser.add_argument("--seed", type=int, default=1842)
     parser.add_argument("--mode", choices=["local", "global", "generic"], default="local")
@@ -35,6 +38,9 @@ def main() -> None:
                         default=Path("results/biocircuit/BC01_preview.json"))
     args = parser.parse_args()
     corpus = load_corpus(args.corpus)
+    sensory = None
+    if args.shared_dir:
+        sensory, _ = load_bc_shared(args.shared_dir, corpus)
     questions = args.question or DEFAULT_QUESTIONS
     if args.interactive:
         print("Enter an additional question, or an empty line to finish:")
@@ -47,13 +53,15 @@ def main() -> None:
                 break
             questions.append(question)
     result = demo(corpus, questions, neurons=args.neurons, seed=args.seed,
-                  mode=args.mode, exposures=args.exposures, checkpoint=args.checkpoint)
+                  mode=args.mode, exposures=args.exposures, checkpoint=args.checkpoint,
+                  shared_sensory=sensory)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n",
                            encoding="utf-8")
     print("BioCircuit BC01 exploratory Pretorius")
     print(f"Pinned {result['corpus_kind']} autobiography: {result['corpus_events']} reconstructed events")
     print("Encoding: hashed lexical fallback (NOT semantic embedding)")
+    print("Shared source cache:", bool(sensory is not None))
     print(f"Recurrent synapses changed: {result['recurrent_changed_synapses']}")
     for row in result["tests"]:
         print("\nQuestion:", row["query"])
