@@ -1,0 +1,94 @@
+name: BioCircuit BC01 D5B cue-evoked local eligibility
+on:
+  push:
+    paths:
+      - "biocircuit/bc01_d4.py"
+      - "biocircuit/bc01_d5b.py"
+      - "scripts/run_biocircuit_bc01_d5b.py"
+      - "tests_biocircuit/test_bc01_d5b.py"
+      - ".github/workflows/biocircuit-bc01-d5b.yml"
+  pull_request:
+    paths:
+      - "biocircuit/bc01_d4.py"
+      - "biocircuit/bc01_d5b.py"
+      - "scripts/run_biocircuit_bc01_d5b.py"
+      - "tests_biocircuit/test_bc01_d5b.py"
+      - ".github/workflows/biocircuit-bc01-d5b.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  matched-controlled-learning:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      PYTHONHASHSEED: "17"
+      OPENBLAS_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install CPU numerical dependencies
+        run: python -m pip install "numpy>=1.26,<3" "scipy>=1.11,<2" "scikit-learn>=1.5,<2"
+      - name: Immutable source and owner-owned train-fitted L2 v2
+        uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Connectome
+          ref: 7cd631f3b533203e39465ec31c4ee42945610e2f
+          path: upstream-connectome
+      - name: Full BioCircuit regression suite
+        run: python -m unittest discover -s tests_biocircuit -v
+      - name: Build three source-verified episode-disjoint TF-IDF caches
+        run: |
+          for seed in 31 37 43; do
+            python upstream-connectome/scripts/build_shared_memory_l2.py --seed "$seed" --output-dir "data/derived/shared-l2-cache/seed$seed" --report "results/biocircuit/d5b-l2-$seed.json"
+          done
+      - name: Test one cue-minus-blank rule across 18 matched configurations
+        run: |
+          python scripts/run_biocircuit_bc01_d5b.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --cache-root data/derived/shared-l2-cache --connectome-root upstream-connectome --seeds 31,37,43 --modes local,global,generic --gains 1,12 --checkpoint-root results/biocircuit/d5b_checkpoints --output results/biocircuit/BC01_D5B.json
+          python - <<'PY'
+          import json
+          d=json.load(open("results/biocircuit/BC01_D5B.json"))
+          assert len(d["trials"])==18 and d["source_events"]==450 and d["source_card_count"]==16
+          assert all(t["cue_contrast"]["checkpoint_exact"] and t["original_D4"]["checkpoint_exact"] for t in d["trials"])
+          assert all(t["cue_evoked_eligibility"]["presentations"]==48 for t in d["trials"])
+          assert all(t["motor_decoder_only"]["w_recurrent_unchanged"] for t in d["trials"])
+          PY
+      - name: Independent process numerical replay
+        run: |
+          PYTHONHASHSEED=71337 python scripts/run_biocircuit_bc01_d5b.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --cache-root data/derived/shared-l2-cache --connectome-root upstream-connectome --seeds 31,37,43 --modes local,global,generic --gains 1,12 --checkpoint-root results/biocircuit/d5b_repeat_checkpoints --output results/biocircuit/BC01_D5B_REPEAT.json
+          python - <<'PY'
+          import json
+          a=json.load(open("results/biocircuit/BC01_D5B.json"))
+          b=json.load(open("results/biocircuit/BC01_D5B_REPEAT.json"))
+          for x in (a,b):
+            for t in x["trials"]: t.pop("observed_elapsed_seconds")
+          assert a==b, "D5B output not bit-deterministic across separate Python processes"
+          print("D5B independent source-verified neural replay exact for 18 conditions")
+          PY
+      - name: Archive complete D5B per-case evidence to branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/feature/bc01-d5b-cue-contrast'
+        run: |
+          cp results/biocircuit/BC01_D5B.json results/biocircuit/BC01_D5B_FULL_PER_CASE.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/biocircuit/BC01_D5B_FULL_PER_CASE.json
+          git commit -m "Archive measured D5B source-conditioned replay run ${{ github.run_id }}"
+          git fetch origin feature/bc01-d5b-cue-contrast
+          git rebase FETCH_HEAD
+          git push origin HEAD:refs/heads/feature/bc01-d5b-cue-contrast
+      - name: Upload raw results, separate model checkpoints and source hashes
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: biocircuit-bc01-d5b-cue-contrast
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            results/biocircuit/BC01_D5B.json
+            results/biocircuit/BC01_D5B_REPEAT.json
+            results/biocircuit/d5b-l2-*.json
+            results/biocircuit/d5b_checkpoints/
