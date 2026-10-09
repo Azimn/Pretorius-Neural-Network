@@ -1,0 +1,98 @@
+name: BioCircuit BC01 D6A transductive decision holdout
+on:
+  push:
+    paths:
+      - "biocircuit/bc01_d6a.py"
+      - "scripts/run_biocircuit_bc01_d6a.py"
+      - "tests_biocircuit/test_bc01_d6a.py"
+      - "resources/biocircuit/bc01_d6a_paraphrase_candidates_v1.json"
+      - ".github/workflows/biocircuit-bc01-d6a.yml"
+  pull_request:
+    paths:
+      - "biocircuit/bc01_d6a.py"
+      - "scripts/run_biocircuit_bc01_d6a.py"
+      - "tests_biocircuit/test_bc01_d6a.py"
+      - "resources/biocircuit/bc01_d6a_paraphrase_candidates_v1.json"
+      - ".github/workflows/biocircuit-bc01-d6a.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  heldout-card-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      OMP_NUM_THREADS: "1"
+      PYTHONHASHSEED: "17"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: CPU dependencies
+        run: python -m pip install "numpy>=1.26,<3" "scipy>=1.11,<2" "scikit-learn>=1.5,<2"
+      - name: Immutable source and source-owned L2 v2 provider
+        uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Connectome
+          ref: 7cd631f3b533203e39465ec31c4ee42945610e2f
+          path: upstream-connectome
+      - name: All existing BioCircuit tests, plus D6A leakage regression
+        run: python -m unittest discover -s tests_biocircuit -v
+      - name: Build deterministic owner L2 caches
+        run: |
+          for seed in 31 37 43; do
+            python upstream-connectome/scripts/build_shared_memory_l2.py --seed "$seed" --output-dir "data/derived/shared-l2-cache/seed$seed" --report "results/biocircuit/d6a-l2-seed$seed.json"
+          done
+      - name: Nine-seed-mode full 4-fold transductive decision evaluation
+        run: |
+          python scripts/run_biocircuit_bc01_d6a.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --connectome-root upstream-connectome --cache-root data/derived/shared-l2-cache --checkpoint-root results/biocircuit/d6a_checkpoints --output results/biocircuit/BC01_D6A.json
+          python - <<'PY'
+          import json
+          d=json.load(open("results/biocircuit/BC01_D6A.json"))
+          assert len(d["trials"])==9 and d["source_events"]==450
+          assert all(len(t["folds"])==4 and t["never_independent_or_sealed"] for t in d["trials"])
+          assert all(f["decoder_recurrent_W_preserved"] and f["frozen_decoder_parameters_exact"]
+                     and f["shuffled_recurrent_W_preserved"] for t in d["trials"] for f in t["folds"])
+          assert all(f["source_background_contains_all_heldout_events"]
+                     and not f["l2_encoder_train_fit_excludes_test_episodes"]
+                     for t in d["trials"] for f in t["folds"])
+          assert all(len(f["heldout_rows"])==8 for t in d["trials"] for f in t["folds"])
+          PY
+      - name: Independent full numerical replay under distinct hash seed
+        run: |
+          PYTHONHASHSEED=71337 python scripts/run_biocircuit_bc01_d6a.py --corpus upstream-connectome/memories/current/Pretorius_v12_450_Events_Complete.jsonl --connectome-root upstream-connectome --cache-root data/derived/shared-l2-cache --checkpoint-root results/biocircuit/d6a_repeat_checkpoints --output results/biocircuit/BC01_D6A_REPEAT.json
+          python - <<'PY'
+          import json
+          a=json.load(open("results/biocircuit/BC01_D6A.json"))
+          b=json.load(open("results/biocircuit/BC01_D6A_REPEAT.json"))
+          for item in (a,b):
+            for trial in item["trials"]: trial.pop("elapsed_seconds_observed")
+          assert a==b, "Independent Python process changed transductive holdout result"
+          print("D6A nine modes/seeds x four folds and both probe types reproduced exactly")
+          PY
+      - name: Commit permanent raw transductive D6A report
+        if: github.event_name == 'push' && github.ref == 'refs/heads/feature/bc01-d6a-heldout-cards'
+        run: |
+          cp results/biocircuit/BC01_D6A.json results/biocircuit/BC01_D6A_FULL_PER_CASE.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/biocircuit/BC01_D6A_FULL_PER_CASE.json
+          git commit -m "Archive D6A transductive 4-fold neural report run ${{ github.run_id }}"
+          git fetch origin feature/bc01-d6a-heldout-cards
+          git rebase FETCH_HEAD
+          git push origin HEAD:refs/heads/feature/bc01-d6a-heldout-cards
+      - name: Upload model checkpoints and full benchmark provenance
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: biocircuit-bc01-d6a-heldout-cards
+          retention-days: 30
+          if-no-files-found: warn
+          path: |
+            results/biocircuit/BC01_D6A.json
+            results/biocircuit/BC01_D6A_REPEAT.json
+            results/biocircuit/d6a-l2-*.json
+            results/biocircuit/d6a_checkpoints/

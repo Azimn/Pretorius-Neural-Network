@@ -1,0 +1,30 @@
+{
+  "schema": "BC01-D6A-candidate-paraphrases-v1",
+  "status": "assistant-authored and NOT independently reviewed; developmental/transductive; never call sealed benchmark",
+  "source_git_blob": "718dcc2d5ba4feccdef1690d447edfcebaa9bfb5",
+  "purpose": "Probe lexical transfer on withheld action-labeled cards, not held-out underlying autobiography; episodes remain in 450-background and may appear in L2 fit",
+  "paraphrases": {
+    "E09-001": "At the stream's wheel, an inverted gauntlet was laid beside a sketch of the grounds.",
+    "E09-003": "Heat rose from the exhibition hall furnace while a silhouette crossed the display.",
+    "E01-002": "Melted tallow spattered an illustration of the distant signalling apparatus.",
+    "E13-001": "A shifting board behind the building marked the concealed panel.",
+    "E01-001": "The insect collection smelled of preserving resin near a spare metallic lock opener.",
+    "E01-003": "A shattered seam in a partitioned vessel forced another attempt at its construction.",
+    "E13-002": "A vacant transparent vessel separated a pair of seats.",
+    "E01-008": "Crimson markings appeared across the navy-colored accounting covers.",
+    "E01-004": "An amphibian's limb and the antiseptic discoloration accompanied a dressing.",
+    "E01-005": "A sulfurous deposit gathered on the laboratory sieve beneath the sheets.",
+    "E09-006": "The medicinal instructions confused visitors during the noon rush.",
+    "E01-011": "A pastry carton rested beside the family meal on the week's rest day.",
+    "E16-001": "A cobalt shade on exchanged journals recalled the stage encounter.",
+    "E16-002": "Spiny nuts lay on the damp paving stones after their walk.",
+    "E16-003": "A burgundy drink waited as an entrance latch slowly opened.",
+    "E09-009": "A lifted utensil hovered over the fruit served at the recurring supper."
+  },
+  "unknown_controls": [
+    "A radio telescope detected an unfamiliar planetary frequency beside a frozen spacecraft.",
+    "A digital checksum malfunctioned in a modern cloud computing cluster.",
+    "An orbiting satellite measured atmospheric pressure above the polar ice.",
+    "A silicon wafer carried a network of microscopic photodiodes."
+  ]
+}
