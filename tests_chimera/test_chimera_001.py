@@ -108,6 +108,14 @@ class ChimeraMechanics(unittest.TestCase):
             with self.assertRaisesRegex(PreflightError, "Hash mismatch"):
                 preflight(cfg, root)
 
+    def test_recovered_original_files_match_sha256_manifest(self):
+        cfg = json.loads((Path(__file__).resolve().parents[1] / "config/chimera_001.json").read_text())
+        root = Path(__file__).resolve().parents[1] / "data/phenotype_battery"
+        for key in ("profile", "adversarial"):
+            source = cfg["battery"]["files"][key]
+            data = (root / source["name"]).read_bytes()
+            self.assertEqual(hashlib.sha256(data).hexdigest(), source["sha256"])
+
     def test_criterion_is_four_condition_gate_not_seed_pool(self):
         base = {"phase1": {k: {"validation": {"js_similarity": v}}
                            for k, v in zip(CONDITIONS, [0.779, 0.854, 0.779, 0.855])}}
