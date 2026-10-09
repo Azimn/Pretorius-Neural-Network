@@ -1,0 +1,20 @@
+{
+  "experiment": "001_identity_surgery_reconstruction",
+  "as_of": "2026-10-08",
+  "status": "blocked_missing_canonical_sources",
+  "claim_status": "not_reproduced",
+  "terminal_battery_touched": false,
+  "per_seed_metrics_created": false,
+  "available_recovered_sources": [
+    "data/phenotype_battery/pretorius_adversarial_v1.json",
+    "data/phenotype_battery/pretorius_profile_v1.json"
+  ],
+  "missing_canonical_sources": [
+    "data/phenotype_battery/pretorius_phenotype_train_battery_v1.json",
+    "data/phenotype_battery/pretorius_train_v1.json",
+    "data/phenotype_battery/pretorius_validation_v1.json"
+  ],
+  "known_nonidentical_alternative": "v0.4-reproducibility-payload has 100 training items and 40 validation items, but not the canonical source files with authenticated original byte hashes or all 130 training items.",
+  "provenance_limitation": "The original Experiment 001 hyperparameter overrides and 130-item presentation order were not specified in the narrative log. Existing main config/default.json provides an explicitly assumed reconstruction, not an authenticated original.",
+  "next_step": "Recover and verify the three missing original source files and original schedule/parameter provenance, then run all six pinned seeds without tuning. Only mark reproduced if all four historical validation means match within 0.01."
+}
