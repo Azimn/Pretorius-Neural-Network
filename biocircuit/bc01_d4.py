@@ -215,7 +215,7 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
                background_ticks=8, epochs=3, card_ticks=32,
                settle_ticks=32, eta=0.03, gain=1.0,
                sensory_gain=1.0, checkpoint_dir=None,
-               presynaptic_mode="target_rate") -> dict:
+               presynaptic_mode="target_rate", diagnostic_observer=None) -> dict:
     cards = validate_cards(corpus, cards)
     if shared is not None:
         shared.verify_corpus(corpus)
@@ -260,7 +260,8 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
                    epochs, card_ticks, labels, sensory_gain=sensory_gain)
     _train_targeted(models["targeted"], cards, encoder, circuit, shared,
                     epochs, card_ticks, labels, eta, sensory_gain=sensory_gain,
-                    presynaptic_mode=presynaptic_mode)
+                    presynaptic_mode=presynaptic_mode,
+                    observer=diagnostic_observer)
     _train_targeted(models["targeted_shuffled"], cards, encoder, circuit, shared,
                     epochs, card_ticks, shuffled, eta, sensory_gain=sensory_gain,
                     presynaptic_mode=presynaptic_mode)
