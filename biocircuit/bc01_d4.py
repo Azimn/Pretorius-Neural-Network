@@ -66,7 +66,8 @@ def _train_generic(net, cards, encoder, circuit, shared, epochs: int,
 
 def _train_targeted(net, cards, encoder, circuit, shared, epochs: int,
                     ticks: int, labels, eta: float, blank_cues: bool = False,
-                    sensory_gain: float = 1.0, observer=None):
+                    sensory_gain: float = 1.0, observer=None,
+                    presynaptic_mode: str = "target_rate"):
     """One bounded three-factor update per event on EXISTING sparse W entries.
 
     Factor 1: cue-only presynaptic firing above target (context).
@@ -78,6 +79,8 @@ def _train_targeted(net, cards, encoder, circuit, shared, epochs: int,
     """
     if ticks < 2:
         raise ValueError("D3 requires >= 2 ticks for paired cue/teacher phases")
+    if presynaptic_mode not in ("target_rate", "cue_minus_blank"):
+        raise ValueError("Unregistered D5B presynaptic eligibility mode")
     pre_ticks = ticks // 2
     post_ticks = ticks - pre_ticks
     masks = {a: np.isin(net.post_idx, net.action_populations[a]) for a in EVAL_ACTIONS}
@@ -92,6 +95,23 @@ def _train_targeted(net, cards, encoder, circuit, shared, epochs: int,
             for _ in range(pre_ticks):
                 net.step(cue, learn=False)
             pre_response = net.rate.copy()
+            # D5B controlled candidate: source-specific presynaptic drive,
+            # measured versus a time-matched blank first-half exposure.
+            # Restore the original cue branch exactly before proceeding.
+            # Default D4 mode does no extra steps and remains bit-identical.
+            if presynaptic_mode == "cue_minus_blank":
+                cue_v, cue_rate, cue_tick = net.v.copy(), net.rate.copy(), net.tick
+                net.reset_fast_state()
+                zero = np.zeros_like(cue)
+                for _ in range(pre_ticks):
+                    net.step(zero, learn=False)
+                blank_pre_response = net.rate.copy()
+                net.v[:] = cue_v
+                net.rate[:] = cue_rate
+                net.tick = cue_tick
+                pre_factor = np.maximum(pre_response - blank_pre_response, 0.0)
+            else:
+                pre_factor = np.maximum(pre_response - net.target_rate, 0.0)
             # Strict paired counterfactual: run the same second-phase time
             # window *without* teaching, from the same fast state. Comparing
             # unpaired timepoints can yield a zero learning signal simply
@@ -114,7 +134,7 @@ def _train_targeted(net, cards, encoder, circuit, shared, epochs: int,
             # Counterfactual branch adds extra inference ticks and is not
             # a strict FLOP-matched comparator to global Hebbian exposure.
             correlation = (
-                np.maximum(pre_response[net.pre_idx] - net.target_rate, 0.0)
+                pre_factor[net.pre_idx]
                 * np.maximum(post_response[net.post_idx] - no_teacher_response[net.post_idx], 0.0)
                 * masks[label]
             )
@@ -194,7 +214,8 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
                neurons=256, seed=31, mode="local", shared=None,
                background_ticks=8, epochs=3, card_ticks=32,
                settle_ticks=32, eta=0.03, gain=1.0,
-               sensory_gain=1.0, checkpoint_dir=None) -> dict:
+               sensory_gain=1.0, checkpoint_dir=None,
+               presynaptic_mode="target_rate") -> dict:
     cards = validate_cards(corpus, cards)
     if shared is not None:
         shared.verify_corpus(corpus)
@@ -204,6 +225,8 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
         raise ValueError("Invalid D3 budget or topology")
     if not np.isfinite(eta) or eta <= 0 or not np.isfinite(gain) or gain <= 0:
         raise ValueError("Invalid D4 learning multiplier")
+    if presynaptic_mode not in ("target_rate", "cue_minus_blank"):
+        raise ValueError("Unregistered D5B presynaptic learning rule")
     if not np.isfinite(sensory_gain) or sensory_gain <= 0 or sensory_gain > 12.0:
         raise ValueError("D4 sensory gain must be finite and in (0,12]")
     # The same 450-memory background curriculum is used for every gain:
@@ -236,12 +259,15 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
     _train_generic(models["generic_hebb"], cards, encoder, circuit, shared,
                    epochs, card_ticks, labels, sensory_gain=sensory_gain)
     _train_targeted(models["targeted"], cards, encoder, circuit, shared,
-                    epochs, card_ticks, labels, eta, sensory_gain=sensory_gain)
+                    epochs, card_ticks, labels, eta, sensory_gain=sensory_gain,
+                    presynaptic_mode=presynaptic_mode)
     _train_targeted(models["targeted_shuffled"], cards, encoder, circuit, shared,
-                    epochs, card_ticks, shuffled, eta, sensory_gain=sensory_gain)
+                    epochs, card_ticks, shuffled, eta, sensory_gain=sensory_gain,
+                    presynaptic_mode=presynaptic_mode)
     _train_targeted(models["targeted_blank_cue"], cards, encoder, circuit, shared,
                     epochs, card_ticks, labels, eta, blank_cues=True,
-                    sensory_gain=sensory_gain)
+                    sensory_gain=sensory_gain,
+                    presynaptic_mode=presynaptic_mode)
     models["targeted_recurrent_lesion"] = copy.deepcopy(models["targeted"])
     models["targeted_recurrent_lesion"].W.data[:] = original_weights
     if any(not np.array_equal(model.motor_w, original_motor)
@@ -332,7 +358,9 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
         "beats_generic_hebb": t["accuracy"] > metrics["generic_hebb"]["accuracy"],
     }
     return {
-        "schema": "BC01-D4-source-input-amplitude-v1",
+        "schema": ("BC01-D5B-cue-minus-blank-development-v1"
+                   if presynaptic_mode == "cue_minus_blank"
+                   else "BC01-D4-source-input-amplitude-v1"),
         "source_commit": corpus.blob_sha,
         "annotated_cards": len(cards),
         "seed": seed, "mode": mode, "neurons": neurons,
@@ -357,6 +385,8 @@ def experiment(corpus: Corpus, cards: tuple[dict, ...], *,
         "checkpoint_name": checkpoint.name if checkpoint_dir is not None else None,
         "gates": gates,
         "passes_all_development_gates": all(gates.values()),
-        "notes": "Posthoc prespecified gains 1,4,12 on card cue + query sensory channels only. Shared source TF-IDF frozen; original 450-memory background identical across gains. Provisional labels; reused development cues cannot establish generalization.",
+        "notes": ("D5B prespecified cue-vs-matched-blank presynaptic eligibility only; extra blank branch costs CPU. Reused development source cards are not independent."
+                  if presynaptic_mode == "cue_minus_blank" else
+                  "Posthoc prespecified gains 1,4,12 on card cue + query sensory channels only. Shared source TF-IDF frozen; original 450-memory background identical across gains. Provisional labels; reused development cues cannot establish generalization."),
         "rows": rows,
     }
