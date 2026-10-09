@@ -36,7 +36,8 @@
         "fixed_population_readout": 1.0,
         "train_card_lexical_retrieval": 0.0
       },
-      "heldout_card_evaluations": 36,
+      "fold_evaluations": 36,
+      "heldout_card_evaluations": 144,
       "macro_f1_mean": {
         "decoder_frozen_recurrence": 0.15046296296296297,
         "decoder_shuffled_labels": 0.18495370370370376,
@@ -67,7 +68,8 @@
         "fixed_population_readout": 1.0,
         "train_card_lexical_retrieval": 0.1875
       },
-      "heldout_card_evaluations": 36,
+      "fold_evaluations": 36,
+      "heldout_card_evaluations": 144,
       "macro_f1_mean": {
         "decoder_frozen_recurrence": 0.14467592592592593,
         "decoder_shuffled_labels": 0.1483796296296296,
@@ -82,7 +84,7 @@
   },
   "trials": [
     {
-      "elapsed_seconds_observed": 1.658946,
+      "elapsed_seconds_observed": 1.646749,
       "evidence_scope": "unreviewed candidate paraphrases; labels held out but canonical autobiography & owner L2 fit were not held out; transductive developmental CV ONLY",
       "folds": [
         {
@@ -4648,7 +4650,7 @@
       "train_per_fold": 12
     },
     {
-      "elapsed_seconds_observed": 1.62709,
+      "elapsed_seconds_observed": 1.665162,
       "evidence_scope": "unreviewed candidate paraphrases; labels held out but canonical autobiography & owner L2 fit were not held out; transductive developmental CV ONLY",
       "folds": [
         {
@@ -9214,7 +9216,7 @@
       "train_per_fold": 12
     },
     {
-      "elapsed_seconds_observed": 1.542502,
+      "elapsed_seconds_observed": 1.605435,
       "evidence_scope": "unreviewed candidate paraphrases; labels held out but canonical autobiography & owner L2 fit were not held out; transductive developmental CV ONLY",
       "folds": [
         {
@@ -13780,7 +13782,7 @@
       "train_per_fold": 12
     },
     {
-      "elapsed_seconds_observed": 1.55971,
+      "elapsed_seconds_observed": 1.638409,
       "evidence_scope": "unreviewed candidate paraphrases; labels held out but canonical autobiography & owner L2 fit were not held out; transductive developmental CV ONLY",
       "folds": [
         {
@@ -18346,7 +18348,7 @@
       "train_per_fold": 12
     },
     {
-      "elapsed_seconds_observed": 1.558015,
+      "elapsed_seconds_observed": 1.657496,
       "evidence_scope": "unreviewed candidate paraphrases; labels held out but canonical autobiography & owner L2 fit were not held out; transductive developmental CV ONLY",
       "folds": [
         {
@@ -22912,7 +22914,7 @@
       "train_per_fold": 12
     },
     {
-      "elapsed_seconds_observed": 1.515703,
+      "elapsed_seconds_observed": 1.593711,
       "evidence_scope": "unreviewed candidate paraphrases; labels held out but canonical autobiography & owner L2 fit were not held out; transductive developmental CV ONLY",
       "folds": [
         {
@@ -27478,7 +27480,7 @@
       "train_per_fold": 12
     },
     {
-      "elapsed_seconds_observed": 1.559691,
+      "elapsed_seconds_observed": 1.647801,
       "evidence_scope": "unreviewed candidate paraphrases; labels held out but canonical autobiography & owner L2 fit were not held out; transductive developmental CV ONLY",
       "folds": [
         {
@@ -32044,7 +32046,7 @@
       "train_per_fold": 12
     },
     {
-      "elapsed_seconds_observed": 1.567557,
+      "elapsed_seconds_observed": 1.634617,
       "evidence_scope": "unreviewed candidate paraphrases; labels held out but canonical autobiography & owner L2 fit were not held out; transductive developmental CV ONLY",
       "folds": [
         {
@@ -36610,7 +36612,7 @@
       "train_per_fold": 12
     },
     {
-      "elapsed_seconds_observed": 1.555012,
+      "elapsed_seconds_observed": 1.590194,
       "evidence_scope": "unreviewed candidate paraphrases; labels held out but canonical autobiography & owner L2 fit were not held out; transductive developmental CV ONLY",
       "folds": [
         {
