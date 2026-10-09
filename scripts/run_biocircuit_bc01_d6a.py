@@ -67,18 +67,20 @@ def main():
           "fixed_population_readout","train_card_lexical_retrieval",
           "decoder_training_confidence_abstain")
     for variant in ("original_source_probe","assistant_paraphrase"):
-        total=4*len(trials)
+        fold_evaluations=4*len(trials)
+        heldout_cases=4*fold_evaluations
         summary[variant]={
-            "heldout_card_evaluations":total,
+            "fold_evaluations":fold_evaluations,
+            "heldout_card_evaluations":heldout_cases,
             "accuracy_mean":{name:sum(
                 f["metrics"][variant][name]["accuracy_with_abstain_counted_wrong"]
-                for t in trials for f in t["folds"])/total for name in cond},
+                for t in trials for f in t["folds"])/fold_evaluations for name in cond},
             "macro_f1_mean":{name:sum(
                 f["metrics"][variant][name]["macro_f1"]
-                for t in trials for f in t["folds"])/total for name in cond},
+                for t in trials for f in t["folds"])/fold_evaluations for name in cond},
             "coverage_mean":{name:sum(
                 f["metrics"][variant][name]["coverage"]
-                for t in trials for f in t["folds"])/total for name in cond},
+                for t in trials for f in t["folds"])/fold_evaluations for name in cond},
             "recurrent_accuracy_better_than_W_lesion_folds":sum(
                 f["metrics"][variant]["decoder_with_cue_contrast_W"]
                  ["accuracy_with_abstain_counted_wrong"] >
