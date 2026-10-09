@@ -111,10 +111,14 @@ class ChimeraMechanics(unittest.TestCase):
     def test_recovered_original_files_match_sha256_manifest(self):
         cfg = json.loads((Path(__file__).resolve().parents[1] / "config/chimera_001.json").read_text())
         root = Path(__file__).resolve().parents[1] / "data/phenotype_battery"
-        for key in ("profile", "adversarial"):
-            source = cfg["battery"]["files"][key]
-            data = (root / source["name"]).read_bytes()
-            self.assertEqual(hashlib.sha256(data).hexdigest(), source["sha256"])
+        # The historical profile matches the original v1 manifest exactly.
+        source = cfg["battery"]["files"]["profile"]
+        data = (root / source["name"]).read_bytes()
+        self.assertEqual(hashlib.sha256(data).hexdigest(), source["sha256"])
+        # The historical branch adversarial file failed the original SHA-256
+        # check, so it must not be substituted as the canonical input.
+        missing = root / cfg["battery"]["files"]["adversarial"]["name"]
+        self.assertFalse(missing.exists(), "Unauthenticated adversarial variant must stay excluded")
 
     def test_criterion_is_four_condition_gate_not_seed_pool(self):
         base = {"phase1": {k: {"validation": {"js_similarity": v}}
