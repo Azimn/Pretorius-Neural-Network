@@ -1,0 +1,65 @@
+{
+  "protocol_id": "chimera-001-reconstruction-v1",
+  "provenance_status": "reconstruction, not an authenticated original Experiment 001 run config",
+  "provenance_note": "Network defaults are copied from main config/default.json at 013714fe8cf5ea539da9fc33d1ce54cf8e0dd127; the Experiment 001 narrative supplies neurons, ticks, seeds and reported means but does not establish all historical overrides or training-item order. No parameters may be changed in response to scores.",
+  "neurons": 1024,
+  "phenotype_training_ticks": 12000,
+  "seeds": [1842, 101, 202, 303, 404, 505],
+  "eval": {"settle_ticks": 40, "probe_ticks": 60, "noise": 0.01, "evaluation_seed_offset": 1000000},
+  "battery": {
+    "dimensions": 20,
+    "train": 130,
+    "axis_train": 100,
+    "legacy_train": 30,
+    "validation": 40,
+    "adversarial": 20,
+    "sealed_terminal": 20,
+    "train_order": "axis_then_legacy_assumption_not_authored_in_original_protocol",
+    "files": {
+      "axis_train": {"name": "pretorius_phenotype_train_battery_v1.json", "sha256": "3cdc9fcc1d10420540ba153326d936cdbdc497a57b3319e1bf2f07f78e6c6a69"},
+      "legacy_train": {"name": "pretorius_train_v1.json", "sha256": "64a530382db3455db55265234474cbccdaa85098968d143e12fae01c41e0d24c"},
+      "validation": {"name": "pretorius_validation_v1.json", "sha256": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246"},
+      "adversarial": {"name": "pretorius_adversarial_v1.json", "sha256": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf"},
+      "profile": {"name": "pretorius_profile_v1.json", "sha256": "4d7b53f059d22e2f348e7e8f59546e8960aff530173"}
+    }
+  },
+  "narrative_validation_means": {
+    "virgin_virgin": 0.7791,
+    "trained_trained": 0.8545,
+    "trained_virgin": 0.7791,
+    "virgin_trained": 0.8546
+  },
+  "reproduction_tolerance_absolute_js_similarity": 0.01,
+  "network": {
+    "neurons": 1024,
+    "sensory_dim": 512,
+    "avg_recurrent_degree": 32,
+    "input_degree": 10,
+    "excitatory_fraction": 0.8,
+    "target_rate": 0.08,
+    "tau": 12.0,
+    "dt": 1.0,
+    "recurrent_scale": 0.34,
+    "input_scale": 0.55,
+    "action_teaching_scale": 1.8,
+    "global_inhibition": 1.7,
+    "plasticity_interval": 8,
+    "hebb_lr": 0.00035,
+    "reward_lr": 0.0012,
+    "weight_decay": 0.00002,
+    "homeostatic_lr": 0.00008,
+    "eligibility_decay": 0.92,
+    "max_abs_weight": 0.75,
+    "action_population_size": 72,
+    "motor_lr": 0.025,
+    "motor_weight_decay": 0.00002,
+    "motor_temperature": 0.3,
+    "seed": 1842
+  },
+  "phase2": {
+    "decoder_training_ticks": 12000,
+    "frozen_recurrent": true,
+    "controls": ["trained_recurrent_fresh_decoder", "virgin_recurrent_fresh_decoder"],
+    "note": "Virgin recurrent + freshly trained decoder is indispensable: a decoder can learn supervised phenotype targets even when recurrent synapses carry no trained information."
+  }
+}
