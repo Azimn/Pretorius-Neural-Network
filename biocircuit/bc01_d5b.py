@@ -77,9 +77,13 @@ def comparison(corpus, cards, *, seed=31, mode="local", sensory_gain=1.,
     legacy = d4_experiment(corpus, cards, **settings,
                            presynaptic_mode="target_rate",
                            checkpoint_dir=original_dir)
+    targeted_traces = []
     corrected = d4_experiment(corpus, cards, **settings,
                               presynaptic_mode="cue_minus_blank",
-                              checkpoint_dir=corrected_dir)
+                              checkpoint_dir=corrected_dir,
+                              diagnostic_observer=targeted_traces.append)
+    if len(targeted_traces) != len(cards) * epochs:
+        raise AssertionError("Missing source-anchored corrected training events")
     if not all([legacy["checkpoint_restart_exact"],
                 corrected["checkpoint_restart_exact"]]):
         raise ValueError("One neural learning checkpoint failed exact replay")
@@ -133,6 +137,18 @@ def comparison(corpus, cards, *, seed=31, mode="local", sensory_gain=1.,
             "mean_neural_activity": corrected["physiology"],
         },
         "motor_decoder_only": motor,
+        "cue_evoked_eligibility": {
+            "presentations": len(targeted_traces),
+            "eligible_edges_mean": float(np.mean([x["eligible_edges"] for x in targeted_traces])),
+            "candidate_edges_mean": float(np.mean([x["candidate_incoming_edges"] for x in targeted_traces])),
+            "modified_edges_mean": float(np.mean([x["modified_edges"] for x in targeted_traces])),
+            "mean_weight_delta_l1": float(np.mean([x["recurrent_delta_l1"] for x in targeted_traces])),
+            "eligible_fraction_mean": float(np.mean([
+                x["eligible_edges"] / max(1,x["candidate_incoming_edges"])
+                for x in targeted_traces
+            ])),
+            "per_event": targeted_traces,
+        },
         "strict_development_gates": strict_controls,
         "passes_all_gates": bool(all(strict_controls.values())),
         "per_card": per_card,
