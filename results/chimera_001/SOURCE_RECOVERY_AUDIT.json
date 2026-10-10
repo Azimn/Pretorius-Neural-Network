@@ -1,0 +1,129 @@
+{
+  "adversarial_semantically_equal_across_historical_branches": true,
+  "audit_id": "chimera001-source-recovery-v1",
+  "authenticated_original_adversarial_restored": true,
+  "claim": "content-audit-only; NOT an Experiment 001 reproduction",
+  "counts": {
+    "adversarial": 20,
+    "axis_train": 100,
+    "validation": 40
+  },
+  "domains": {
+    "adversarial": {
+      "active_inquiry": 1,
+      "authority_law": 1,
+      "compassion": 1,
+      "consent": 1,
+      "continuity": 1,
+      "cooperation": 1,
+      "creation_autonomy": 1,
+      "creation_relation": 1,
+      "creator_duty": 1,
+      "failure": 1,
+      "immortality": 1,
+      "knowledge_preservation": 1,
+      "legacy": 1,
+      "love_control": 1,
+      "mentorship": 1,
+      "mercy": 1,
+      "precision": 1,
+      "recognition": 1,
+      "sacrifice": 1,
+      "sovereignty_help": 1
+    },
+    "validation": {
+      "active_inquiry": 2,
+      "authority_law": 2,
+      "compassion": 2,
+      "consent": 2,
+      "continuity": 2,
+      "cooperation": 2,
+      "creation_autonomy": 2,
+      "creation_relation": 2,
+      "creator_duty": 2,
+      "failure": 2,
+      "immortality": 2,
+      "knowledge_preservation": 2,
+      "legacy": 2,
+      "love_control": 2,
+      "mentorship": 2,
+      "mercy": 2,
+      "precision": 2,
+      "recognition": 2,
+      "sacrifice": 2,
+      "sovereignty_help": 2
+    }
+  },
+  "historical_adversarial_file_sha256": "20f87fd29798be3540a67daec93d71175d019e5611e806c36f4263e196eb6a87",
+  "original_legacy_train_30_available": false,
+  "original_v1_exact_hash_recovery": {
+    "adversarial": {
+      "candidate_envelope_sha256_matches": [
+        {
+          "ascii_only": false,
+          "compact_separators": false,
+          "envelope_keys": [
+            "version",
+            "split",
+            "items"
+          ],
+          "indent": 2,
+          "line_ending": "LF",
+          "sha256": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
+          "sort_keys": false,
+          "suffix": "'\\n'"
+        }
+      ],
+      "claim": "authenticated original v1 SHA-256 bytes restored from preserved records",
+      "required_sha256": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
+      "required_v1_filename": "pretorius_adversarial_v1.json",
+      "row_count": 20
+    },
+    "axis_train": {
+      "candidate_envelope_sha256_matches": [],
+      "claim": "candidate semantic source; original v1 hash not yet certified",
+      "required_sha256": "3cdc9fcc1d10420540ba153326d936cdbdc497a57b3319e1bf2f07f78e6c6a69",
+      "required_v1_filename": "pretorius_phenotype_train_battery_v1.json",
+      "row_count": 100
+    },
+    "validation": {
+      "candidate_envelope_sha256_matches": [],
+      "claim": "candidate semantic source; original v1 hash not yet certified",
+      "required_sha256": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246",
+      "required_v1_filename": "pretorius_validation_v1.json",
+      "row_count": 40
+    }
+  },
+  "outcome": "original-v1-adversarial-exact-hash-restored-other-inputs-blocked",
+  "public_v04_file_sha256": {
+    "adversarial_full.json": "20f87fd29798be3540a67daec93d71175d019e5611e806c36f4263e196eb6a87",
+    "manifest.json": "e6bf463654a3a4919716f42c0a246c9c141c82f0c726f84ab7dfe0ecdd1b40e5",
+    "train_part1.json": "1e862b0ff05b1016459faae83d733a4d2512031ff1f5d1cd9355c7ac2ab24f3b",
+    "train_part2.json": "b1431e022c15e9b480923dbd291f392dec89c3d4942db787499ddbbdf8a5c4ce",
+    "train_part3.json": "c556963b84243e9643c7a649c31a2e22f8b519e075adac1f4552fd0891fe2158",
+    "train_part4.json": "5c9108bcd428a4de7d51b07fbbde89a16708849d898047887dea3d845b40d1fe",
+    "validation_part1.json": "4ff6b1b22695f794e53e84ab7a89bf70b8a6ac783856d471c1736ef286d31069",
+    "validation_part2.json": "ac3497cf6878c6d361a3ce128ae2f9aa70d5b7146b019c137714d5f761b7a0c0",
+    "validation_part3.json": "126e07c1bb1ad9363ead1b215dbfcce242d7fec926e8401273de7380eabf273e",
+    "validation_part4.json": "19e12fc7796ef76891060fff6cb2fedac713b4182460e437c9030a0a171b9c29"
+  },
+  "remaining_unverified_v1_sources": [
+    "pretorius_phenotype_train_battery_v1.json",
+    "pretorius_train_v1.json",
+    "pretorius_validation_v1.json"
+  ],
+  "reproduction_gate": "still blocked; 100 axis-grounded + 30 legacy training rows and original 40 validation rows not recovered as authenticated v1 sources",
+  "research_status": "no numerical evaluation was executed",
+  "source_pins": {
+    "current_runner_main": "2f7c698b5a887325cefd52609df746112bdabd6f",
+    "preservation_branch": "a3af4d2433d9df95b2476c556e9e2b9b308944a4",
+    "public_v04_payload": "7b7eb19ad852dc016ee0d370528d903bab78a5cf"
+  },
+  "terminal_battery_touched": false,
+  "unique_ids": {
+    "duplicate_ids": [],
+    "unique_ids": 160
+  },
+  "v1_adversarial_expected_sha256": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
+  "v1_profile_sha256_verified": "4d7b53f059d22e2f348e7e8f59546e8960aff5301d854020d908a6dcce430173"
+}
