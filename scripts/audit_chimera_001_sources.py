@@ -211,6 +211,14 @@ def main():
         canonical.write_bytes(original_bytes)
         print("AUTHENTICATED_ADVERSARIAL_RESTORED", canonical, original_sha)
         result["authenticated_original_adversarial_restored"] = True
+        result["outcome"] = "original-v1-adversarial-exact-hash-restored-other-inputs-blocked"
+        result["reproduction_gate"] = (
+            "still blocked; 100 axis-grounded + 30 legacy training rows and "
+            "original 40 validation rows not recovered as authenticated v1 sources"
+        )
+        result["original_v1_exact_hash_recovery"]["adversarial"]["claim"] = (
+            "authenticated original v1 SHA-256 bytes restored from preserved records"
+        )
         result["remaining_unverified_v1_sources"] = [
             "pretorius_phenotype_train_battery_v1.json",
             "pretorius_train_v1.json", "pretorius_validation_v1.json"
