@@ -1,0 +1,133 @@
+name: Chimera 001B reused-data exploratory pilot
+on:
+  pull_request:
+    paths:
+      - 'scripts/run_chimera_001b.py'
+      - 'config/chimera_001b.json'
+      - 'tests_chimera/test_chimera_001b.py'
+      - '.github/workflows/chimera-001b-pilot.yml'
+  push:
+    branches: ['research/chimera-001b-reused-data-controls']
+    paths:
+      - 'scripts/run_chimera_001b.py'
+      - 'config/chimera_001b.json'
+      - 'tests_chimera/test_chimera_001b.py'
+      - '.github/workflows/chimera-001b-pilot.yml'
+permissions:
+  contents: write
+jobs:
+  mechanics-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout experimental branch
+        uses: actions/checkout@v4
+        with:
+          path: current
+      - name: Checkout original pinned historical v0.4 source
+        uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Neural-Network
+          ref: 7b7eb19ad852dc016ee0d370528d903bab78a5cf
+          path: historical-v04
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: python -m pip install -r current/requirements.txt
+      - name: Test 001B mechanics and 001 reproduction protections
+        run: |
+          cd current
+          python -m unittest discover -s tests_chimera -v
+      - name: Verify historical source digests and original evaluation hashes
+        run: |
+          python current/scripts/run_chimera_001b.py --historical-v04 historical-v04 --preflight-only
+      - name: Small neural end-to-end 001B smoke on authentic source
+        run: |
+          python current/scripts/run_chimera_001b.py \
+            --historical-v04 historical-v04 \
+            --out current/results/chimera_001b_smoke \
+            --seeds 1842 --training-ticks 32 --probe-ticks 3
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('current/results/chimera_001b_smoke/RUN_REPORT.json').read_text())
+          assert r['seed_count']==1 and r['run_mode']=='smoke_not_full_evidence'
+          assert r['historical_experiment_001_reproduced'] is False
+          assert r['terminal_battery_touched'] is False
+          assert len(r['conditions'])==7
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001b-smoke-${{ github.sha }}
+          path: current/results/chimera_001b_smoke/
+          retention-days: 30
+  full-six-seed:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/research/chimera-001b-reused-data-controls'
+    needs: mechanics-and-smoke
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout dedicated experiment branch
+        uses: actions/checkout@v4
+        with:
+          path: current
+          ref: research/chimera-001b-reused-data-controls
+      - name: Checkout immutable historical v0.4 source
+        uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Neural-Network
+          ref: 7b7eb19ad852dc016ee0d370528d903bab78a5cf
+          path: historical-v04
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r current/requirements.txt
+      - name: Execute all six 1024-neuron 12k-step 001B exploratory conditions
+        run: |
+          python current/scripts/run_chimera_001b.py \
+            --historical-v04 historical-v04 \
+            --out current/results/chimera_001b
+      - name: Verify completeness and experimental provenance contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('current/results/chimera_001b')
+          cfg=json.loads(Path('current/config/chimera_001b.json').read_text())
+          r=json.loads((root/'RUN_REPORT.json').read_text())
+          assert r['run_mode']=='full_six_seed_exploratory'
+          assert r['seed_count']==6 and r['seeds']==cfg['seeds']
+          assert r['terminal_battery_touched'] is False
+          assert r['historical_experiment_001_reproduced'] is False
+          assert len(r['conditions'])==7
+          assert len(r['paired_fresh_trained_minus_virgin_recurrent'])==6
+          for s in cfg['seeds']:
+              d=json.loads((root/f'seed_{s}.json').read_text())
+              assert d['main_neural_training_steps']==12000
+              assert d['fresh_decoder_neural_steps_each']==12000
+              assert d['shuffled_control_neural_training_steps']==12000
+              assert all(d['condition_results'][x]['validation']['n']==40 for x in r['conditions'])
+              assert all(d['condition_results'][x]['adversarial']['n']==20 for x in r['conditions'])
+          print('001B six-seed source-bound outcome contract PASSED')
+          PY
+      - name: Upload entire machine-readable per-seed evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001b-exploratory-sixseed-${{ github.sha }}
+          path: current/results/chimera_001b/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Commit raw outcome JSON on dedicated branch, never to Experiment 001
+        run: |
+          git -C current config user.name 'github-actions[bot]'
+          git -C current config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C current add results/chimera_001b/
+          if git -C current diff --cached --quiet; then
+            echo 'No new outcomes to commit'
+          else
+            git -C current commit -m 'Record complete six-seed exploratory 001B neural results (not Experiment 001)'
+            git -C current push origin HEAD:refs/heads/research/chimera-001b-reused-data-controls
+          fi
