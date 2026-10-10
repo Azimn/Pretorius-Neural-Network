@@ -1,0 +1,160 @@
+name: Chimera 001F autobiographical replay
+on:
+  push:
+    branches: ['research/chimera-001f-autobiographical-replay']
+    paths:
+      - 'scripts/run_chimera_001f.py'
+      - 'config/chimera_001f.json'
+      - 'tests_chimera/test_chimera_001f.py'
+      - '.github/workflows/chimera-001f-replay.yml'
+  pull_request:
+    paths:
+      - 'scripts/run_chimera_001f.py'
+      - 'config/chimera_001f.json'
+      - 'tests_chimera/test_chimera_001f.py'
+      - '.github/workflows/chimera-001f-replay.yml'
+permissions:
+  contents: write
+jobs:
+  test-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: current
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Neural-Network
+          ref: 7b7eb19ad852dc016ee0d370528d903bab78a5cf
+          path: historical-v04
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Connectome
+          ref: 5364f43dfe3c192b6c13b7bf373405ee7a41b420
+          path: connectome
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r current/requirements.txt
+      - name: Run mechanical tests including 001F strict replay checks
+        run: |
+          cd current
+          python -m unittest discover -s tests_chimera -v
+      - name: Verify all original and reconstructed-source file digests
+        run: |
+          python current/scripts/run_chimera_001f.py \
+            --historical-v04 historical-v04 --connectome connectome --preflight-only
+      - name: Replay real 450-event corpus in reduced-budget neural smoke
+        run: |
+          python current/scripts/run_chimera_001f.py \
+            --historical-v04 historical-v04 --connectome connectome \
+            --out current/results/chimera_001f_smoke \
+            --seeds 1842 --phenotype-ticks 32 --replay-epochs 1 --probe-ticks 3
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path('current/results/chimera_001f_smoke/RUN_REPORT.json').read_text())
+          assert r['run_mode']=='smoke_not_full_evidence'
+          assert r['seed_count']==1 and len(r['diagnostics'])==5
+          assert r['terminal_battery_touched'] is False
+          assert r['historical_001_reproduced'] is False
+          assert r['new_behavioral_labels_used'] is False
+          assert r['diagnostics']['frozen_chronological']['replay_w_l2_mean']==0
+          assert r['diagnostics']['frozen_chronological']['replay_bias_l2_mean']==0
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001f-smoke-${{ github.sha }}
+          path: current/results/chimera_001f_smoke/
+          retention-days: 30
+  full-six-seed:
+    needs: test-and-smoke
+    if: github.event_name == 'push' && github.ref == 'refs/heads/research/chimera-001f-autobiographical-replay'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: current
+          ref: research/chimera-001f-autobiographical-replay
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Neural-Network
+          ref: 7b7eb19ad852dc016ee0d370528d903bab78a5cf
+          path: historical-v04
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Connectome
+          ref: 5364f43dfe3c192b6c13b7bf373405ee7a41b420
+          path: connectome
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r current/requirements.txt
+      - name: Execute complete 6-seed 450-event autobiography replay with four matched controls
+        run: |
+          python current/scripts/run_chimera_001f.py \
+            --historical-v04 historical-v04 --connectome connectome \
+            --out current/results/chimera_001f
+      - name: Strictly verify each condition and origin-specific claims
+        run: |
+          python - <<'PY'
+          import json,hashlib
+          from pathlib import Path
+          root=Path('current')
+          results=root/'results/chimera_001f'
+          cfgraw=(root/'config/chimera_001f.json').read_bytes()
+          cfg=json.loads(cfgraw)
+          summary=json.loads((results/'RUN_REPORT.json').read_text())
+          assert summary['config_sha256']==hashlib.sha256(cfgraw).hexdigest()
+          assert summary['run_mode']=='full_six_seed_exploratory'
+          assert summary['seed_count']==6 and summary['seeds']==cfg['seeds']
+          assert len(summary['diagnostics'])==5
+          assert summary['terminal_battery_touched'] is False
+          assert summary['historical_001_reproduced'] is False
+          assert summary['new_behavioral_labels_used'] is False
+          assert summary['diagnostics']['frozen_chronological']['replay_w_l2_mean']==0
+          assert summary['diagnostics']['frozen_chronological']['replay_bias_l2_mean']==0
+          for seed in cfg['seeds']:
+              row=json.loads((results/f'seed_{seed}.json').read_text())
+              assert row['initial_phenotype_training_ticks']==12000
+              assert row['config_sha256']==summary['config_sha256']
+              assert row['source_hashes']==summary['source_hashes']
+              assert row['source_memory_is_reconstructed'] is True
+              assert row['terminal_battery_touched'] is False
+              assert row['new_behavioral_labels_used'] is False
+              for name,condition in row['conditions'].items():
+                  if name!='no_replay':
+                      assert condition['replay']['actual_neural_steps']==11700
+                      assert condition['replay']['memory_presentations']==11700
+                      assert condition['replay']['full_epochs']==26
+                  assert condition['validation']['n']==40
+                  assert condition['adversarial']['n']==20
+                  assert condition['motor_decoder_sha256']==row['conditions']['no_replay']['motor_decoder_sha256']
+              for k in ('validation','adversarial'):
+                  assert row['conditions']['no_replay'][k]==row['conditions']['frozen_chronological'][k]
+          print('001F six-seed source and unsupervised control contract PASSED')
+          PY
+      - name: Preserve complete raw per-item experimental outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001f-autobiographical-sixseed-${{ github.sha }}
+          path: current/results/chimera_001f/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Commit strictly to 001F research branch
+        run: |
+          git -C current config user.name 'github-actions[bot]'
+          git -C current config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C current add results/chimera_001f/
+          if git -C current diff --cached --quiet; then
+            echo 'No new evidence files'
+          else
+            git -C current commit -m 'Archive 001F six-seed unsupervised 450-memory replay and negative controls'
+            git -C current push origin HEAD:refs/heads/research/chimera-001f-autobiographical-replay
+          fi
