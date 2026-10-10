@@ -1,0 +1,72 @@
+name: Chimera 001E independent label review gate
+on:
+  push:
+    branches: ['research/chimera-001e-review-gate']
+    paths:
+      - 'research/chimera_001e/SCENARIO_DRAFTS.jsonl'
+      - 'scripts/validate_chimera_001e_reviews.py'
+      - 'tests_chimera/test_chimera_001e.py'
+      - '.github/workflows/chimera-001e-review-gate.yml'
+  pull_request:
+    paths:
+      - 'research/chimera_001e/SCENARIO_DRAFTS.jsonl'
+      - 'scripts/validate_chimera_001e_reviews.py'
+      - 'tests_chimera/test_chimera_001e.py'
+      - '.github/workflows/chimera-001e-review-gate.yml'
+permissions:
+  contents: write
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: current
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r current/requirements.txt
+      - name: Check all source and adjudication failure gates
+        run: |
+          cd current
+          python -m unittest discover -s tests_chimera -v
+      - name: Preflight twelve unreviewed counterfactual drafts without inventing labels
+        run: |
+          cd current
+          python scripts/validate_chimera_001e_reviews.py --preflight-only
+      - name: Refuse false evaluated or independent-holdout status
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a=json.loads(Path('current/results/chimera_001e/STATUS.json').read_text())
+          assert a['status']=='unreviewed_pending_adjudication'
+          assert a['draft_audit']['draft_count']==12
+          assert a['draft_audit']['distinct_source_events']==12
+          assert a['review_status']['approved_count']==0
+          assert a['review_status']['unapproved_count']==12
+          assert a['review_status']['no_model_score_created'] is True
+          assert a['review_status']['no_confirmatory_holdout_released'] is True
+          assert a['external_holdout_verified'] is False
+          assert not Path('current/results/chimera_001e/PROVISIONALLY_APPROVED_ITEMS.jsonl').exists()
+          print('001E unreviewed schema verified. No labels or model results generated.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001e-review-preflight-${{ github.sha }}
+          path: current/results/chimera_001e/STATUS.json
+          retention-days: 90
+          if-no-files-found: error
+      - name: Commit explicitly pending review-status manifest
+        if: github.event_name == 'push'
+        run: |
+          git -C current config user.name 'github-actions[bot]'
+          git -C current config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C current add results/chimera_001e/STATUS.json
+          if git -C current diff --cached --quiet; then
+            echo 'Status unchanged'
+          else
+            git -C current commit -m 'Pin twelve new Pretorius counterfactuals as unlabeled, not independently validated'
+            git -C current push origin HEAD:refs/heads/research/chimera-001e-review-gate
+          fi
