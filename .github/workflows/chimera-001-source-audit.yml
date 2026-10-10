@@ -1,10 +1,5 @@
 name: Experiment 001 historical source audit
 on:
-  push:
-    branches: ['audit/chimera-001-source-recovery']
-    paths:
-      - 'scripts/audit_chimera_001_sources.py'
-      - '.github/workflows/chimera-001-source-audit.yml'
   pull_request:
     paths:
       - 'scripts/audit_chimera_001_sources.py'
@@ -12,7 +7,7 @@ on:
       - 'research/CHIMERA_001_SOURCE_RECOVERY.md'
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
 jobs:
   provenance:
     runs-on: ubuntu-latest
@@ -43,8 +38,7 @@ jobs:
             --current current \
             --v04 historical-v04 \
             --preserved historical-preserved \
-            --candidate-formats \
-            --restore-verified-sources
+            --candidate-formats
       - name: Confirm no Experiment 001 numerical result was generated
         run: |
           python - <<'PY'
@@ -60,18 +54,6 @@ jobs:
           assert j['research_status']=='no numerical evaluation was executed'
           print('Source audit evidence contract passed, Experiment 001 still blocked')
           PY
-      - name: Commit only SHA-256-authenticated original adversarial source on audit branch
-        if: github.event_name == 'push' && github.ref == 'refs/heads/audit/chimera-001-source-recovery'
-        run: |
-          git -C current config user.name "github-actions[bot]"
-          git -C current config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git -C current add data/phenotype_battery/ results/chimera_001/SOURCE_RECOVERY_AUDIT.json
-          if git -C current diff --cached --quiet; then
-            echo "Authenticated adversarial source already present"
-          else
-            git -C current commit -m "Preserve verified original adversarial and machine-readable source audit"
-            git -C current push origin HEAD:refs/heads/audit/chimera-001-source-recovery
-          fi
       - name: Preserve machine-readable source audit
         uses: actions/upload-artifact@v4
         with:
