@@ -46,9 +46,12 @@ def components(events: list[dict]) -> tuple[list[dict], int]:
         for linked in e.get("links_to_prior_events", []):
             if linked not in parent:
                 raise ValueError(f"Dangling source memory link {e['event_id']} -> {linked}")
-            if linked == e["event_id"]:
-                raise ValueError("Self-reference in source memory links")
-            union(e["event_id"], linked)
+            # Real v12 archive includes two self-referential source edges.
+            # Record them in the audit rather than silently declaring the
+            # whole historical corpus invalid; self-links do not change
+            # undirected connected-component membership.
+            if linked != e["event_id"]:
+                union(e["event_id"], linked)
             directed_edges += 1
     groups: dict[str, list[str]] = defaultdict(list)
     for event_id in parent:
@@ -147,6 +150,11 @@ def audit(repo: Path, strict: bool = True) -> tuple[dict, list[dict]]:
             not bool(e.get("causal_inference_status")) for e in events
         ),
         "directed_memory_links": links,
+        "self_referential_links": sorted(
+            e["event_id"] for e in events
+            for linked in e.get("links_to_prior_events", [])
+            if linked == e["event_id"]
+        ),
         "connected_components": connected,
         "largest_component_fraction": connected[0]["n"] / len(events),
         "action_label_count": 0,
