@@ -115,10 +115,12 @@ class ChimeraMechanics(unittest.TestCase):
         source = cfg["battery"]["files"]["profile"]
         data = (root / source["name"]).read_bytes()
         self.assertEqual(hashlib.sha256(data).hexdigest(), source["sha256"])
-        # The historical branch adversarial file failed the original SHA-256
-        # check, so it must not be substituted as the canonical input.
-        missing = root / cfg["battery"]["files"]["adversarial"]["name"]
-        self.assertFalse(missing.exists(), "Unauthenticated adversarial variant must stay excluded")
+        # The audit recovered the adversarial source from content-equivalent
+        # records, and CI proved the restored bytes match the original v1 SHA-256.
+        adversarial = cfg["battery"]["files"]["adversarial"]
+        recovered = root / adversarial["name"]
+        self.assertTrue(recovered.is_file(), "Original SHA-256-authenticated adversarial source is required")
+        self.assertEqual(hashlib.sha256(recovered.read_bytes()).hexdigest(), adversarial["sha256"])
 
     def test_criterion_is_four_condition_gate_not_seed_pool(self):
         base = {"phase1": {k: {"validation": {"js_similarity": v}}
