@@ -1,0 +1,139 @@
+name: Chimera 001D synapse and motor decoder factorial
+on:
+  push:
+    branches: ['research/chimera-001d-synapse-decoder-factorial']
+    paths:
+      - 'scripts/run_chimera_001d.py'
+      - 'config/chimera_001d.json'
+      - 'tests_chimera/test_chimera_001d.py'
+      - '.github/workflows/chimera-001d-factorial.yml'
+  pull_request:
+    paths:
+      - 'scripts/run_chimera_001d.py'
+      - 'config/chimera_001d.json'
+      - 'tests_chimera/test_chimera_001d.py'
+      - '.github/workflows/chimera-001d-factorial.yml'
+permissions:
+  contents: write
+jobs:
+  mechanics-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: current
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Neural-Network
+          ref: 7b7eb19ad852dc016ee0d370528d903bab78a5cf
+          path: historical-v04
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r current/requirements.txt
+      - name: Test component isolation and memory source protections
+        run: |
+          cd current
+          python -m unittest discover -s tests_chimera -v
+      - name: Check source SHA-256 and no-terminal boundary
+        run: |
+          python current/scripts/run_chimera_001d.py \
+            --historical-v04 historical-v04 --preflight-only
+      - name: End-to-end neural smoke with actual 100-row source
+        run: |
+          python current/scripts/run_chimera_001d.py \
+            --historical-v04 historical-v04 \
+            --out current/results/chimera_001d_smoke \
+            --seeds 1842 --training-ticks 32 --probe-ticks 3
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path('current/results/chimera_001d_smoke/RUN_REPORT.json').read_text())
+          assert j['mode']=='smoke_not_full_evidence'
+          assert j['seed_count']==1 and len(j['conditions'])==8
+          assert j['terminal_battery_touched'] is False
+          assert j['historical_001_reproduced'] is False
+          assert len(j['paired_deltas']['validation'])==7
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001d-smoke-${{ github.sha }}
+          path: current/results/chimera_001d_smoke/
+          retention-days: 30
+  full-six-seed:
+    needs: mechanics-and-smoke
+    if: github.event_name == 'push' && github.ref == 'refs/heads/research/chimera-001d-synapse-decoder-factorial'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: current
+          ref: research/chimera-001d-synapse-decoder-factorial
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Neural-Network
+          ref: 7b7eb19ad852dc016ee0d370528d903bab78a5cf
+          path: historical-v04
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r current/requirements.txt
+      - name: Execute all six full-budget nonterminal W/bias/decoder factorials
+        run: |
+          python current/scripts/run_chimera_001d.py \
+            --historical-v04 historical-v04 \
+            --out current/results/chimera_001d
+      - name: Verify all paired seeds, component conditions and label boundaries
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('current')
+          dest=root/'results/chimera_001d'
+          cfgraw=(root/'config/chimera_001d.json').read_bytes()
+          cfg=json.loads(cfgraw)
+          summary=json.loads((dest/'RUN_REPORT.json').read_text())
+          assert summary['mode']=='full_six_seed_exploratory'
+          assert summary['config_sha256']==hashlib.sha256(cfgraw).hexdigest()
+          assert summary['seeds']==cfg['seeds'] and summary['seed_count']==6
+          assert summary['terminal_battery_touched'] is False
+          assert summary['historical_001_reproduced'] is False
+          assert len(summary['conditions'])==8
+          assert all(len(summary['paired_deltas'][sp]['W_only_vs_virgin_W']['per_seed'])==6
+                     for sp in ('validation','adversarial'))
+          assert all(summary['conditions'][x]['validation']['mean_js_similarity']>=0
+                     for x in summary['conditions'])
+          for seed in cfg['seeds']:
+              row=json.loads((dest/f'seed_{seed}.json').read_text())
+              assert row['config_sha256']==summary['config_sha256']
+              assert row['neural_training_steps']==12000
+              assert row['source_sha256']==summary['source_sha256']
+              assert len(row['conditions'])==8
+              assert all(row['conditions'][x]['validation']['n']==40
+                         and row['conditions'][x]['adversarial']['n']==20
+                         for x in row['conditions'])
+              assert row['terminal_battery_touched'] is False
+          print('001D source-pinned eight-factor six-seed evidence contract PASSED')
+          PY
+      - name: Preserve full raw per-seed results before branch commit
+        uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001d-factorial-sixseed-${{ github.sha }}
+          path: current/results/chimera_001d/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Commit evidence only to 001D branch
+        run: |
+          git -C current config user.name 'github-actions[bot]'
+          git -C current config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C current add results/chimera_001d/
+          if git -C current diff --cached --quiet; then
+            echo 'Evidence already versioned'
+          else
+            git -C current commit -m 'Archive 001D eight-condition six-seed synapse and decoder causal-factorial outcomes'
+            git -C current push origin HEAD:refs/heads/research/chimera-001d-synapse-decoder-factorial
+          fi
