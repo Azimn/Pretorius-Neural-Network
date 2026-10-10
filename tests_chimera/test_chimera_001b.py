@@ -78,7 +78,7 @@ class Chimera001BTests(unittest.TestCase):
             rows = []
             for i in range(20):
                 for j in range(5):
-                    rows.append(dict(item(f"{i}-{j}", f"d{i}")))
+                    rows.append(dict(item(f"d{i}_train_{j+1:02d}", f"d{i}")))
             val = [dict(item(f"v{i}-{j}", f"d{i}"))
                    for i in range(20) for j in range(2)]
             adv = [dict(item(f"a{i}", f"d{i}")) for i in range(20)]
