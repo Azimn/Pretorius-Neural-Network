@@ -69,6 +69,7 @@
           ],
           "indent": 2,
           "line_ending": "LF",
+          "record_order": "concatenated_v04",
           "sha256": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
           "sort_keys": false,
           "suffix": "'\\n'"
@@ -87,8 +88,24 @@
       "row_count": 100
     },
     "validation": {
-      "candidate_envelope_sha256_matches": [],
-      "claim": "candidate semantic source; original v1 hash not yet certified",
+      "candidate_envelope_sha256_matches": [
+        {
+          "ascii_only": false,
+          "compact_separators": false,
+          "envelope_keys": [
+            "version",
+            "split",
+            "items"
+          ],
+          "indent": 2,
+          "line_ending": "LF",
+          "record_order": "inverted_strided_partitions",
+          "sha256": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246",
+          "sort_keys": false,
+          "suffix": "'\\n'"
+        }
+      ],
+      "claim": "exact v1 SHA-256 source representation found",
       "required_sha256": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246",
       "required_v1_filename": "pretorius_validation_v1.json",
       "row_count": 40
