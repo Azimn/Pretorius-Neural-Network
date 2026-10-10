@@ -111,14 +111,18 @@ class ChimeraMechanics(unittest.TestCase):
     def test_recovered_original_files_match_sha256_manifest(self):
         cfg = json.loads((Path(__file__).resolve().parents[1] / "config/chimera_001.json").read_text())
         root = Path(__file__).resolve().parents[1] / "data/phenotype_battery"
-        # The historical profile matches the original v1 manifest exactly.
-        source = cfg["battery"]["files"]["profile"]
-        data = (root / source["name"]).read_bytes()
-        self.assertEqual(hashlib.sha256(data).hexdigest(), source["sha256"])
-        # The historical branch adversarial file failed the original SHA-256
-        # check, so it must not be substituted as the canonical input.
-        missing = root / cfg["battery"]["files"]["adversarial"]["name"]
-        self.assertFalse(missing.exists(), "Unauthenticated adversarial variant must stay excluded")
+        # Only true original SHA-256-authenticated source files are committed.
+        for key in ("profile", "validation", "adversarial"):
+            source = cfg["battery"]["files"][key]
+            recovered = root / source["name"]
+            self.assertTrue(recovered.is_file(), f"Missing original certified {key}")
+            self.assertEqual(hashlib.sha256(recovered.read_bytes()).hexdigest(), source["sha256"])
+        # The 100+30 training corpus is still not authenticated. Do not allow
+        # an accidental numerical Experiment 001 run on an incomplete battery.
+        for key in ("axis_train", "legacy_train"):
+            source = cfg["battery"]["files"][key]
+            self.assertFalse((root / source["name"]).exists(),
+                             "Training source must be independently hash-verified before release")
 
     def test_criterion_is_four_condition_gate_not_seed_pool(self):
         base = {"phase1": {k: {"validation": {"js_similarity": v}}
