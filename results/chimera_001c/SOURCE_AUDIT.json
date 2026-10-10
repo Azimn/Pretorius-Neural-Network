@@ -1,0 +1,70 @@
+{
+  "action_label_count": 0,
+  "approved_evaluation_item_count": 0,
+  "audit_id": "chimera-001c-v12-450-source-inventory-v1",
+  "connected_components": [
+    {
+      "episode_count": 27,
+      "example_event_id": "E01-001",
+      "n": 448
+    },
+    {
+      "episode_count": 1,
+      "example_event_id": "E09-001",
+      "n": 2
+    }
+  ],
+  "directed_memory_links": 912,
+  "episode_count": 27,
+  "episode_sizes": {
+    "E01": 20,
+    "E02": 21,
+    "E03": 20,
+    "E04": 20,
+    "E05": 21,
+    "E06": 16,
+    "E07": 16,
+    "E08": 16,
+    "E09": 15,
+    "E10": 15,
+    "E11": 15,
+    "E12": 15,
+    "E13": 16,
+    "E14": 18,
+    "E15": 16,
+    "E16": 10,
+    "E17": 7,
+    "E18": 10,
+    "E19": 15,
+    "E20": 17,
+    "E21": 18,
+    "E22": 16,
+    "E23": 16,
+    "E24": 16,
+    "E25": 30,
+    "E26": 15,
+    "E27": 20
+  },
+  "event_count": 450,
+  "historical_experiment_001_reproduced": false,
+  "largest_component_fraction": 0.9955555555555555,
+  "missing_explicit_causal_inference_status": 200,
+  "self_referential_links": [
+    "E25-013",
+    "E25-014"
+  ],
+  "sidecar_count": 450,
+  "sidecar_review_statuses": {
+    "unreviewed_candidate": 450
+  },
+  "source_commit": "5364f43dfe3c192b6c13b7bf373405ee7a41b420",
+  "source_files_sha256": {
+    "memories/annotations/v12_450_sidecars.jsonl": "17188b82bc49b8cc02d9690d64ed9975e724aa2abdb332bed2a3d7ea5f4e36d2",
+    "memories/current/Pretorius_v12_450_Events_Complete.jsonl": "becdf4ca72b85365c35940ccd68f3b6a9bbb1093b7b3cc89c33b113bbe5608ec"
+  },
+  "source_repo": "Azimn/Pretorius-Connectome",
+  "split_policy": "No episode-random or simple episode-held-out split qualifies as a memory-graph-independent holdout; construct new separately adjudicated counterfactual behavioral scenarios after freeze.",
+  "status": "unlabeled_candidate_review_queue_only",
+  "terminal_battery_touched": false,
+  "unique_event_ids": 450
+}
