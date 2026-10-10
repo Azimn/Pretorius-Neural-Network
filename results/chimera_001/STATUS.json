@@ -7,17 +7,18 @@
   "per_seed_metrics_created": false,
   "available_recovered_sources": [
     "data/phenotype_battery/pretorius_profile_v1.json",
+    "data/phenotype_battery/pretorius_validation_v1.json",
     "data/phenotype_battery/pretorius_adversarial_v1.json"
   ],
   "missing_canonical_sources": [
     "data/phenotype_battery/pretorius_phenotype_train_battery_v1.json",
-    "data/phenotype_battery/pretorius_train_v1.json",
-    "data/phenotype_battery/pretorius_validation_v1.json"
+    "data/phenotype_battery/pretorius_train_v1.json"
   ],
-  "known_nonidentical_alternative": "The v0.4 payload reconstructs a 100-row axis training subset, a 40-row validation set and the 20 adversarial records. The adversarial records now reserialize to the exact original v1 SHA-256; training and validation original v1 hashes remain unverified. The 30 legacy training rows are missing.",
+  "known_nonidentical_alternative": "The v0.4 payload reconstructs 100 axis training records. Its partitions were stride-sliced into four files; round-robin interleaving recovers the domain-grouped original presentation order and allowed an exact original validation SHA-256 match. The 100 axis-training source still fails the bounded original-byte serialization search, and the 30 legacy training records are unavailable.",
   "provenance_limitation": "The original Experiment 001 hyperparameter overrides and 130-item presentation order were not specified in the narrative log. Existing main config/default.json provides an explicitly assumed reconstruction, not an authenticated original.",
   "next_step": "Recover and verify the three missing original source files and original schedule/parameter provenance, then run all six pinned seeds without tuning. Only mark reproduced if all four historical validation means match within 0.01.",
-  "source_recovery_audit": "https://github.com/Azimn/Pretorius-Neural-Network/actions/runs/38024167448",
+  "source_recovery_audit": "https://github.com/Azimn/Pretorius-Neural-Network/actions/runs/38024436732",
   "adversarial_recovery_proven_sha256": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
-  "source_recovery_status": "original v1 adversarial recovered exactly; 130 training and 40 validation still absent"
+  "source_recovery_status": "original 40 validation and 20 adversarial files recovered with exact v1 SHA-256; 130 original training rows remain unauthenticated (100 axis subset semantically recovered, 30 legacy missing)",
+  "validation_recovery_proven_sha256": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246"
 }
