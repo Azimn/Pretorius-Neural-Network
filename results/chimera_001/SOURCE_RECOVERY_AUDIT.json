@@ -75,7 +75,7 @@
           "suffix": "'\\n'"
         }
       ],
-      "claim": "authenticated original v1 SHA-256 bytes restored from preserved records",
+      "claim": "exact v1 SHA-256 source representation found",
       "required_sha256": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
       "required_v1_filename": "pretorius_adversarial_v1.json",
       "row_count": 20
@@ -111,7 +111,8 @@
       "row_count": 40
     }
   },
-  "outcome": "original-v1-adversarial-exact-hash-restored-other-inputs-blocked",
+  "original_v1_status": "exact-hash-restoration-partial",
+  "outcome": "some original v1 splits restored; 30 legacy training items still missing",
   "public_v04_file_sha256": {
     "adversarial_full.json": "20f87fd29798be3540a67daec93d71175d019e5611e806c36f4263e196eb6a87",
     "manifest.json": "e6bf463654a3a4919716f42c0a246c9c141c82f0c726f84ab7dfe0ecdd1b40e5",
@@ -126,11 +127,14 @@
   },
   "remaining_unverified_v1_sources": [
     "pretorius_phenotype_train_battery_v1.json",
-    "pretorius_train_v1.json",
-    "pretorius_validation_v1.json"
+    "pretorius_train_v1.json"
   ],
-  "reproduction_gate": "still blocked; 100 axis-grounded + 30 legacy training rows and original 40 validation rows not recovered as authenticated v1 sources",
+  "reproduction_gate": "blocked: original 130-item complete training battery unavailable; no neural numerical evaluation has been executed",
   "research_status": "no numerical evaluation was executed",
+  "restored_original_v1_splits": [
+    "validation",
+    "adversarial"
+  ],
   "source_pins": {
     "current_runner_main": "2f7c698b5a887325cefd52609df746112bdabd6f",
     "preservation_branch": "a3af4d2433d9df95b2476c556e9e2b9b308944a4",
