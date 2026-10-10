@@ -33,6 +33,8 @@ class Chimera001BTests(unittest.TestCase):
     def test_in_memory_ablation_produces_all_controls_without_terminal(self):
         cfg = small_cfg()
         cfg["protocol_id"] = "chimera-001b-100row-exploratory-pilot-v1"
+        cfg["status"] = "exploratory_new_experiment_not_historical_001_reproduction"
+        cfg["eval_roles"] = {"validation": "exposed", "adversarial": "exposed"}
         cfg["fresh_decoder_training_ticks"] = 16
         cfg["eval"].update(settle_ticks=2, probe_ticks=3)
         train = [
