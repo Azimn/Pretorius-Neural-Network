@@ -33,11 +33,11 @@ class IntakeTests(unittest.TestCase):
             memory("E01-001", 1),
             memory("E01-002", 2, ["E01-001"]),
             memory("E01-003", 3, ["E01-002"]),
-            memory("E01-004", 4),
+            memory("E01-004", 4, ["E01-004"]),
         ]
         groups, links = components(rows)
         self.assertEqual([x["n"] for x in groups], [3, 1])
-        self.assertEqual(links, 2)
+        self.assertEqual(links, 3)  # preserved self-reference is auditable, not a component
         with self.assertRaisesRegex(ValueError, "Dangling"):
             components([memory("E01-001", 1, ["not-an-event"])])
 
