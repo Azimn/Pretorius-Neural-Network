@@ -36,6 +36,16 @@ def rows(path: Path) -> list[dict]:
     return obj["items"] if "items" in obj else obj["training_items"]
 
 
+def round_robin(partitions: list[list[dict]]) -> list[dict]:
+    """Invert the preserved four-way stride partitioning without changing rows."""
+    return [
+        group[index]
+        for index in range(max(len(group) for group in partitions))
+        for group in partitions
+        if index < len(group)
+    ]
+
+
 def check_unique(data: dict[str, list[dict]]) -> dict:
     ids = [item["id"] for group in data.values() for item in group]
     counts = Counter(ids)
@@ -110,11 +120,14 @@ def audit(current: Path, v04: Path, preserved: Path, candidates: bool) -> dict:
     if public_manifest["counts"] != {"train": 100, "validation": 40, "adversarial": 20}:
         raise ValueError("Preserved v0.4 split manifest has unexpected counts")
     data = {}
+    order_candidates = {}
     for split, key in [("train", "train_files"), ("validation", "validation_files")]:
-        data["axis_train" if split == "train" else split] = [
-            item for fn in public_manifest[key] for item in rows(public / fn)
-        ]
+        name = "axis_train" if split == "train" else split
+        partitions = [rows(public / fn) for fn in public_manifest[key]]
+        data[name] = [item for part in partitions for item in part]
+        order_candidates[name] = round_robin(partitions)
     data["adversarial"] = rows(public / public_manifest["adversarial_file"])
+    order_candidates["adversarial"] = data["adversarial"]
     counts = {name: len(items) for name, items in data.items()}
     if counts != {"axis_train": 100, "validation": 40, "adversarial": 20}:
         raise ValueError("Recovered v0.4 split does not match 100/40/20")
@@ -151,14 +164,27 @@ def audit(current: Path, v04: Path, preserved: Path, candidates: bool) -> dict:
     exact = {}
     for split, items in data.items():
         meta = data_cfg["files"][split]
+        matches = []
+        if candidates:
+            for label, sequence in (
+                ("concatenated_v04", items),
+                ("inverted_strided_partitions", order_candidates[split]),
+            ):
+                if label == "inverted_strided_partitions" and split == "adversarial":
+                    continue
+                found = hash_candidates(sequence, meta["sha256"], split)
+                for match in found:
+                    match["record_order"] = label
+                    matches.append(match)
         exact[split] = {
             "required_v1_filename": meta["name"],
             "required_sha256": meta["sha256"],
             "row_count": len(items),
-            "candidate_envelope_sha256_matches": (
-                hash_candidates(items, meta["sha256"], split) if candidates else []
+            "candidate_envelope_sha256_matches": matches,
+            "claim": (
+                "exact v1 SHA-256 source representation found"
+                if matches else "candidate semantic source; original v1 hash not yet certified"
             ),
-            "claim": "candidate semantic source; original v1 hash not yet certified",
         }
     report = {
         "audit_id": "chimera001-source-recovery-v1",
