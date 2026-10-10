@@ -65,11 +65,11 @@ jobs:
         run: |
           git -C current config user.name "github-actions[bot]"
           git -C current config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git -C current add data/phenotype_battery/pretorius_adversarial_v1.json
+          git -C current add data/phenotype_battery/pretorius_adversarial_v1.json results/chimera_001/SOURCE_RECOVERY_AUDIT.json
           if git -C current diff --cached --quiet; then
             echo "Authenticated adversarial source already present"
           else
-            git -C current commit -m "Restore canonical v1 adversarial source with exact original SHA-256"
+            git -C current commit -m "Preserve verified original adversarial and machine-readable source audit"
             git -C current push origin HEAD:refs/heads/audit/chimera-001-source-recovery
           fi
       - name: Preserve machine-readable source audit
