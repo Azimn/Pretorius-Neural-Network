@@ -96,7 +96,14 @@ def load_data(config: dict, historical_root: Path, current_root: Path) -> tuple[
         if not row.get("scenario", "").strip() or not row.get("target_actions"):
             raise ValueError("Invalid scenario or target")
         PhenotypeCurriculum._normalize_target(row["target_actions"])
-    domains = [row.get("domain") for row in train]
+    # The historical v0.4 train records do NOT contain a domain field.
+    # Domain is a naming convention on IDs, e.g. sovereignty_help_train_01.
+    # Validate metadata without changing the source rows or training features.
+    domains = []
+    for row in train:
+        if "_train_" not in row["id"]:
+            raise ValueError("Training ID lacks historical *_train_* domain convention")
+        domains.append(row["id"].split("_train_", 1)[0])
     if len(set(domains)) != 20 or set(Counter(domains).values()) != {5}:
         raise ValueError("Expected 20 x 5 domain-balanced historical training cards")
     for split, each in (("validation", 2), ("adversarial", 1)):
