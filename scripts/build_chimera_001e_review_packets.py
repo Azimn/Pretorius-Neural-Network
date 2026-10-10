@@ -71,9 +71,9 @@ def render_packet(drafts: list[dict], queue: list[dict], reviewer: str, seed: in
         lines += [
             f"## Card {ordinal}: {d['id']}",
             "",
-            f"**Scenario SHA-256:** \`{digest(d['scenario'])}\`",
+            f"**Scenario SHA-256:** `{digest(d['scenario'])}`",
             f"**Source memory reference:** {d['source_event_id']}, "
-            f"frozen Pretorius-Connectome v12 \`{d['source_commit']}\`",
+            f"frozen Pretorius-Connectome v12 `{d['source_commit']}`",
             "",
             "### Historical context from the reconstructed archive",
             "",
