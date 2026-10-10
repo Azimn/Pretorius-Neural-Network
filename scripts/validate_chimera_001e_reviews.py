@@ -11,12 +11,14 @@ import argparse
 import hashlib
 import json
 import re
+import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from persona_net.encoding import ACTIONS
-
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from persona_net.encoding import ACTIONS
 PINNED_SOURCE = "5364f43dfe3c192b6c13b7bf373405ee7a41b420"
 DRAFTS = ROOT / "research/chimera_001e/SCENARIO_DRAFTS.jsonl"
 SOURCE_QUEUE = ROOT / "results/chimera_001c/REVIEW_QUEUE.jsonl"
