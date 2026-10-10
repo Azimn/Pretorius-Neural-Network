@@ -1,0 +1,63 @@
+name: Experiment 001 historical source audit
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit_chimera_001_sources.py'
+      - '.github/workflows/chimera-001-source-audit.yml'
+      - 'research/CHIMERA_001_SOURCE_RECOVERY.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  provenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout current non-terminal reconstruction
+        uses: actions/checkout@v4
+        with:
+          path: current
+      - name: Checkout pinned v0.4 recovery payload
+        uses: actions/checkout@v4
+        with:
+          path: historical-v04
+          ref: 7b7eb19ad852dc016ee0d370528d903bab78a5cf
+          persist-credentials: false
+      - name: Checkout pinned historical v0.3 preservation branch
+        uses: actions/checkout@v4
+        with:
+          path: historical-preserved
+          ref: a3af4d2433d9df95b2476c556e9e2b9b308944a4
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate source IDs, original profile hash, adversarial semantic parity, and serialization candidates
+        run: |
+          python current/scripts/audit_chimera_001_sources.py \
+            --current current \
+            --v04 historical-v04 \
+            --preserved historical-preserved \
+            --candidate-formats
+      - name: Confirm no Experiment 001 numerical result was generated
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('current/results/chimera_001/SOURCE_RECOVERY_AUDIT.json')
+          j=json.loads(p.read_text())
+          assert j['terminal_battery_touched'] is False
+          assert j['original_legacy_train_30_available'] is False
+          assert j['counts']=={'axis_train':100,'validation':40,'adversarial':20}
+          assert j['adversarial_semantically_equal_across_historical_branches'] is True
+          assert j['v1_profile_sha256_verified']=='4d7b53f059d22e2f348e7e8f59546e8960aff5301d854020d908a6dcce430173'
+          assert j['research_status']=='no numerical evaluation was executed'
+          print('Source audit evidence contract passed, Experiment 001 still blocked')
+          PY
+      - name: Preserve machine-readable source audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001-source-audit-${{ github.sha }}
+          path: current/results/chimera_001/SOURCE_RECOVERY_AUDIT.json
+          if-no-files-found: error
+          retention-days: 90
