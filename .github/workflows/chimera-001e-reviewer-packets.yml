@@ -1,0 +1,71 @@
+name: Chimera 001E independent reviewer packets
+on:
+  push:
+    branches: ['research/chimera-001e-blind-review-packets']
+    paths:
+      - 'scripts/build_chimera_001e_review_packets.py'
+      - 'tests_chimera/test_chimera_001e_packets.py'
+      - '.github/workflows/chimera-001e-reviewer-packets.yml'
+  pull_request:
+    paths:
+      - 'scripts/build_chimera_001e_review_packets.py'
+      - 'tests_chimera/test_chimera_001e_packets.py'
+      - '.github/workflows/chimera-001e-reviewer-packets.yml'
+permissions:
+  contents: write
+jobs:
+  generate-and-validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: current
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r current/requirements.txt
+      - name: Test 001E blind-review packet and release gates
+        run: |
+          cd current
+          python -m unittest discover -s tests_chimera -v
+      - name: Build both answer-free randomized reviewer handouts
+        run: |
+          python current/scripts/build_chimera_001e_review_packets.py \
+            --out current/research/chimera_001e/review_packets
+      - name: Ensure both packets and templates are intact and cannot be graded
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          base=Path('current/research/chimera_001e/review_packets')
+          expected=set(f"001e-draft-{n:02d}" for n in range(1,13))
+          for reviewer in ('A','B'):
+              md=(base/f'REVIEWER_{reviewer}.md').read_text()
+              templates=[json.loads(line) for line in
+                         (base/f'REVIEWER_{reviewer}.example.jsonl').read_text().splitlines()]
+              assert md.count("## Card ")==12
+              assert {x['candidate_id'] for x in templates}==expected
+              assert all(x['target_actions'] is None for x in templates)
+              assert all(x['template_not_submitted'] is True for x in templates)
+              assert all(x['attests_independent_read'] is False for x in templates)
+              assert all(x['saw_model_predictions'] is None for x in templates)
+          print('12 blind scenario cards in each packet, zero action labels')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001e-blind-review-packets-${{ github.sha }}
+          path: current/research/chimera_001e/review_packets/
+          retention-days: 90
+      - name: Commit answer-free review packets
+        if: github.event_name == 'push'
+        run: |
+          git -C current config user.name 'github-actions[bot]'
+          git -C current config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C current add research/chimera_001e/review_packets/
+          if git -C current diff --cached --quiet; then
+            echo 'No new packet contents'
+          else
+            git -C current commit -m 'Preserve answer-free 001E A/B blind reviewer handouts and blank invalid templates'
+            git -C current push origin HEAD:refs/heads/research/chimera-001e-blind-review-packets
+          fi
