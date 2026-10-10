@@ -1,0 +1,69 @@
+name: Preserve completed Experiment 001B six-seed evidence
+on:
+  push:
+    branches: ['research/chimera-001b-reused-data-controls']
+    paths: ['.github/workflows/chimera-001b-preserve-evidence.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: research/chimera-001b-reused-data-controls
+          path: current
+      - name: Retrieve completed six-seed artifact from source-locked CI run 38025333272
+        uses: actions/download-artifact@v4
+        with:
+          name: chimera-001b-exploratory-sixseed-9d1676cdb1bc779d42606ad1d71dd0a3d9f9f87c
+          run-id: 38025333272
+          github-token: ${{ github.token }}
+          repository: Azimn/Pretorius-Neural-Network
+          path: current/results/chimera_001b
+      - name: Verify original provenance and exactly six outcomes
+        run: |
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          base=Path('current')
+          root=base/'results/chimera_001b'
+          cfg_raw=(base/'config/chimera_001b.json').read_bytes()
+          cfg=json.loads(cfg_raw)
+          meta=json.loads((root/'RUN_METADATA.json').read_text())
+          report=json.loads((root/'RUN_REPORT.json').read_text())
+          expected_hash=hashlib.sha256(cfg_raw).hexdigest()
+          assert report['configuration_sha256']==expected_hash, 'Result config does not match HEAD'
+          assert meta['configuration_sha256']==expected_hash
+          assert cfg['source_v04_commit']=='7b7eb19ad852dc016ee0d370528d903bab78a5cf'
+          assert report['seed_count']==6 and report['seeds']==cfg['seeds']
+          assert report['run_mode']=='full_six_seed_exploratory'
+          assert report['terminal_battery_touched'] is False
+          assert report['historical_experiment_001_reproduced'] is False
+          assert len(report['conditions'])==7
+          assert len(report['paired_fresh_trained_minus_virgin_recurrent'])==6
+          for seed in cfg['seeds']:
+              outcome=json.loads((root/f'seed_{seed}.json').read_text())
+              assert outcome['seed']==seed
+              assert outcome['configuration_sha256']==expected_hash
+              assert outcome['source_sha256']==meta['source_sha256']
+              assert outcome['main_neural_training_steps']==12000
+              assert outcome['shuffled_control_neural_training_steps']==12000
+              for name in report['conditions']:
+                  assert outcome['condition_results'][name]['validation']['n']==40
+                  assert outcome['condition_results'][name]['adversarial']['n']==20
+          print('Archived six-seed experimental evidence verified, origin run 38025333272')
+          PY
+      - name: Commit the exact original completed outcome files without rerunning training
+        run: |
+          git -C current config user.name 'github-actions[bot]'
+          git -C current config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C current add results/chimera_001b
+          if git -C current diff --cached --quiet; then
+            echo 'Results already committed'
+          else
+            git -C current commit -m 'Archive verified 001B exploratory six-seed output from CI run 38025333272'
+            git -C current push origin HEAD:refs/heads/research/chimera-001b-reused-data-controls
+          fi
