@@ -1,0 +1,22 @@
+{
+  "config_sha256": "cb5bd416098178389f74d24a09604521c03e69ab0d251712c9f0bde239343a75",
+  "evaluation_roles": {
+    "adversarial": "previously_exposed_diagnostic_not_fresh_holdout",
+    "validation": "previously_exposed_development_comparability_only"
+  },
+  "historical_001_reproduced": false,
+  "memory_source_role": "reconstructed_unlabeled_unsupervised_exposure",
+  "protocol_id": "chimera-001f-autobiographical-unsupervised-replay-v1",
+  "run_mode": "full_six_seed_exploratory",
+  "source_hashes": {
+    "adversarial": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
+    "memories/current/Pretorius_v12_450_Events_Complete.jsonl": "becdf4ca72b85365c35940ccd68f3b6a9bbb1093b7b3cc89c33b113bbe5608ec",
+    "v04/manifest.json": "e6bf463654a3a4919716f42c0a246c9c141c82f0c726f84ab7dfe0ecdd1b40e5",
+    "v04/train_part1.json": "1e862b0ff05b1016459faae83d733a4d2512031ff1f5d1cd9355c7ac2ab24f3b",
+    "v04/train_part2.json": "b1431e022c15e9b480923dbd291f392dec89c3d4942db787499ddbbdf8a5c4ce",
+    "v04/train_part3.json": "c556963b84243e9643c7a649c31a2e22f8b519e075adac1f4552fd0891fe2158",
+    "v04/train_part4.json": "5c9108bcd428a4de7d51b07fbbde89a16708849d898047887dea3d845b40d1fe",
+    "validation": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246"
+  },
+  "terminal_battery_touched": false
+}

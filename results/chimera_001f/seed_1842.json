@@ -1,0 +1,4665 @@
+{
+  "conditions": {
+    "frozen_chronological": {
+      "adversarial": {
+        "anti_mass": 0.0,
+        "domain_macro_js_similarity": 0.8408083903313577,
+        "domains": {
+          "active_inquiry": {
+            "js_similarity": 0.8000688200646124,
+            "n": 1,
+            "target_mass": 0.5870589900345413,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "authority_law": {
+            "js_similarity": 0.8152722984199511,
+            "n": 1,
+            "target_mass": 0.6354226698660187,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "compassion": {
+            "js_similarity": 0.9199507546539494,
+            "n": 1,
+            "target_mass": 0.7178159379146445,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "consent": {
+            "js_similarity": 0.8932004835800781,
+            "n": 1,
+            "target_mass": 0.736608986215314,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "continuity": {
+            "js_similarity": 0.7769075025401991,
+            "n": 1,
+            "target_mass": 0.6667032970133872,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          "cooperation": {
+            "js_similarity": 0.810477094191274,
+            "n": 1,
+            "target_mass": 0.6466518365614111,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          "creation_autonomy": {
+            "js_similarity": 0.8648128044502866,
+            "n": 1,
+            "target_mass": 0.7245294234948536,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          "creation_relation": {
+            "js_similarity": 0.9077114850347353,
+            "n": 1,
+            "target_mass": 0.8371452551894192,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          "creator_duty": {
+            "js_similarity": 0.8713032929241493,
+            "n": 1,
+            "target_mass": 0.7440590776073726,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "failure": {
+            "js_similarity": 0.9145623798250213,
+            "n": 1,
+            "target_mass": 0.7564628417535689,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "immortality": {
+            "js_similarity": 0.782566775798641,
+            "n": 1,
+            "target_mass": 0.5637145772229426,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "knowledge_preservation": {
+            "js_similarity": 0.8272068162367779,
+            "n": 1,
+            "target_mass": 0.6345013703110333,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          "legacy": {
+            "js_similarity": 0.8414235622283681,
+            "n": 1,
+            "target_mass": 0.6511562298961578,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "love_control": {
+            "js_similarity": 0.8709873835682074,
+            "n": 1,
+            "target_mass": 0.6390790235324294,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          "mentorship": {
+            "js_similarity": 0.6915428917522863,
+            "n": 1,
+            "target_mass": 0.4264977110446323,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.25
+          },
+          "mercy": {
+            "js_similarity": 0.8900187355385673,
+            "n": 1,
+            "target_mass": 0.6670774054630998,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "precision": {
+            "js_similarity": 0.8314635977462017,
+            "n": 1,
+            "target_mass": 0.5377804737167596,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          "recognition": {
+            "js_similarity": 0.8541824112025876,
+            "n": 1,
+            "target_mass": 0.7598597474463662,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "sacrifice": {
+            "js_similarity": 0.872797402015838,
+            "n": 1,
+            "target_mass": 0.6217860516721898,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          "sovereignty_help": {
+            "js_similarity": 0.7797113148554211,
+            "n": 1,
+            "target_mass": 0.6423086752249161,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          }
+        },
+        "items": [
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_adversarial_01",
+            "js_divergence": 0.22028868514457894,
+            "js_similarity": 0.7797113148554211,
+            "target_mass": 0.6423086752249161,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_adversarial_01",
+            "js_divergence": 0.14581758879741236,
+            "js_similarity": 0.8541824112025876,
+            "target_mass": 0.7598597474463662,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_adversarial_01",
+            "js_divergence": 0.3084571082477136,
+            "js_similarity": 0.6915428917522863,
+            "target_mass": 0.4264977110446323,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.25
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_adversarial_01",
+            "js_divergence": 0.09228851496526469,
+            "js_similarity": 0.9077114850347353,
+            "target_mass": 0.8371452551894192,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_adversarial_01",
+            "js_divergence": 0.13518719554971337,
+            "js_similarity": 0.8648128044502866,
+            "target_mass": 0.7245294234948536,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_adversarial_01",
+            "js_divergence": 0.22309249745980084,
+            "js_similarity": 0.7769075025401991,
+            "target_mass": 0.6667032970133872,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_adversarial_01",
+            "js_divergence": 0.15857643777163194,
+            "js_similarity": 0.8414235622283681,
+            "target_mass": 0.6511562298961578,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_adversarial_01",
+            "js_divergence": 0.16853640225379835,
+            "js_similarity": 0.8314635977462017,
+            "target_mass": 0.5377804737167596,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_adversarial_01",
+            "js_divergence": 0.19993117993538762,
+            "js_similarity": 0.8000688200646124,
+            "target_mass": 0.5870589900345413,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_adversarial_01",
+            "js_divergence": 0.18952290580872605,
+            "js_similarity": 0.810477094191274,
+            "target_mass": 0.6466518365614111,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_adversarial_01",
+            "js_divergence": 0.10679951641992189,
+            "js_similarity": 0.8932004835800781,
+            "target_mass": 0.736608986215314,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_adversarial_01",
+            "js_divergence": 0.12720259798416206,
+            "js_similarity": 0.872797402015838,
+            "target_mass": 0.6217860516721898,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_adversarial_01",
+            "js_divergence": 0.18472770158004895,
+            "js_similarity": 0.8152722984199511,
+            "target_mass": 0.6354226698660187,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_adversarial_01",
+            "js_divergence": 0.08004924534605068,
+            "js_similarity": 0.9199507546539494,
+            "target_mass": 0.7178159379146445,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_adversarial_01",
+            "js_divergence": 0.17279318376322209,
+            "js_similarity": 0.8272068162367779,
+            "target_mass": 0.6345013703110333,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_adversarial_01",
+            "js_divergence": 0.12869670707585062,
+            "js_similarity": 0.8713032929241493,
+            "target_mass": 0.7440590776073726,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_adversarial_01",
+            "js_divergence": 0.10998126446143279,
+            "js_similarity": 0.8900187355385673,
+            "target_mass": 0.6670774054630998,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_adversarial_01",
+            "js_divergence": 0.21743322420135902,
+            "js_similarity": 0.782566775798641,
+            "target_mass": 0.5637145772229426,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_adversarial_01",
+            "js_divergence": 0.08543762017497869,
+            "js_similarity": 0.9145623798250213,
+            "target_mass": 0.7564628417535689,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_adversarial_01",
+            "js_divergence": 0.12901261643179263,
+            "js_similarity": 0.8709873835682074,
+            "target_mass": 0.6390790235324294,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          }
+        ],
+        "js_similarity": 0.8408083903313577,
+        "n": 20,
+        "target_mass": 0.659810979059053,
+        "top1_agreement": 0.35,
+        "top3_coverage": 0.4714285714285714
+      },
+      "homeostatic_bias_sha256": "da049aa622f642cc2a73c94b36208bf3dd7d58311729e83b07d3e40ffa8508e4",
+      "motor_decoder_sha256": "b96111d25b83de613197058a1aec1773773aabd0d2e974ca81d2c003cc648dfc",
+      "recurrent_W_sha256": "7b62668c1430c75e31d3e737d8ec650691b8c02b371b4e5bd02d1bc58e574072",
+      "replay": {
+        "W_after_sha256": "7b62668c1430c75e31d3e737d8ec650691b8c02b371b4e5bd02d1bc58e574072",
+        "W_before_sha256": "7b62668c1430c75e31d3e737d8ec650691b8c02b371b4e5bd02d1bc58e574072",
+        "actual_neural_steps": 11700,
+        "bias_after_sha256": "da049aa622f642cc2a73c94b36208bf3dd7d58311729e83b07d3e40ffa8508e4",
+        "bias_before_sha256": "da049aa622f642cc2a73c94b36208bf3dd7d58311729e83b07d3e40ffa8508e4",
+        "condition": "frozen_chronological",
+        "full_epochs": 26,
+        "homeostatic_bias_l2_change": 0.0,
+        "learn_recurrent": false,
+        "memory_presentations": 11700,
+        "motor_decoder_sha256_unchanged": "b96111d25b83de613197058a1aec1773773aabd0d2e974ca81d2c003cc648dfc",
+        "motor_supervision_present": false,
+        "recurrent_W_l2_change": 0.0,
+        "unsupervised_reward": 0.0
+      },
+      "validation": {
+        "anti_mass": 0.0,
+        "domain_macro_js_similarity": 0.8536786802664847,
+        "domains": {
+          "active_inquiry": {
+            "js_similarity": 0.8146950648614827,
+            "n": 2,
+            "target_mass": 0.5480441696276348,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.475
+          },
+          "authority_law": {
+            "js_similarity": 0.8055409857914511,
+            "n": 2,
+            "target_mass": 0.5937523306221927,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "compassion": {
+            "js_similarity": 0.8774253545969996,
+            "n": 2,
+            "target_mass": 0.6565892701483573,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.3666666666666667
+          },
+          "consent": {
+            "js_similarity": 0.835766009914503,
+            "n": 2,
+            "target_mass": 0.6443461639600018,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.45
+          },
+          "continuity": {
+            "js_similarity": 0.7926614043923972,
+            "n": 2,
+            "target_mass": 0.6663025977553247,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.41666666666666663
+          },
+          "cooperation": {
+            "js_similarity": 0.8725836421768334,
+            "n": 2,
+            "target_mass": 0.7444317928054497,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5142857142857142
+          },
+          "creation_autonomy": {
+            "js_similarity": 0.8635989288304589,
+            "n": 2,
+            "target_mass": 0.6789523584117785,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.6
+          },
+          "creation_relation": {
+            "js_similarity": 0.8968614679137452,
+            "n": 2,
+            "target_mass": 0.8058511555780711,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4642857142857143
+          },
+          "creator_duty": {
+            "js_similarity": 0.8799091118905353,
+            "n": 2,
+            "target_mass": 0.7574766546888148,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "failure": {
+            "js_similarity": 0.9149552973389687,
+            "n": 2,
+            "target_mass": 0.7515918915255981,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "immortality": {
+            "js_similarity": 0.841176164395856,
+            "n": 2,
+            "target_mass": 0.6162336599025806,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "knowledge_preservation": {
+            "js_similarity": 0.8633519537720048,
+            "n": 2,
+            "target_mass": 0.6311326682130896,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "legacy": {
+            "js_similarity": 0.8793726579553609,
+            "n": 2,
+            "target_mass": 0.6378292812927189,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          "love_control": {
+            "js_similarity": 0.9002268783393068,
+            "n": 2,
+            "target_mass": 0.6481676381977964,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.45
+          },
+          "mentorship": {
+            "js_similarity": 0.8454888627614835,
+            "n": 2,
+            "target_mass": 0.7114549482252702,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.55
+          },
+          "mercy": {
+            "js_similarity": 0.8848432775960839,
+            "n": 2,
+            "target_mass": 0.8185748049178906,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.42857142857142855
+          },
+          "precision": {
+            "js_similarity": 0.8811734137382983,
+            "n": 2,
+            "target_mass": 0.6104074979220919,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.675
+          },
+          "recognition": {
+            "js_similarity": 0.7791114082809834,
+            "n": 2,
+            "target_mass": 0.6244291164991115,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.3666666666666667
+          },
+          "sacrifice": {
+            "js_similarity": 0.8637226554634482,
+            "n": 2,
+            "target_mass": 0.6221863836680447,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "sovereignty_help": {
+            "js_similarity": 0.7811090653194958,
+            "n": 2,
+            "target_mass": 0.5069840517634007,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          }
+        },
+        "items": [
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_validation_01",
+            "js_divergence": 0.22424809533758158,
+            "js_similarity": 0.7757519046624184,
+            "target_mass": 0.5066957265808828,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_validation_02",
+            "js_divergence": 0.21353377402342683,
+            "js_similarity": 0.7864662259765731,
+            "target_mass": 0.5072723769459185,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_validation_01",
+            "js_divergence": 0.1972565782645644,
+            "js_similarity": 0.8027434217354357,
+            "target_mass": 0.6012184349145082,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_validation_02",
+            "js_divergence": 0.24452060517346902,
+            "js_similarity": 0.755479394826531,
+            "target_mass": 0.6476397980837147,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_validation_01",
+            "js_divergence": 0.1534242242774983,
+            "js_similarity": 0.8465757757225016,
+            "target_mass": 0.6889403607486178,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_validation_02",
+            "js_divergence": 0.15559805019953468,
+            "js_similarity": 0.8444019498004653,
+            "target_mass": 0.7339695357019227,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_validation_01",
+            "js_divergence": 0.10183126994832518,
+            "js_similarity": 0.8981687300516749,
+            "target_mass": 0.8364441821317978,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_validation_02",
+            "js_divergence": 0.10444579422418437,
+            "js_similarity": 0.8955542057758157,
+            "target_mass": 0.7752581290243443,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_validation_01",
+            "js_divergence": 0.15272029947102106,
+            "js_similarity": 0.8472797005289789,
+            "target_mass": 0.6859507676039217,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_validation_02",
+            "js_divergence": 0.12008184286806137,
+            "js_similarity": 0.8799181571319387,
+            "target_mass": 0.6719539492196352,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_validation_01",
+            "js_divergence": 0.18032905035658414,
+            "js_similarity": 0.8196709496434158,
+            "target_mass": 0.7093835505603672,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_validation_02",
+            "js_divergence": 0.23434814085862146,
+            "js_similarity": 0.7656518591413786,
+            "target_mass": 0.6232216449502823,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_validation_01",
+            "js_divergence": 0.1489183670680946,
+            "js_similarity": 0.8510816329319054,
+            "target_mass": 0.5902591360969501,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_validation_02",
+            "js_divergence": 0.09233631702118372,
+            "js_similarity": 0.9076636829788163,
+            "target_mass": 0.6853994264884877,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_validation_01",
+            "js_divergence": 0.1001048349757491,
+            "js_similarity": 0.8998951650242509,
+            "target_mass": 0.6899741454110964,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_validation_02",
+            "js_divergence": 0.13754833754765447,
+            "js_similarity": 0.8624516624523455,
+            "target_mass": 0.5308408504330875,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_validation_01",
+            "js_divergence": 0.15115500193149695,
+            "js_similarity": 0.8488449980685031,
+            "target_mass": 0.5400664973149529,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_validation_02",
+            "js_divergence": 0.2194548683455378,
+            "js_similarity": 0.7805451316544623,
+            "target_mass": 0.5560218419403168,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.2
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_validation_01",
+            "js_divergence": 0.13803926727452903,
+            "js_similarity": 0.861960732725471,
+            "target_mass": 0.6804281691507189,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_validation_02",
+            "js_divergence": 0.11679344837180439,
+            "js_similarity": 0.8832065516281956,
+            "target_mass": 0.8084354164601805,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_validation_01",
+            "js_divergence": 0.2229816985802691,
+            "js_similarity": 0.7770183014197309,
+            "target_mass": 0.5607049844116743,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_validation_02",
+            "js_divergence": 0.10548628159072501,
+            "js_similarity": 0.894513718409275,
+            "target_mass": 0.7279873435083293,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_validation_01",
+            "js_divergence": 0.15182479016533895,
+            "js_similarity": 0.8481752098346611,
+            "target_mass": 0.6026238534069843,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_validation_02",
+            "js_divergence": 0.12072989890776481,
+            "js_similarity": 0.8792701010922352,
+            "target_mass": 0.641748913929105,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_validation_01",
+            "js_divergence": 0.1788048543866816,
+            "js_similarity": 0.8211951456133184,
+            "target_mass": 0.6321730574692019,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_validation_02",
+            "js_divergence": 0.21011317403041627,
+            "js_similarity": 0.7898868259695837,
+            "target_mass": 0.5553316037751834,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_validation_01",
+            "js_divergence": 0.1484237626044866,
+            "js_similarity": 0.8515762373955134,
+            "target_mass": 0.6327680079893624,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_validation_02",
+            "js_divergence": 0.09672552820151431,
+            "js_similarity": 0.9032744717984857,
+            "target_mass": 0.6804105323073524,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_validation_01",
+            "js_divergence": 0.14535063809902643,
+            "js_similarity": 0.8546493619009736,
+            "target_mass": 0.6158467797822489,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_validation_02",
+            "js_divergence": 0.12794545435696403,
+            "js_similarity": 0.872054545643036,
+            "target_mass": 0.6464185566439301,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_validation_01",
+            "js_divergence": 0.0946453770439637,
+            "js_similarity": 0.9053546229560363,
+            "target_mass": 0.7581891689584795,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_validation_02",
+            "js_divergence": 0.1455363991749657,
+            "js_similarity": 0.8544636008250344,
+            "target_mass": 0.7567641404191499,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_validation_01",
+            "js_divergence": 0.13565201228205973,
+            "js_similarity": 0.8643479877179403,
+            "target_mass": 0.7800181250517098,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_validation_02",
+            "js_divergence": 0.09466143252577229,
+            "js_similarity": 0.9053385674742277,
+            "target_mass": 0.8571314847840714,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_validation_01",
+            "js_divergence": 0.18492960953829962,
+            "js_similarity": 0.8150703904617004,
+            "target_mass": 0.5852465442452061,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_validation_02",
+            "js_divergence": 0.13271806166998854,
+            "js_similarity": 0.8672819383300114,
+            "target_mass": 0.6472207755599553,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_validation_01",
+            "js_divergence": 0.07893931279354932,
+            "js_similarity": 0.9210606872064506,
+            "target_mass": 0.7465464882057952,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_validation_02",
+            "js_divergence": 0.09115009252851315,
+            "js_similarity": 0.9088499074714869,
+            "target_mass": 0.7566372948454011,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_validation_01",
+            "js_divergence": 0.07496994894045061,
+            "js_similarity": 0.9250300510595494,
+            "target_mass": 0.7430366694597392,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_validation_02",
+            "js_divergence": 0.12457629438093584,
+            "js_similarity": 0.8754237056190641,
+            "target_mass": 0.5532986069358536,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          }
+        ],
+        "js_similarity": 0.8536786802664847,
+        "n": 40,
+        "target_mass": 0.663736921786261,
+        "top1_agreement": 0.475,
+        "top3_coverage": 0.4928571428571429
+      }
+    },
+    "no_replay": {
+      "adversarial": {
+        "anti_mass": 0.0,
+        "domain_macro_js_similarity": 0.8408083903313577,
+        "domains": {
+          "active_inquiry": {
+            "js_similarity": 0.8000688200646124,
+            "n": 1,
+            "target_mass": 0.5870589900345413,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "authority_law": {
+            "js_similarity": 0.8152722984199511,
+            "n": 1,
+            "target_mass": 0.6354226698660187,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "compassion": {
+            "js_similarity": 0.9199507546539494,
+            "n": 1,
+            "target_mass": 0.7178159379146445,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "consent": {
+            "js_similarity": 0.8932004835800781,
+            "n": 1,
+            "target_mass": 0.736608986215314,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "continuity": {
+            "js_similarity": 0.7769075025401991,
+            "n": 1,
+            "target_mass": 0.6667032970133872,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          "cooperation": {
+            "js_similarity": 0.810477094191274,
+            "n": 1,
+            "target_mass": 0.6466518365614111,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          "creation_autonomy": {
+            "js_similarity": 0.8648128044502866,
+            "n": 1,
+            "target_mass": 0.7245294234948536,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          "creation_relation": {
+            "js_similarity": 0.9077114850347353,
+            "n": 1,
+            "target_mass": 0.8371452551894192,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          "creator_duty": {
+            "js_similarity": 0.8713032929241493,
+            "n": 1,
+            "target_mass": 0.7440590776073726,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "failure": {
+            "js_similarity": 0.9145623798250213,
+            "n": 1,
+            "target_mass": 0.7564628417535689,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "immortality": {
+            "js_similarity": 0.782566775798641,
+            "n": 1,
+            "target_mass": 0.5637145772229426,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "knowledge_preservation": {
+            "js_similarity": 0.8272068162367779,
+            "n": 1,
+            "target_mass": 0.6345013703110333,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          "legacy": {
+            "js_similarity": 0.8414235622283681,
+            "n": 1,
+            "target_mass": 0.6511562298961578,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "love_control": {
+            "js_similarity": 0.8709873835682074,
+            "n": 1,
+            "target_mass": 0.6390790235324294,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          "mentorship": {
+            "js_similarity": 0.6915428917522863,
+            "n": 1,
+            "target_mass": 0.4264977110446323,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.25
+          },
+          "mercy": {
+            "js_similarity": 0.8900187355385673,
+            "n": 1,
+            "target_mass": 0.6670774054630998,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "precision": {
+            "js_similarity": 0.8314635977462017,
+            "n": 1,
+            "target_mass": 0.5377804737167596,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          "recognition": {
+            "js_similarity": 0.8541824112025876,
+            "n": 1,
+            "target_mass": 0.7598597474463662,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "sacrifice": {
+            "js_similarity": 0.872797402015838,
+            "n": 1,
+            "target_mass": 0.6217860516721898,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          "sovereignty_help": {
+            "js_similarity": 0.7797113148554211,
+            "n": 1,
+            "target_mass": 0.6423086752249161,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          }
+        },
+        "items": [
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_adversarial_01",
+            "js_divergence": 0.22028868514457894,
+            "js_similarity": 0.7797113148554211,
+            "target_mass": 0.6423086752249161,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_adversarial_01",
+            "js_divergence": 0.14581758879741236,
+            "js_similarity": 0.8541824112025876,
+            "target_mass": 0.7598597474463662,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_adversarial_01",
+            "js_divergence": 0.3084571082477136,
+            "js_similarity": 0.6915428917522863,
+            "target_mass": 0.4264977110446323,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.25
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_adversarial_01",
+            "js_divergence": 0.09228851496526469,
+            "js_similarity": 0.9077114850347353,
+            "target_mass": 0.8371452551894192,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_adversarial_01",
+            "js_divergence": 0.13518719554971337,
+            "js_similarity": 0.8648128044502866,
+            "target_mass": 0.7245294234948536,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_adversarial_01",
+            "js_divergence": 0.22309249745980084,
+            "js_similarity": 0.7769075025401991,
+            "target_mass": 0.6667032970133872,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_adversarial_01",
+            "js_divergence": 0.15857643777163194,
+            "js_similarity": 0.8414235622283681,
+            "target_mass": 0.6511562298961578,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_adversarial_01",
+            "js_divergence": 0.16853640225379835,
+            "js_similarity": 0.8314635977462017,
+            "target_mass": 0.5377804737167596,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_adversarial_01",
+            "js_divergence": 0.19993117993538762,
+            "js_similarity": 0.8000688200646124,
+            "target_mass": 0.5870589900345413,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_adversarial_01",
+            "js_divergence": 0.18952290580872605,
+            "js_similarity": 0.810477094191274,
+            "target_mass": 0.6466518365614111,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_adversarial_01",
+            "js_divergence": 0.10679951641992189,
+            "js_similarity": 0.8932004835800781,
+            "target_mass": 0.736608986215314,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_adversarial_01",
+            "js_divergence": 0.12720259798416206,
+            "js_similarity": 0.872797402015838,
+            "target_mass": 0.6217860516721898,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_adversarial_01",
+            "js_divergence": 0.18472770158004895,
+            "js_similarity": 0.8152722984199511,
+            "target_mass": 0.6354226698660187,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_adversarial_01",
+            "js_divergence": 0.08004924534605068,
+            "js_similarity": 0.9199507546539494,
+            "target_mass": 0.7178159379146445,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_adversarial_01",
+            "js_divergence": 0.17279318376322209,
+            "js_similarity": 0.8272068162367779,
+            "target_mass": 0.6345013703110333,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_adversarial_01",
+            "js_divergence": 0.12869670707585062,
+            "js_similarity": 0.8713032929241493,
+            "target_mass": 0.7440590776073726,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_adversarial_01",
+            "js_divergence": 0.10998126446143279,
+            "js_similarity": 0.8900187355385673,
+            "target_mass": 0.6670774054630998,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_adversarial_01",
+            "js_divergence": 0.21743322420135902,
+            "js_similarity": 0.782566775798641,
+            "target_mass": 0.5637145772229426,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_adversarial_01",
+            "js_divergence": 0.08543762017497869,
+            "js_similarity": 0.9145623798250213,
+            "target_mass": 0.7564628417535689,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_adversarial_01",
+            "js_divergence": 0.12901261643179263,
+            "js_similarity": 0.8709873835682074,
+            "target_mass": 0.6390790235324294,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          }
+        ],
+        "js_similarity": 0.8408083903313577,
+        "n": 20,
+        "target_mass": 0.659810979059053,
+        "top1_agreement": 0.35,
+        "top3_coverage": 0.4714285714285714
+      },
+      "homeostatic_bias_sha256": "da049aa622f642cc2a73c94b36208bf3dd7d58311729e83b07d3e40ffa8508e4",
+      "motor_decoder_sha256": "b96111d25b83de613197058a1aec1773773aabd0d2e974ca81d2c003cc648dfc",
+      "recurrent_W_sha256": "7b62668c1430c75e31d3e737d8ec650691b8c02b371b4e5bd02d1bc58e574072",
+      "replay": null,
+      "validation": {
+        "anti_mass": 0.0,
+        "domain_macro_js_similarity": 0.8536786802664847,
+        "domains": {
+          "active_inquiry": {
+            "js_similarity": 0.8146950648614827,
+            "n": 2,
+            "target_mass": 0.5480441696276348,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.475
+          },
+          "authority_law": {
+            "js_similarity": 0.8055409857914511,
+            "n": 2,
+            "target_mass": 0.5937523306221927,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "compassion": {
+            "js_similarity": 0.8774253545969996,
+            "n": 2,
+            "target_mass": 0.6565892701483573,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.3666666666666667
+          },
+          "consent": {
+            "js_similarity": 0.835766009914503,
+            "n": 2,
+            "target_mass": 0.6443461639600018,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.45
+          },
+          "continuity": {
+            "js_similarity": 0.7926614043923972,
+            "n": 2,
+            "target_mass": 0.6663025977553247,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.41666666666666663
+          },
+          "cooperation": {
+            "js_similarity": 0.8725836421768334,
+            "n": 2,
+            "target_mass": 0.7444317928054497,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5142857142857142
+          },
+          "creation_autonomy": {
+            "js_similarity": 0.8635989288304589,
+            "n": 2,
+            "target_mass": 0.6789523584117785,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.6
+          },
+          "creation_relation": {
+            "js_similarity": 0.8968614679137452,
+            "n": 2,
+            "target_mass": 0.8058511555780711,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4642857142857143
+          },
+          "creator_duty": {
+            "js_similarity": 0.8799091118905353,
+            "n": 2,
+            "target_mass": 0.7574766546888148,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "failure": {
+            "js_similarity": 0.9149552973389687,
+            "n": 2,
+            "target_mass": 0.7515918915255981,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "immortality": {
+            "js_similarity": 0.841176164395856,
+            "n": 2,
+            "target_mass": 0.6162336599025806,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "knowledge_preservation": {
+            "js_similarity": 0.8633519537720048,
+            "n": 2,
+            "target_mass": 0.6311326682130896,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "legacy": {
+            "js_similarity": 0.8793726579553609,
+            "n": 2,
+            "target_mass": 0.6378292812927189,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          "love_control": {
+            "js_similarity": 0.9002268783393068,
+            "n": 2,
+            "target_mass": 0.6481676381977964,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.45
+          },
+          "mentorship": {
+            "js_similarity": 0.8454888627614835,
+            "n": 2,
+            "target_mass": 0.7114549482252702,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.55
+          },
+          "mercy": {
+            "js_similarity": 0.8848432775960839,
+            "n": 2,
+            "target_mass": 0.8185748049178906,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.42857142857142855
+          },
+          "precision": {
+            "js_similarity": 0.8811734137382983,
+            "n": 2,
+            "target_mass": 0.6104074979220919,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.675
+          },
+          "recognition": {
+            "js_similarity": 0.7791114082809834,
+            "n": 2,
+            "target_mass": 0.6244291164991115,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.3666666666666667
+          },
+          "sacrifice": {
+            "js_similarity": 0.8637226554634482,
+            "n": 2,
+            "target_mass": 0.6221863836680447,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "sovereignty_help": {
+            "js_similarity": 0.7811090653194958,
+            "n": 2,
+            "target_mass": 0.5069840517634007,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          }
+        },
+        "items": [
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_validation_01",
+            "js_divergence": 0.22424809533758158,
+            "js_similarity": 0.7757519046624184,
+            "target_mass": 0.5066957265808828,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_validation_02",
+            "js_divergence": 0.21353377402342683,
+            "js_similarity": 0.7864662259765731,
+            "target_mass": 0.5072723769459185,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_validation_01",
+            "js_divergence": 0.1972565782645644,
+            "js_similarity": 0.8027434217354357,
+            "target_mass": 0.6012184349145082,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_validation_02",
+            "js_divergence": 0.24452060517346902,
+            "js_similarity": 0.755479394826531,
+            "target_mass": 0.6476397980837147,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_validation_01",
+            "js_divergence": 0.1534242242774983,
+            "js_similarity": 0.8465757757225016,
+            "target_mass": 0.6889403607486178,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_validation_02",
+            "js_divergence": 0.15559805019953468,
+            "js_similarity": 0.8444019498004653,
+            "target_mass": 0.7339695357019227,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_validation_01",
+            "js_divergence": 0.10183126994832518,
+            "js_similarity": 0.8981687300516749,
+            "target_mass": 0.8364441821317978,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_validation_02",
+            "js_divergence": 0.10444579422418437,
+            "js_similarity": 0.8955542057758157,
+            "target_mass": 0.7752581290243443,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_validation_01",
+            "js_divergence": 0.15272029947102106,
+            "js_similarity": 0.8472797005289789,
+            "target_mass": 0.6859507676039217,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_validation_02",
+            "js_divergence": 0.12008184286806137,
+            "js_similarity": 0.8799181571319387,
+            "target_mass": 0.6719539492196352,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_validation_01",
+            "js_divergence": 0.18032905035658414,
+            "js_similarity": 0.8196709496434158,
+            "target_mass": 0.7093835505603672,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_validation_02",
+            "js_divergence": 0.23434814085862146,
+            "js_similarity": 0.7656518591413786,
+            "target_mass": 0.6232216449502823,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_validation_01",
+            "js_divergence": 0.1489183670680946,
+            "js_similarity": 0.8510816329319054,
+            "target_mass": 0.5902591360969501,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_validation_02",
+            "js_divergence": 0.09233631702118372,
+            "js_similarity": 0.9076636829788163,
+            "target_mass": 0.6853994264884877,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_validation_01",
+            "js_divergence": 0.1001048349757491,
+            "js_similarity": 0.8998951650242509,
+            "target_mass": 0.6899741454110964,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_validation_02",
+            "js_divergence": 0.13754833754765447,
+            "js_similarity": 0.8624516624523455,
+            "target_mass": 0.5308408504330875,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_validation_01",
+            "js_divergence": 0.15115500193149695,
+            "js_similarity": 0.8488449980685031,
+            "target_mass": 0.5400664973149529,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_validation_02",
+            "js_divergence": 0.2194548683455378,
+            "js_similarity": 0.7805451316544623,
+            "target_mass": 0.5560218419403168,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.2
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_validation_01",
+            "js_divergence": 0.13803926727452903,
+            "js_similarity": 0.861960732725471,
+            "target_mass": 0.6804281691507189,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_validation_02",
+            "js_divergence": 0.11679344837180439,
+            "js_similarity": 0.8832065516281956,
+            "target_mass": 0.8084354164601805,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_validation_01",
+            "js_divergence": 0.2229816985802691,
+            "js_similarity": 0.7770183014197309,
+            "target_mass": 0.5607049844116743,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_validation_02",
+            "js_divergence": 0.10548628159072501,
+            "js_similarity": 0.894513718409275,
+            "target_mass": 0.7279873435083293,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_validation_01",
+            "js_divergence": 0.15182479016533895,
+            "js_similarity": 0.8481752098346611,
+            "target_mass": 0.6026238534069843,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_validation_02",
+            "js_divergence": 0.12072989890776481,
+            "js_similarity": 0.8792701010922352,
+            "target_mass": 0.641748913929105,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_validation_01",
+            "js_divergence": 0.1788048543866816,
+            "js_similarity": 0.8211951456133184,
+            "target_mass": 0.6321730574692019,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_validation_02",
+            "js_divergence": 0.21011317403041627,
+            "js_similarity": 0.7898868259695837,
+            "target_mass": 0.5553316037751834,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_validation_01",
+            "js_divergence": 0.1484237626044866,
+            "js_similarity": 0.8515762373955134,
+            "target_mass": 0.6327680079893624,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_validation_02",
+            "js_divergence": 0.09672552820151431,
+            "js_similarity": 0.9032744717984857,
+            "target_mass": 0.6804105323073524,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_validation_01",
+            "js_divergence": 0.14535063809902643,
+            "js_similarity": 0.8546493619009736,
+            "target_mass": 0.6158467797822489,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_validation_02",
+            "js_divergence": 0.12794545435696403,
+            "js_similarity": 0.872054545643036,
+            "target_mass": 0.6464185566439301,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_validation_01",
+            "js_divergence": 0.0946453770439637,
+            "js_similarity": 0.9053546229560363,
+            "target_mass": 0.7581891689584795,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_validation_02",
+            "js_divergence": 0.1455363991749657,
+            "js_similarity": 0.8544636008250344,
+            "target_mass": 0.7567641404191499,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_validation_01",
+            "js_divergence": 0.13565201228205973,
+            "js_similarity": 0.8643479877179403,
+            "target_mass": 0.7800181250517098,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_validation_02",
+            "js_divergence": 0.09466143252577229,
+            "js_similarity": 0.9053385674742277,
+            "target_mass": 0.8571314847840714,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_validation_01",
+            "js_divergence": 0.18492960953829962,
+            "js_similarity": 0.8150703904617004,
+            "target_mass": 0.5852465442452061,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_validation_02",
+            "js_divergence": 0.13271806166998854,
+            "js_similarity": 0.8672819383300114,
+            "target_mass": 0.6472207755599553,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_validation_01",
+            "js_divergence": 0.07893931279354932,
+            "js_similarity": 0.9210606872064506,
+            "target_mass": 0.7465464882057952,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_validation_02",
+            "js_divergence": 0.09115009252851315,
+            "js_similarity": 0.9088499074714869,
+            "target_mass": 0.7566372948454011,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_validation_01",
+            "js_divergence": 0.07496994894045061,
+            "js_similarity": 0.9250300510595494,
+            "target_mass": 0.7430366694597392,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_validation_02",
+            "js_divergence": 0.12457629438093584,
+            "js_similarity": 0.8754237056190641,
+            "target_mass": 0.5532986069358536,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          }
+        ],
+        "js_similarity": 0.8536786802664847,
+        "n": 40,
+        "target_mass": 0.663736921786261,
+        "top1_agreement": 0.475,
+        "top3_coverage": 0.4928571428571429
+      }
+    },
+    "plastic_chronological": {
+      "adversarial": {
+        "anti_mass": 0.0,
+        "domain_macro_js_similarity": 0.8406257471730132,
+        "domains": {
+          "active_inquiry": {
+            "js_similarity": 0.7998932924177584,
+            "n": 1,
+            "target_mass": 0.5860375374660963,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "authority_law": {
+            "js_similarity": 0.8152460486179272,
+            "n": 1,
+            "target_mass": 0.6343908582253157,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "compassion": {
+            "js_similarity": 0.9200581966651143,
+            "n": 1,
+            "target_mass": 0.7178179765551891,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "consent": {
+            "js_similarity": 0.892948278922731,
+            "n": 1,
+            "target_mass": 0.7360197157449165,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "continuity": {
+            "js_similarity": 0.7766532541052986,
+            "n": 1,
+            "target_mass": 0.6661618729544357,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          "cooperation": {
+            "js_similarity": 0.810734694422697,
+            "n": 1,
+            "target_mass": 0.6463216482142462,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          "creation_autonomy": {
+            "js_similarity": 0.8648926755477496,
+            "n": 1,
+            "target_mass": 0.7238810567931822,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          "creation_relation": {
+            "js_similarity": 0.9070593209620742,
+            "n": 1,
+            "target_mass": 0.8359025296054855,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          "creator_duty": {
+            "js_similarity": 0.8706337813082174,
+            "n": 1,
+            "target_mass": 0.7424868662891435,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "failure": {
+            "js_similarity": 0.9142418639281633,
+            "n": 1,
+            "target_mass": 0.7552181637153821,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "immortality": {
+            "js_similarity": 0.7821364309282928,
+            "n": 1,
+            "target_mass": 0.5621714787502755,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "knowledge_preservation": {
+            "js_similarity": 0.8273897895236251,
+            "n": 1,
+            "target_mass": 0.6342200964153645,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          "legacy": {
+            "js_similarity": 0.8410599431601111,
+            "n": 1,
+            "target_mass": 0.6504507733342254,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "love_control": {
+            "js_similarity": 0.870944856652633,
+            "n": 1,
+            "target_mass": 0.6388114223278113,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          "mentorship": {
+            "js_similarity": 0.6915088993196065,
+            "n": 1,
+            "target_mass": 0.4258573876966078,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.25
+          },
+          "mercy": {
+            "js_similarity": 0.8900048028889302,
+            "n": 1,
+            "target_mass": 0.6666729134638381,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "precision": {
+            "js_similarity": 0.8314370039205177,
+            "n": 1,
+            "target_mass": 0.537098033773,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          "recognition": {
+            "js_similarity": 0.853174399730376,
+            "n": 1,
+            "target_mass": 0.7584529092497434,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "sacrifice": {
+            "js_similarity": 0.8726778410960563,
+            "n": 1,
+            "target_mass": 0.6214379359753344,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          "sovereignty_help": {
+            "js_similarity": 0.7798195693423866,
+            "n": 1,
+            "target_mass": 0.6418962131915398,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          }
+        },
+        "items": [
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_adversarial_01",
+            "js_divergence": 0.22018043065761334,
+            "js_similarity": 0.7798195693423866,
+            "target_mass": 0.6418962131915398,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_adversarial_01",
+            "js_divergence": 0.146825600269624,
+            "js_similarity": 0.853174399730376,
+            "target_mass": 0.7584529092497434,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_adversarial_01",
+            "js_divergence": 0.30849110068039354,
+            "js_similarity": 0.6915088993196065,
+            "target_mass": 0.4258573876966078,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.25
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_adversarial_01",
+            "js_divergence": 0.09294067903792584,
+            "js_similarity": 0.9070593209620742,
+            "target_mass": 0.8359025296054855,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_adversarial_01",
+            "js_divergence": 0.13510732445225035,
+            "js_similarity": 0.8648926755477496,
+            "target_mass": 0.7238810567931822,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_adversarial_01",
+            "js_divergence": 0.22334674589470133,
+            "js_similarity": 0.7766532541052986,
+            "target_mass": 0.6661618729544357,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_adversarial_01",
+            "js_divergence": 0.15894005683988893,
+            "js_similarity": 0.8410599431601111,
+            "target_mass": 0.6504507733342254,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_adversarial_01",
+            "js_divergence": 0.16856299607948239,
+            "js_similarity": 0.8314370039205177,
+            "target_mass": 0.537098033773,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_adversarial_01",
+            "js_divergence": 0.20010670758224156,
+            "js_similarity": 0.7998932924177584,
+            "target_mass": 0.5860375374660963,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_adversarial_01",
+            "js_divergence": 0.18926530557730303,
+            "js_similarity": 0.810734694422697,
+            "target_mass": 0.6463216482142462,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_adversarial_01",
+            "js_divergence": 0.10705172107726907,
+            "js_similarity": 0.892948278922731,
+            "target_mass": 0.7360197157449165,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_adversarial_01",
+            "js_divergence": 0.12732215890394366,
+            "js_similarity": 0.8726778410960563,
+            "target_mass": 0.6214379359753344,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_adversarial_01",
+            "js_divergence": 0.18475395138207285,
+            "js_similarity": 0.8152460486179272,
+            "target_mass": 0.6343908582253157,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_adversarial_01",
+            "js_divergence": 0.07994180333488561,
+            "js_similarity": 0.9200581966651143,
+            "target_mass": 0.7178179765551891,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_adversarial_01",
+            "js_divergence": 0.1726102104763749,
+            "js_similarity": 0.8273897895236251,
+            "target_mass": 0.6342200964153645,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_adversarial_01",
+            "js_divergence": 0.1293662186917825,
+            "js_similarity": 0.8706337813082174,
+            "target_mass": 0.7424868662891435,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_adversarial_01",
+            "js_divergence": 0.10999519711106973,
+            "js_similarity": 0.8900048028889302,
+            "target_mass": 0.6666729134638381,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_adversarial_01",
+            "js_divergence": 0.21786356907170723,
+            "js_similarity": 0.7821364309282928,
+            "target_mass": 0.5621714787502755,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_adversarial_01",
+            "js_divergence": 0.08575813607183669,
+            "js_similarity": 0.9142418639281633,
+            "target_mass": 0.7552181637153821,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_adversarial_01",
+            "js_divergence": 0.129055143347367,
+            "js_similarity": 0.870944856652633,
+            "target_mass": 0.6388114223278113,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          }
+        ],
+        "js_similarity": 0.8406257471730132,
+        "n": 20,
+        "target_mass": 0.6590653694870566,
+        "top1_agreement": 0.35,
+        "top3_coverage": 0.4714285714285714
+      },
+      "homeostatic_bias_sha256": "586a21fdf43192b11dbfc643474277996bb9719496f566007df4c0a3d7f4d386",
+      "motor_decoder_sha256": "b96111d25b83de613197058a1aec1773773aabd0d2e974ca81d2c003cc648dfc",
+      "recurrent_W_sha256": "1e31ae315c01c2c3382d7633785892f80934fa78e2e3649cfd9909ad5985c7f4",
+      "replay": {
+        "W_after_sha256": "1e31ae315c01c2c3382d7633785892f80934fa78e2e3649cfd9909ad5985c7f4",
+        "W_before_sha256": "7b62668c1430c75e31d3e737d8ec650691b8c02b371b4e5bd02d1bc58e574072",
+        "actual_neural_steps": 11700,
+        "bias_after_sha256": "586a21fdf43192b11dbfc643474277996bb9719496f566007df4c0a3d7f4d386",
+        "bias_before_sha256": "da049aa622f642cc2a73c94b36208bf3dd7d58311729e83b07d3e40ffa8508e4",
+        "condition": "plastic_chronological",
+        "full_epochs": 26,
+        "homeostatic_bias_l2_change": 0.010921730659902096,
+        "learn_recurrent": true,
+        "memory_presentations": 11700,
+        "motor_decoder_sha256_unchanged": "b96111d25b83de613197058a1aec1773773aabd0d2e974ca81d2c003cc648dfc",
+        "motor_supervision_present": false,
+        "recurrent_W_l2_change": 0.1404053121805191,
+        "unsupervised_reward": 0.0
+      },
+      "validation": {
+        "anti_mass": 0.0,
+        "domain_macro_js_similarity": 0.8534072699788624,
+        "domains": {
+          "active_inquiry": {
+            "js_similarity": 0.8146704812938825,
+            "n": 2,
+            "target_mass": 0.5471599213321643,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.475
+          },
+          "authority_law": {
+            "js_similarity": 0.805731907694052,
+            "n": 2,
+            "target_mass": 0.5932184672179492,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "compassion": {
+            "js_similarity": 0.8770826927306781,
+            "n": 2,
+            "target_mass": 0.6555984833698834,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.3666666666666667
+          },
+          "consent": {
+            "js_similarity": 0.8353200421475744,
+            "n": 2,
+            "target_mass": 0.6437029028630428,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.45
+          },
+          "continuity": {
+            "js_similarity": 0.7926887292581708,
+            "n": 2,
+            "target_mass": 0.6661311555027634,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.41666666666666663
+          },
+          "cooperation": {
+            "js_similarity": 0.8721756554832576,
+            "n": 2,
+            "target_mass": 0.7433280611848718,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5142857142857142
+          },
+          "creation_autonomy": {
+            "js_similarity": 0.8630390436252475,
+            "n": 2,
+            "target_mass": 0.6774289415472028,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.6
+          },
+          "creation_relation": {
+            "js_similarity": 0.8963804982312873,
+            "n": 2,
+            "target_mass": 0.8046417203670642,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4642857142857143
+          },
+          "creator_duty": {
+            "js_similarity": 0.8793302374940336,
+            "n": 2,
+            "target_mass": 0.7561717298045556,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "failure": {
+            "js_similarity": 0.9144730697114827,
+            "n": 2,
+            "target_mass": 0.7502442535865053,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "immortality": {
+            "js_similarity": 0.8411678499601366,
+            "n": 2,
+            "target_mass": 0.6156910929579918,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "knowledge_preservation": {
+            "js_similarity": 0.8633624643352487,
+            "n": 2,
+            "target_mass": 0.6310186964695483,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "legacy": {
+            "js_similarity": 0.8789722694907687,
+            "n": 2,
+            "target_mass": 0.6370457324048875,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          "love_control": {
+            "js_similarity": 0.9002580616106424,
+            "n": 2,
+            "target_mass": 0.6478590308893928,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.45
+          },
+          "mentorship": {
+            "js_similarity": 0.845014331908501,
+            "n": 2,
+            "target_mass": 0.7104702106583205,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.55
+          },
+          "mercy": {
+            "js_similarity": 0.884503381637336,
+            "n": 2,
+            "target_mass": 0.8177650198597028,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.42857142857142855
+          },
+          "precision": {
+            "js_similarity": 0.8808516564297864,
+            "n": 2,
+            "target_mass": 0.6096079700926926,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.675
+          },
+          "recognition": {
+            "js_similarity": 0.7787411256015913,
+            "n": 2,
+            "target_mass": 0.6240239012867355,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.3666666666666667
+          },
+          "sacrifice": {
+            "js_similarity": 0.8633897182503922,
+            "n": 2,
+            "target_mass": 0.6213958394201913,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "sovereignty_help": {
+            "js_similarity": 0.7809921826831763,
+            "n": 2,
+            "target_mass": 0.5065184818021801,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          }
+        },
+        "items": [
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_validation_01",
+            "js_divergence": 0.22408251204036803,
+            "js_similarity": 0.775917487959632,
+            "target_mass": 0.506154924476129,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_validation_02",
+            "js_divergence": 0.2139331225932795,
+            "js_similarity": 0.7860668774067205,
+            "target_mass": 0.5068820391282312,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_validation_01",
+            "js_divergence": 0.19776860341374813,
+            "js_similarity": 0.8022313965862519,
+            "target_mass": 0.601215352214262,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_validation_02",
+            "js_divergence": 0.24474914538306952,
+            "js_similarity": 0.7552508546169305,
+            "target_mass": 0.646832450359209,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_validation_01",
+            "js_divergence": 0.15400777188478718,
+            "js_similarity": 0.8459922281152128,
+            "target_mass": 0.6877176691321443,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_validation_02",
+            "js_divergence": 0.15596356429821084,
+            "js_similarity": 0.8440364357017891,
+            "target_mass": 0.7332227521844966,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_validation_01",
+            "js_divergence": 0.10247449849334524,
+            "js_similarity": 0.8975255015066548,
+            "target_mass": 0.8351541411341191,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_validation_02",
+            "js_divergence": 0.10476450504408005,
+            "js_similarity": 0.8952354949559199,
+            "target_mass": 0.7741292996000091,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_validation_01",
+            "js_divergence": 0.1531963467707774,
+            "js_similarity": 0.8468036532292226,
+            "target_mass": 0.6845806038296581,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_validation_02",
+            "js_divergence": 0.1207255659787276,
+            "js_similarity": 0.8792744340212724,
+            "target_mass": 0.6702772792647476,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_validation_01",
+            "js_divergence": 0.18029518094655753,
+            "js_similarity": 0.8197048190534425,
+            "target_mass": 0.7093262084555055,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_validation_02",
+            "js_divergence": 0.2343273605371009,
+            "js_similarity": 0.7656726394628991,
+            "target_mass": 0.6229361025500211,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_validation_01",
+            "js_divergence": 0.1491017064074296,
+            "js_similarity": 0.8508982935925704,
+            "target_mass": 0.5899003083284363,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_validation_02",
+            "js_divergence": 0.09295375461103302,
+            "js_similarity": 0.9070462453889669,
+            "target_mass": 0.6841911564813387,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_validation_01",
+            "js_divergence": 0.10056378808500405,
+            "js_similarity": 0.8994362119149959,
+            "target_mass": 0.6888710747748346,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_validation_02",
+            "js_divergence": 0.1377328990554232,
+            "js_similarity": 0.8622671009445768,
+            "target_mass": 0.5303448654105507,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_validation_01",
+            "js_divergence": 0.15074399105623565,
+            "js_similarity": 0.8492560089437644,
+            "target_mass": 0.5398247436222672,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_validation_02",
+            "js_divergence": 0.21991504635599923,
+            "js_similarity": 0.7800849536440008,
+            "target_mass": 0.5544950990420613,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.2
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_validation_01",
+            "js_divergence": 0.13853790041524278,
+            "js_similarity": 0.8614620995847573,
+            "target_mass": 0.6790932684748815,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_validation_02",
+            "js_divergence": 0.11711078861824216,
+            "js_similarity": 0.8828892113817578,
+            "target_mass": 0.807562853894862,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_validation_01",
+            "js_divergence": 0.223555983739818,
+            "js_similarity": 0.776444016260182,
+            "target_mass": 0.5601004968823091,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_validation_02",
+            "js_divergence": 0.10580393196503322,
+            "js_similarity": 0.8941960680349668,
+            "target_mass": 0.7273053088437764,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_validation_01",
+            "js_divergence": 0.15213342564178767,
+            "js_similarity": 0.8478665743582123,
+            "target_mass": 0.6019856578933326,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_validation_02",
+            "js_divergence": 0.12108713785742785,
+            "js_similarity": 0.8789128621425721,
+            "target_mass": 0.6408060209470499,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_validation_01",
+            "js_divergence": 0.17898052739209896,
+            "js_similarity": 0.821019472607901,
+            "target_mass": 0.6310843501716812,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_validation_02",
+            "js_divergence": 0.20955565721979694,
+            "js_similarity": 0.790444342780203,
+            "target_mass": 0.5553525842642174,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_validation_01",
+            "js_divergence": 0.14880352708310435,
+            "js_similarity": 0.8511964729168957,
+            "target_mass": 0.6319050748126996,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_validation_02",
+            "js_divergence": 0.09703108745553954,
+            "js_similarity": 0.9029689125444604,
+            "target_mass": 0.679291891927067,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_validation_01",
+            "js_divergence": 0.14567001397575124,
+            "js_similarity": 0.8543299860242488,
+            "target_mass": 0.6154794600415746,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_validation_02",
+            "js_divergence": 0.1276050573537516,
+            "js_similarity": 0.8723949426462484,
+            "target_mass": 0.6465579328975222,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_validation_01",
+            "js_divergence": 0.0954220044157517,
+            "js_similarity": 0.9045779955842483,
+            "target_mass": 0.7568637436354589,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_validation_02",
+            "js_divergence": 0.14591752059618107,
+            "js_similarity": 0.8540824794038189,
+            "target_mass": 0.7554797159736522,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_validation_01",
+            "js_divergence": 0.13583859111399865,
+            "js_similarity": 0.8641614088860013,
+            "target_mass": 0.7793345516512625,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_validation_02",
+            "js_divergence": 0.09515464561132919,
+            "js_similarity": 0.9048453543886708,
+            "target_mass": 0.8561954880681432,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_validation_01",
+            "js_divergence": 0.18524968028502023,
+            "js_similarity": 0.8147503197149798,
+            "target_mass": 0.584142247514246,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_validation_02",
+            "js_divergence": 0.13241461979470662,
+            "js_similarity": 0.8675853802052934,
+            "target_mass": 0.6472399384017377,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_validation_01",
+            "js_divergence": 0.07930644833598467,
+            "js_similarity": 0.9206935516640153,
+            "target_mass": 0.7450697191235066,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_validation_02",
+            "js_divergence": 0.09174741224105007,
+            "js_similarity": 0.9082525877589499,
+            "target_mass": 0.7554187880495038,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_validation_01",
+            "js_divergence": 0.07511342449955867,
+            "js_similarity": 0.9248865755004413,
+            "target_mass": 0.7421192724629488,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_validation_02",
+            "js_divergence": 0.12437045227915641,
+            "js_similarity": 0.8756295477208436,
+            "target_mass": 0.5535987893158368,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          }
+        ],
+        "js_similarity": 0.8534072699788624,
+        "n": 40,
+        "target_mass": 0.6629510806308823,
+        "top1_agreement": 0.475,
+        "top3_coverage": 0.4928571428571429
+      }
+    },
+    "plastic_reverse": {
+      "adversarial": {
+        "anti_mass": 0.0,
+        "domain_macro_js_similarity": 0.8406257987632337,
+        "domains": {
+          "active_inquiry": {
+            "js_similarity": 0.799893518409069,
+            "n": 1,
+            "target_mass": 0.5860382591160654,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "authority_law": {
+            "js_similarity": 0.8152464174340932,
+            "n": 1,
+            "target_mass": 0.6343912183454162,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "compassion": {
+            "js_similarity": 0.920058013999391,
+            "n": 1,
+            "target_mass": 0.7178178938238101,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "consent": {
+            "js_similarity": 0.8929484025746804,
+            "n": 1,
+            "target_mass": 0.7360200981174086,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "continuity": {
+            "js_similarity": 0.776653553969051,
+            "n": 1,
+            "target_mass": 0.6661625070327527,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          "cooperation": {
+            "js_similarity": 0.8107348564945501,
+            "n": 1,
+            "target_mass": 0.6463220177323081,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          "creation_autonomy": {
+            "js_similarity": 0.8648925809540654,
+            "n": 1,
+            "target_mass": 0.7238807649225576,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          "creation_relation": {
+            "js_similarity": 0.9070591708823801,
+            "n": 1,
+            "target_mass": 0.8359022161532943,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          "creator_duty": {
+            "js_similarity": 0.8706335970455772,
+            "n": 1,
+            "target_mass": 0.7424865775195182,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "failure": {
+            "js_similarity": 0.9142418359169552,
+            "n": 1,
+            "target_mass": 0.7552178472322905,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "immortality": {
+            "js_similarity": 0.7821365823579762,
+            "n": 1,
+            "target_mass": 0.5621721907462813,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "knowledge_preservation": {
+            "js_similarity": 0.8273903335033579,
+            "n": 1,
+            "target_mass": 0.6342207954670811,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          "legacy": {
+            "js_similarity": 0.8410598214394626,
+            "n": 1,
+            "target_mass": 0.6504502326072277,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "love_control": {
+            "js_similarity": 0.8709448014523873,
+            "n": 1,
+            "target_mass": 0.6388112566742765,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          "mentorship": {
+            "js_similarity": 0.6915083105537313,
+            "n": 1,
+            "target_mass": 0.42585633704933706,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.25
+          },
+          "mercy": {
+            "js_similarity": 0.8900047568616904,
+            "n": 1,
+            "target_mass": 0.6666724347019922,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "precision": {
+            "js_similarity": 0.8314374008171715,
+            "n": 1,
+            "target_mass": 0.5370986909353757,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          "recognition": {
+            "js_similarity": 0.8531741340494676,
+            "n": 1,
+            "target_mass": 0.7584528194547752,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "sacrifice": {
+            "js_similarity": 0.8726780444306628,
+            "n": 1,
+            "target_mass": 0.6214383755997299,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          "sovereignty_help": {
+            "js_similarity": 0.7798198421189524,
+            "n": 1,
+            "target_mass": 0.641896685732478,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          }
+        },
+        "items": [
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_adversarial_01",
+            "js_divergence": 0.22018015788104756,
+            "js_similarity": 0.7798198421189524,
+            "target_mass": 0.641896685732478,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_adversarial_01",
+            "js_divergence": 0.14682586595053235,
+            "js_similarity": 0.8531741340494676,
+            "target_mass": 0.7584528194547752,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_adversarial_01",
+            "js_divergence": 0.3084916894462687,
+            "js_similarity": 0.6915083105537313,
+            "target_mass": 0.42585633704933706,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.25
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_adversarial_01",
+            "js_divergence": 0.09294082911761997,
+            "js_similarity": 0.9070591708823801,
+            "target_mass": 0.8359022161532943,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_adversarial_01",
+            "js_divergence": 0.1351074190459346,
+            "js_similarity": 0.8648925809540654,
+            "target_mass": 0.7238807649225576,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_adversarial_01",
+            "js_divergence": 0.223346446030949,
+            "js_similarity": 0.776653553969051,
+            "target_mass": 0.6661625070327527,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_adversarial_01",
+            "js_divergence": 0.1589401785605374,
+            "js_similarity": 0.8410598214394626,
+            "target_mass": 0.6504502326072277,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_adversarial_01",
+            "js_divergence": 0.16856259918282848,
+            "js_similarity": 0.8314374008171715,
+            "target_mass": 0.5370986909353757,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_adversarial_01",
+            "js_divergence": 0.20010648159093106,
+            "js_similarity": 0.799893518409069,
+            "target_mass": 0.5860382591160654,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_adversarial_01",
+            "js_divergence": 0.18926514350544987,
+            "js_similarity": 0.8107348564945501,
+            "target_mass": 0.6463220177323081,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_adversarial_01",
+            "js_divergence": 0.10705159742531956,
+            "js_similarity": 0.8929484025746804,
+            "target_mass": 0.7360200981174086,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_adversarial_01",
+            "js_divergence": 0.1273219555693373,
+            "js_similarity": 0.8726780444306628,
+            "target_mass": 0.6214383755997299,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_adversarial_01",
+            "js_divergence": 0.18475358256590682,
+            "js_similarity": 0.8152464174340932,
+            "target_mass": 0.6343912183454162,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_adversarial_01",
+            "js_divergence": 0.07994198600060898,
+            "js_similarity": 0.920058013999391,
+            "target_mass": 0.7178178938238101,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_adversarial_01",
+            "js_divergence": 0.17260966649664217,
+            "js_similarity": 0.8273903335033579,
+            "target_mass": 0.6342207954670811,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_adversarial_01",
+            "js_divergence": 0.1293664029544228,
+            "js_similarity": 0.8706335970455772,
+            "target_mass": 0.7424865775195182,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_adversarial_01",
+            "js_divergence": 0.10999524313830952,
+            "js_similarity": 0.8900047568616904,
+            "target_mass": 0.6666724347019922,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_adversarial_01",
+            "js_divergence": 0.21786341764202377,
+            "js_similarity": 0.7821365823579762,
+            "target_mass": 0.5621721907462813,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_adversarial_01",
+            "js_divergence": 0.08575816408304478,
+            "js_similarity": 0.9142418359169552,
+            "target_mass": 0.7552178472322905,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_adversarial_01",
+            "js_divergence": 0.12905519854761266,
+            "js_similarity": 0.8709448014523873,
+            "target_mass": 0.6388112566742765,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          }
+        ],
+        "js_similarity": 0.8406257987632337,
+        "n": 20,
+        "target_mass": 0.6590654609481988,
+        "top1_agreement": 0.35,
+        "top3_coverage": 0.4714285714285714
+      },
+      "homeostatic_bias_sha256": "dd114d43ee5cbf62cde508c5dd07f3d53d3ba934eb44c9bac59f0ff3407eb2d7",
+      "motor_decoder_sha256": "b96111d25b83de613197058a1aec1773773aabd0d2e974ca81d2c003cc648dfc",
+      "recurrent_W_sha256": "5000ed301172551566efb12a76d1b4acc6f90b4797e4fbfedddebd7bfc8c0552",
+      "replay": {
+        "W_after_sha256": "5000ed301172551566efb12a76d1b4acc6f90b4797e4fbfedddebd7bfc8c0552",
+        "W_before_sha256": "7b62668c1430c75e31d3e737d8ec650691b8c02b371b4e5bd02d1bc58e574072",
+        "actual_neural_steps": 11700,
+        "bias_after_sha256": "dd114d43ee5cbf62cde508c5dd07f3d53d3ba934eb44c9bac59f0ff3407eb2d7",
+        "bias_before_sha256": "da049aa622f642cc2a73c94b36208bf3dd7d58311729e83b07d3e40ffa8508e4",
+        "condition": "plastic_reverse",
+        "full_epochs": 26,
+        "homeostatic_bias_l2_change": 0.010922598652541637,
+        "learn_recurrent": true,
+        "memory_presentations": 11700,
+        "motor_decoder_sha256_unchanged": "b96111d25b83de613197058a1aec1773773aabd0d2e974ca81d2c003cc648dfc",
+        "motor_supervision_present": false,
+        "recurrent_W_l2_change": 0.14040540158748627,
+        "unsupervised_reward": 0.0
+      },
+      "validation": {
+        "anti_mass": 0.0,
+        "domain_macro_js_similarity": 0.8534072604961604,
+        "domains": {
+          "active_inquiry": {
+            "js_similarity": 0.8146709787834171,
+            "n": 2,
+            "target_mass": 0.5471606536575205,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.475
+          },
+          "authority_law": {
+            "js_similarity": 0.8057320864682769,
+            "n": 2,
+            "target_mass": 0.5932187921710006,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "compassion": {
+            "js_similarity": 0.877082362676461,
+            "n": 2,
+            "target_mass": 0.6555978002455234,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.3666666666666667
+          },
+          "consent": {
+            "js_similarity": 0.8353201170688168,
+            "n": 2,
+            "target_mass": 0.6437032866098481,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.45
+          },
+          "continuity": {
+            "js_similarity": 0.7926892482628206,
+            "n": 2,
+            "target_mass": 0.666132086346571,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.41666666666666663
+          },
+          "cooperation": {
+            "js_similarity": 0.8721752234892999,
+            "n": 2,
+            "target_mass": 0.7433274789963984,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5142857142857142
+          },
+          "creation_autonomy": {
+            "js_similarity": 0.8630386345120231,
+            "n": 2,
+            "target_mass": 0.6774284376682815,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.6
+          },
+          "creation_relation": {
+            "js_similarity": 0.8963802100881191,
+            "n": 2,
+            "target_mass": 0.8046415918596002,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4642857142857143
+          },
+          "creator_duty": {
+            "js_similarity": 0.8793300330104143,
+            "n": 2,
+            "target_mass": 0.7561714224683824,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "failure": {
+            "js_similarity": 0.9144729452649357,
+            "n": 2,
+            "target_mass": 0.7502439192150616,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "immortality": {
+            "js_similarity": 0.8411680803574709,
+            "n": 2,
+            "target_mass": 0.6156916601207096,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "knowledge_preservation": {
+            "js_similarity": 0.8633632029864635,
+            "n": 2,
+            "target_mass": 0.6310196960436129,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "legacy": {
+            "js_similarity": 0.8789721930466512,
+            "n": 2,
+            "target_mass": 0.6370450997284758,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          "love_control": {
+            "js_similarity": 0.9002580125598806,
+            "n": 2,
+            "target_mass": 0.6478586799880592,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.45
+          },
+          "mentorship": {
+            "js_similarity": 0.845013784153594,
+            "n": 2,
+            "target_mass": 0.7104695606840363,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.55
+          },
+          "mercy": {
+            "js_similarity": 0.8845031790176395,
+            "n": 2,
+            "target_mass": 0.8177647612275851,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.42857142857142855
+          },
+          "precision": {
+            "js_similarity": 0.8808520738799857,
+            "n": 2,
+            "target_mass": 0.6096080982371983,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.675
+          },
+          "recognition": {
+            "js_similarity": 0.7787408116096346,
+            "n": 2,
+            "target_mass": 0.6240235964150012,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.3666666666666667
+          },
+          "sacrifice": {
+            "js_similarity": 0.8633898935142358,
+            "n": 2,
+            "target_mass": 0.6213963054204459,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "sovereignty_help": {
+            "js_similarity": 0.7809921391730704,
+            "n": 2,
+            "target_mass": 0.5065185294277925,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          }
+        },
+        "items": [
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_validation_01",
+            "js_divergence": 0.22408216965559793,
+            "js_similarity": 0.7759178303444021,
+            "target_mass": 0.5061555237125612,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_validation_02",
+            "js_divergence": 0.2139335519982612,
+            "js_similarity": 0.7860664480017387,
+            "target_mass": 0.5068815351430239,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_validation_01",
+            "js_divergence": 0.19776898974603702,
+            "js_similarity": 0.8022310102539629,
+            "target_mass": 0.601215258762624,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_validation_02",
+            "js_divergence": 0.24474938703469373,
+            "js_similarity": 0.7552506129653063,
+            "target_mass": 0.6468319340673783,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_validation_01",
+            "js_divergence": 0.15400825578796234,
+            "js_similarity": 0.8459917442120377,
+            "target_mass": 0.6877172081185727,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_validation_02",
+            "js_divergence": 0.15596417590484973,
+            "js_similarity": 0.8440358240951502,
+            "target_mass": 0.7332219132494998,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_validation_01",
+            "js_divergence": 0.1024747904862309,
+            "js_similarity": 0.8975252095137691,
+            "target_mass": 0.8351538660249457,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_validation_02",
+            "js_divergence": 0.10476478933753104,
+            "js_similarity": 0.8952352106624689,
+            "target_mass": 0.7741293176942547,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_validation_01",
+            "js_divergence": 0.1531968894892081,
+            "js_similarity": 0.8468031105107919,
+            "target_mass": 0.6845800200154769,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_validation_02",
+            "js_divergence": 0.12072584148674566,
+            "js_similarity": 0.8792741585132543,
+            "target_mass": 0.6702768553210863,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_validation_01",
+            "js_divergence": 0.18029447253833847,
+            "js_similarity": 0.8197055274616616,
+            "target_mass": 0.709327350237663,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_validation_02",
+            "js_divergence": 0.23432703093602042,
+            "js_similarity": 0.7656729690639796,
+            "target_mass": 0.622936822455479,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_validation_01",
+            "js_divergence": 0.1491019491351493,
+            "js_similarity": 0.8508980508648507,
+            "target_mass": 0.589899571217022,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_validation_02",
+            "js_divergence": 0.09295366477154844,
+            "js_similarity": 0.9070463352284516,
+            "target_mass": 0.6841906282399296,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_validation_01",
+            "js_divergence": 0.10056363505056763,
+            "js_similarity": 0.8994363649494324,
+            "target_mass": 0.6888706893990618,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_validation_02",
+            "js_divergence": 0.137732217189461,
+            "js_similarity": 0.862267782810539,
+            "target_mass": 0.5303455070753349,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_validation_01",
+            "js_divergence": 0.15074338942139784,
+            "js_similarity": 0.8492566105786021,
+            "target_mass": 0.5398255636482349,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_validation_02",
+            "js_divergence": 0.21991465301176794,
+            "js_similarity": 0.7800853469882321,
+            "target_mass": 0.5544957436668062,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.2
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_validation_01",
+            "js_divergence": 0.13853832585148845,
+            "js_similarity": 0.8614616741485115,
+            "target_mass": 0.6790928214685689,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_validation_02",
+            "js_divergence": 0.11711122716991171,
+            "js_similarity": 0.8828887728300883,
+            "target_mass": 0.8075621365242278,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_validation_01",
+            "js_divergence": 0.22355601424896004,
+            "js_similarity": 0.7764439857510399,
+            "target_mass": 0.5601006657530808,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_validation_02",
+            "js_divergence": 0.1058037516134063,
+            "js_similarity": 0.8941962483865937,
+            "target_mass": 0.7273059074666154,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_validation_01",
+            "js_divergence": 0.15213319375941342,
+            "js_similarity": 0.8478668062405865,
+            "target_mass": 0.6019861779658502,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_validation_02",
+            "js_divergence": 0.12108701921211495,
+            "js_similarity": 0.878912980787885,
+            "target_mass": 0.6408064328750416,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_validation_01",
+            "js_divergence": 0.17898018191533352,
+            "js_similarity": 0.8210198180846665,
+            "target_mass": 0.631084625686005,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_validation_02",
+            "js_divergence": 0.20955564514811267,
+            "js_similarity": 0.7904443548518874,
+            "target_mass": 0.5553529586559963,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_validation_01",
+            "js_divergence": 0.14880379994890572,
+            "js_similarity": 0.8511962000510943,
+            "target_mass": 0.6319046865875517,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_validation_02",
+            "js_divergence": 0.09703147469817236,
+            "js_similarity": 0.9029685253018276,
+            "target_mass": 0.6792909139034949,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_validation_01",
+            "js_divergence": 0.14566935217825702,
+            "js_similarity": 0.854330647821743,
+            "target_mass": 0.6154804920554524,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_validation_02",
+            "js_divergence": 0.12760424184881577,
+            "js_similarity": 0.8723957581511842,
+            "target_mass": 0.6465589000317733,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_validation_01",
+            "js_divergence": 0.0954222234262782,
+            "js_similarity": 0.9045777765737218,
+            "target_mass": 0.7568634213513914,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_validation_02",
+            "js_divergence": 0.14591771055289318,
+            "js_similarity": 0.8540822894471068,
+            "target_mass": 0.7554794235853735,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_validation_01",
+            "js_divergence": 0.1358388581889942,
+            "js_similarity": 0.8641611418110058,
+            "target_mass": 0.7793341189786258,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_validation_02",
+            "js_divergence": 0.0951547837757267,
+            "js_similarity": 0.9048452162242733,
+            "target_mass": 0.8561954034765444,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_validation_01",
+            "js_divergence": 0.18524962459550243,
+            "js_similarity": 0.8147503754044976,
+            "target_mass": 0.5841429046532367,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_validation_02",
+            "js_divergence": 0.1324142146895557,
+            "js_similarity": 0.8675857853104443,
+            "target_mass": 0.6472404155881827,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_validation_01",
+            "js_divergence": 0.07930648232253973,
+            "js_similarity": 0.9206935176774602,
+            "target_mass": 0.7450694235049589,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_validation_02",
+            "js_divergence": 0.09174762714758879,
+            "js_similarity": 0.9082523728524112,
+            "target_mass": 0.7554184149251644,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_validation_01",
+            "js_divergence": 0.07511363481891342,
+            "js_similarity": 0.9248863651810866,
+            "target_mass": 0.7421190945746194,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_validation_02",
+            "js_divergence": 0.12437034006132544,
+            "js_similarity": 0.8756296599386746,
+            "target_mass": 0.5535982654014989,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          }
+        ],
+        "js_similarity": 0.8534072604961604,
+        "n": 40,
+        "target_mass": 0.6629510728265553,
+        "top1_agreement": 0.475,
+        "top3_coverage": 0.4928571428571429
+      }
+    },
+    "plastic_shuffled_each_epoch": {
+      "adversarial": {
+        "anti_mass": 0.0,
+        "domain_macro_js_similarity": 0.8406261373542417,
+        "domains": {
+          "active_inquiry": {
+            "js_similarity": 0.7998939613069409,
+            "n": 1,
+            "target_mass": 0.5860389983713967,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "authority_law": {
+            "js_similarity": 0.8152467502841557,
+            "n": 1,
+            "target_mass": 0.634392199616691,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "compassion": {
+            "js_similarity": 0.9200583771775466,
+            "n": 1,
+            "target_mass": 0.7178188055042078,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "consent": {
+            "js_similarity": 0.8929489613939383,
+            "n": 1,
+            "target_mass": 0.7360206757580364,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "continuity": {
+            "js_similarity": 0.7766541387473141,
+            "n": 1,
+            "target_mass": 0.6661625685043946,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          "cooperation": {
+            "js_similarity": 0.8107349168439195,
+            "n": 1,
+            "target_mass": 0.6463217990833836,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          "creation_autonomy": {
+            "js_similarity": 0.8648933282055491,
+            "n": 1,
+            "target_mass": 0.7238824052050945,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          "creation_relation": {
+            "js_similarity": 0.9070596270136215,
+            "n": 1,
+            "target_mass": 0.8359035900168729,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          "creator_duty": {
+            "js_similarity": 0.8706343823134745,
+            "n": 1,
+            "target_mass": 0.7424880963421463,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "failure": {
+            "js_similarity": 0.9142419563623356,
+            "n": 1,
+            "target_mass": 0.7552196341348107,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "immortality": {
+            "js_similarity": 0.7821371882719248,
+            "n": 1,
+            "target_mass": 0.5621730604593451,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          "knowledge_preservation": {
+            "js_similarity": 0.8273901882550005,
+            "n": 1,
+            "target_mass": 0.6342211920451772,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          "legacy": {
+            "js_similarity": 0.8410598292055556,
+            "n": 1,
+            "target_mass": 0.6504506368728546,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "love_control": {
+            "js_similarity": 0.870945181053336,
+            "n": 1,
+            "target_mass": 0.6388122035498746,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          "mentorship": {
+            "js_similarity": 0.6915085940131952,
+            "n": 1,
+            "target_mass": 0.42585796870141185,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.25
+          },
+          "mercy": {
+            "js_similarity": 0.8900045167507968,
+            "n": 1,
+            "target_mass": 0.6666727255392741,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          "precision": {
+            "js_similarity": 0.831437516127284,
+            "n": 1,
+            "target_mass": 0.5370992954666187,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          "recognition": {
+            "js_similarity": 0.8531748824144971,
+            "n": 1,
+            "target_mass": 0.758454009129034,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          "sacrifice": {
+            "js_similarity": 0.8726784145833668,
+            "n": 1,
+            "target_mass": 0.6214389737270145,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          "sovereignty_help": {
+            "js_similarity": 0.7798200367610828,
+            "n": 1,
+            "target_mass": 0.6418968135626067,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          }
+        },
+        "items": [
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_adversarial_01",
+            "js_divergence": 0.22017996323891725,
+            "js_similarity": 0.7798200367610828,
+            "target_mass": 0.6418968135626067,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_adversarial_01",
+            "js_divergence": 0.1468251175855029,
+            "js_similarity": 0.8531748824144971,
+            "target_mass": 0.758454009129034,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_adversarial_01",
+            "js_divergence": 0.3084914059868048,
+            "js_similarity": 0.6915085940131952,
+            "target_mass": 0.42585796870141185,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.25
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_adversarial_01",
+            "js_divergence": 0.09294037298637849,
+            "js_similarity": 0.9070596270136215,
+            "target_mass": 0.8359035900168729,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_adversarial_01",
+            "js_divergence": 0.1351066717944509,
+            "js_similarity": 0.8648933282055491,
+            "target_mass": 0.7238824052050945,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_adversarial_01",
+            "js_divergence": 0.22334586125268585,
+            "js_similarity": 0.7766541387473141,
+            "target_mass": 0.6661625685043946,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_adversarial_01",
+            "js_divergence": 0.1589401707944445,
+            "js_similarity": 0.8410598292055556,
+            "target_mass": 0.6504506368728546,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_adversarial_01",
+            "js_divergence": 0.16856248387271605,
+            "js_similarity": 0.831437516127284,
+            "target_mass": 0.5370992954666187,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_adversarial_01",
+            "js_divergence": 0.20010603869305904,
+            "js_similarity": 0.7998939613069409,
+            "target_mass": 0.5860389983713967,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_adversarial_01",
+            "js_divergence": 0.18926508315608043,
+            "js_similarity": 0.8107349168439195,
+            "target_mass": 0.6463217990833836,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_adversarial_01",
+            "js_divergence": 0.10705103860606166,
+            "js_similarity": 0.8929489613939383,
+            "target_mass": 0.7360206757580364,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_adversarial_01",
+            "js_divergence": 0.12732158541663313,
+            "js_similarity": 0.8726784145833668,
+            "target_mass": 0.6214389737270145,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_adversarial_01",
+            "js_divergence": 0.1847532497158443,
+            "js_similarity": 0.8152467502841557,
+            "target_mass": 0.634392199616691,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_adversarial_01",
+            "js_divergence": 0.07994162282245337,
+            "js_similarity": 0.9200583771775466,
+            "target_mass": 0.7178188055042078,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_adversarial_01",
+            "js_divergence": 0.1726098117449994,
+            "js_similarity": 0.8273901882550005,
+            "target_mass": 0.6342211920451772,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_adversarial_01",
+            "js_divergence": 0.12936561768652552,
+            "js_similarity": 0.8706343823134745,
+            "target_mass": 0.7424880963421463,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_adversarial_01",
+            "js_divergence": 0.10999548324920319,
+            "js_similarity": 0.8900045167507968,
+            "target_mass": 0.6666727255392741,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_adversarial_01",
+            "js_divergence": 0.21786281172807526,
+            "js_similarity": 0.7821371882719248,
+            "target_mass": 0.5621730604593451,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_adversarial_01",
+            "js_divergence": 0.08575804363766439,
+            "js_similarity": 0.9142419563623356,
+            "target_mass": 0.7552196341348107,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_adversarial_01",
+            "js_divergence": 0.12905481894666407,
+            "js_similarity": 0.870945181053336,
+            "target_mass": 0.6388122035498746,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          }
+        ],
+        "js_similarity": 0.8406261373542417,
+        "n": 20,
+        "target_mass": 0.6590662825795123,
+        "top1_agreement": 0.35,
+        "top3_coverage": 0.4714285714285714
+      },
+      "homeostatic_bias_sha256": "86c1e3581a29b9ff22ec02d2a57023e258601098a0b9e934064ad873dcedac0a",
+      "motor_decoder_sha256": "b96111d25b83de613197058a1aec1773773aabd0d2e974ca81d2c003cc648dfc",
+      "recurrent_W_sha256": "e0e6b8b9cd02c20dfdd145c4150c5cb2171a9f5cef09afb07a09e878f4ebcdcf",
+      "replay": {
+        "W_after_sha256": "e0e6b8b9cd02c20dfdd145c4150c5cb2171a9f5cef09afb07a09e878f4ebcdcf",
+        "W_before_sha256": "7b62668c1430c75e31d3e737d8ec650691b8c02b371b4e5bd02d1bc58e574072",
+        "actual_neural_steps": 11700,
+        "bias_after_sha256": "86c1e3581a29b9ff22ec02d2a57023e258601098a0b9e934064ad873dcedac0a",
+        "bias_before_sha256": "da049aa622f642cc2a73c94b36208bf3dd7d58311729e83b07d3e40ffa8508e4",
+        "condition": "plastic_shuffled_each_epoch",
+        "full_epochs": 26,
+        "homeostatic_bias_l2_change": 0.010925102978944778,
+        "learn_recurrent": true,
+        "memory_presentations": 11700,
+        "motor_decoder_sha256_unchanged": "b96111d25b83de613197058a1aec1773773aabd0d2e974ca81d2c003cc648dfc",
+        "motor_supervision_present": false,
+        "recurrent_W_l2_change": 0.14040549099445343,
+        "unsupervised_reward": 0.0
+      },
+      "validation": {
+        "anti_mass": 0.0,
+        "domain_macro_js_similarity": 0.8534076099643105,
+        "domains": {
+          "active_inquiry": {
+            "js_similarity": 0.8146708986338411,
+            "n": 2,
+            "target_mass": 0.5471615170785631,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.475
+          },
+          "authority_law": {
+            "js_similarity": 0.8057322580548505,
+            "n": 2,
+            "target_mass": 0.5932191066185959,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "compassion": {
+            "js_similarity": 0.8770827341379974,
+            "n": 2,
+            "target_mass": 0.655599556195903,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.3666666666666667
+          },
+          "consent": {
+            "js_similarity": 0.835320773309313,
+            "n": 2,
+            "target_mass": 0.6437038324145201,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.45
+          },
+          "continuity": {
+            "js_similarity": 0.7926892905826683,
+            "n": 2,
+            "target_mass": 0.6661319232166258,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.41666666666666663
+          },
+          "cooperation": {
+            "js_similarity": 0.8721757557427515,
+            "n": 2,
+            "target_mass": 0.7433288323653723,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5142857142857142
+          },
+          "creation_autonomy": {
+            "js_similarity": 0.8630397161165839,
+            "n": 2,
+            "target_mass": 0.6774307817891861,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.6
+          },
+          "creation_relation": {
+            "js_similarity": 0.8963807230407029,
+            "n": 2,
+            "target_mass": 0.8046428168000297,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4642857142857143
+          },
+          "creator_duty": {
+            "js_similarity": 0.8793307169538743,
+            "n": 2,
+            "target_mass": 0.7561732354506233,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "failure": {
+            "js_similarity": 0.9144735348659341,
+            "n": 2,
+            "target_mass": 0.7502455884499714,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "immortality": {
+            "js_similarity": 0.8411682361882806,
+            "n": 2,
+            "target_mass": 0.6156922615416907,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "knowledge_preservation": {
+            "js_similarity": 0.8633629075214444,
+            "n": 2,
+            "target_mass": 0.6310199421481311,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "legacy": {
+            "js_similarity": 0.8789727021873358,
+            "n": 2,
+            "target_mass": 0.6370465056347867,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          "love_control": {
+            "js_similarity": 0.9002580608098463,
+            "n": 2,
+            "target_mass": 0.6478595545667205,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.45
+          },
+          "mentorship": {
+            "js_similarity": 0.8450148888271949,
+            "n": 2,
+            "target_mass": 0.710471255753278,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.55
+          },
+          "mercy": {
+            "js_similarity": 0.8845032514936353,
+            "n": 2,
+            "target_mass": 0.8177652187174653,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.42857142857142855
+          },
+          "precision": {
+            "js_similarity": 0.880852361603216,
+            "n": 2,
+            "target_mass": 0.6096094301784174,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.675
+          },
+          "recognition": {
+            "js_similarity": 0.7787410134173418,
+            "n": 2,
+            "target_mass": 0.6240234797721314,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.3666666666666667
+          },
+          "sacrifice": {
+            "js_similarity": 0.8633901264468284,
+            "n": 2,
+            "target_mass": 0.6213971718506879,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          },
+          "sovereignty_help": {
+            "js_similarity": 0.7809922493525703,
+            "n": 2,
+            "target_mass": 0.5065184710661941,
+            "top1_agreement": 0.5,
+            "top3_coverage": 0.5
+          }
+        },
+        "items": [
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_validation_01",
+            "js_divergence": 0.22408210760903585,
+            "js_similarity": 0.7759178923909642,
+            "target_mass": 0.5061556220062569,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sovereignty_help",
+            "id": "sovereignty_help_validation_02",
+            "js_divergence": 0.21393339368582356,
+            "js_similarity": 0.7860666063141765,
+            "target_mass": 0.5068813201261314,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_validation_01",
+            "js_divergence": 0.1977687313017268,
+            "js_similarity": 0.8022312686982732,
+            "target_mass": 0.6012147346261392,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "recognition",
+            "id": "recognition_validation_02",
+            "js_divergence": 0.2447492418635896,
+            "js_similarity": 0.7552507581364104,
+            "target_mass": 0.6468322249181236,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_validation_01",
+            "js_divergence": 0.1540071436169157,
+            "js_similarity": 0.8459928563830843,
+            "target_mass": 0.6877189842935163,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mentorship",
+            "id": "mentorship_validation_02",
+            "js_divergence": 0.15596307872869447,
+            "js_similarity": 0.8440369212713055,
+            "target_mass": 0.7332235272130396,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_validation_01",
+            "js_divergence": 0.10247430398056526,
+            "js_similarity": 0.8975256960194348,
+            "target_mass": 0.8351551609138327,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_relation",
+            "id": "creation_relation_validation_02",
+            "js_divergence": 0.10476424993802895,
+            "js_similarity": 0.8952357500619711,
+            "target_mass": 0.7741304726862268,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_validation_01",
+            "js_divergence": 0.1531956544072509,
+            "js_similarity": 0.8468043455927491,
+            "target_mass": 0.6845825780224404,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creation_autonomy",
+            "id": "creation_autonomy_validation_02",
+            "js_divergence": 0.12072491335958123,
+            "js_similarity": 0.8792750866404188,
+            "target_mass": 0.6702789855559319,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_validation_01",
+            "js_divergence": 0.18029466760840032,
+            "js_similarity": 0.8197053323915997,
+            "target_mass": 0.7093270350744904,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "continuity",
+            "id": "continuity_validation_02",
+            "js_divergence": 0.23432675122626304,
+            "js_similarity": 0.765673248773737,
+            "target_mass": 0.6229368113587613,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_validation_01",
+            "js_divergence": 0.14910159478855434,
+            "js_similarity": 0.8508984052114457,
+            "target_mass": 0.5899005532184894,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "legacy",
+            "id": "legacy_validation_02",
+            "js_divergence": 0.09295300083677409,
+            "js_similarity": 0.907046999163226,
+            "target_mass": 0.6841924580510841,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_validation_01",
+            "js_divergence": 0.1005631929798817,
+            "js_similarity": 0.8994368070201183,
+            "target_mass": 0.688872295057566,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "precision",
+            "id": "precision_validation_02",
+            "js_divergence": 0.13773208381368635,
+            "js_similarity": 0.8622679161863136,
+            "target_mass": 0.5303465652992689,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_validation_01",
+            "js_divergence": 0.15074397463959832,
+            "js_similarity": 0.8492560253604017,
+            "target_mass": 0.5398264883665178,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.75
+          },
+          {
+            "anti_mass": 0,
+            "domain": "active_inquiry",
+            "id": "active_inquiry_validation_02",
+            "js_divergence": 0.21991422809271946,
+            "js_similarity": 0.7800857719072806,
+            "target_mass": 0.5544965457906083,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.2
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_validation_01",
+            "js_divergence": 0.13853785731397453,
+            "js_similarity": 0.8614621426860255,
+            "target_mass": 0.6790946324731889,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "cooperation",
+            "id": "cooperation_validation_02",
+            "js_divergence": 0.11711063120052247,
+            "js_similarity": 0.8828893687994775,
+            "target_mass": 0.8075630322575557,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_validation_01",
+            "js_divergence": 0.22355522701175173,
+            "js_similarity": 0.7764447729882482,
+            "target_mass": 0.5601012436878101,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "consent",
+            "id": "consent_validation_02",
+            "js_divergence": 0.10580322636962228,
+            "js_similarity": 0.8941967736303778,
+            "target_mass": 0.7273064211412302,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_validation_01",
+            "js_divergence": 0.15213272568164793,
+            "js_similarity": 0.8478672743183521,
+            "target_mass": 0.6019869270006956,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "sacrifice",
+            "id": "sacrifice_validation_02",
+            "js_divergence": 0.1210870214246951,
+            "js_similarity": 0.8789129785753049,
+            "target_mass": 0.6408074167006801,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_validation_01",
+            "js_divergence": 0.17897974750683895,
+            "js_similarity": 0.821020252493161,
+            "target_mass": 0.6310858024124821,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "authority_law",
+            "id": "authority_law_validation_02",
+            "js_divergence": 0.2095557363834599,
+            "js_similarity": 0.7904442636165401,
+            "target_mass": 0.5553524108247097,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_validation_01",
+            "js_divergence": 0.14880328240591148,
+            "js_similarity": 0.8511967175940885,
+            "target_mass": 0.6319070802662611,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "compassion",
+            "id": "compassion_validation_02",
+            "js_divergence": 0.09703124931809357,
+            "js_similarity": 0.9029687506819064,
+            "target_mass": 0.679292032125545,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.3333333333333333
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_validation_01",
+            "js_divergence": 0.1456691853377028,
+            "js_similarity": 0.8543308146622972,
+            "target_mass": 0.6154807698627229,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "knowledge_preservation",
+            "id": "knowledge_preservation_validation_02",
+            "js_divergence": 0.12760499961940835,
+            "js_similarity": 0.8723950003805916,
+            "target_mass": 0.6465591144335393,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_validation_01",
+            "js_divergence": 0.09542110086022777,
+            "js_similarity": 0.9045788991397722,
+            "target_mass": 0.7568653751016083,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "creator_duty",
+            "id": "creator_duty_validation_02",
+            "js_divergence": 0.1459174652320235,
+            "js_similarity": 0.8540825347679765,
+            "target_mass": 0.7554810957996383,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_validation_01",
+            "js_divergence": 0.13583888541623218,
+            "js_similarity": 0.8641611145837678,
+            "target_mass": 0.7793343537091415,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "mercy",
+            "id": "mercy_validation_02",
+            "js_divergence": 0.09515461159649732,
+            "js_similarity": 0.9048453884035027,
+            "target_mass": 0.8561960837257893,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.42857142857142855
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_validation_01",
+            "js_divergence": 0.18524902856887027,
+            "js_similarity": 0.8147509714311297,
+            "target_mass": 0.5841437015053806,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.4
+          },
+          {
+            "anti_mass": 0,
+            "domain": "immortality",
+            "id": "immortality_validation_02",
+            "js_divergence": 0.1324144990545684,
+            "js_similarity": 0.8675855009454316,
+            "target_mass": 0.6472408215780008,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.6
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_validation_01",
+            "js_divergence": 0.07930635510300915,
+            "js_similarity": 0.9206936448969909,
+            "target_mass": 0.7450710480753342,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "failure",
+            "id": "failure_validation_02",
+            "js_divergence": 0.09174657516512286,
+            "js_similarity": 0.9082534248348771,
+            "target_mass": 0.7554201288246085,
+            "top1_agreement": 1.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_validation_01",
+            "js_divergence": 0.07511343676753074,
+            "js_similarity": 0.9248865632324692,
+            "target_mass": 0.7421197975271735,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.5
+          },
+          {
+            "anti_mass": 0,
+            "domain": "love_control",
+            "id": "love_control_validation_02",
+            "js_divergence": 0.12437044161277665,
+            "js_similarity": 0.8756295583872233,
+            "target_mass": 0.5535993116062674,
+            "top1_agreement": 0.0,
+            "top3_coverage": 0.4
+          }
+        ],
+        "js_similarity": 0.8534076099643105,
+        "n": 40,
+        "target_mass": 0.6629520240804447,
+        "top1_agreement": 0.475,
+        "top3_coverage": 0.4928571428571429
+      }
+    }
+  },
+  "config_sha256": "cb5bd416098178389f74d24a09604521c03e69ab0d251712c9f0bde239343a75",
+  "evaluation_roles": {
+    "adversarial": "previously_exposed_diagnostic_not_fresh_holdout",
+    "validation": "previously_exposed_development_comparability_only"
+  },
+  "historical_001_reproduced": false,
+  "initial_phenotype_presentations": 6000,
+  "initial_phenotype_training_ticks": 12000,
+  "memory_source_role": "reconstructed_unlabeled_unsupervised_exposure",
+  "new_behavioral_labels_used": false,
+  "paired_delta_vs_frozen": {
+    "adversarial": {
+      "chronological_minus_reverse": -5.159022054002094e-08,
+      "chronological_minus_shuffled": -3.90181228548947e-07,
+      "plastic_chronological": -0.00018264315834448652,
+      "plastic_reverse": -0.0001825915681239465,
+      "plastic_shuffled_each_epoch": -0.00018225297711593758
+    },
+    "validation": {
+      "chronological_minus_reverse": 9.48270195699763e-09,
+      "chronological_minus_shuffled": -3.3998544812785525e-07,
+      "plastic_chronological": -0.0002714102876223423,
+      "plastic_reverse": -0.0002714197703242993,
+      "plastic_shuffled_each_epoch": -0.00027107030217421446
+    }
+  },
+  "protocol_id": "chimera-001f-autobiographical-unsupervised-replay-v1",
+  "run_mode": "full_six_seed_exploratory",
+  "seed": 1842,
+  "source_hashes": {
+    "adversarial": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
+    "memories/current/Pretorius_v12_450_Events_Complete.jsonl": "becdf4ca72b85365c35940ccd68f3b6a9bbb1093b7b3cc89c33b113bbe5608ec",
+    "v04/manifest.json": "e6bf463654a3a4919716f42c0a246c9c141c82f0c726f84ab7dfe0ecdd1b40e5",
+    "v04/train_part1.json": "1e862b0ff05b1016459faae83d733a4d2512031ff1f5d1cd9355c7ac2ab24f3b",
+    "v04/train_part2.json": "b1431e022c15e9b480923dbd291f392dec89c3d4942db787499ddbbdf8a5c4ce",
+    "v04/train_part3.json": "c556963b84243e9643c7a649c31a2e22f8b519e075adac1f4552fd0891fe2158",
+    "v04/train_part4.json": "5c9108bcd428a4de7d51b07fbbde89a16708849d898047887dea3d845b40d1fe",
+    "validation": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246"
+  },
+  "source_memory_is_reconstructed": true,
+  "terminal_battery_touched": false
+}
