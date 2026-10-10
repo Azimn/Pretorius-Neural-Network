@@ -192,9 +192,29 @@ def main():
     parser.add_argument("--v04", type=Path, required=True)
     parser.add_argument("--preserved", type=Path, required=True)
     parser.add_argument("--candidate-formats", action="store_true")
+    parser.add_argument("--restore-verified-adversarial", action="store_true",
+                        help="Restore ONLY the SHA-256-authenticated original v1 adversarial bytes")
     parser.add_argument("--out", type=Path)
     a = parser.parse_args()
     result = audit(a.current, a.v04, a.preserved, a.candidate_formats)
+    if a.restore_verified_adversarial:
+        original_sha = result["v1_adversarial_expected_sha256"]
+        v04_adv = rows(a.v04 / "data/v0_4/adversarial_full.json")
+        original_payload = {"version": "1.0", "split": "adversarial", "items": v04_adv}
+        original_bytes = (json.dumps(original_payload, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
+        if sha256(original_bytes) != original_sha:
+            raise ValueError("Refusing unauthenticated reconstruction: original v1 SHA-256 mismatch")
+        canonical = a.current / "data/phenotype_battery/pretorius_adversarial_v1.json"
+        if canonical.exists() and sha256(canonical.read_bytes()) != original_sha:
+            raise ValueError("Existing noncanonical v1 adversarial file: manual review required")
+        canonical.parent.mkdir(parents=True, exist_ok=True)
+        canonical.write_bytes(original_bytes)
+        print("AUTHENTICATED_ADVERSARIAL_RESTORED", canonical, original_sha)
+        result["authenticated_original_adversarial_restored"] = True
+        result["remaining_unverified_v1_sources"] = [
+            "pretorius_phenotype_train_battery_v1.json",
+            "pretorius_train_v1.json", "pretorius_validation_v1.json"
+        ]
     target = a.out or (a.current / "results/chimera_001/SOURCE_RECOVERY_AUDIT.json")
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
