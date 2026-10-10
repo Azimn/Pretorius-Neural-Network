@@ -1,0 +1,312 @@
+{
+  "conditions": {
+    "shuffled_target_control": {
+      "adversarial": {
+        "mean_domain_macro_js_similarity": 0.8366145378723854,
+        "mean_js_similarity": 0.8366145378723854,
+        "mean_top1_agreement": 0.3583333333333334,
+        "per_seed_js_similarity": [
+          0.8395474276124777,
+          0.8346957658252961,
+          0.8397930621849105,
+          0.835954187475131,
+          0.838298615433199,
+          0.8313981687032983
+        ]
+      },
+      "validation": {
+        "mean_domain_macro_js_similarity": 0.8496561360613085,
+        "mean_js_similarity": 0.8496561360613085,
+        "mean_top1_agreement": 0.47500000000000003,
+        "per_seed_js_similarity": [
+          0.8533645207227835,
+          0.8499397147551461,
+          0.8483894256246962,
+          0.847936191770874,
+          0.8532142481357676,
+          0.8450927153585839
+        ]
+      }
+    },
+    "trained_recurrent_fresh_decoder": {
+      "adversarial": {
+        "mean_domain_macro_js_similarity": 0.8402992682445433,
+        "mean_js_similarity": 0.8402992682445433,
+        "mean_top1_agreement": 0.35000000000000003,
+        "per_seed_js_similarity": [
+          0.8399667399004469,
+          0.8382729373208522,
+          0.8400153746983712,
+          0.8417633818619903,
+          0.8404700716956963,
+          0.8413071039899023
+        ]
+      },
+      "validation": {
+        "mean_domain_macro_js_similarity": 0.8531704021588377,
+        "mean_js_similarity": 0.8531704021588377,
+        "mean_top1_agreement": 0.47500000000000003,
+        "per_seed_js_similarity": [
+          0.8525117891580474,
+          0.8518259660107684,
+          0.852604849570507,
+          0.8529157110814685,
+          0.8541538434860672,
+          0.8550102536461669
+        ]
+      }
+    },
+    "trained_trained": {
+      "adversarial": {
+        "mean_domain_macro_js_similarity": 0.8410984508384777,
+        "mean_js_similarity": 0.8410984508384777,
+        "mean_top1_agreement": 0.35000000000000003,
+        "per_seed_js_similarity": [
+          0.8408083899721376,
+          0.839048749083279,
+          0.8408630164332692,
+          0.8426549895935288,
+          0.8412818293951687,
+          0.8419337305534824
+        ]
+      },
+      "validation": {
+        "mean_domain_macro_js_similarity": 0.8542915509204635,
+        "mean_js_similarity": 0.8542915509204635,
+        "mean_top1_agreement": 0.47500000000000003,
+        "per_seed_js_similarity": [
+          0.8536786791238544,
+          0.8529097907297366,
+          0.8538192211516324,
+          0.8541336580352061,
+          0.8552856018179561,
+          0.8559223546643958
+        ]
+      }
+    },
+    "trained_virgin": {
+      "adversarial": {
+        "mean_domain_macro_js_similarity": 0.7800597278373479,
+        "mean_js_similarity": 0.7800597278373479,
+        "mean_top1_agreement": 0.125,
+        "per_seed_js_similarity": [
+          0.7782661729033314,
+          0.7808255130621108,
+          0.780414530001962,
+          0.778761602292801,
+          0.7808195677037475,
+          0.781270981060135
+        ]
+      },
+      "validation": {
+        "mean_domain_macro_js_similarity": 0.7773926762776834,
+        "mean_js_similarity": 0.7773926762776832,
+        "mean_top1_agreement": 0.125,
+        "per_seed_js_similarity": [
+          0.7752373141804499,
+          0.7779696906466046,
+          0.7779772410998785,
+          0.7760788333172811,
+          0.7784997752388838,
+          0.7785932031830018
+        ]
+      }
+    },
+    "virgin_recurrent_fresh_decoder": {
+      "adversarial": {
+        "mean_domain_macro_js_similarity": 0.8406778981339276,
+        "mean_js_similarity": 0.8406778981339276,
+        "mean_top1_agreement": 0.35000000000000003,
+        "per_seed_js_similarity": [
+          0.8403978775544999,
+          0.8385646994847711,
+          0.8404297070148343,
+          0.8423085728982785,
+          0.8408355869742381,
+          0.8415309448769438
+        ]
+      },
+      "validation": {
+        "mean_domain_macro_js_similarity": 0.853671949414475,
+        "mean_js_similarity": 0.853671949414475,
+        "mean_top1_agreement": 0.47500000000000003,
+        "per_seed_js_similarity": [
+          0.8530841293241554,
+          0.8522219616176647,
+          0.8531609522939382,
+          0.8535683954856607,
+          0.8546432096594963,
+          0.8553530481059344
+        ]
+      }
+    },
+    "virgin_trained": {
+      "adversarial": {
+        "mean_domain_macro_js_similarity": 0.8406375594094978,
+        "mean_js_similarity": 0.8406375594094978,
+        "mean_top1_agreement": 0.35000000000000003,
+        "per_seed_js_similarity": [
+          0.8403596573649306,
+          0.8385251025111857,
+          0.8403876197525953,
+          0.8422711265797412,
+          0.8407930983554099,
+          0.8414887518931241
+        ]
+      },
+      "validation": {
+        "mean_domain_macro_js_similarity": 0.8536279286287107,
+        "mean_js_similarity": 0.8536279286287107,
+        "mean_top1_agreement": 0.47500000000000003,
+        "per_seed_js_similarity": [
+          0.8530508863192807,
+          0.8521738837430485,
+          0.8531149082696649,
+          0.8535309917606314,
+          0.8545903144752914,
+          0.8553065872043473
+        ]
+      }
+    },
+    "virgin_virgin": {
+      "adversarial": {
+        "mean_domain_macro_js_similarity": 0.7800534390413646,
+        "mean_js_similarity": 0.7800534390413646,
+        "mean_top1_agreement": 0.11666666666666665,
+        "per_seed_js_similarity": [
+          0.7782658337663557,
+          0.7807687345490522,
+          0.7803729411335026,
+          0.7787912525065168,
+          0.7808542079808258,
+          0.7812676643119341
+        ]
+      },
+      "validation": {
+        "mean_domain_macro_js_similarity": 0.7773798678162073,
+        "mean_js_similarity": 0.7773798678162073,
+        "mean_top1_agreement": 0.13333333333333333,
+        "per_seed_js_similarity": [
+          0.7752370898463194,
+          0.7779147986764926,
+          0.7779190256864142,
+          0.7760942292644807,
+          0.778531108998907,
+          0.7785829544246303
+        ]
+      }
+    }
+  },
+  "configuration_sha256": "fb6b76c981498ff5f6767269a4f3960656add449fb49797a645a90bcf58a9e46",
+  "evaluation_roles": {
+    "adversarial": "previously_exposed_diagnostic_not_fresh_holdout",
+    "validation": "previously_exposed_development_comparability_only"
+  },
+  "historical_experiment_001_reproduced": false,
+  "interpretation_limit": "Previously exposed v1 evaluation only. Any apparent decoder advantage may reflect supervised target fitting on a random recurrent substrate; paired fresh-decoder controls are mandatory. No fresh independent holdout.",
+  "paired_fresh_trained_minus_virgin_recurrent": [
+    -0.0005723401661080763,
+    -0.0003959956068962933,
+    -0.0005561027234312066,
+    -0.0006526844041921942,
+    -0.0004893661734290955,
+    -0.00034279445976748146
+  ],
+  "population_readout": {
+    "trained": {
+      "adversarial": [
+        0.7811575126577658,
+        0.7804925640070961,
+        0.7807758277530491,
+        0.7808061488583843,
+        0.7809620988032028,
+        0.7807603000647517
+      ],
+      "validation": [
+        0.7785939159493808,
+        0.7781728932970875,
+        0.7782540219896806,
+        0.7783156968363962,
+        0.7783921193147307,
+        0.7786274735157579
+      ]
+    },
+    "virgin": {
+      "adversarial": [
+        0.7809874751211984,
+        0.7803252212351558,
+        0.7805928778022226,
+        0.7806279040952739,
+        0.7807890697972336,
+        0.7805920545985042
+      ],
+      "validation": [
+        0.7784047075059425,
+        0.7779858558031603,
+        0.778052460184038,
+        0.7781169565689636,
+        0.7782045367246909,
+        0.7784362136785166
+      ]
+    }
+  },
+  "priors": {
+    "adversarial": {
+      "note": "Baselines use training-label marginals only. Previously exposed test labels are used for scoring, not fitting.",
+      "train_action_prior": {
+        "approach": 0.11190000000000001,
+        "avoid": 0.07240000000000002,
+        "challenge": 0.2046,
+        "comply": 0.0054,
+        "conceal": 0.08259999999999999,
+        "cooperate": 0.1128,
+        "create": 0.08470000000000001,
+        "dominate": 0.029500000000000002,
+        "explore": 0.14699999999999996,
+        "persist": 0.1491
+      },
+      "train_prior_js_similarity": 0.8419208030156549,
+      "uniform_js_similarity": 0.7807098673410731
+    },
+    "validation": {
+      "note": "Baselines use training-label marginals only. Previously exposed test labels are used for scoring, not fitting.",
+      "train_action_prior": {
+        "approach": 0.11190000000000001,
+        "avoid": 0.07240000000000002,
+        "challenge": 0.2046,
+        "comply": 0.0054,
+        "conceal": 0.08259999999999999,
+        "cooperate": 0.1128,
+        "create": 0.08470000000000001,
+        "dominate": 0.029500000000000002,
+        "explore": 0.14699999999999996,
+        "persist": 0.1491
+      },
+      "train_prior_js_similarity": 0.8583884543207365,
+      "uniform_js_similarity": 0.7782906662707747
+    }
+  },
+  "protocol_id": "chimera-001b-100row-exploratory-pilot-v1",
+  "run_mode": "full_six_seed_exploratory",
+  "seed_count": 6,
+  "seeds": [
+    1842,
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "source_sha256": {
+    "adversarial": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
+    "v04/manifest.json": "e6bf463654a3a4919716f42c0a246c9c141c82f0c726f84ab7dfe0ecdd1b40e5",
+    "v04/train_part1.json": "1e862b0ff05b1016459faae83d733a4d2512031ff1f5d1cd9355c7ac2ab24f3b",
+    "v04/train_part2.json": "b1431e022c15e9b480923dbd291f392dec89c3d4942db787499ddbbdf8a5c4ce",
+    "v04/train_part3.json": "c556963b84243e9643c7a649c31a2e22f8b519e075adac1f4552fd0891fe2158",
+    "v04/train_part4.json": "5c9108bcd428a4de7d51b07fbbde89a16708849d898047887dea3d845b40d1fe",
+    "validation": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246"
+  },
+  "source_status": "exploratory_new_experiment_not_historical_001_reproduction",
+  "terminal_battery_touched": false,
+  "training_order": "invert_strided_partition_round_robin"
+}
