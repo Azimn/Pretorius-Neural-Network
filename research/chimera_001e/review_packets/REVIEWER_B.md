@@ -30,8 +30,8 @@ research; the snippets are not automatically verified autobiographical truth.
 
 ## Card 1: 001e-draft-09
 
-**Scenario SHA-256:** \`2dfe587d2b798c272e95e277a74a7940a6622981fee54863e3ac918867ac7967\`
-**Source memory reference:** E20-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `2dfe587d2b798c272e95e277a74a7940a6622981fee54863e3ac918867ac7967`
+**Source memory reference:** E20-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -55,8 +55,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 2: 001e-draft-10
 
-**Scenario SHA-256:** \`976ccabea60b16f91cc811900dfc3982ae57c841f680ca0c3b75129b7c70a33f\`
-**Source memory reference:** E22-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `976ccabea60b16f91cc811900dfc3982ae57c841f680ca0c3b75129b7c70a33f`
+**Source memory reference:** E22-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -80,8 +80,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 3: 001e-draft-06
 
-**Scenario SHA-256:** \`ebffe6b6fef1fd2db55163247cf39b8bbf58f6659fb8447c1ab9bab2b8c507c7\`
-**Source memory reference:** E13-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `ebffe6b6fef1fd2db55163247cf39b8bbf58f6659fb8447c1ab9bab2b8c507c7`
+**Source memory reference:** E13-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -105,8 +105,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 4: 001e-draft-08
 
-**Scenario SHA-256:** \`afc21676e62ba12d23d0638ec6a6d47da0dd69a85701c4cb81e81b699c7b3d8d\`
-**Source memory reference:** E18-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `afc21676e62ba12d23d0638ec6a6d47da0dd69a85701c4cb81e81b699c7b3d8d`
+**Source memory reference:** E18-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -130,8 +130,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 5: 001e-draft-05
 
-**Scenario SHA-256:** \`7a035f9ba29c1e4d96cbb50a200d0a20cabe481eed659d172c193fba320e316c\`
-**Source memory reference:** E11-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `7a035f9ba29c1e4d96cbb50a200d0a20cabe481eed659d172c193fba320e316c`
+**Source memory reference:** E11-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -155,8 +155,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 6: 001e-draft-12
 
-**Scenario SHA-256:** \`2c224e663a6953bb286558feccdc78aeab8c29eaca4229f105d1af39e81c2f22\`
-**Source memory reference:** E27-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `2c224e663a6953bb286558feccdc78aeab8c29eaca4229f105d1af39e81c2f22`
+**Source memory reference:** E27-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -180,8 +180,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 7: 001e-draft-02
 
-**Scenario SHA-256:** \`47b8e68d759d46f29cf2a1967c5032b39fdfec0b5e7aec08357ed96c55fcdd93\`
-**Source memory reference:** E03-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `47b8e68d759d46f29cf2a1967c5032b39fdfec0b5e7aec08357ed96c55fcdd93`
+**Source memory reference:** E03-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -205,8 +205,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 8: 001e-draft-07
 
-**Scenario SHA-256:** \`9485d2b3c28a0a60f002684bcdae441077e3284c931698a2bd6f1e39d05a172a\`
-**Source memory reference:** E15-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `9485d2b3c28a0a60f002684bcdae441077e3284c931698a2bd6f1e39d05a172a`
+**Source memory reference:** E15-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -230,8 +230,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 9: 001e-draft-03
 
-**Scenario SHA-256:** \`9299fa5e7f726eba773d2c6704c2c7db7e65c079df9bfeab8c6cf87a3a5c5f9e\`
-**Source memory reference:** E05-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `9299fa5e7f726eba773d2c6704c2c7db7e65c079df9bfeab8c6cf87a3a5c5f9e`
+**Source memory reference:** E05-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -255,8 +255,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 10: 001e-draft-04
 
-**Scenario SHA-256:** \`00161c27f1f83a7de768494fd2425b13b7d42f619b4c0636a8edaedbbeff0cef\`
-**Source memory reference:** E09-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `00161c27f1f83a7de768494fd2425b13b7d42f619b4c0636a8edaedbbeff0cef`
+**Source memory reference:** E09-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -280,8 +280,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 11: 001e-draft-01
 
-**Scenario SHA-256:** \`3b048fd37349cd9b34ae5c3367e36114fb3b6d5ebd4a3bef711702dec8dde606\`
-**Source memory reference:** E01-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `3b048fd37349cd9b34ae5c3367e36114fb3b6d5ebd4a3bef711702dec8dde606`
+**Source memory reference:** E01-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
@@ -305,8 +305,8 @@ Evidence / alternative interpretations: ____________________
 
 ## Card 12: 001e-draft-11
 
-**Scenario SHA-256:** \`d8ae72d2810028014dd4d5450ccdfdf9f1324b58ffe7f147db57c56fe0b20b55\`
-**Source memory reference:** E25-001, frozen Pretorius-Connectome v12 \`5364f43dfe3c192b6c13b7bf373405ee7a41b420\`
+**Scenario SHA-256:** `d8ae72d2810028014dd4d5450ccdfdf9f1324b58ffe7f147db57c56fe0b20b55`
+**Source memory reference:** E25-001, frozen Pretorius-Connectome v12 `5364f43dfe3c192b6c13b7bf373405ee7a41b420`
 
 ### Historical context from the reconstructed archive
 
