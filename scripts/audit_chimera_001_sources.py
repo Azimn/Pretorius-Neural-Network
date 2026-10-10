@@ -8,6 +8,7 @@ No neural model is trained; no terminal data are read.
 from __future__ import annotations
 
 import argparse
+import ast
 import hashlib
 import json
 from collections import Counter
@@ -110,6 +111,31 @@ def hash_candidates(items: list[dict], expected_sha: str, split: str) -> list[di
                                         "sha256": expected_sha,
                                     })
     return matches
+
+
+def serialize_verified_candidate(items: list[dict], match: dict, split: str) -> bytes:
+    """Recreate one already SHA-matching JSON representation, no data edits."""
+    obj = {}
+    for key in match["envelope_keys"]:
+        if key == "version":
+            obj[key] = "1.0"
+        elif key == "split":
+            obj[key] = "train" if split == "axis_train" else split
+        elif key in ("items", "training_items"):
+            obj[key] = items
+        else:
+            raise ValueError(f"Unsupported historical envelope: {key}")
+    args = {
+        "ensure_ascii": match["ascii_only"],
+        "sort_keys": match["sort_keys"],
+        "indent": match["indent"],
+    }
+    if match["compact_separators"]:
+        args["separators"] = (",", ":")
+    body = json.dumps(obj, **args)
+    if match["line_ending"] == "CRLF":
+        body = body.replace("\n", "\r\n")
+    return (body + ast.literal_eval(match["suffix"])).encode("utf-8")
 
 
 def audit(current: Path, v04: Path, preserved: Path, candidates: bool) -> dict:
@@ -219,36 +245,55 @@ def main():
     parser.add_argument("--preserved", type=Path, required=True)
     parser.add_argument("--candidate-formats", action="store_true")
     parser.add_argument("--restore-verified-adversarial", action="store_true",
-                        help="Restore ONLY the SHA-256-authenticated original v1 adversarial bytes")
+                        help="Backward compatible alias for restoring confirmed v1 sources")
+    parser.add_argument("--restore-verified-sources", action="store_true",
+                        help="Restore ONLY sources with exact precommitted original v1 SHA-256 matches")
     parser.add_argument("--out", type=Path)
     a = parser.parse_args()
     result = audit(a.current, a.v04, a.preserved, a.candidate_formats)
-    if a.restore_verified_adversarial:
-        original_sha = result["v1_adversarial_expected_sha256"]
-        v04_adv = rows(a.v04 / "data/v0_4/adversarial_full.json")
-        original_payload = {"version": "1.0", "split": "adversarial", "items": v04_adv}
-        original_bytes = (json.dumps(original_payload, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
-        if sha256(original_bytes) != original_sha:
-            raise ValueError("Refusing unauthenticated reconstruction: original v1 SHA-256 mismatch")
-        canonical = a.current / "data/phenotype_battery/pretorius_adversarial_v1.json"
-        if canonical.exists() and sha256(canonical.read_bytes()) != original_sha:
-            raise ValueError("Existing noncanonical v1 adversarial file: manual review required")
-        canonical.parent.mkdir(parents=True, exist_ok=True)
-        canonical.write_bytes(original_bytes)
-        print("AUTHENTICATED_ADVERSARIAL_RESTORED", canonical, original_sha)
-        result["authenticated_original_adversarial_restored"] = True
-        result["outcome"] = "original-v1-adversarial-exact-hash-restored-other-inputs-blocked"
-        result["reproduction_gate"] = (
-            "still blocked; 100 axis-grounded + 30 legacy training rows and "
-            "original 40 validation rows not recovered as authenticated v1 sources"
-        )
-        result["original_v1_exact_hash_recovery"]["adversarial"]["claim"] = (
-            "authenticated original v1 SHA-256 bytes restored from preserved records"
-        )
+    if a.restore_verified_adversarial or a.restore_verified_sources:
+        root = a.v04 / "data/v0_4"
+        manifest = load(root / "manifest.json")
+        restored = []
+        for split, finding in result["original_v1_exact_hash_recovery"].items():
+            matches = finding["candidate_envelope_sha256_matches"]
+            if not matches:
+                continue
+            match = matches[0]
+            if split == "adversarial":
+                items = rows(root / manifest["adversarial_file"])
+            else:
+                files = manifest["train_files"] if split == "axis_train" else manifest["validation_files"]
+                parts = [rows(root / name) for name in files]
+                if match["record_order"] == "inverted_strided_partitions":
+                    items = round_robin(parts)
+                elif match["record_order"] == "concatenated_v04":
+                    items = [entry for part in parts for entry in part]
+                else:
+                    raise ValueError("Unknown source reconstruction order")
+            restored_bytes = serialize_verified_candidate(items, match, split)
+            original_sha = finding["required_sha256"]
+            if sha256(restored_bytes) != original_sha:
+                raise ValueError(f"Refusing unauthenticated v1 restoration for {split}")
+            canonical = a.current / "data/phenotype_battery" / finding["required_v1_filename"]
+            if canonical.exists() and sha256(canonical.read_bytes()) != original_sha:
+                raise ValueError(f"Existing noncanonical source {canonical}: review required")
+            canonical.parent.mkdir(parents=True, exist_ok=True)
+            canonical.write_bytes(restored_bytes)
+            restored.append(split)
+            print("AUTHENTICATED_V1_RESTORED", split, canonical, original_sha)
+        result["restored_original_v1_splits"] = restored
         result["remaining_unverified_v1_sources"] = [
-            "pretorius_phenotype_train_battery_v1.json",
-            "pretorius_train_v1.json", "pretorius_validation_v1.json"
-        ]
+            result["original_v1_exact_hash_recovery"][split]["required_v1_filename"]
+            for split in ("axis_train", "validation", "adversarial") if split not in restored
+        ] + ["pretorius_train_v1.json"]
+        result["original_v1_status"] = "exact-hash-restoration-partial"
+        result["outcome"] = "some original v1 splits restored; 30 legacy training items still missing"
+        result["authenticated_original_adversarial_restored"] = "adversarial" in restored
+        result["reproduction_gate"] = (
+            "blocked: original 130-item complete training battery unavailable; "
+            "no neural numerical evaluation has been executed"
+        )
     target = a.out or (a.current / "results/chimera_001/SOURCE_RECOVERY_AUDIT.json")
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
