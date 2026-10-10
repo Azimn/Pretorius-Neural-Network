@@ -1,0 +1,81 @@
+name: Chimera 001C autobiographical source integrity
+on:
+  push:
+    branches: ['research/chimera-001c-memory-source-gates']
+    paths:
+      - 'scripts/audit_chimera_001c_v12.py'
+      - 'tests_chimera/test_chimera_001c.py'
+      - '.github/workflows/chimera-001c-source-intake.yml'
+  pull_request:
+    paths:
+      - 'scripts/audit_chimera_001c_v12.py'
+      - 'tests_chimera/test_chimera_001c.py'
+      - '.github/workflows/chimera-001c-source-intake.yml'
+permissions:
+  contents: write
+jobs:
+  source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: current
+          ref: ${{ github.event_name == 'push' && 'research/chimera-001c-memory-source-gates' || github.head_ref }}
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Connectome
+          ref: 5364f43dfe3c192b6c13b7bf373405ee7a41b420
+          path: connectome
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r current/requirements.txt
+      - name: Check explicit no-label safeguards
+        run: |
+          cd current
+          python -m unittest discover -s tests_chimera -v
+      - name: Audit all 450 original linked sources and generate candidate review index
+        run: |
+          python current/scripts/audit_chimera_001c_v12.py \
+            --source-repo connectome --out current/results/chimera_001c
+      - name: Enforce source graph and pending-review claim gate
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('current/results/chimera_001c')
+          a=json.loads((p/'SOURCE_AUDIT.json').read_text())
+          rows=[json.loads(s) for s in (p/'REVIEW_QUEUE.jsonl').read_text().splitlines()]
+          assert a['event_count']==450 and a['unique_event_ids']==450
+          assert a['episode_count']==27 and a['sidecar_count']==450
+          assert a['connected_components'][0]['n']==448
+          assert a['connected_components'][0]['episode_count']==27
+          assert a['directed_memory_links']==912
+          assert a['missing_explicit_causal_inference_status']==200
+          assert a['sidecar_review_statuses']=={'unreviewed_candidate':450}
+          assert a['action_label_count']==0 and a['approved_evaluation_item_count']==0
+          assert len(rows)==450 and all(r['target_actions'] is None for r in rows)
+          assert all(r['evaluation_role']=='unassigned_memory_graph_entangled' for r in rows)
+          assert a['terminal_battery_touched'] is False
+          print('001C provenance and unreviewed-label contract passed')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001c-memory-source-audit-${{ github.sha }}
+          path: current/results/chimera_001c/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Commit machine-readable source inventory without training
+        if: github.event_name == 'push'
+        run: |
+          git -C current config user.name 'github-actions[bot]'
+          git -C current config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C current add results/chimera_001c/
+          if git -C current diff --cached --quiet; then
+            echo 'Source inventory already committed'
+          else
+            git -C current commit -m 'Pin 450-event 001C source and unreviewed label queue; no training data invented'
+            git -C current push origin HEAD:refs/heads/research/chimera-001c-memory-source-gates
+          fi
