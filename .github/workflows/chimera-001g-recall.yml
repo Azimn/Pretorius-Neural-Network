@@ -1,0 +1,165 @@
+name: Chimera 001G cued source-discrimination controls
+on:
+  push:
+    branches: ['research/chimera-001g-source-selective-neural-recall']
+    paths:
+      - 'scripts/run_chimera_001g.py'
+      - 'config/chimera_001g.json'
+      - 'tests_chimera/test_chimera_001g.py'
+      - '.github/workflows/chimera-001g-recall.yml'
+  pull_request:
+    paths:
+      - 'scripts/run_chimera_001g.py'
+      - 'config/chimera_001g.json'
+      - 'tests_chimera/test_chimera_001g.py'
+      - '.github/workflows/chimera-001g-recall.yml'
+permissions:
+  contents: write
+jobs:
+  tests-and-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: current
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Neural-Network
+          ref: 7b7eb19ad852dc016ee0d370528d903bab78a5cf
+          path: historical-v04
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Connectome
+          ref: 5364f43dfe3c192b6c13b7bf373405ee7a41b420
+          path: connectome
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r current/requirements.txt
+      - name: Run source, synthetic oracle, control and regression tests
+        run: |
+          cd current
+          python -m unittest discover -s tests_chimera -v
+      - name: Check source hashes, source-owner BC01 and no action labels
+        run: |
+          python current/scripts/run_chimera_001g.py \
+            --historical-v04 historical-v04 \
+            --connectome connectome --preflight-only
+      - name: Smoke real 450 cues and 450 sources with reduced neural budget
+        run: |
+          python current/scripts/run_chimera_001g.py \
+            --historical-v04 historical-v04 --connectome connectome \
+            --out current/results/chimera_001g_smoke \
+            --seed 1842 --phenotype-ticks 32 --replay-epochs 1 --neural-probe-ticks 3
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('current/results/chimera_001g_smoke')
+          r=json.loads((root/'RUN_REPORT.json').read_text())
+          s=json.loads((root/'seed_1842.json').read_text())
+          assert r['run_mode']=='smoke_not_full_evidence'
+          assert r['seed_count']==1
+          assert len(r['conditions'])==6
+          assert len(s['conditions'])==4
+          assert all(v['correct']['n']==450 for v in s['conditions'].values())
+          assert s['terminal_battery_touched'] is False
+          assert s['independent_semantic_recall_claim'] is False
+          assert s['replay_frozen']['recurrent_W_l2_change']==0
+          assert s['replay_frozen']['homeostatic_bias_l2_change']==0
+          assert s['replay_plastic']['actual_neural_steps']==450
+          print('001G real-source synthetic smoke PASSED, no identity/recollection claim')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001g-source-smoke-${{ github.sha }}
+          path: current/results/chimera_001g_smoke
+          retention-days: 30
+  full-six-seed:
+    needs: tests-and-smoke
+    if: github.event_name == 'push' && github.ref == 'refs/heads/research/chimera-001g-source-selective-neural-recall'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: current
+          ref: research/chimera-001g-source-selective-neural-recall
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Neural-Network
+          ref: 7b7eb19ad852dc016ee0d370528d903bab78a5cf
+          path: historical-v04
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Azimn/Pretorius-Connectome
+          ref: 5364f43dfe3c192b6c13b7bf373405ee7a41b420
+          path: connectome
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r current/requirements.txt
+      - name: Execute all six 450-by-450 source cue neural discrimination seeds
+        run: |
+          python current/scripts/run_chimera_001g.py \
+            --historical-v04 historical-v04 \
+            --connectome connectome --out current/results/chimera_001g
+      - name: Verify all source-specific and neural-graft evidence
+        run: |
+          python - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('current')
+          folder=root/'results/chimera_001g'
+          config_bytes=(root/'config/chimera_001g.json').read_bytes()
+          cfg=json.loads(config_bytes)
+          r=json.loads((folder/'RUN_REPORT.json').read_text())
+          assert r['run_mode']=='full_six_seed_editorial_cue_assay'
+          assert r['config_sha256']==hashlib.sha256(config_bytes).hexdigest()
+          assert r['seed_count']==6 and r['seeds']==cfg['seeds']
+          assert r['no_unreviewed_001e_scenario_scores']
+          assert r['no_external_holdout_labels']
+          assert r['independent_semantic_recall_claim'] is False
+          assert r['terminal_battery_touched'] is False
+          assert len(r['conditions'])==6
+          assert r['baseline_lexical_existing_bc01']['n']==450
+          for seed in cfg['seeds']:
+              d=json.loads((folder/f'seed_{seed}.json').read_text())
+              assert d['phenotype_training_steps']==12000
+              assert d['replay_steps_each']==11700
+              assert d['source_hashes']==r['source_hashes']
+              assert d['config_sha256']==r['config_sha256']
+              assert len(d['conditions'])==4
+              assert d['source_episodes']==27
+              assert d['replay_frozen']['recurrent_W_l2_change']==0
+              assert d['replay_frozen']['homeostatic_bias_l2_change']==0
+              for condition in d['conditions'].values():
+                  assert condition['correct']['n']==450
+                  assert len(condition['correct']['per_case'])==450
+                  assert condition['permuted_target_assignment']['n']==450
+                  assert condition['decoder_sha256']==d['conditions']['baseline_frozen_replay']['decoder_sha256']
+              assert d['conditions']['autobiography_W_lesion_holding_bias']['W_sha256']==d['conditions']['baseline_frozen_replay']['W_sha256']
+              assert d['conditions']['autobiography_bias_lesion_holding_W']['bias_sha256']==d['conditions']['baseline_frozen_replay']['bias_sha256']
+          print('001G complete source-gated six-seed neural retrieval assay verified')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chimera-001g-sixseed-raw-${{ github.sha }}
+          path: current/results/chimera_001g/
+          retention-days: 90
+          if-no-files-found: error
+      - name: Commit reproducible evidence only to this branch
+        run: |
+          git -C current config user.name 'github-actions[bot]'
+          git -C current config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git -C current add results/chimera_001g/
+          if git -C current diff --cached --quiet; then
+            echo 'Output already archived'
+          else
+            git -C current commit -m 'Archive 001G six-seed cued-source neural/lexical/lesion assays'
+            git -C current push origin HEAD:refs/heads/research/chimera-001g-source-selective-neural-recall
+          fi
