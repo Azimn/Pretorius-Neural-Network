@@ -44,7 +44,7 @@ jobs:
             --v04 historical-v04 \
             --preserved historical-preserved \
             --candidate-formats \
-            --restore-verified-adversarial
+            --restore-verified-sources
       - name: Confirm no Experiment 001 numerical result was generated
         run: |
           python - <<'PY'
@@ -65,7 +65,7 @@ jobs:
         run: |
           git -C current config user.name "github-actions[bot]"
           git -C current config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git -C current add data/phenotype_battery/pretorius_adversarial_v1.json results/chimera_001/SOURCE_RECOVERY_AUDIT.json
+          git -C current add data/phenotype_battery/ results/chimera_001/SOURCE_RECOVERY_AUDIT.json
           if git -C current diff --cached --quiet; then
             echo "Authenticated adversarial source already present"
           else
