@@ -1,0 +1,116 @@
+{
+  "protocol_id": "chimera-001f-autobiographical-unsupervised-replay-v1",
+  "status": "exploratory_reconstructed_memory_not_behavioral_label_validation",
+  "historical_training": {
+    "source_v04_commit": "7b7eb19ad852dc016ee0d370528d903bab78a5cf",
+    "train_source_dir": "data/v0_4",
+    "train_source_files": [
+      "train_part1.json",
+      "train_part2.json",
+      "train_part3.json",
+      "train_part4.json"
+    ],
+    "train_source_sha256": {
+      "manifest.json": "e6bf463654a3a4919716f42c0a246c9c141c82f0c726f84ab7dfe0ecdd1b40e5",
+      "train_part1.json": "1e862b0ff05b1016459faae83d733a4d2512031ff1f5d1cd9355c7ac2ab24f3b",
+      "train_part2.json": "b1431e022c15e9b480923dbd291f392dec89c3d4942db787499ddbbdf8a5c4ce",
+      "train_part3.json": "c556963b84243e9643c7a649c31a2e22f8b519e075adac1f4552fd0891fe2158",
+      "train_part4.json": "5c9108bcd428a4de7d51b07fbbde89a16708849d898047887dea3d845b40d1fe"
+    },
+    "train_order": "invert_strided_partition_round_robin",
+    "train_rows": 100
+  },
+  "source_memory": {
+    "repository": "Azimn/Pretorius-Connectome",
+    "commit": "5364f43dfe3c192b6c13b7bf373405ee7a41b420",
+    "path": "memories/current/Pretorius_v12_450_Events_Complete.jsonl",
+    "sha256": "becdf4ca72b85365c35940ccd68f3b6a9bbb1093b7b3cc89c33b113bbe5608ec",
+    "events": 450,
+    "chronological_order": "chronological_order_1_to_450",
+    "fields": [
+      "memory_text",
+      "observations",
+      "decisions",
+      "consequences",
+      "belief_changes",
+      "relationship_changes"
+    ],
+    "provenance": "all_reconstructed"
+  },
+  "validation_file": "pretorius_validation_v1.json",
+  "validation_sha256": "54aeab2e4ab0bde7f9a4c1acdaad062731657f2a664b5e3cdf5409636b5d1246",
+  "adversarial_file": "pretorius_adversarial_v1.json",
+  "adversarial_sha256": "e1510589bbf468d4c4d94a9587ac5dba9cd3284370efe9dae6779d043ccbc5cf",
+  "seeds": [
+    1842,
+    101,
+    202,
+    303,
+    404,
+    505
+  ],
+  "network": {
+    "neurons": 1024,
+    "sensory_dim": 512,
+    "avg_recurrent_degree": 32,
+    "input_degree": 10,
+    "excitatory_fraction": 0.8,
+    "target_rate": 0.08,
+    "tau": 12,
+    "dt": 1,
+    "recurrent_scale": 0.34,
+    "input_scale": 0.55,
+    "action_teaching_scale": 1.8,
+    "global_inhibition": 1.7,
+    "plasticity_interval": 8,
+    "hebb_lr": 0.00035,
+    "reward_lr": 0.0012,
+    "weight_decay": 0.00002,
+    "homeostatic_lr": 0.00008,
+    "eligibility_decay": 0.92,
+    "max_abs_weight": 0.75,
+    "action_population_size": 72,
+    "motor_lr": 0.025,
+    "motor_weight_decay": 0.00002,
+    "motor_temperature": 0.3,
+    "seed": 1842
+  },
+  "phenotype_training_ticks": 12000,
+  "replay_ticks": 11700,
+  "replay_full_epochs": 26,
+  "conditions": [
+    "no_replay",
+    "frozen_chronological",
+    "plastic_chronological",
+    "plastic_reverse",
+    "plastic_shuffled_each_epoch"
+  ],
+  "neural_replay_policy": {
+    "step_each_memory_event": 1,
+    "reward": 0,
+    "learn_motor": false,
+    "action_efference_copy": false,
+    "scalars": "none",
+    "reset_fast_state_before_replay": true,
+    "stream": "continuous_across_episodes",
+    "randomization_seed_offset": 93017
+  },
+  "eval": {
+    "settle_ticks": 40,
+    "probe_ticks": 60,
+    "noise": 0.01,
+    "evaluation_seed_offset": 1000000
+  },
+  "eval_roles": {
+    "validation": "previously_exposed_development_comparability_only",
+    "adversarial": "previously_exposed_diagnostic_not_fresh_holdout"
+  },
+  "claims": [
+    "no_unseen_holdout",
+    "not_original_001_reproduction",
+    "no_persona_identity_claim",
+    "no_behavioral_action_label_derived_from_memories",
+    "sealed_terminal_not_touched"
+  ],
+  "hypothesis": "Does unsupervised exposure to an immutable reconstructed Pretorius narrative produce order-dependent changes to the recurrent substrate or old phenotype scores beyond frozen exposure? Improvements to the old v1 metric are NOT a new character validity demonstration."
+}
