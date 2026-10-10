@@ -9,7 +9,12 @@ from __future__ import annotations
 import argparse
 import json
 import random
+import sys
 from pathlib import Path
+
+_ENTRY_ROOT=Path(__file__).resolve().parents[1]
+if str(_ENTRY_ROOT) not in sys.path:
+    sys.path.insert(0,str(_ENTRY_ROOT))
 
 from scripts.validate_chimera_001e_reviews import (
     ROOT, DRAFTS, SOURCE_QUEUE, EXPOSED_VALIDATION, EXPOSED_ADVERSARIAL,
